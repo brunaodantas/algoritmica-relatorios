@@ -64,8 +64,7 @@
     .hero { min-height:100vh; position:relative; overflow:hidden; background:linear-gradient(135deg, #0A0D10 0%, #0F1419 45%, #1A1F26 100%); display:flex; align-items:center; }
     .hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 75% 30%, rgba(255,127,0,.18) 0%, transparent 55%), radial-gradient(ellipse at 15% 80%, rgba(204,102,0,.12) 0%, transparent 50%); z-index:0; }
     .hero-content { position:relative; z-index:1; padding:calc(70px + 60px) 24px 80px; max-width:1200px; margin:0 auto; width:100%; }
-    .logo-circle { width:80px; height:80px; border-radius:50%; overflow:hidden; border:3px solid rgba(255,127,0,.35); box-shadow:0 4px 20px rgba(0,0,0,.4); background:var(--dark); display:flex; align-items:center; justify-content:center; margin-bottom:24px; }
-    .logo-circle span { font-family:var(--font); font-weight:800; font-size:1.6rem; color:var(--pl); letter-spacing:-.02em; }
+    .hero-logo { height:34px; width:auto; margin-bottom:28px; display:block; }
     .hero-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 16px; background:rgba(255,127,0,.12); border:1px solid rgba(255,127,0,.25); border-radius:100px; font-size:0.73rem; font-weight:700; color:rgba(255,255,255,.9); letter-spacing:.06em; text-transform:uppercase; margin-bottom:32px; }
     .hero-title { font-size:clamp(2.6rem,7vw,5.5rem); font-weight:800; line-height:1.0; letter-spacing:-.03em; margin-bottom:20px; color:#fff; }
     .hero-title .acc { color:var(--pl); }
@@ -267,12 +266,7 @@
 <!-- ══ HERO ══ -->
 <section class="hero" id="hero">
   <div class="hero-content">
-    <div class="logo-circle">
-      <svg width="34" height="34" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg" aria-label="Algoritmica">
-        <rect x="0" y="0" width="38.77" height="38.77" fill="#FF7F00"/>
-        <rect x="18" y="18" width="20.77" height="20.77" fill="#0F1419"/>
-      </svg>
-    </div>
+    <img src="../imagens/logo-algoritmica-branca.png" alt="Algoritmica" class="hero-logo">
     <div class="hero-badge">
       <svg width="8" height="8" viewBox="0 0 8 8" fill="#FF7F00"><circle cx="4" cy="4" r="4"/></svg>
       Relatório Parcial &middot; Meta Ads &middot; Primeira Semana
