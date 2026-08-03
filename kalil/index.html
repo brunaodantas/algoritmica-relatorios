@@ -119,7 +119,7 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
   <div class="wrap head-in">
     <span class="badge">PDT · Pré-Campanha 2026</span>
     <h1>Central de relatórios</h1>
-    <p>Todos os relatórios da conta de Alexandre Kalil reunidos em um só lugar, semanais e mensais, do mais recente para o mais antigo. Cada um traz a entrega do período, o público que respondeu, o custo por resultado com benchmark de mercado e os aprendizados que orientam o ciclo seguinte.</p>
+    <p>Todos os relatórios semanais da conta de Alexandre Kalil reunidos em um só lugar, do mais recente para o mais antigo. Cada um traz a entrega do período, o público que respondeu, o custo por resultado com benchmark de mercado e os aprendizados que orientam o ciclo seguinte.</p>
     <div class="head-logos">
       <img src="semanal/semana-27jul-02ago/assets/logo-algoritmica.png" class="alg" alt="Algoritmica" onerror="this.style.display='none'">
     </div>
@@ -130,8 +130,6 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
   <div class="filters-in">
     <span class="flabel">Ver</span>
     <button class="fbtn on" data-f="todos">Todos</button>
-    <button class="fbtn" data-f="semanal">Semanais</button>
-    <button class="fbtn" data-f="mensal">Mensais</button>
     <span class="fcount" id="fcount">1 relatório disponível</span>
   </div>
 </div>
@@ -183,27 +181,14 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
     </div>
 
     <!-- ============ MENSAIS ============ -->
-    <div class="group" data-group="mensal">
-      <div class="group-h">
-        <span class="group-t">Relatórios mensais</span>
-        <span class="group-tag tag-men">Consolidado do mês</span>
-      </div>
-      <p class="group-d">Consolidam o mês inteiro, com a evolução entre as semanas, o desempenho por criativo e a leitura de tendência que a visão semanal não alcança.</p>
-      <div class="list">
-
-        <!-- NOVO MENSAL: duplicar o bloco de item da seção semanal, trocar a classe para "item men" e apontar para mensal/{mes}/index.html -->
-        <div class="soon">
-          <h3>Agosto de 2026</h3>
-          <p>Em produção. O consolidado mensal será publicado aqui ao fim do mês, reunindo todas as semanas com a leitura de evolução entre elas.</p>
-        </div>
-
-      </div>
-    </div>
+    <!-- Ainda não produzido. Quando existir o primeiro relatório mensal, reintroduzir aqui o grupo
+         "Relatórios mensais" (mesma estrutura da seção semanal, item classe "item men", pill tag-men)
+         e o filtro "Mensais" na barra acima. Não publicar placeholder de "em produção" sem conteúdo real. -->
 
     <div class="note">
-      <div class="note-t">Como ler estes relatórios</div>
-      <p>Os semanais servem para ajuste rápido: mostram o que rodou nos últimos sete dias e onde o custo por resultado está melhor. Os mensais servem para decisão de rumo: consolidam o período, comparam as semanas entre si e mostram tendência.</p>
-      <p>Em todos, o alcance é lido no nível da conta e nunca somado entre campanhas, porque conta pessoas únicas. Custos aparecem sempre acompanhados de benchmark de mercado para comunicação político-eleitoral no Brasil.</p>
+      <div class="note-t">Como ler este relatório</div>
+      <p>O relatório semanal mostra o que rodou nos últimos sete dias e onde o custo por resultado está melhor em cada praça.</p>
+      <p>O alcance é lido no nível da conta e nunca somado entre campanhas, porque conta pessoas únicas. Custos aparecem sempre acompanhados de benchmark de mercado para comunicação político-eleitoral no Brasil.</p>
     </div>
   </div>
 </section>
