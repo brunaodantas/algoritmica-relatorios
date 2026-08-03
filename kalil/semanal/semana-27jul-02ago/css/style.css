@@ -59,8 +59,7 @@ body {
 /* ===== NAV ===== */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: #FFFFFF;
   border-bottom: 1px solid var(--border);
   padding: 12px var(--lg);
   display: flex; align-items: center; justify-content: space-between;
@@ -85,6 +84,10 @@ body {
   transition: all 0.25s;
 }
 .btn-export:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,106,0,0.35); }
+@media (max-width: 640px) {
+  .nav-right .btn-export:not([download]) { display: none; }
+  .nav-right .btn-export[download] { padding: 7px 12px; font-size: 0.64rem; }
+}
 
 /* ===== HERO ===== */
 .hero {
