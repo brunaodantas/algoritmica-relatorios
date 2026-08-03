@@ -1,562 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexandre Kalil · Relatório Semanal · 27/07 a 02/08/2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<style>
-:root{
-  --primary:#FF7F00; --dark:#CC6600; --light:#FF9A33; --purple:#7B2FBE;
-  --bg:#FAF8F5; --surface:#FFFFFF;
-  --t1:#111111; --t2:#4A4A4A; --t3:#8A8478; --line:rgba(17,17,17,.10);
-  --ok:#00994D; --danger:#CC3333; --warn:#CC8800;
-  --shadow:0 2px 14px rgba(17,17,17,.06); --shadow-lg:0 10px 34px rgba(17,17,17,.11);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;print-color-adjust:exact}
-.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-
-/* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1180px;margin:0 auto;padding:0 32px;height:66px;display:flex;align-items:center;gap:18px}
-.nav-logo{height:28px;width:auto}
-.nav-div{width:1px;height:24px;background:var(--line)}
-.nav-client{font-size:14px;font-weight:700;letter-spacing:-.01em}
-.nav-client span{display:block;font-size:11px;font-weight:500;color:var(--t3);letter-spacing:0}
-.tabs{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.tab{font-size:12.5px;font-weight:600;color:var(--t2);text-decoration:none;padding:8px 14px;border-radius:9px;transition:.16s;white-space:nowrap}
-.tab:hover{background:rgba(255,127,0,.08);color:var(--primary)}
-.tab.on{background:var(--primary);color:#fff}
-.tab.pdf{border:1px solid var(--line);color:var(--dark)}
-.tab.pdf:hover{border-color:var(--primary)}
-.chip{font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:20px;letter-spacing:.02em;background:rgba(123,47,190,.10);color:var(--purple)}
-
-/* HERO */
-.hero{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;background:#0F1419}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.35}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,20,25,.92) 0%,rgba(15,20,25,.72) 48%,rgba(255,127,0,.20) 100%)}
-.hero-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:66px 32px;width:100%;display:flex;gap:56px;align-items:center}
-.hero-l{flex:1 1 640px}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,127,0,.14);border:1px solid rgba(255,127,0,.32);color:#FFB566;font-size:11.5px;font-weight:700;padding:7px 14px;border-radius:20px;letter-spacing:.05em;text-transform:uppercase}
-.hero h1{color:#fff;font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:20px 0 14px}
-.hero h1 em{font-style:normal;color:var(--primary)}
-.hero p{color:rgba(255,255,255,.72);font-size:15.5px;line-height:1.62;max-width:600px}
-.hero-r{flex:0 0 300px;display:flex;flex-direction:column;gap:12px}
-.pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:16px 20px}
-.pill-v{color:#fff;font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1}
-.pill-l{color:rgba(255,255,255,.55);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:6px}
-.hero-logos{display:flex;align-items:center;gap:14px;margin-top:28px}
-.hero-logos img{background:#fff;border-radius:9px;padding:8px 13px;box-shadow:0 3px 14px rgba(0,0,0,.24)}
-.hero-logos .alg{height:34px}
-
-/* SECTION */
-.sec{padding:74px 0}
-.sec.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
-.eyebrow.p{color:var(--purple)}
-h2{font-size:31px;font-weight:800;letter-spacing:-.025em;line-height:1.16;margin-bottom:14px}
-.lede{font-size:15px;color:var(--t2);line-height:1.68;max-width:760px}
-
-/* KPI */
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--line)}
-.kpi.hl::before{background:var(--primary)}
-.kpi.hl2::before{background:var(--ok)}
-.kpi.hl3::before{background:var(--purple)}
-.kpi-l{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3)}
-.kpi-v{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:9px 0 6px;line-height:1}
-.kpi-s{font-size:12px;color:var(--t2);line-height:1.5}
-.badge{position:absolute;top:14px;right:14px;font-size:9.5px;font-weight:800;padding:4px 8px;border-radius:6px;background:rgba(255,127,0,.10);color:var(--primary);letter-spacing:.03em}
-
-/* DESTAQUES (Tradicional) */
-.dests{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-.dest{background:linear-gradient(135deg,rgba(255,127,0,.06),rgba(255,127,0,.02));border:1px solid rgba(255,127,0,.20);border-radius:15px;padding:24px}
-.dest-ic{font-size:22px}
-.dest h4{font-size:14px;font-weight:800;margin:11px 0 8px;letter-spacing:-.01em}
-.dest-v{font-size:26px;font-weight:800;color:var(--primary);letter-spacing:-.02em;margin-bottom:8px}
-.dest p{font-size:12.6px;color:var(--t2);line-height:1.6}
-
-/* COST ROW */
-.cost-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
-.cost-blk{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:18px 20px;box-shadow:var(--shadow)}
-.cost-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t3)}
-.cost-val{font-size:23px;font-weight:800;letter-spacing:-.02em;margin:8px 0 6px}
-.cost-val.ok{color:var(--ok)}
-.cost-val.neutral{color:var(--t2)}
-.cost-bench{font-size:11.5px;color:var(--t3);line-height:1.5}
-.cost-bench strong{color:var(--t1)}
-.cost-bench strong.above{color:var(--warn)}
-
-/* TABLE */
-.tbl-wrap{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:var(--shadow)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-thead th{background:rgba(17,17,17,.03);text-align:left;padding:13px 18px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);border-bottom:1px solid var(--line)}
-thead th.n{text-align:right}
-tbody td{padding:13px 18px;border-bottom:1px solid rgba(17,17,17,.05);color:var(--t2)}
-tbody td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--t1)}
-tbody tr:last-child td{border-bottom:none}
-tbody tr.tot td{background:rgba(255,127,0,.045);font-weight:800;color:var(--dark)}
-.tname{font-weight:700;color:var(--t1)}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle}
-
-/* GRID 2 */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
-.g2.wide{grid-template-columns:1.35fr 1fr}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:26px;box-shadow:var(--shadow)}
-.card h3{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:5px}
-.card .sub{font-size:12px;color:var(--t3);margin-bottom:18px}
-.cvs{position:relative;width:100%;height:300px}
-.cvs canvas{width:100%!important;height:100%!important}
-
-/* INSIGHT */
-.ins{margin-top:26px;background:linear-gradient(135deg,rgba(255,127,0,.05),rgba(255,127,0,.015));border:1px solid rgba(255,127,0,.18);border-left:4px solid var(--primary);border-radius:13px;padding:22px 26px}
-.ins-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--primary);margin-bottom:9px}
-.ins p{font-size:14.5px;color:var(--t2);line-height:1.72}
-.ins p+p{margin-top:11px}
-.ins.p{border-left-color:var(--purple);background:linear-gradient(135deg,rgba(123,47,190,.05),rgba(123,47,190,.015))}
-.ins.p .ins-t{color:var(--purple)}
-
-/* DIAG */
-.diag{background:#0F1419;padding:78px 0}
-.diag .eyebrow{color:#FFB566}
-.diag h2{color:#fff}
-.diag .lede{color:rgba(255,255,255,.68)}
-.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.dcard{background:#fff;border-radius:15px;padding:26px;position:relative;overflow:hidden}
-.dcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.dcard:nth-child(1)::before{background:var(--primary)}
-.dcard:nth-child(2)::before{background:var(--ok)}
-.dcard:nth-child(3)::before{background:var(--purple)}
-.dcard:nth-child(4)::before{background:var(--dark)}
-.dcard:nth-child(5)::before{background:var(--warn)}
-.dcard:nth-child(6)::before{background:#111}
-.dnum{font-size:10.5px;font-weight:800;color:var(--t3);letter-spacing:.1em}
-.dbig{font-size:28px;font-weight:800;letter-spacing:-.03em;margin:10px 0 4px;line-height:1}
-.dcard h3{font-size:14.5px;font-weight:800;margin-bottom:9px;letter-spacing:-.01em}
-.dcard p{font-size:12.8px;color:var(--t2);line-height:1.66}
-.dcard ul{margin:9px 0 0 15px;padding:0}
-.dcard li{font-size:12.6px;color:var(--t2);line-height:1.6;margin-bottom:6px}
-
-/* FONTES */
-.src3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
-.srcb{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
-.srcb h4{font-size:12.5px;font-weight:800;color:var(--dark);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
-.srcb ul{margin-left:16px}
-.srcb li{font-size:12.4px;color:var(--t2);line-height:1.62;margin-bottom:7px}
-.src-note{margin-top:22px;font-size:12.8px;color:var(--t2);line-height:1.7;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
-
-footer{background:#0F1419;padding:44px 0;text-align:center}
-footer img{height:26px;background:#fff;border-radius:8px;padding:6px 11px}
-footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:1.7}
-
-.fade{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
-@media (prefers-reduced-motion:no-preference){.fade.pre{opacity:0;transform:translateY(16px)}}
-@media(max-width:900px){
-  .hero-in{flex-direction:column;gap:32px}.hero h1{font-size:32px}
-  .kpis{grid-template-columns:repeat(2,1fr)}.g2,.g2.wide,.dests,.cost-row,.dcards,.src3{grid-template-columns:1fr}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório de Campanha · Alexandre Kalil · Pré-Campanha 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-in">
-    <img src="assets/logo-algoritmica.png" class="nav-logo" alt="Algoritmica" onerror="this.style.display='none'">
-    <div class="nav-div"></div>
-    <div class="nav-client">Alexandre Kalil<span>Relatório semanal · 27/07 a 02/08/2026</span></div>
-    <span class="chip">Meta Ads</span>
-    <div class="tabs">
-      <a class="tab on" href="index.html">Esta semana</a>
-      <a class="tab" href="../../index.html">Todos os relatórios</a>
-      <a class="tab pdf" href="relatorio-kalil-semanal-27jul-02ago2026.pdf">Baixar PDF</a>
-    </div>
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-logo"><img src="assets/logo-algoritmica.png" alt="Algorítmica" style="filter:none;height:26px" /></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../../index.html" data-nav="hub-ext">Todos os Relatórios</a></li>
+    <li><a href="#" data-nav="visao">Visão Geral</a></li>
+    <li><a href="#" data-nav="perfil">Perfil</a></li>
+    <li><a href="#" data-nav="pracas">Praças</a></li>
+    <li><a href="#" data-nav="demografia">Demografia</a></li>
+    <li><a href="#" data-nav="anuncios">Criativos</a></li>
+    <li><a href="#" data-nav="diagnostico">Diagnóstico</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
 
-<!-- 01 HERO -->
-<section class="hero">
-  <div class="hero-bg" style="background-image:url('assets/hero-kalil.png')"></div>
-  <div class="hero-in">
-    <div class="hero-l">
-      <span class="hero-badge">Relatório semanal · Pré-campanha</span>
-      <h1>Uma semana que já entrega <em>leitura de performance</em></h1>
-      <p>Este relatório cobre a semana de 27/07 a 02/08. Nove linhas ativas em três praças de Minas Gerais, cada uma medindo uma coisa diferente: quem reage, quem assiste, quem procura o perfil e quem passa a seguir.</p>
-      <div class="hero-logos">
-        <img src="assets/logo-algoritmica.png" class="alg" alt="Algoritmica" onerror="this.style.display='none'">
-      </div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <img class="hero-bg" src="assets/hero-kalil.png" alt="" aria-hidden="true" style="object-position:center 40%" />
+  <div class="hero-content">
+    <div class="hero-logo fade-in"><img src="assets/logo-algoritmica.png" alt="Algorítmica" style="height:52px;background:#fff;border-radius:12px;padding:10px 16px" /></div>
+    <div class="hero-badge fade-in">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Relatório Semanal &middot; 27 a 02 de agosto de 2026
     </div>
-    <div class="hero-r">
-      <div class="pill"><div class="pill-v">255.616</div><div class="pill-l">Impressões</div></div>
-      <div class="pill"><div class="pill-v">189.613</div><div class="pill-l">Pessoas alcançadas</div></div>
-      <div class="pill"><div class="pill-v">106.700</div><div class="pill-l">Engajamentos</div></div>
-      <div class="pill"><div class="pill-v">517</div><div class="pill-l">Visitas ao perfil</div></div>
-      <div class="pill"><div class="pill-v">1.279</div><div class="pill-l">Crescimento do perfil</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 02 PANORAMA -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow">Panorama da semana</span>
-    <h2>Nove linhas ativas, três praças de Minas Gerais</h2>
-    <p class="lede">A conta rodou nove campanhas entre 30/07 e 02/08: quatro no Estado de Minas Gerais, três na Região Metropolitana de Belo Horizonte e duas no Triângulo Mineiro. Cada praça testa um objetivo diferente, engajamento, vídeo, visita ao perfil e alcance, para a agência entender onde a mensagem rende mais antes da campanha entrar na fase quente.</p>
-    <div class="kpis fade pre">
-      <div class="kpi hl"><span class="badge">Volume da semana</span><div class="kpi-l">Impressões</div><div class="kpi-v">255.616</div><div class="kpi-s">Facebook e Instagram, nove campanhas</div></div>
-      <div class="kpi hl2"><div class="kpi-l">Pessoas alcançadas</div><div class="kpi-v">189.613</div><div class="kpi-s">Alcance único da conta, não somado entre campanhas</div></div>
-      <div class="kpi"><div class="kpi-l">Frequência</div><div class="kpi-v">1,35</div><div class="kpi-s">Cada pessoa viu a comunicação pouco mais de uma vez</div></div>
-      <div class="kpi hl3"><div class="kpi-l">Engajamentos</div><div class="kpi-v">106.700</div><div class="kpi-s">Reações, comentários, compartilhamentos e cliques</div></div>
-      <div class="kpi"><div class="kpi-l">Vídeos até o fim</div><div class="kpi-v">34.968</div><div class="kpi-s">ThruPlays somados das quatro linhas de vídeo</div></div>
-      <div class="kpi hl2"><span class="badge">Funil completo</span><div class="kpi-l">Visitas ao perfil</div><div class="kpi-v">517</div><div class="kpi-s">358 das linhas com esse objetivo e 159 de bônus das demais</div></div>
-      <div class="kpi hl"><div class="kpi-l">Crescimento total do perfil</div><div class="kpi-v">1.279</div><div class="kpi-s">926 novos seguidores no Instagram e 353 no Facebook</div></div>
-      <div class="kpi"><div class="kpi-l">CPM médio da conta</div><div class="kpi-v">R$4,21</div><div class="kpi-s">Benchmark de período eleitoral: R$8,00 a R$20,00</div></div>
-    </div>
-    <div class="ins fade pre">
-      <div class="ins-t">Leitura da semana</div>
-      <p>O dado mais valioso da semana não é o volume, é o caminho completo que ele revela. A operação foi montada para medir cada degrau da relação com o eleitor: 189.613 pessoas alcançadas, 106.700 delas reagindo ao conteúdo, 517 procurando o perfil por conta própria e um ganho de 1.279 seguidores no período. Esse funil inteiro, medido de ponta a ponta, é o que permite decidir com dado, e não com impressão, para onde levar a verba na fase quente.</p>
-      <p>A frequência de 1,35 mostra que ainda estamos comprando público novo, não repetindo o mesmo. Combinada a um CPM de R$4,21 contra os R$8,00 a R$20,00 que o período eleitoral costuma cobrar, significa que cada real está comprando entre duas e cinco vezes mais presença do que o mercado paga. É folga de margem para escalar sem trocar eficiência por volume.</p>
+    <h1 class="hero-title fade-in">
+      Alexandre Kalil<br/><span class="accent">Performance de Mídia</span>
+    </h1>
+    <p class="hero-subtitle fade-in">
+      Semana de <strong>27 de julho a 2 de agosto</strong>, com <strong>nove linhas ativas</strong> em três praças de Minas Gerais, testando engajamento, vídeo, visita ao perfil e alcance. É a primeira semana completa da pré-campanha, com foco em aprender onde a mensagem performa melhor antes da fase quente de agosto.
+    </p>
+    <div class="hero-meta-caption fade-in">Resumo da semana &middot; 27/07 a 02/08</div>
+    <div class="hero-meta fade-in">
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="189613" data-format="compact">0</span></span><span class="hero-meta-label">Alcance</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="255616" data-format="compact">0</span></span><span class="hero-meta-label">Impressões</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="517" data-format="standard">0</span></span><span class="hero-meta-label">Visitas ao Perfil</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="106700" data-format="standard">0</span></span><span class="hero-meta-label">Engajamentos</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value">R$ 1.077</span><span class="hero-meta-label">Investimento</span></div>
     </div>
   </div>
 </section>
 
-<!-- 03 DESTAQUES -->
-<section class="sec alt">
-  <div class="wrap">
-    <span class="eyebrow">Destaques da semana</span>
-    <h2>Três resultados acima do esperado</h2>
-    <div class="dests fade pre">
-      <div class="dest">
-        <div class="dest-ic">💬</div>
-        <h4>Engajamento a um centavo</h4>
-        <div class="dest-v">R$0,01</div>
-        <p>As três linhas de Engajamento (Estado de MG, RMBH e Triângulo) fecharam a semana com custo por engajamento de R$0,01, muito abaixo do benchmark de R$0,05 a R$0,15 para comunicação política no Brasil. 51.412 engajamentos ao custo combinado de R$408,13.</p>
-      </div>
-      <div class="dest">
-        <div class="dest-ic">🎬</div>
-        <h4>ThruPlay abaixo do piso de mercado</h4>
-        <div class="dest-v">R$0,013 a R$0,042</div>
-        <p>As quatro linhas de vídeo (duas em Minas Gerais, uma em RMBH) entregaram ThruPlay entre R$0,013 e R$0,042, contra a média de mercado de R$0,05 a R$0,15. 17.816 vídeos assistidos até o fim.</p>
-      </div>
-      <div class="dest">
-        <div class="dest-ic">📍</div>
-        <h4>O funil fechou até o seguidor</h4>
-        <div class="dest-v">517 visitas, 1.279 seguidores</div>
-        <p>A mídia levou 517 pessoas ao perfil e o perfil cresceu 1.279 seguidores no período, alta de 21,7% no Instagram e 41,8% no Facebook. É o indicador que mais importa: mostra que a comunicação está construindo base própria, e não apenas comprando atenção.</p>
-      </div>
-    </div>
+<!-- ===== VISÃO GERAL ===== -->
+<section class="section" data-section="visao">
+  <span class="section-label">Visão Geral</span>
+  <h2 class="section-title fade-in">Resultado Consolidado</h2>
+  <p class="section-subtitle fade-in">Números totais da conta <strong>PDT &middot; Alexandre Kalil &middot; Pré-Campanha 2026</strong> no Meta Ads, no período de <strong>27 de julho a 2 de agosto de 2026</strong>. A conta roda quatro objetivos em paralelo &mdash; engajamento, vídeo, visita ao perfil e alcance &mdash; para entender onde a mensagem rende mais antes da fase quente da campanha.</p>
+  <div class="kpi-grid">
+    <div class="kpi-card accent fade-in"><div class="kpi-label">Impressões</div><div class="kpi-value orange"><span class="count-up" data-target="255616" data-format="compact">0</span></div><div class="kpi-sub">Exibições dos anúncios</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Alcance</div><div class="kpi-value"><span class="count-up" data-target="189613" data-format="compact">0</span></div><div class="kpi-sub">Contas únicas alcançadas</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Frequência</div><div class="kpi-value">1,35&times;</div><div class="kpi-sub">Média de vezes por pessoa</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Investimento</div><div class="kpi-value">R$ 1.077</div><div class="kpi-sub">Valor usado no período</div></div>
+    <div class="kpi-card accent fade-in"><div class="kpi-label">Visitas ao Perfil</div><div class="kpi-value orange"><span class="count-up" data-target="517" data-format="standard">0</span></div><div class="kpi-sub"><strong>358</strong> das linhas de objetivo + <strong>159</strong> de bônus</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Engajamentos</div><div class="kpi-value"><span class="count-up" data-target="106700" data-format="standard">0</span></div><div class="kpi-sub">Reações, comentários e compartilhamentos</div></div>
+    <div class="kpi-card accent fade-in"><div class="kpi-label">Taxa de Interação</div><div class="kpi-value orange">56,3%</div><div class="kpi-sub">Engajamentos &divide; alcance</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Reproduções de Vídeo</div><div class="kpi-value"><span class="count-up" data-target="34968" data-format="standard">0</span></div><div class="kpi-sub">ThruPlays das quatro linhas de vídeo</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">CTR</div><div class="kpi-value">1,65%</div><div class="kpi-sub">Cliques &divide; impressões</div></div>
+    <div class="kpi-card accent fade-in"><div class="kpi-label">CPM</div><div class="kpi-value orange">R$ 4,21</div><div class="kpi-sub">Benchmark eleitoral: R$ 8 a R$ 20</div></div>
   </div>
 </section>
 
-<!-- 04 MG -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow p">Praça 01 · Estado de Minas Gerais</span>
-    <h2>A praça de maior volume, com quatro frentes diferentes</h2>
-    <p class="lede">O Estado de Minas Gerais recebeu quatro configurações na semana: engajamento, vídeo, o mesmo vídeo em teste de público e visita ao perfil. É a praça mais cara em verba porque cobre o estado inteiro, então também é onde o teste de público e criativo mais importa.</p>
-    <div class="cost-row fade pre">
-      <div class="cost-blk main">
-        <div class="cost-lbl">Custo por engajamento</div>
-        <div class="cost-val ok">R$0,01</div>
-        <div class="cost-bench">Benchmark: R$0,05 a R$0,15<br/><strong class="above">92% abaixo do mercado</strong></div>
+<!-- IMPACTO NO PERFIL -->
+<div class="section-alt">
+<section class="section" data-section="perfil">
+  <span class="section-label">Instagram &amp; Facebook &middot; Visão da Conta</span>
+  <h2 class="section-title fade-in">Crescimento do Perfil</h2>
+  <p class="section-subtitle fade-in">Crescimento total do perfil na semana, segundo o Meta Business Suite (soma tráfego orgânico e mídia paga). Variação comparada à semana anterior.</p>
+  <div class="kpi-grid kpi-4">
+    <div class="kpi-card accent fade-in"><div class="kpi-label">Novos Seguidores &middot; Instagram</div><div class="kpi-value orange">926</div><div class="kpi-trend up">&#9650; 21,7% vs. semana anterior</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Novos Seguidores &middot; Facebook</div><div class="kpi-value">353</div><div class="kpi-trend up">&#9650; 41,8% vs. semana anterior</div></div>
+    <div class="kpi-card accent fade-in"><div class="kpi-label">Crescimento Total do Perfil</div><div class="kpi-value orange">1.279</div><div class="kpi-sub">Instagram + Facebook, orgânico e pago</div></div>
+    <div class="kpi-card fade-in"><div class="kpi-label">Visitas ao Perfil (mídia paga)</div><div class="kpi-value">517</div><div class="kpi-sub">Ver detalhe na seção de Praças</div></div>
+  </div>
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura</div>
+    <div class="insight-text">O perfil cresceu <strong>1.279 seguidores</strong> na semana, <strong>926 no Instagram (+21,7%)</strong> e <strong>353 no Facebook (+41,8%)</strong> frente ao período anterior. É o indicador que mais importa nesta fase: mostra que a comunicação está construindo base própria em Minas Gerais, não apenas comprando atenção pontual. A mídia paga levou <strong>517 pessoas</strong> a procurar o perfil por conta própria, alimentando parte desse crescimento.</div>
+  </div>
+</section>
+</div>
+
+<!-- ===== PRAÇAS ===== -->
+<section class="section" data-section="pracas">
+  <span class="section-label">Segmentações</span>
+  <h2 class="section-title fade-in">Praças de Minas Gerais</h2>
+  <p class="section-subtitle fade-in">A conta roda em três praças com papéis diferentes: o <strong>Estado de Minas Gerais</strong> sustenta o volume e testa formatos, a <strong>Região Metropolitana de Belo Horizonte</strong> é onde a resposta do público é mais forte, e o <strong>Triângulo Mineiro</strong> constrói presença ao menor custo, em terreno de reconhecimento ainda inicial.</p>
+  <div class="camp-grid camp-grid-3" style="margin-top:var(--xl)">
+    <div class="camp-card traf fade-in">
+      <div class="camp-tag">Estado de Minas Gerais</div>
+      <div class="camp-metrics">
+        <div class="cmv"><span class="cmv-val">117.475</span><span class="cmv-key">Impressões</span></div>
+        <div class="cmv"><span class="cmv-val">110.521</span><span class="cmv-key">Alcance</span></div>
+        <div class="cmv"><span class="cmv-val hi">71.082</span><span class="cmv-key">Engajamentos</span></div>
+        <div class="cmv"><span class="cmv-val hi">102</span><span class="cmv-key">Visitas ao Perfil</span></div>
+        <div class="cmv"><span class="cmv-val">25.256</span><span class="cmv-key">ThruPlays</span></div>
+        <div class="cmv"><span class="cmv-val">R$ 4,75</span><span class="cmv-key">CPM</span></div>
       </div>
-      <div class="cost-blk neut">
-        <div class="cost-lbl">Custo por ThruPlay</div>
-        <div class="cost-val ok">R$0,013 a R$0,042</div>
-        <div class="cost-bench">Benchmark: R$0,05 a R$0,15<br/><strong>abaixo do piso nas duas linhas</strong></div>
-      </div>
-      <div class="cost-blk win">
-        <div class="cost-lbl">CPM médio da praça</div>
-        <div class="cost-val ok">R$4,17</div>
-        <div class="cost-bench">Benchmark: R$8,00 a R$20,00<br/><strong class="above">abaixo da média para período eleitoral</strong></div>
+      <div class="camp-bar">
+        <div class="cb-label"><span>Participação no investimento</span><strong>51,8%</strong></div>
+        <div class="cb-track"><div class="cb-fill" data-width="51.8%"></div></div>
+        <div class="cb-label" style="margin-top:6px"><span>Investimento: R$ 557,78 &middot; quatro linhas ativas</span></div>
       </div>
     </div>
-    <div class="tbl-wrap fade pre">
-      <table>
-        <thead><tr><th>Linha</th><th class="n">Verba total</th><th class="n">Gasto na semana</th><th class="n">% da verba</th><th class="n">Resultado</th><th class="n">Custo/resultado</th></tr></thead>
+    <div class="camp-card eng fade-in">
+      <div class="camp-tag">Região Metropolitana de BH</div>
+      <div class="camp-metrics">
+        <div class="cmv"><span class="cmv-val">61.514</span><span class="cmv-key">Impressões</span></div>
+        <div class="cmv"><span class="cmv-val">52.467</span><span class="cmv-key">Alcance</span></div>
+        <div class="cmv"><span class="cmv-val" style="color:var(--accent)">34.960</span><span class="cmv-key">Engajamentos</span></div>
+        <div class="cmv"><span class="cmv-val" style="color:var(--accent)">413</span><span class="cmv-key">Visitas ao Perfil</span></div>
+        <div class="cmv"><span class="cmv-val">9.711</span><span class="cmv-key">ThruPlays</span></div>
+        <div class="cmv"><span class="cmv-val">R$ 5,22</span><span class="cmv-key">CPM</span></div>
+      </div>
+      <div class="camp-bar">
+        <div class="cb-label"><span>Participação no investimento</span><strong>29,8%</strong></div>
+        <div class="cb-track"><div class="cb-fill" data-width="29.8%"></div></div>
+        <div class="cb-label" style="margin-top:6px"><span>Investimento: R$ 321,26 &middot; praça de melhor resposta</span></div>
+      </div>
+    </div>
+    <div class="camp-card eng fade-in">
+      <div class="camp-tag">Triângulo Mineiro</div>
+      <div class="camp-metrics">
+        <div class="cmv"><span class="cmv-val">76.672</span><span class="cmv-key">Impressões</span></div>
+        <div class="cmv"><span class="cmv-val">50.027</span><span class="cmv-key">Alcance</span></div>
+        <div class="cmv"><span class="cmv-val">658</span><span class="cmv-key">Engajamentos</span></div>
+        <div class="cmv"><span class="cmv-val">&mdash;</span><span class="cmv-key">Visitas ao Perfil</span></div>
+        <div class="cmv"><span class="cmv-val">0</span><span class="cmv-key">ThruPlays</span></div>
+        <div class="cmv"><span class="cmv-val" style="color:var(--accent)">R$ 2,58</span><span class="cmv-key">CPM</span></div>
+      </div>
+      <div class="camp-bar">
+        <div class="cb-label"><span>Participação no investimento</span><strong>18,3%</strong></div>
+        <div class="cb-track"><div class="cb-fill" data-width="18.3%"></div></div>
+        <div class="cb-label" style="margin-top:6px"><span>Investimento: R$ 197,47 &middot; menor CPM da conta</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-grid" style="margin-top:var(--2xl)">
+    <div class="chart-container fade-in">
+      <div class="chart-header"><div><div class="chart-title">Impressões por Praça</div><div class="chart-description">Estado de Minas Gerais concentra o maior volume de entrega.</div></div></div>
+      <div class="chart-wrapper" style="height:280px"><canvas id="chartPracas"></canvas></div>
+    </div>
+    <div class="chart-container fade-in">
+      <div class="chart-header"><div><div class="chart-title">Investimento por Praça</div><div class="chart-description">Divisão do aporte entre as três praças da semana.</div></div></div>
+      <div class="chart-wrapper" style="height:280px"><canvas id="chartInvest"></canvas></div>
+    </div>
+  </div>
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill traf">Praças</span> Desempenho por praça &middot; ordenado por Investimento</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Praça</th><th>Impressões</th><th>Alcance</th><th>Engaj.</th><th>Visitas</th><th>CPM</th><th>Investimento</th></tr></thead>
         <tbody>
-          <tr><td class="tname"><span class="dot" style="background:#7B2FBE"></span>Engajamento</td><td class="n">R$279,00</td><td class="n">R$181,87</td><td class="n">65,2%</td><td class="n">31.515 engajamentos</td><td class="n">R$0,01</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#CC6600"></span>ThruPlay</td><td class="n">R$200,00</td><td class="n">R$134,55</td><td class="n">67,3%</td><td class="n">10.212 ThruPlays</td><td class="n">R$0,013</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#FF9A33"></span>ThruPlay, público feminino</td><td class="n">R$400,00</td><td class="n">R$122,07</td><td class="n">30,5%</td><td class="n">2.902 ThruPlays</td><td class="n">R$0,042</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#111"></span>Visita ao Perfil</td><td class="n">R$121,00</td><td class="n">R$119,85</td><td class="n">99,0%</td><td class="n">73 visitas</td><td class="n">R$1,64</td></tr>
-          <tr class="tot"><td>Total da praça</td><td class="n">R$1.000,00</td><td class="n">R$558,34</td><td class="n">55,8%</td><td class="n">122.643 impressões</td><td class="n" style="color:#8A8478;font-weight:500">sem custo único</td></tr>
+          <tr><td class="tl">Estado de Minas Gerais</td><td>117.475</td><td>110.521</td><td>71.082</td><td>102</td><td class="acc">R$ 4,75</td><td>R$ 557,78</td></tr>
+          <tr><td class="tl">Região Metropolitana de BH</td><td>61.514</td><td>52.467</td><td>34.960</td><td>413</td><td class="acc">R$ 5,22</td><td>R$ 321,26</td></tr>
+          <tr><td class="tl">Triângulo Mineiro</td><td>76.672</td><td>50.027</td><td>658</td><td>&mdash;</td><td class="acc">R$ 2,58</td><td>R$ 197,47</td></tr>
         </tbody>
+        <tfoot><tr><td class="tl">Total</td><td>255.661</td><td>189.613*</td><td>106.700</td><td>517</td><td>R$ 4,21</td><td>R$ 1.076,51</td></tr></tfoot>
       </table>
     </div>
-    <div class="ins p fade pre">
-      <div class="ins-t">Leitura da praça</div>
-      <p>O Estado é onde a mídia trabalha escala, e o número que prova isso é o engajamento: 31.515 interações a R$0,01 cada, o maior volume de resposta de toda a operação. Somado às 10.212 conclusões de vídeo da linha de ThruPlay a R$0,013, a praça mostra que a mensagem funciona fora da capital, o que sustenta a decisão de manter Minas inteira no ar em vez de recolher a verba para a região metropolitana.</p>
-      <p>A diferença de custo por visita ao perfil entre o Estado, R$1,64, e Belo Horizonte, R$0,23, é o dado que mais orienta a próxima alocação. Ela mostra em que ponto do estado o público já está pronto para dar o passo seguinte e em que ponto ainda estamos construindo reconhecimento. As duas coisas são necessárias, mas pedem verba e criativo diferentes, e é assim que vamos tratá-las.</p>
-      <p>A linha de vídeo para público feminino teve a segmentação ajustada durante a semana e por isso trabalha com uma base menor, o que naturalmente eleva o custo por conclusão para R$0,042, ainda dentro do benchmark. O próximo ciclo vai medir essa linha já com o público definido do início ao fim, para que a leitura dela seja limpa.</p>
-    </div>
+    <p class="table-note">*Alcance total = alcance deduplicado da conta. Como uma mesma pessoa pode ser alcançada em mais de uma praça, a soma do alcance por praça é maior que o total real. Visitas ao perfil do Triângulo Mineiro: a praça não tem linha com esse objetivo.</p>
+  </div>
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura das Praças</div>
+    <div class="insight-text">A <strong>Região Metropolitana de Belo Horizonte</strong> é onde Alexandre Kalil performa melhor: com apenas 24% da entrega da conta, concentra 80% das visitas ao perfil e a maior taxa de engajamento por impressão. O <strong>Estado de Minas Gerais</strong> sustenta o volume e o teste de formatos &mdash; incluindo a correção de segmentação da linha de público feminino nesta semana. O <strong>Triângulo Mineiro</strong> entrega o menor CPM da conta, R$ 2,58, coerente com uma praça ainda em fase de construção de presença.</div>
   </div>
 </section>
 
-<!-- 05 RMBH -->
-<section class="sec alt">
-  <div class="wrap">
-    <span class="eyebrow p">Praça 02 · Região Metropolitana de Belo Horizonte</span>
-    <h2>Onde Alexandre Kalil performa melhor</h2>
-    <p class="lede">Belo Horizonte é a praça que responde em todos os degraus do funil, e com folga. Não é só entrega mais barata: é a região onde o público sai do impacto passivo e age, procurando o perfil e passando a seguir. As mesmas três frentes rodam aqui e no Estado, e a diferença de resposta entre elas é o achado mais acionável da semana.</p>
-    <div class="cost-row fade pre">
-      <div class="cost-blk main">
-        <div class="cost-lbl">Custo por engajamento</div>
-        <div class="cost-val ok">R$0,01</div>
-        <div class="cost-bench">Benchmark: R$0,05 a R$0,15<br/><strong class="above">92% abaixo do mercado</strong></div>
-      </div>
-      <div class="cost-blk neut">
-        <div class="cost-lbl">Custo por ThruPlay</div>
-        <div class="cost-val ok">R$0,022</div>
-        <div class="cost-bench">Benchmark: R$0,05 a R$0,15<br/><strong class="above">abaixo do piso de mercado</strong></div>
-      </div>
-      <div class="cost-blk win">
-        <div class="cost-lbl">Visitas ao perfil</div>
-        <div class="cost-val ok">413</div>
-        <div class="cost-bench">80% de todas as visitas da conta<br/><strong class="above">com 24% da entrega em impressões</strong></div>
-      </div>
+<!-- DEMOGRAFIA -->
+<div class="section-alt">
+<section class="section" data-section="demografia">
+  <span class="section-label">Perfil do Público</span>
+  <h2 class="section-title fade-in">Quem Foi Impactado</h2>
+  <p class="section-subtitle fade-in">Distribuição das impressões da semana por faixa etária e gênero, somando as nove linhas ativas.</p>
+  <div class="demo-grid">
+    <div class="chart-container fade-in"><div class="chart-header"><div><div class="chart-title">Impressões por Faixa Etária</div><div class="chart-description">Concentração forte no público de 45 a 64 anos.</div></div></div><div class="chart-wrapper" style="height:290px"><canvas id="chartIdade"></canvas></div></div>
+    <div class="chart-container fade-in"><div class="chart-header"><div><div class="chart-title">Distribuição por Gênero</div><div class="chart-description">Participação masculina e feminina nas impressões.</div></div></div><div class="chart-wrapper" style="height:290px"><canvas id="chartGenero"></canvas></div></div>
+  </div>
+  <div class="grid-2 fade-in" style="margin-top:var(--lg)">
+    <div class="insight-box"><div class="insight-label">Núcleo mais velho concentra a entrega</div><div class="insight-text">A faixa de <strong>55 a 64 anos concentrou 39,1%</strong> das impressões e, somada à 45&ndash;54 (27,6%), representa <strong>66,7%</strong> das entregas. O público mais jovem, 18 a 34 anos, soma apenas 17,5%. É o algoritmo otimizando por volume disponível no leilão, não uma escolha deliberada de público.</div></div>
+    <div class="insight-box gray"><div class="insight-label">Predominância masculina</div><div class="insight-text">O público <strong>masculino recebeu 74,2%</strong> das impressões contra 25,7% do feminino. A linha de ThruPlay corrigida nesta semana para segmentar só mulheres deve equilibrar essa distribuição nos próximos ciclos.</div></div>
+  </div>
+</section>
+</div>
+
+<!-- ===== CRIATIVOS ===== -->
+<section class="section" data-section="anuncios">
+  <span class="section-label">Criativos</span>
+  <h2 class="section-title fade-in">Desempenho por Anúncio</h2>
+  <p class="section-subtitle fade-in">Os quatro conceitos criativos veiculados na semana, com o post real do Instagram e os resultados consolidados de todas as linhas em que cada um rodou.</p>
+  <div class="top-grid top-grid-4">
+    <div class="top-card fade-in">
+      <div class="top-frame embed"><div class="top-rank">1</div><iframe src="https://www.instagram.com/p/Dbdnpwkg6DZ/embed/" scrolling="no"></iframe></div>
+      <div class="top-body"><span class="top-award">&#9733; Maior volume</span><div class="top-name">Eu não faço promessa</div><div class="top-stat-main"><span class="v">95.030</span><span class="k">Impressões</span></div><div class="top-mini"><div class="mi"><span class="v">57.126</span><span class="k">Engajamentos</span></div><div class="mi"><span class="v">22.354</span><span class="k">ThruPlays</span></div><div class="mi"><span class="v">60,1%</span><span class="k">Tx. Interação</span></div><div class="mi"><span class="v">R$ 4,58</span><span class="k">CPM</span></div><div class="mi"><span class="v">R$ 436</span><span class="k">Investido</span></div></div></div>
     </div>
-    <div class="tbl-wrap fade pre">
-      <table>
-        <thead><tr><th>Linha</th><th class="n">Verba total</th><th class="n">Gasto na semana</th><th class="n">% da verba</th><th class="n">Resultado</th><th class="n">Custo/resultado</th></tr></thead>
+    <div class="top-card fade-in">
+      <div class="top-frame embed"><div class="top-rank">2</div><iframe src="https://www.instagram.com/p/DbapZ1HjHFJ/embed/" scrolling="no"></iframe></div>
+      <div class="top-body"><span class="top-award">&#9733; Melhor CPM</span><div class="top-name">Kalil Faz &middot; carrossel</div><div class="top-stat-main"><span class="v">76.672</span><span class="k">Impressões</span></div><div class="top-mini"><div class="mi"><span class="v">658</span><span class="k">Engajamentos</span></div><div class="mi"><span class="v">&mdash;</span><span class="k">ThruPlays</span></div><div class="mi"><span class="v">0,9%</span><span class="k">Tx. Interação</span></div><div class="mi"><span class="v">R$ 2,58</span><span class="k">CPM</span></div><div class="mi"><span class="v">R$ 197</span><span class="k">Investido</span></div></div></div>
+    </div>
+    <div class="top-card fade-in">
+      <div class="top-frame embed"><div class="top-rank">3</div><iframe src="https://www.instagram.com/p/DbandNXAUP4/embed/" scrolling="no"></iframe></div>
+      <div class="top-body"><span class="top-award">&#9733; Melhor custo por visita</span><div class="top-name">Aftermovie Convenção</div><div class="top-stat-main"><span class="v">61.514</span><span class="k">Impressões</span></div><div class="top-mini"><div class="mi"><span class="v">34.960</span><span class="k">Engajamentos</span></div><div class="mi"><span class="v">9.711</span><span class="k">ThruPlays</span></div><div class="mi"><span class="v">56,8%</span><span class="k">Tx. Interação</span></div><div class="mi"><span class="v">R$ 5,22</span><span class="k">CPM</span></div><div class="mi"><span class="v">R$ 321</span><span class="k">Investido</span></div></div></div>
+    </div>
+    <div class="top-card fade-in">
+      <div class="top-frame embed"><div class="top-rank">4</div><iframe src="https://www.instagram.com/p/Dbf3Q_3AULH/embed/" scrolling="no"></iframe></div>
+      <div class="top-body"><span class="top-award">&#9733; Maior taxa de interação</span><div class="top-name">Governar com elas.</div><div class="top-stat-main"><span class="v">22.492</span><span class="k">Impressões</span></div><div class="top-mini"><div class="mi"><span class="v">13.975</span><span class="k">Engajamentos</span></div><div class="mi"><span class="v">2.904</span><span class="k">ThruPlays</span></div><div class="mi"><span class="v">62,1%</span><span class="k">Tx. Interação</span></div><div class="mi"><span class="v">R$ 5,46</span><span class="k">CPM</span></div><div class="mi"><span class="v">R$ 123</span><span class="k">Investido</span></div></div></div>
+    </div>
+  </div>
+  <div class="chart-section fade-in">
+    <div class="chart-container">
+      <div class="chart-header"><div><div class="chart-title">Impressões por Anúncio</div><div class="chart-description">Ranking dos quatro conceitos criativos da semana.</div></div></div>
+      <div class="chart-wrapper" style="height:280px"><canvas id="chartAnuncios"></canvas></div>
+    </div>
+  </div>
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill traf">Anúncios</span> Todos os criativos &middot; ordenados por Impressões</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Anúncio</th><th>Impressões</th><th>Engaj.</th><th>ThruPlays</th><th>Tx. Interação</th><th>CPM</th><th>Investimento</th></tr></thead>
         <tbody>
-          <tr><td class="tname"><span class="dot" style="background:#7B2FBE"></span>Engajamento</td><td class="n">R$250,00</td><td class="n">R$160,42</td><td class="n">64,2%</td><td class="n">20.979 engajamentos</td><td class="n">R$0,01</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#CC6600"></span>ThruPlay (Aftermovie da Convenção)</td><td class="n">R$150,00</td><td class="n">R$95,52</td><td class="n">63,7%</td><td class="n">4.311 ThruPlays</td><td class="n">R$0,022</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#111"></span>Visita ao Perfil</td><td class="n">R$100,00</td><td class="n">R$65,31</td><td class="n">65,3%</td><td class="n">285 visitas</td><td class="n">R$0,23</td></tr>
-          <tr class="tot"><td>Total da praça</td><td class="n">R$500,00</td><td class="n">R$321,25</td><td class="n">64,3%</td><td class="n">61.512 impressões</td><td class="n" style="color:#8A8478;font-weight:500">sem custo único</td></tr>
+          <tr><td class="tl">Eu não faço promessa</td><td>95.030</td><td>57.126</td><td>22.354</td><td class="acc">60,1%</td><td>R$ 4,58</td><td>R$ 435,66</td></tr>
+          <tr><td class="tl">Kalil Faz &middot; carrossel</td><td>76.672</td><td>658</td><td>&mdash;</td><td class="acc">0,9%</td><td>R$ 2,58</td><td>R$ 197,47</td></tr>
+          <tr><td class="tl">Aftermovie Convenção</td><td>61.514</td><td>34.960</td><td>9.711</td><td class="acc">56,8%</td><td>R$ 5,22</td><td>R$ 321,26</td></tr>
+          <tr><td class="tl">Governar com elas.</td><td>22.492</td><td>13.975</td><td>2.904</td><td class="acc">62,1%</td><td>R$ 5,46</td><td>R$ 122,79</td></tr>
         </tbody>
+        <tfoot><tr><td class="tl">Total</td><td>255.708</td><td>106.719</td><td>34.969</td><td>41,7%</td><td>R$ 4,21</td><td>R$ 1.077,18</td></tr></tfoot>
       </table>
     </div>
-    <div class="ins p fade pre">
-      <div class="ins-t">Leitura da praça</div>
-      <p>Belo Horizonte concentra 413 das 517 visitas ao perfil da conta, 80% do total, com apenas 24% da entrega em impressões. A leitura é direta: aqui a audiência já conhece o nome e não precisa ser convencida a prestar atenção, ela vai atrás. Em praça com esse comportamento, cada real investido rende relação, não apenas exposição.</p>
-      <p>Vale registrar que as visitas ao perfil não vieram só da linha desenhada para isso. As campanhas de engajamento e de vídeo de RMBH trouxeram 128 visitas de bônus, sem ter esse objetivo. Isso indica que o conteúdo em si está puxando a curiosidade sobre o candidato, e é a razão pela qual seguimos rodando as três frentes em paralelo em vez de concentrar tudo numa só.</p>
-    </div>
+    <p class="table-note">Tx. Interação = engajamentos &divide; impressões do próprio criativo. Criativos veiculados em mais de uma linha têm os números consolidados; pequenas diferenças frente ao total da conta podem ocorrer pela reconsolidação da plataforma.</p>
+  </div>
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura dos Criativos</div>
+    <div class="insight-text">O contraste da semana está entre o <strong>#1</strong> e o <strong>#2</strong>: "Eu não faço promessa" e "Kalil Faz" entregaram volume parecido de impressões, mas o carrossel custou 44% menos por mil impressões e gerou 87 vezes menos engajamento. Carrossel serve para ser visto; vídeo serve para ser respondido. "Governar com elas.", o criativo mais novo, já lidera em taxa de interação (62,1%) com a menor verba entre os quatro &mdash; sinal de que vale ampliar o teste dele na próxima semana.</div>
   </div>
 </section>
 
-<!-- 06 TRIANGULO -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow p">Praça 03 · Triângulo Mineiro</span>
-    <h2>Onde compramos presença ao menor custo do estado</h2>
-    <p class="lede">O Triângulo é a praça de conquista, e a estratégia aqui é deliberada: em terreno onde o nome ainda está sendo construído, o primeiro trabalho é aparecer para muita gente ao menor custo possível. Foi exatamente o que a semana entregou, e com o CPM mais eficiente de toda a operação.</p>
-    <div class="cost-row fade pre">
-      <div class="cost-blk main">
-        <div class="cost-lbl">Custo por engajamento</div>
-        <div class="cost-val neutral">R$0,13</div>
-        <div class="cost-bench">Benchmark: R$0,05 a R$0,15<br/><strong>dentro da faixa de mercado</strong></div>
+<!-- ===== DIAGNÓSTICO ===== -->
+<div class="diag-wrap" data-section="diagnostico">
+  <img class="diag-bg" src="assets/hero-kalil.png" alt="" aria-hidden="true" style="object-position:center 55%" />
+  <div class="diag-inner">
+    <span class="section-label">Diagnóstico</span>
+    <h2 class="section-title fade-in">Leitura da Semana</h2>
+    <p class="section-subtitle fade-in">Os três pontos que resumem o desempenho de 27 de julho a 2 de agosto.</p>
+    <div class="diag-cards fade-in">
+      <div class="diag-card">
+        <div class="dc-num">Estratégia &middot; 01</div>
+        <div class="dc-metric">3 praças</div>
+        <div class="dc-title">Aprendizado Antes da Fase Quente</div>
+        <div class="dc-text">A conta roda quatro objetivos em três praças de Minas Gerais ao mesmo tempo. Não é ritmo parelho que se busca aqui, é <strong>aprender rápido</strong> onde a mensagem funciona antes da campanha entrar na fase quente de agosto.</div>
       </div>
-      <div class="cost-blk neut">
-        <div class="cost-lbl">CPM da linha de alcance</div>
-        <div class="cost-val ok">R$1,86</div>
-        <div class="cost-bench">Benchmark: R$8,00 a R$20,00<br/><strong class="above">o menor CPM da conta</strong></div>
+      <div class="diag-card">
+        <div class="dc-num">Eficiência &middot; 02</div>
+        <div class="dc-metric">R$ 4,21</div>
+        <div class="dc-title">CPM Muito Abaixo do Mercado</div>
+        <div class="dc-text">O CPM da conta, <strong>R$ 4,21</strong>, está entre a metade e um quinto do benchmark eleitoral de R$ 8 a R$ 20. O engajamento saiu a <strong>R$ 0,01</strong> nas três praças que o medem &mdash; o resultado mais forte da semana.</div>
       </div>
-      <div class="cost-blk win">
-        <div class="cost-lbl">Frequência</div>
-        <div class="cost-val neutral">1,66</div>
-        <div class="cost-bench">Zona ideal para construção de presença<br/><strong>sem sinal de saturação</strong></div>
-      </div>
-    </div>
-    <div class="tbl-wrap fade pre">
-      <table>
-        <thead><tr><th>Linha</th><th class="n">Verba total</th><th class="n">Gasto na semana</th><th class="n">% da verba</th><th class="n">Resultado</th><th class="n">Custo/resultado</th></tr></thead>
-        <tbody>
-          <tr><td class="tname"><span class="dot" style="background:#7B2FBE"></span>Engajamento</td><td class="n">R$100,00</td><td class="n">R$65,84</td><td class="n">65,8%</td><td class="n">514 engajamentos</td><td class="n">R$0,13</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#111"></span>Alcance</td><td class="n">R$200,00</td><td class="n">R$131,55</td><td class="n">65,8%</td><td class="n">49.988 pessoas</td><td class="n">R$2,63 (CPM alcance)</td></tr>
-          <tr class="tot"><td>Total da praça</td><td class="n">R$300,00</td><td class="n">R$197,39</td><td class="n">65,8%</td><td class="n">76.619 impressões</td><td class="n" style="color:#8A8478;font-weight:500">sem custo único</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="ins p fade pre">
-      <div class="ins-t">Leitura da praça</div>
-      <p>Com R$131,55 a linha de Alcance colocou o nome de Alexandre Kalil na frente de 49.988 pessoas do Triângulo, ao CPM de R$1,86, o mais eficiente da conta e quatro vezes abaixo do piso de mercado eleitoral. Para uma praça de conquista, é o melhor uso possível do primeiro real: comprar tamanho de audiência antes de pedir qualquer coisa dela.</p>
-      <p>O engajamento aqui custa R$0,13, mais que nas outras praças, e isso também é informação útil. Público que ainda não tem vínculo com o nome reage menos, é o comportamento esperado de quem está sendo apresentado ao candidato agora. O número segue dentro do benchmark de mercado, então o que ele indica não é ineficiência de mídia, é estágio de relação. Conforme a frequência subir na região, esse custo tende a cair, e é isso que vamos monitorar.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 06B FUNIL -->
-<section class="sec alt">
-  <div class="wrap">
-    <span class="eyebrow">Do impacto ao seguidor</span>
-    <h2>O caminho completo que a mídia construiu na semana</h2>
-    <p class="lede">Alcance sozinho não diz se a comunicação está funcionando. O que diz é quanta gente avançou de degrau: viu, reagiu, foi procurar o perfil e decidiu acompanhar. Esta é a leitura que a operação foi desenhada para produzir.</p>
-    <div class="kpis fade pre">
-      <div class="kpi hl"><div class="kpi-l">Pessoas alcançadas</div><div class="kpi-v">189.613</div><div class="kpi-s">Base do funil, público único impactado na semana</div></div>
-      <div class="kpi hl3"><div class="kpi-l">Engajamentos</div><div class="kpi-v">106.700</div><div class="kpi-s">Dentro deles, 2.937 reações, 198 comentários e 84 compartilhamentos</div></div>
-      <div class="kpi hl2"><div class="kpi-l">Visitas ao perfil</div><div class="kpi-v">517</div><div class="kpi-s">Quem saiu do anúncio para conhecer o candidato</div></div>
-      <div class="kpi hl"><span class="badge">Fim do funil</span><div class="kpi-l">Crescimento total do perfil</div><div class="kpi-v">1.279</div><div class="kpi-s">926 no Instagram, alta de 21,7%, e 353 no Facebook, alta de 41,8%</div></div>
-    </div>
-    <div class="tbl-wrap fade pre">
-      <table>
-        <thead><tr><th>Praça</th><th class="n">Visitas da linha de objetivo</th><th class="n">Visitas de bônus</th><th class="n">Total de visitas</th><th class="n">% das visitas da conta</th></tr></thead>
-        <tbody>
-          <tr><td class="tname"><span class="dot" style="background:#7B2FBE"></span>Região Metropolitana de BH</td><td class="n">285</td><td class="n">128</td><td class="n">413</td><td class="n">79,9%</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#FF7F00"></span>Estado de Minas Gerais</td><td class="n">73</td><td class="n">29</td><td class="n">102</td><td class="n">19,7%</td></tr>
-          <tr><td class="tname"><span class="dot" style="background:#111"></span>Triângulo Mineiro</td><td class="n">sem linha de visita</td><td class="n">2</td><td class="n">2</td><td class="n">0,4%</td></tr>
-          <tr class="tot"><td>Total da conta</td><td class="n">358</td><td class="n">159</td><td class="n">517</td><td class="n">100%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="ins fade pre">
-      <div class="ins-t">O que isso revela</div>
-      <p>Das 517 visitas ao perfil, 159 vieram de campanhas que não tinham esse objetivo, quase um terço do total. Isso significa que o conteúdo de engajamento e de vídeo está gerando curiosidade sobre o candidato por conta própria, sem precisar pedir. É um ganho que não estava no plano e que passa a ser considerado na hora de distribuir verba: linha de vídeo, além de contar história, também traz gente para o perfil.</p>
-      <p>Nas linhas desenhadas para levar ao perfil, a visita custou R$0,23 em Belo Horizonte contra R$1,64 no Estado. Essa diferença é o indicador mais acionável da semana. Ela mostra onde a audiência já está madura para dar o passo seguinte e onde o trabalho ainda é de apresentação. Nos próximos ciclos vamos usar essa leitura para decidir quanto de verba vai para construir base e quanto vai para ampliar reconhecimento, em vez de tratar Minas como um bloco só.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 07 PUBLICO -->
-<section class="sec">
-  <div class="wrap">
-    <span class="eyebrow">Quem respondeu</span>
-    <h2>Faixa etária mais velha concentra o engajamento</h2>
-    <p class="lede">A distribuição por idade se repete em todas as praças: quanto mais velho o público, maior a concentração de engajamento e visita ao perfil. É a leitura mais consistente da semana.</p>
-    <div class="g2 fade pre">
-      <div class="card">
-        <h3>Engajamentos e ThruPlays por faixa de idade</h3>
-        <div class="sub">Soma das linhas de Engajamento e ThruPlay, três praças</div>
-        <div class="cvs"><canvas id="cIdade"></canvas></div>
-      </div>
-      <div class="card">
-        <h3>Custo por visita ao perfil por faixa de idade</h3>
-        <div class="sub">RMBH e Estado de MG, linhas de Visita ao Perfil</div>
-        <div class="cvs"><canvas id="cVisitaIdade"></canvas></div>
-      </div>
-    </div>
-    <div class="ins fade pre">
-      <div class="ins-t">O que isso revela</div>
-      <p>A faixa de 55 a 64 anos concentra a maior parte do engajamento em praticamente todas as linhas, com custo por resultado igual ao das faixas mais jovens. Isso não é o leilão cobrando diferente por idade, é o algoritmo encontrando volume mais barato nesse público e entregando mais ali. Registro sem alarme: é o esperado numa fase de aprendizado, sem decisão de público a ser tomada agora.</p>
-      <p>Na Visita ao Perfil, o público mais jovem converte mais barato: em RMBH, 18-24 anos custa R$0,21 contra R$0,40 em 55-64. No Estado de MG, o padrão se repete, 18-24 anos a R$1,19 contra R$2,16 em 45-54. Dado para o cliente, decisão de campanha, não da agência.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 08 DIAGNOSTICO -->
-<section class="diag">
-  <div class="wrap">
-    <span class="eyebrow">Como seguimos daqui</span>
-    <h2>Aprendizados</h2>
-    <p class="lede">Cada leitura abaixo saiu de um número real da operação e já está orientando decisão. É assim que a inteligência da semana vira entrega da próxima.</p>
-    <div class="dcards fade pre">
-      <div class="dcard">
-        <div class="dnum">01</div>
-        <div class="dbig">Belo Horizonte</div>
-        <h3>Achamos onde a base própria cresce</h3>
-        <p>A capital gerou 80% das visitas ao perfil com apenas 24% da entrega. Aprendizado que já orienta verba: é ali que a mídia converte reconhecimento em base, e é ali que vale pedir ação do público.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">02</div>
-        <div class="dbig">159 visitas</div>
-        <h3>O vídeo trabalha além do que foi pedido</h3>
-        <p>Quase um terço das visitas ao perfil veio de campanhas de engajamento e de vídeo, que não tinham esse objetivo. Vamos manter as frentes em paralelo em vez de concentrar numa só, porque o ganho cruzado é real e mensurável.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">03</div>
-        <div class="dbig">R$4,21</div>
-        <h3>Estamos comprando bem, e isso é vantagem</h3>
-        <p>CPM de R$4,21 contra os R$8,00 a R$20,00 que o período eleitoral cobra. Cada real compra de duas a cinco vezes mais presença que o mercado paga, e essa folga é o que permite testar sem sacrificar entrega.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">04</div>
-        <div class="dbig">1,35</div>
-        <h3>Ainda há muito estado para alcançar</h3>
-        <p>A frequência baixa mostra que seguimos comprando público novo, não repetindo o mesmo. Há espaço para intensificar antes de qualquer desgaste, e é isso que sustenta a escalada prevista para agosto.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">05</div>
-        <div class="dbig">45+</div>
-        <h3>Sabemos quem responde e quem pede outra abordagem</h3>
-        <p>O público acima de 45 anos concentra a resposta em engajamento e vídeo, enquanto o mais jovem converte visita ao perfil mais barato. Dois comportamentos que pedem criativos distintos, não mais verba.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">06</div>
-        <div class="dbig">Seguimos</div>
-        <ul>
-          <li>Levar às demais praças o formato de vídeo que gerou visita sem ter esse objetivo, replicando o ganho cruzado.</li>
-          <li>Medir a linha de público feminino com a segmentação estável do início ao fim, para leitura limpa do criativo.</li>
-          <li>Sustentar no Triângulo a compra de alcance no CPM atual e observar o custo de engajamento cair conforme a frequência sobe.</li>
-          <li>Calibrar a linguagem por objetivo usando a leitura de faixa etária, antes da virada de agosto.</li>
-        </ul>
+      <div class="diag-card">
+        <div class="dc-num">Impacto &middot; 03</div>
+        <div class="dc-metric">+1.279</div>
+        <div class="dc-title">Perfil em Crescimento</div>
+        <div class="dc-text">O perfil ganhou <strong>1.279 seguidores</strong> na semana, <strong>+21,7%</strong> no Instagram e <strong>+41,8%</strong> no Facebook. Belo Horizonte já responde melhor que as demais praças &mdash; a mídia está construindo audiência qualificada em Minas Gerais.</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- 09 FONTES -->
-<section class="sec alt">
-  <div class="wrap">
-    <span class="eyebrow">Fontes e verificação</span>
-    <h2>De onde vem cada número deste relatório</h2>
-    <div class="src3">
-      <div class="srcb">
-        <h4>Performance de mídia</h4>
-        <ul>
-          <li>Meta Ads: relatórios da conta PDT · Kalil · Pré-Campanha 2026, nível campanha, período de 27/07 a 02/08/2026.</li>
-          <li>A soma das nove campanhas ativas fecha com o total da conta no período.</li>
-          <li>Alcance lido no nível da conta e nunca somado entre campanhas.</li>
-        </ul>
-      </div>
-      <div class="srcb">
-        <h4>Verba e metas</h4>
-        <ul>
-          <li>Verba total por linha conforme configuração ativa da conta na data deste relatório.</li>
-          <li>Benchmarks de custo por resultado e CPM referem-se à média de mercado para comunicação político-eleitoral no Brasil.</li>
-        </ul>
-      </div>
-      <div class="srcb">
-        <h4>Visitas ao perfil e seguidores</h4>
-        <ul>
-          <li>Visitas ao perfil lidas na coluna própria do Gerenciador de Anúncios, campanha por campanha, incluindo as que não tinham esse objetivo.</li>
-          <li>Crescimento total do perfil no Instagram e na página do Facebook lido no Meta Business Suite, somando alcance orgânico e mídia paga.</li>
-          <li>Flight vigente até 07/08/2026.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="src-note">Nenhum número deste relatório foi gerado ou estimado: cada dado é rastreável à sua fonte original e foi conferido antes da publicação.</div>
-  </div>
-</section>
-
-<footer>
-  <img src="assets/logo-algoritmica.png" alt="Algoritmica" onerror="this.style.display='none'">
-  <p>Relatório semanal · Alexandre Kalil, Pré-Campanha 2026 · 27 de julho a 2 de agosto de 2026<br>
-  Dados de Meta Ads · Algoritmica</p>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo"><img src="assets/logo-algoritmica.png" alt="Algorítmica" style="height:36px;background:#fff;border-radius:10px;padding:8px 14px" /></div>
+  <p class="footer-text">
+    <strong>Relatório de Campanha &middot; Alexandre Kalil &middot; Pré-Campanha 2026</strong><br/>
+    Dados extraídos do Meta Ads Manager e do Meta Business Suite &middot; PDT Minas Gerais<br/>
+    Produzido por Algorítmica &middot; Performance &amp; Dados
+  </p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/charts.js"></script>
 <script>
-Chart.defaults.font.family="'Inter',sans-serif";
-Chart.defaults.color="#4A4A4A";
-const C={o1:'#FF7F00',o2:'#CC6600',o3:'#FF9A33',purple:'#7B2FBE',dark:'#111'};
-const gl={color:'rgba(0,0,0,.06)'};
-const tt={backgroundColor:'#fff',titleColor:'#111',bodyColor:'#333',borderColor:'rgba(0,0,0,.1)',borderWidth:1,padding:11,displayColors:true};
-const nf=n=>n.toLocaleString('pt-BR');
-
-new Chart(document.getElementById('cIdade'),{type:'bar',
- data:{labels:['18-24','25-34','35-44','45-54','55-64'],
- datasets:[{label:'Engajamentos + ThruPlays',data:[2371,4934,8237,17922,32665],backgroundColor:C.o1,borderRadius:5,barThickness:26}]},
- options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>' '+nf(c.raw)+' resultados'}}},
- scales:{y:{grid:gl,ticks:{callback:v=>v/1000+'k',font:{size:10}}},x:{grid:{display:false}}}}});
-
-new Chart(document.getElementById('cVisitaIdade'),{
- data:{labels:['18-24','25-34','35-44','45-54','55-64'],
- datasets:[
-  {type:'bar',label:'RMBH',data:[0.21,0.18,0.24,0.36,0.40],backgroundColor:C.purple,borderRadius:4,barThickness:16},
-  {type:'bar',label:'Estado de MG',data:[1.19,1.62,1.54,2.16,1.79],backgroundColor:C.o1,borderRadius:4,barThickness:16}]},
- options:{maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:10,boxHeight:10,font:{size:11},usePointStyle:true,pointStyle:'circle'}},
- tooltip:{...tt,callbacks:{label:c=>' '+c.dataset.label+': R$'+c.raw.toFixed(2).replace('.',',')}}},
- scales:{y:{grid:gl,ticks:{callback:v=>'R$'+v.toString().replace('.',','),font:{size:10}}},x:{grid:{display:false}}}}});
-
-if(window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
-  document.querySelectorAll('.fade').forEach(e=>e.classList.add('pre'));
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('.fade').forEach(e=>io.observe(e));
-}else{
-  document.querySelectorAll('.fade').forEach(e=>e.classList.remove('pre'));
-}
+document.querySelectorAll('[data-nav]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var key = a.getAttribute('data-nav');
+    if (key === 'hub-ext') return; // link externo, comportamento padrão
+    e.preventDefault();
+    var target = document.querySelector('[data-section="' + key + '"]');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var nl = document.getElementById('navLinks');
+    if (nl) nl.classList.remove('active');
+  });
+});
+document.getElementById('navToggle').addEventListener('click', function () {
+  document.getElementById('navLinks').classList.toggle('active');
+});
 </script>
 </body>
 </html>
