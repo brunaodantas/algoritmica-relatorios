@@ -53,6 +53,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 .group-tag{font-size:10px;font-weight:800;padding:5px 11px;border-radius:20px;text-transform:uppercase;letter-spacing:.07em}
 .tag-sem{background:rgba(255,127,0,.12);color:var(--dark)}
 .tag-men{background:rgba(123,47,190,.12);color:var(--purple)}
+.tag-fec{background:rgba(10,10,10,.85);color:#FFB566}
+.item.fec::before{background:#0A0A0A}
+.item.fec:hover{border-color:rgba(10,10,10,.32)}
+.item.fec .item-week{color:#0A0A0A}
+.item.fec .btn{background:#0A0A0A}
 .group-d{font-size:13.5px;color:var(--t2);line-height:1.6;margin-bottom:24px;max-width:720px}
 
 .list{display:flex;flex-direction:column;gap:16px}
@@ -130,12 +135,49 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
   <div class="filters-in">
     <span class="flabel">Ver</span>
     <button class="fbtn on" data-f="todos">Todos</button>
+    <button class="fbtn" data-f="fechamento">Fechamento</button>
+    <button class="fbtn" data-f="semanal">Semanais</button>
     <span class="fcount" id="fcount">1 relatório disponível</span>
   </div>
 </div>
 
 <section class="sec">
   <div class="wrap">
+
+    <!-- ============ FECHAMENTO ============ -->
+    <div class="group" data-group="fechamento">
+      <div class="group-h">
+        <span class="group-t">Fechamento da Pré-Campanha</span>
+        <span class="group-tag tag-fec">Peça cinematográfica</span>
+      </div>
+      <p class="group-d">Consolida os onze dias de pré-campanha (27/07 a 06/08) numa apresentação em scroll, com vídeo, posts reais do Instagram e diagnóstico completo. Feita pra ser levada à liderança do cliente.</p>
+      <div class="list">
+        <a class="item fec" href="fechamento-pre-campanha/index.html">
+          <div class="item-date">
+            <div class="item-week">Fechamento</div>
+            <div class="item-range">27/07 a 06/08</div>
+            <div class="item-year">2026</div>
+          </div>
+          <div class="item-body">
+            <h3>Onze dias de pré-campanha, base construída</h3>
+            <p>Resultado consolidado, segmentações, posicionamento, resposta do público feminino, crescimento do perfil e os criativos que mais entregaram.</p>
+            <div class="item-stats">
+              <div><div class="st-v">404.850</div><div class="st-l">Impressões</div></div>
+              <div><div class="st-v">272.382</div><div class="st-l">Pessoas alcançadas</div></div>
+              <div><div class="st-v">826</div><div class="st-l">Visitas ao perfil</div></div>
+              <div><div class="st-v">1.520</div><div class="st-l">Novos seguidores</div></div>
+            </div>
+            <div class="item-chips">
+              <span class="chip chip-meta">Meta Ads</span>
+            </div>
+          </div>
+          <div class="item-go">
+            <span class="btn">Abrir apresentação</span>
+            <span class="btn ghost">PDF horizontal e vertical</span>
+          </div>
+        </a>
+      </div>
+    </div>
 
     <!-- ============ SEMANAIS ============ -->
     <div class="group" data-group="semanal">
@@ -145,6 +187,31 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
       </div>
       <p class="group-d">Fechados de segunda a domingo. Mostram o que rodou na semana, o comportamento do público e o custo por resultado de cada praça, para ajuste rápido do ciclo seguinte.</p>
       <div class="list">
+
+        <a class="item" href="semanal/semana-27jul-06ago/index.html">
+          <div class="item-date">
+            <div class="item-week">Atualizado</div>
+            <div class="item-range">27/07 a 06/08</div>
+            <div class="item-year">2026</div>
+          </div>
+          <div class="item-body">
+            <h3>Cinco criativos, quatro segmentações, primeiro teste de público de interesse</h3>
+            <p>Consolida a semana de 27/07 a 02/08 com os dias seguintes até 06/08. Três praças de Minas Gerais mais o novo teste de Público Cleitinho, com leitura de resposta por gênero e posicionamento.</p>
+            <div class="item-stats">
+              <div><div class="st-v">404.850</div><div class="st-l">Impressões</div></div>
+              <div><div class="st-v">272.382</div><div class="st-l">Pessoas alcançadas</div></div>
+              <div><div class="st-v">826</div><div class="st-l">Visitas ao perfil</div></div>
+              <div><div class="st-v">R$ 1.715,90</div><div class="st-l">Investimento</div></div>
+            </div>
+            <div class="item-chips">
+              <span class="chip chip-meta">Meta Ads</span>
+            </div>
+          </div>
+          <div class="item-go">
+            <span class="btn">Abrir relatório</span>
+            <span class="btn ghost">Relatório web</span>
+          </div>
+        </a>
 
         <!-- NOVA SEMANA: duplicar este bloco e colocar sempre no topo da lista -->
         <a class="item" href="semanal/semana-27jul-02ago/index.html">
