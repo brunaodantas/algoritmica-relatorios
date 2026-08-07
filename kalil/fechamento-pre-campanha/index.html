@@ -30,7 +30,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 .exportbar{position:fixed;top:calc(var(--base)*0.7);left:calc(var(--base)*0.7);z-index:65;display:flex;gap:8px}
 .exportbtn{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.04em;color:var(--white);background:rgba(10,10,10,.55);border:1px solid rgba(245,240,232,.22);border-radius:20px;padding:8px 14px;text-decoration:none;backdrop-filter:blur(6px);transition:.2s}
 .exportbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-@media(max-width:600px){.exportbar{flex-direction:column}.exportbtn{font-size:9.5px;padding:7px 11px}}
+@media(max-width:600px){.exportbar{flex-wrap:wrap;max-width:calc(100% - 40px)}.exportbtn{font-size:9.5px;padding:7px 11px}}
 
 /* ===== SLIDE ===== */
 .slide{position:relative;min-height:100vh;display:flex;align-items:center;padding:calc(var(--base)*3) calc(var(--base)*2);overflow:hidden}
@@ -40,7 +40,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 .bg-glow1{background:radial-gradient(circle at 18% 12%,rgba(255,106,0,.20),transparent 55%),radial-gradient(circle at 85% 88%,rgba(123,47,190,.16),transparent 50%),var(--black)}
 .bg-glow2{background:radial-gradient(circle at 82% 18%,rgba(255,106,0,.22),transparent 55%),radial-gradient(circle at 15% 85%,rgba(123,47,190,.14),transparent 50%),var(--black)}
 .bg-glow3{background:radial-gradient(circle at 50% 0%,rgba(255,106,0,.18),transparent 60%),var(--black)}
-.slide-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.slide-bg video,.slide-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 .slide-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.35),rgba(10,10,10,.82))}
 .slide-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%}
 .split{display:grid;grid-template-columns:1.15fr .85fr;gap:calc(var(--base)*2);align-items:center}
@@ -59,6 +59,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 .eyebrow-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--g400);margin-top:2px}
 .slide.light .eyebrow-num{color:rgba(10,10,10,.4)}
 .sub{font-size:16px;line-height:1.7;color:var(--g200);max-width:640px;margin-top:20px}
+.sub-mobile{display:none}
 .slide.light .sub{color:rgba(10,10,10,.62)}
 
 .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:calc(var(--base)*1.4);margin-top:calc(var(--base)*1.6)}
@@ -155,6 +156,52 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   .moment{max-width:280px;margin:0 auto}
   .pmetrics{grid-template-columns:repeat(2,1fr)}
 }
+
+/* ===== TELA DE CELULAR — mesmo padrão compacto do PDF vertical (slides-vertical.html) ===== */
+@media(max-width:480px){
+  .slide{min-height:auto;align-items:flex-start;padding:calc(var(--base)*3.6) calc(var(--base)*0.7) calc(var(--base)*1.6)}
+  .slide:not(#s0):not(#s13){padding-top:calc(var(--base)*2.2)}
+  .slide-bg video,.slide-bg img{opacity:.72}
+  .slide-bg::after{background:linear-gradient(180deg,rgba(10,10,10,.18),rgba(10,10,10,.62))}
+  .slide-in{padding:0}
+  .h1{font-size:clamp(34px,11vw,52px)}
+  .h2{font-size:clamp(24px,7.5vw,34px)}
+  .sub{font-size:14px;line-height:1.6;margin-top:14px}
+  .sub-desktop{display:none}
+  .sub-mobile{display:block}
+  .kicker{font-size:10px;letter-spacing:.1em}
+  .moment{margin-top:18px}
+
+  .kpigrid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .kpi{padding:14px 12px}
+  .kpi .kv{font-size:22px}
+  .kpi .kl{font-size:9px}
+  .kpi .ks{font-size:9.5px}
+
+  .statgrid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .stat-big{font-size:clamp(30px,9vw,44px)}
+
+  .pracacard{padding:16px}
+  .pmetrics{gap:8px}
+  .pmetrics div .mv{font-size:16px}
+
+  .cards{grid-template-columns:1fr;gap:12px}
+  .card{padding:18px}
+  .card .val{font-size:32px}
+
+  .moment{max-width:220px}
+
+  .creatives{gap:12px}
+  .creative-stats{font-size:9.5px;gap:4px 8px}
+  .creative-stats strong{font-size:12px}
+
+  .numlist{gap:16px}
+  .beforeafter{gap:20px;justify-content:center}
+  .ba-box .bv{font-size:clamp(32px,10vw,52px)}
+
+  .exportbar{top:calc(var(--base)*0.4);left:calc(var(--base)*0.4)}
+  .exportbtn{font-size:9px;padding:6px 10px}
+}
 </style>
 </head>
 <body>
@@ -169,13 +216,14 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 00 | ABERTURA -->
 <section class="slide" data-title="Abertura" id="s0">
-  <div class="slide-bg bg-glow1"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v1-abertura.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow1" data-video="video/v1-abertura.mp4" data-poster="video/frame-v1.jpg"></div>
   <div class="slide-in split">
     <div>
       <div class="kicker reveal">Fechamento da Pré-Campanha &middot; 27 de julho a 6 de agosto de 2026</div>
       <h1 class="h1 split-letters">ALEXANDRE KALIL</h1>
       <h1 class="h1 split-letters" style="color:var(--accent)">MINAS SE MOVE.</h1>
-      <p class="sub reveal d2">Onze dias de pré-campanha, quatro segmentações e cinco conceitos criativos, e o retrato já é claro: Minas Gerais está respondendo. É a base pronta pra entrar na campanha com confiança.</p>
+      <p class="sub sub-desktop reveal d2">Onze dias de pré-campanha, quatro segmentações e cinco conceitos criativos, e o retrato já é claro: Minas Gerais está respondendo. É a base pronta pra entrar na campanha com confiança.</p>
+      <p class="sub sub-mobile reveal d2">Onze dias de pré-campanha. Minas Gerais está respondendo. É a base pronta pra entrar na campanha com confiança.</p>
     </div>
     <div class="moment reveal d3">
       <div class="moment-embed"><img src="assets/cropped-moment-abertura.png" alt="Post de Alexandre Kalil"><a class="moment-link" href="https://www.instagram.com/p/DbUGceNuzBY/" target="_blank" rel="noopener">Ver no Instagram</a></div>
@@ -208,7 +256,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 02 | AS PRAÇAS (visão cinemática) -->
 <section class="slide" data-title="As Praças" id="s2">
-  <div class="slide-bg bg-glow2"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v2-mineracao.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow2" data-video="video/v2-mineracao.mp4" data-poster="video/frame-v2.jpg"></div>
   <div class="slide-in">
     <div class="eyebrow-num reveal">02</div>
     <div class="kicker reveal">As Praças</div>
@@ -287,7 +335,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 04 | RMBH DESTAQUE -->
 <section class="slide" data-title="RMBH" id="s4">
-  <div class="slide-bg bg-glow1"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v2-mineracao.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow1" data-video="video/v2-mineracao.mp4" data-poster="video/frame-v2.jpg"></div>
   <div class="slide-in split">
     <div>
       <div class="eyebrow-num reveal">04</div>
@@ -332,7 +380,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 06 | O PÚBLICO -->
 <section class="slide" data-title="O Público" id="s6">
-  <div class="slide-bg bg-glow3"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v4-faiscas.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow3" data-video="video/v4-faiscas.mp4" data-poster="video/frame-v4.jpg"></div>
   <div class="slide-in split">
     <div>
       <div class="eyebrow-num reveal">06</div>
@@ -369,7 +417,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 08 | CRESCIMENTO DO PERFIL -->
 <section class="slide" data-title="Crescimento do Perfil" id="s8">
-  <div class="slide-bg bg-glow2"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v4-faiscas.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow2" data-video="video/v4-faiscas.mp4" data-poster="video/frame-v4.jpg"></div>
   <div class="slide-in">
     <div class="eyebrow-num reveal">08</div>
     <div class="kicker reveal">Instagram &amp; Facebook</div>
@@ -421,7 +469,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 10 | PÚBLICO CLEITINHO -->
 <section class="slide" data-title="Território Novo" id="s10">
-  <div class="slide-bg bg-glow2"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v2-mineracao.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow2" data-video="video/v2-mineracao.mp4" data-poster="video/frame-v2.jpg"></div>
   <div class="slide-in split">
     <div>
       <div class="eyebrow-num reveal">10</div>
@@ -442,7 +490,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 11 | EFICIÊNCIA -->
 <section class="slide" data-title="Eficiência" id="s11">
-  <div class="slide-bg bg-glow1"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v3-movimento.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow1" data-video="video/v3-movimento.mp4" data-poster="video/frame-v3.jpg"></div>
   <div class="slide-in">
     <div class="eyebrow-num reveal">11</div>
     <div class="kicker reveal">Eficiência</div>
@@ -474,7 +522,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
 <!-- 13 | ENCERRAMENTO -->
 <section class="slide" data-title="Encerramento" id="s13">
-  <div class="slide-bg bg-glow3"><video autoplay muted loop playsinline poster="video/poster-fallback.jpg"><source src="video/v1-abertura.mp4" type="video/mp4"></video></div>
+  <div class="slide-bg bg-glow3" data-video="video/v1-abertura.mp4" data-poster="video/frame-v1.jpg"></div>
   <div class="slide-in split">
     <div>
       <div class="kicker reveal">Rumo à Campanha</div>
@@ -500,6 +548,32 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </footer>
 
 <script>
+// Backgrounds are declared as plain <div data-video data-poster>, with no <video> in the
+// raw HTML, so the browser never fetches the (7-14MB) mp4 files on a phone. On a wider
+// screen we build the real <video> here; on a phone we just drop in the static poster
+// frame instead — same image the vertical PDF uses, so mobile matches the PDF's look
+// and loads instantly instead of waiting on video.
+(function () {
+  var isPhone = window.innerWidth <= 480;
+  document.querySelectorAll('.slide-bg[data-video]').forEach(function (bg) {
+    if (isPhone) {
+      var img = document.createElement('img');
+      img.src = bg.dataset.poster;
+      img.alt = '';
+      bg.appendChild(img);
+    } else {
+      var v = document.createElement('video');
+      v.autoplay = true; v.muted = true; v.loop = true; v.playsInline = true;
+      v.poster = bg.dataset.poster;
+      var source = document.createElement('source');
+      source.src = bg.dataset.video;
+      source.type = 'video/mp4';
+      v.appendChild(source);
+      bg.appendChild(v);
+    }
+  });
+})();
+
 // Split headline text into letter spans (grouped by word, so lines only break between words).
 // Runs immediately and synchronously — before the IntersectionObserver below is created —
 // so every .letter span already exists by the time the observer does its first pass.
