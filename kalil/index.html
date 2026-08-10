@@ -58,6 +58,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 .item.fec:hover{border-color:rgba(10,10,10,.32)}
 .item.fec .item-week{color:#0A0A0A}
 .item.fec .btn{background:#0A0A0A}
+.item.fec .btn.ghost{background:#0A0A0A;color:#fff;border:1px solid rgba(255,255,255,.28)}
 .group-d{font-size:13.5px;color:var(--t2);line-height:1.6;margin-bottom:24px;max-width:720px}
 
 .list{display:flex;flex-direction:column;gap:16px}
@@ -135,7 +136,7 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
   <div class="filters-in">
     <span class="flabel">Ver</span>
     <button class="fbtn on" data-f="todos">Todos</button>
-    <button class="fbtn" data-f="fechamento">Fechamento</button>
+    <button class="fbtn" data-f="consolidado">Consolidado</button>
     <button class="fbtn" data-f="semanal">Semanais</button>
     <span class="fcount" id="fcount">1 relatório disponível</span>
   </div>
@@ -144,17 +145,16 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
 <section class="sec">
   <div class="wrap">
 
-    <!-- ============ FECHAMENTO ============ -->
-    <div class="group" data-group="fechamento">
+    <!-- ============ CONSOLIDADO ============ -->
+    <div class="group" data-group="consolidado">
       <div class="group-h">
-        <span class="group-t">Fechamento da Pré-Campanha</span>
-        <span class="group-tag tag-fec">Peça cinematográfica</span>
+        <span class="group-t">Consolidado da Pré-Campanha</span>
       </div>
-      <p class="group-d">Consolida os onze dias de pré-campanha (27/07 a 06/08) numa apresentação em scroll, com vídeo, posts reais do Instagram e diagnóstico completo. Feita pra ser levada à liderança do cliente.</p>
+      <p class="group-d">Consolida os onze dias de pré-campanha (27/07 a 06/08) numa apresentação em scroll, com vídeo, posts reais do Instagram e diagnóstico completo.</p>
       <div class="list">
         <a class="item fec" href="pre-campanha-27-07-a-07-08/index.html">
           <div class="item-date">
-            <div class="item-week">Fechamento</div>
+            <div class="item-week">Consolidado</div>
             <div class="item-range">27/07 a 06/08</div>
             <div class="item-year">2026</div>
           </div>
