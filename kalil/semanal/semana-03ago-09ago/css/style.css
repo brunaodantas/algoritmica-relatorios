@@ -250,7 +250,7 @@ body {
 .cb-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 7px; display:flex; justify-content:space-between; }
 .cb-label strong { color: var(--text-secondary); }
 .cb-track { height: 8px; background: var(--surface-alt); border-radius: 100px; overflow: hidden; }
-.cb-fill { height: 100%; border-radius: 100px; width: 0; transition: width 1.4s cubic-bezier(0.22,1,0.36,1); }
+.cb-fill { height: 100%; border-radius: 100px; width: 0; background: var(--accent); transition: width 1.4s cubic-bezier(0.22,1,0.36,1); }
 .camp-card.traf .cb-fill { background: var(--accent); }
 .camp-card.eng  .cb-fill { background: var(--g-700); }
 
