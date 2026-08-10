@@ -19,7 +19,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 
 .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{max-width:1100px;margin:0 auto;padding:0 32px;height:66px;display:flex;align-items:center;gap:18px}
-.nav-logo{height:28px}
+.nav-logo{height:42px}
 .nav-div{width:1px;height:24px;background:var(--line)}
 .nav-client{font-size:14px;font-weight:700;letter-spacing:-.01em}
 .nav-client span{display:block;font-size:11px;font-weight:500;color:var(--t3)}
@@ -35,7 +35,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 .head p{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:660px}
 .head-logos{display:flex;align-items:center;gap:14px;margin-top:32px}
 .head-logos img{background:#fff;border-radius:9px;padding:8px 13px;box-shadow:0 3px 14px rgba(0,0,0,.24)}
-.head-logos .alg{height:36px}
+.head-logos .alg{height:54px}
 
 .filters{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:66px;z-index:40}
 .filters-in{max-width:1100px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -63,6 +63,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 
 .list{display:flex;flex-direction:column;gap:16px}
 .item{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 30px;box-shadow:var(--shadow);display:flex;align-items:center;gap:28px;text-decoration:none;color:inherit;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;position:relative;overflow:hidden}
+.item-body h3 a{color:inherit;text-decoration:none}
+.item-body h3 a:hover{color:var(--primary)}
 .item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--primary)}
 .item.men::before{background:var(--purple)}
 .item:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(255,127,0,.32)}
@@ -82,7 +84,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 .chip{font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px}
 .chip-meta{background:rgba(123,47,190,.11);color:var(--purple)}
 .item-go{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
-.btn{background:var(--primary);color:#fff;font-size:12.5px;font-weight:700;padding:11px 20px;border-radius:10px;white-space:nowrap}
+.btn{display:inline-block;background:var(--primary);color:#fff;font-size:12.5px;font-weight:700;padding:11px 20px;border-radius:10px;white-space:nowrap;text-decoration:none;text-align:center}
+.btn:hover{filter:brightness(1.07)}
 .item.men .btn{background:var(--purple)}
 .btn.ghost{background:transparent;color:var(--t2);border:1px solid var(--line)}
 
@@ -96,7 +99,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);-webkit
 .note p+p{margin-top:10px}
 
 footer{background:#0F1419;padding:44px 0;text-align:center}
-footer img{height:26px;background:#fff;border-radius:8px;padding:6px 11px}
+footer img{height:39px}
 footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:1.7}
 
 .hidden{display:none}
@@ -152,14 +155,14 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
       </div>
       <p class="group-d">Consolida os onze dias de pré-campanha (27/07 a 06/08) numa apresentação em scroll, com vídeo, posts reais do Instagram e diagnóstico completo.</p>
       <div class="list">
-        <a class="item fec" href="pre-campanha-27-07-a-07-08/index.html">
+        <div class="item fec">
           <div class="item-date">
             <div class="item-week">Consolidado</div>
             <div class="item-range">27/07 a 06/08</div>
             <div class="item-year">2026</div>
           </div>
           <div class="item-body">
-            <h3>Onze dias de pré-campanha, base construída</h3>
+            <h3><a href="pre-campanha-27-07-a-07-08/index.html">Onze dias de pré-campanha, base construída</a></h3>
             <p>Resultado consolidado, segmentações, posicionamento, resposta do público feminino, crescimento do perfil e os criativos que mais entregaram.</p>
             <div class="item-stats">
               <div><div class="st-v">404.850</div><div class="st-l">Impressões</div></div>
@@ -172,10 +175,11 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
             </div>
           </div>
           <div class="item-go">
-            <span class="btn">Abrir apresentação</span>
-            <span class="btn ghost">PDF horizontal e vertical</span>
+            <a class="btn" href="pre-campanha-27-07-a-07-08/index.html">Abrir apresentação</a>
+            <a class="btn ghost" href="pre-campanha-27-07-a-07-08/relatorio-kalil-fechamento-horizontal.pdf" target="_blank" rel="noopener" download>PDF horizontal</a>
+            <a class="btn ghost" href="pre-campanha-27-07-a-07-08/relatorio-kalil-fechamento-vertical.pdf" target="_blank" rel="noopener" download>PDF vertical</a>
           </div>
-        </a>
+        </div>
       </div>
     </div>
 
@@ -188,15 +192,15 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
       <p class="group-d">Fechados de segunda a domingo. Mostram o que rodou na semana, o comportamento do público e o custo por resultado de cada praça, para ajuste rápido do ciclo seguinte.</p>
       <div class="list">
 
-        <a class="item" href="semanal/semana-03ago-09ago/index.html">
+        <div class="item">
           <div class="item-date">
             <div class="item-week">Semana</div>
             <div class="item-range">03/08 a 09/08</div>
             <div class="item-year">2026</div>
           </div>
           <div class="item-body">
-            <h3>Público Cleitinho sai do teste e entrega o ThruPlay mais barato da conta</h3>
-            <p>Semana de transição entre ciclos: as linhas das praças encerraram e o Público Cleitinho assumiu 29,5% da verba. Investimento 17,9% menor que na semana anterior, com custo por resultado melhor em todas as métricas.</p>
+            <h3><a href="semanal/semana-03ago-09ago/index.html">Criativo Público Cleitinho sai do teste e entrega o ThruPlay mais barato da conta</a></h3>
+            <p>Semana de transição entre ciclos: as linhas das praças encerraram e o Criativo Público Cleitinho assumiu 29,5% da verba. Investimento 17,9% menor que na semana anterior, com custo por resultado melhor em todas as métricas.</p>
             <div class="item-stats">
               <div><div class="st-v">200.515</div><div class="st-l">Impressões</div></div>
               <div><div class="st-v">164.991</div><div class="st-l">Pessoas alcançadas</div></div>
@@ -209,20 +213,20 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
             </div>
           </div>
           <div class="item-go">
-            <span class="btn">Abrir relatório</span>
-            <span class="btn ghost">Web e PDF em slides</span>
+            <a class="btn" href="semanal/semana-03ago-09ago/index.html">Abrir relatório</a>
+            <a class="btn ghost" href="semanal/semana-03ago-09ago/relatorio-kalil-semanal-03ago-09ago2026.pdf" target="_blank" rel="noopener" download>Baixar PDF</a>
           </div>
-        </a>
+        </div>
 
-        <a class="item" href="semanal/semana-27jul-06ago/index.html">
+        <div class="item">
           <div class="item-date">
-            <div class="item-week">Atualizado</div>
+            <div class="item-week">Semana</div>
             <div class="item-range">27/07 a 06/08</div>
             <div class="item-year">2026</div>
           </div>
           <div class="item-body">
-            <h3>Cinco criativos, quatro segmentações, primeiro teste de público de interesse</h3>
-            <p>Consolida a semana de 27/07 a 02/08 com os dias seguintes até 06/08. Três praças de Minas Gerais mais o novo teste de Público Cleitinho, com leitura de resposta por gênero e posicionamento.</p>
+            <h3><a href="semanal/semana-27jul-06ago/index.html">Cinco criativos, quatro segmentações, primeiro teste de público de interesse</a></h3>
+            <p>Onze dias de pré-campanha, de 27/07 a 06/08. Três praças de Minas Gerais mais o novo teste de Criativo Público Cleitinho, com leitura de resposta por gênero e posicionamento.</p>
             <div class="item-stats">
               <div><div class="st-v">404.850</div><div class="st-l">Impressões</div></div>
               <div><div class="st-v">272.382</div><div class="st-l">Pessoas alcançadas</div></div>
@@ -234,20 +238,19 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
             </div>
           </div>
           <div class="item-go">
-            <span class="btn">Abrir relatório</span>
-            <span class="btn ghost">Relatório web</span>
+            <a class="btn" href="semanal/semana-27jul-06ago/index.html">Abrir relatório</a>
           </div>
-        </a>
+        </div>
 
         <!-- NOVA SEMANA: duplicar este bloco e colocar sempre no topo da lista -->
-        <a class="item" href="semanal/semana-27jul-02ago/index.html">
+        <div class="item">
           <div class="item-date">
-            <div class="item-week">Semana 31</div>
+            <div class="item-week">Semana</div>
             <div class="item-range">27/07 a 02/08</div>
             <div class="item-year">2026</div>
           </div>
           <div class="item-body">
-            <h3>Nove linhas ativas em três praças de Minas Gerais</h3>
+            <h3><a href="semanal/semana-27jul-02ago/index.html">Nove linhas ativas em três praças de Minas Gerais</a></h3>
             <p>Estado, Região Metropolitana de Belo Horizonte e Triângulo Mineiro, medindo engajamento, vídeo, visita ao perfil e alcance. Inclui o funil completo do impacto até o novo seguidor.</p>
             <div class="item-stats">
               <div><div class="st-v">255.616</div><div class="st-l">Impressões</div></div>
@@ -260,10 +263,10 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
             </div>
           </div>
           <div class="item-go">
-            <span class="btn">Abrir relatório</span>
-            <span class="btn ghost">Relatório web</span>
+            <a class="btn" href="semanal/semana-27jul-02ago/index.html">Abrir relatório</a>
+            <a class="btn ghost" href="semanal/semana-27jul-02ago/relatorio-kalil-semanal-27jul-02ago2026.pdf" target="_blank" rel="noopener" download>Baixar PDF</a>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -282,7 +285,7 @@ footer p{color:rgba(255,255,255,.48);font-size:12px;margin-top:14px;line-height:
 </section>
 
 <footer>
-  <img src="semanal/semana-27jul-02ago/assets/logo-algoritmica.png" alt="Algoritmica" onerror="this.style.display='none'">
+  <img src="pre-campanha-27-07-a-07-08/assets/logo-algoritmica-branca.png" alt="Algoritmica" onerror="this.style.display='none'">
   <p>Central de relatórios · Alexandre Kalil, Pré-Campanha 2026<br>Algoritmica</p>
 </footer>
 
