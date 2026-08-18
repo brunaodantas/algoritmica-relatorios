@@ -595,8 +595,7 @@ SLIDES.append(slide(
 
 # 16 FECHO ------------------------------------------------------------------
 SLIDES.append(slide(
-    head("14", "O Que o Período Diz", "Três direções para a campanha.",
-         "O que os 32 dias de pré-campanha deixaram pronto para usar. O número de cada afirmação está nas páginas seguintes.")
+    head("14", "O Que o Período Diz", "Três direções para a campanha.")
     + '<div style="margin-top:14px">'
       '<div class="arow"><div class="n">1</div><div>'
       '<b>"Eu não faço promessa" é o criativo do período, e não deu sinal de fadiga.</b>'
@@ -684,10 +683,11 @@ SLIDE_PECAS = slide(
 # Ordem final: as tres direcoes abrem o documento, o metodo fecha.
 # 0 capa · 15 direcoes · 1 geral · 2 crescimento · 3-6 rankings · pecas ·
 # 7-11 clusters · 12-13 publico · 14 onde sai mais barato · 16 metodo
-ORDEM = ([SLIDES[0], SLIDES[15]] + SLIDES[1:7] + [SLIDE_PECAS] + SLIDES[7:15] + [SLIDES[16]])
+ORDEM = ([SLIDES[0]] + SLIDES[1:7] + [SLIDE_PECAS] + SLIDES[7:15]
+         + [SLIDES[15], SLIDES[16]])
 
 # Kicker so na abertura de cada familia, para nao repetir andaime em toda secao.
-KEEP_KICKER = {1, 4, 8, 9, 14}
+KEEP_KICKER = {3, 7, 8, 13, 16}
 
 
 def _arruma(i, html):
