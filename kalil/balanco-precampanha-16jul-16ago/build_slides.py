@@ -5,6 +5,7 @@ a partir de um unico conteudo, para as duas versoes nunca divergirem.
 
 Rodar:  python3 build_slides.py   e depois  python3 make_pdf.py
 """
+import re
 from pathlib import Path
 
 BASE = Path(__file__).parent
@@ -20,7 +21,8 @@ CSS_BASE = """
 :root{
   --black:#0A0A0A; --white:#F5F0E8; --accent:#FF6A00; --accent-ink:#A64500; --purple:#7B2FBE;
   --g200:rgba(245,240,232,.72); --g400:rgba(245,240,232,.48); --g600:rgba(245,240,232,.24);
-  --ink200:rgba(10,10,10,.62); --ink400:rgba(10,10,10,.45); --ink600:rgba(10,10,10,.10);
+  --ink200:rgba(10,10,10,.62); --ink400:rgba(10,10,10,.58); --ink500:rgba(10,10,10,.45);
+  --ink600:rgba(10,10,10,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#111;-webkit-font-smoothing:antialiased}
@@ -78,7 +80,7 @@ body{font-family:'Inter',sans-serif;background:#111;-webkit-font-smoothing:antia
 /* rankings */
 .rank{display:grid;align-items:center;border-bottom:1px solid var(--ink600)}
 .rank:last-of-type{border-bottom:none}
-.rank .pos{font-family:'Bebas Neue',sans-serif;line-height:1;color:var(--ink400)}
+.rank .pos{font-family:'Bebas Neue',sans-serif;line-height:1;color:var(--ink500)}
 .rank .nome b{display:block;font-weight:800;letter-spacing:-.3px;line-height:1.2}
 .rank .nome span{display:block;font-family:'JetBrains Mono',monospace;color:var(--ink400)}
 .rank .custo b{display:block;font-family:'Bebas Neue',sans-serif;line-height:1}
@@ -133,6 +135,13 @@ body{font-family:'Inter',sans-serif;background:#111;-webkit-font-smoothing:antia
 .tab td:first-child{text-align:left;font-weight:700;color:var(--white)}
 .tab tr.hi td{color:var(--accent)}
 
+/* pecas */
+.pecas{display:grid;gap:18px}
+.peca img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 35%;display:block;border-radius:12px}
+.peca b{display:block;font-weight:800;letter-spacing:-.2px;line-height:1.25;margin-top:11px}
+.peca .papel{display:block;color:var(--g200);margin-top:5px}
+.peca .marca{display:block;font-family:'JetBrains Mono',monospace;color:var(--accent);margin-top:7px}
+
 /* direcoes */
 .arow{display:grid;border-bottom:1px solid var(--g600);align-items:start}
 .arow:last-child{border-bottom:none}
@@ -155,7 +164,7 @@ CSS_H = """
 .meta-tl,.meta-tr{top:40px;font-size:11.5px} .meta-tl{left:68px} .meta-tr{right:68px}
 .rodape{bottom:26px;right:68px;font-size:9.5px}
 .kicker{font-size:11.5px} .num{font-size:11px;margin-bottom:2px}
-.h1{font-size:104px} .h2{font-size:52px;margin-top:8px}
+.h1{font-size:96px} .h2{font-size:52px;margin-top:8px}
 .sub{font-size:15px;margin-top:14px;max-width:96ch}
 .note{font-size:11px}
 .statement{font-size:34px;margin-top:16px}
@@ -180,6 +189,8 @@ CSS_H = """
 .linha{padding:10px 15px;margin-bottom:5px} .linha .nm{font-size:13.5px}
 .linha .nm small{font-size:10.5px;margin-left:9px} .linha .val{font-size:15px}
 .tab{margin-top:18px} .tab th{font-size:10.5px;padding:0 0 9px} .tab td{font-size:14.5px;padding:9px 0}
+.pecas{grid-template-columns:repeat(4,1fr)}
+.peca b{font-size:15px} .peca .papel{font-size:12.5px;line-height:1.5} .peca .marca{font-size:10.5px}
 .arow{grid-template-columns:52px 1fr;gap:14px;padding:14px 0}
 .arow .n{font-size:38px} .arow b{font-size:17px} .arow p{font-size:14px;margin-top:4px;max-width:100ch}
 .metodo{font-size:11.5px;margin-top:16px}
@@ -192,7 +203,7 @@ CSS_V = """
 .meta-tl,.meta-tr{top:44px;font-size:10.5px} .meta-tl{left:44px} .meta-tr{right:44px}
 .rodape{bottom:30px;right:44px;font-size:9px}
 .kicker{font-size:11px} .num{font-size:10.5px;margin-bottom:2px}
-.h1{font-size:78px} .h2{font-size:46px;margin-top:8px}
+.h1{font-size:76px} .h2{font-size:46px;margin-top:8px}
 .sub{font-size:15.5px;margin-top:16px}
 .note{font-size:11.5px}
 .statement{font-size:30px;margin-top:18px}
@@ -221,6 +232,9 @@ CSS_V = """
 .linha{padding:11px 15px;margin-bottom:5px} .linha .nm{font-size:13.5px}
 .linha .nm small{display:block;font-size:10.5px;margin-top:2px} .linha .val{font-size:15.5px}
 .tab{margin-top:22px} .tab th{font-size:10.5px;padding:0 0 10px} .tab td{font-size:15px;padding:12px 0}
+.pecas{grid-template-columns:repeat(2,1fr);gap:16px}
+.peca img{aspect-ratio:1/1}   /* no retrato o 3:4 nao cabe em duas fileiras */
+.peca b{font-size:15.5px} .peca .papel{font-size:13px;line-height:1.5} .peca .marca{font-size:11px}
 .arow{grid-template-columns:44px 1fr;gap:12px;padding:18px 0}
 .arow .n{font-size:36px} .arow b{font-size:17.5px} .arow p{font-size:14.5px;margin-top:5px}
 .metodo{font-size:12px;margin-top:20px}
@@ -316,7 +330,7 @@ SLIDES.append(slide(
 
 # 03 CRESCIMENTO ------------------------------------------------------------
 SLIDES.append(slide(
-    head("02", "Crescimento da Conta", "A conta ganhou 5.601 seguidores no período.",
+    head("02", "Crescimento da Conta", "5.601 seguidores novos no período.",
          "Crescimento total dos perfis, orgânico e pago somados, de 16 de julho a 16 de "
          "agosto de 2026.")
     + '<div class="statgrid">'
@@ -350,7 +364,7 @@ SLIDES.append(rank_slide(
 
 SLIDES.append(rank_slide(
     "04", "Eficiência em seguidores.", "Média da conta: R$ 10,65 por seguidor",
-    [("Aftermovie Convenção", "Região de Belo Horizonte · visitas ao perfil", "R$ 1,47", "por seguidor",
+    [("Aftermovie Convenção", "Região Metropolitana de Belo Horizonte · visitas ao perfil", "R$ 1,47", "por seguidor",
       "<b>R$ 99,83</b> &middot; 68 seguidores"),
      ("Eu não faço promessa V2", "Público Cleitinho · visitas ao perfil", "R$ 2,18",
       "por seguidor", "<b>R$ 329,58</b> &middot; 151 seguidores"),
@@ -368,7 +382,7 @@ SLIDES.append(rank_slide(
       "<b>R$ 250,21</b> &middot; 43 envios"),
      ("Eu não faço promessa", "Estado de Minas · vídeo", "R$ 6,88", "por envio",
       "<b>R$ 178,91</b> &middot; 26 envios"),
-     ("Aftermovie Convenção", "Região de Belo Horizonte · engajamento", "R$ 10,87", "por envio",
+     ("Aftermovie Convenção", "Região Metropolitana de Belo Horizonte · engajamento", "R$ 10,87", "por envio",
       "<b>R$ 249,90</b> &middot; 23 envios")],
     "O que os três têm em comum",
     "<b>\"Eu não faço promessa\" repete as duas primeiras posições numa métrica completamente "
@@ -382,7 +396,7 @@ SLIDES.append(rank_slide(
     "Média da conta: R$ 0,82 por visita &middot; 4.281 visitas no período",
     [("Eu não faço promessa V2", "Público Cleitinho · visitas ao perfil", "R$ 0,12",
       "por visita", "<b>R$ 329,58</b> &middot; 2.814 visitas"),
-     ("Aftermovie Convenção", "Região de Belo Horizonte · visitas ao perfil", "R$ 0,23", "por visita",
+     ("Aftermovie Convenção", "Região Metropolitana de Belo Horizonte · visitas ao perfil", "R$ 0,23", "por visita",
       "<b>R$ 99,83</b> &middot; 438 visitas"),
      ("Com independência", "Conta geral · visitas ao perfil", "R$ 0,24", "por visita",
       "<b>R$ 96,55</b> &middot; 403 visitas")],
@@ -415,7 +429,7 @@ SLIDES.append(cluster_slide(
     "repetir o resultado."))
 
 SLIDES.append(cluster_slide(
-    "08", "Cluster RMBH.",
+    "08", "Cluster Região Metropolitana.",
     [("R$ 499,44", "Investido &middot; 15,9% da conta"), ("95.993", "Impressões"),
      ("R$ 5,20", "CPM"), ("Aftermovie Convenção", "Criativo único no ar")],
     [("Seguidor", "boa", "39% abaixo da média",
@@ -439,7 +453,7 @@ SLIDES.append(cluster_slide(
     [("R$ 598,39", "Investido &middot; 19,0% da conta"), ("134.862", "Impressões"),
      ("R$ 4,44", "CPM"), ("2 criativos", "Eu não faço promessa e VT Mulheres")],
     [("Seguidor", "neutra", "objetivo testado uma vez",
-      [(True, "Eu não faço promessa — UPSCALE", "Visitas ao perfil &middot; R$ 120,00 &middot; 9",
+      [(True, "Eu não faço promessa · UPSCALE", "Visitas ao perfil &middot; R$ 120,00 &middot; 9",
         "R$ 13,33")],
       "O Estado concentrou a verba em vídeo e engajamento, onde é o cluster mais forte da conta. "
       "Visitas ao Perfil rodou uma única vez aqui, com R$ 120."),
@@ -486,7 +500,7 @@ SLIDES.append(cluster_slide(
       "A praça rodou em Alcance e Engajamento. Visitas ao Perfil, o objetivo que converte "
       "seguidor, ainda não foi ao ar aqui."),
      ("Alcance", "boa", "CPM 63% abaixo da média",
-      [(True, "Kalil Faz — carrossel", "Alcance &middot; R$ 199,98 &middot; 107.537 impressões",
+      [(True, "Kalil Faz · carrossel", "Alcance &middot; R$ 199,98 &middot; 107.537 impressões",
         "R$ 1,86")],
       "O CPM mais barato de toda a conta. Presença construída a um custo que nenhuma outra praça "
       "alcançou."),
@@ -506,17 +520,17 @@ SLIDES.append(slide(
          "A curva por idade é limpa e vale como direção.")
     + '<table class="tab"><thead><tr><th>Faixa etária</th><th>Investido</th>'
       '<th>Por seguidor</th><th>Por envio</th><th>Por view</th></tr></thead><tbody>'
-      '<tr class="hi"><td>18–24</td><td>R$ 199,09</td><td>R$ 5,24</td><td>R$ 49,77</td><td>R$ 0,074</td></tr>'
-      '<tr><td>25–34</td><td>R$ 520,00</td><td>R$ 6,34</td><td>R$ 43,33</td><td>R$ 0,050</td></tr>'
-      '<tr><td>35–44</td><td>R$ 553,07</td><td>R$ 5,53</td><td>R$ 27,65</td><td>R$ 0,034</td></tr>'
-      '<tr><td>45–54</td><td>R$ 861,92</td><td>R$ 11,49</td><td>R$ 14,61</td><td>R$ 0,026</td></tr>'
-      '<tr class="hi"><td>55–64</td><td>R$ 910,31</td><td>R$ 33,72</td><td>R$ 12,30</td><td>R$ 0,028</td></tr>'
+      '<tr class="hi"><td>18 a 24</td><td>R$ 199,09</td><td>R$ 5,24</td><td>R$ 49,77</td><td>R$ 0,074</td></tr>'
+      '<tr><td>25 a 34</td><td>R$ 520,00</td><td>R$ 6,34</td><td>R$ 43,33</td><td>R$ 0,050</td></tr>'
+      '<tr><td>35 a 44</td><td>R$ 553,07</td><td>R$ 5,53</td><td>R$ 27,65</td><td>R$ 0,034</td></tr>'
+      '<tr><td>45 a 54</td><td>R$ 861,92</td><td>R$ 11,49</td><td>R$ 14,61</td><td>R$ 0,026</td></tr>'
+      '<tr class="hi"><td>55 a 64</td><td>R$ 910,31</td><td>R$ 33,72</td><td>R$ 12,30</td><td>R$ 0,028</td></tr>'
       '<tr><td>65+</td><td>R$ 469,58</td><td>R$ 58,70</td><td>R$ 42,69</td><td>R$ 0,032</td></tr>'
       '</tbody></table>'
     + '<p class="sub"><b class="wt">A curva se inverte no meio da tabela.</b> Abaixo dos 45 anos '
       'o seguidor sai entre R$ 5 e R$ 6; acima dos 55, passa de R$ 33. No compartilhamento '
-      'acontece o oposto: a faixa 55–64 envia a R$ 12,30, o mais barato da conta, contra '
-      'R$ 49,77 dos 18–24. <b class="wt">Jovem vira seguidor; mais velho espalha a mensagem.</b> '
+      'acontece o oposto: a faixa 55 a 64 envia a R$ 12,30, o mais barato da conta, contra '
+      'R$ 49,77 dos 18 a 24. <b class="wt">Jovem vira seguidor; mais velho espalha a mensagem.</b> '
       'São dois papéis diferentes, e nenhum dos dois substitui o outro.</p>'
     + '<div class="spacer"></div>', bg="bg3"))
 
@@ -558,20 +572,20 @@ SLIDES.append(slide(
       '&middot; leitura de onde comprar cada resultado</p>'
     + '<div class="paineis">'
     + painel("Seguidor", [
-        (True, "Região de Belo Horizonte · visitas ao perfil", "visitas ao perfil", "R$ 1,47"),
+        (True, "Região Metropolitana de Belo Horizonte · visitas ao perfil", "visitas ao perfil", "R$ 1,47"),
         (False, "Público Cleitinho · visitas ao perfil", "visitas ao perfil", "R$ 2,18"),
         (False, "Conta geral · visitas ao perfil", "visitas ao perfil", "R$ 3,11")])
     + painel("Compartilhamento", [
         (True, "Estado de Minas · engajamento", "engajamento", "R$ 5,91"),
         (False, "Estado de Minas · vídeo", "vídeo", "R$ 7,69"),
-        (False, "Região de Belo Horizonte · engajamento", "engajamento", "R$ 10,87")])
+        (False, "Região Metropolitana de Belo Horizonte · engajamento", "engajamento", "R$ 10,87")])
     + painel("View", [
         (True, "Estado de Minas · vídeo", "vídeo", "R$ 0,015"),
         (False, "Público Cleitinho · reconhecimento", "reconhecimento", "R$ 0,017"),
         (False, "Estado de Minas · engajamento", "engajamento", "R$ 0,017")])
     + painel("Engajamento", [
         (True, "Estado de Minas · engajamento", "engajamento", "R$ 0,006"),
-        (False, "Região de Belo Horizonte · engajamento", "engajamento", "R$ 0,008"),
+        (False, "Região Metropolitana de Belo Horizonte · engajamento", "engajamento", "R$ 0,008"),
         (False, "Triângulo Mineiro · engajamento", "engajamento", "R$ 0,14")])
     + '</div>'
     + '<p class="fecho"><b>Cada resultado tem um endereço, e eles não se sobrepõem.</b> Seguidor '
@@ -581,7 +595,8 @@ SLIDES.append(slide(
 
 # 16 FECHO ------------------------------------------------------------------
 SLIDES.append(slide(
-    head("14", "O Que o Período Diz", "Três direções para a campanha.")
+    head("14", "O Que o Período Diz", "Três direções para a campanha.",
+         "O que os 32 dias de pré-campanha deixaram pronto para usar. O número de cada afirmação está nas páginas seguintes.")
     + '<div style="margin-top:14px">'
       '<div class="arow"><div class="n">1</div><div>'
       '<b>"Eu não faço promessa" é o criativo do período, e não deu sinal de fadiga.</b>'
@@ -609,35 +624,87 @@ SLIDES.append(slide(
     bg="bg2"))
 
 # 17 METODO -----------------------------------------------------------------
+_MET = [
+    ("Fonte", "Gerenciador de Anúncios da conta Alexandre Kalil, período de 16 de julho a 16 de agosto "
+              "de 2026. Export com quebra por idade e gênero: 478 linhas, 15 campanhas, 17 anúncios, sem "
+              "duplicidade de investimento entre linhas. Nomes de campanhas e anúncios reproduzidos como "
+              "estão na conta."),
+    ("Cálculo", "Custo por resultado calculado como investimento total do agrupamento dividido pelo "
+                "número de eventos, no mesmo padrão do Gerenciador. ThruPlays, seguidores e "
+                "compartilhamentos derivados do custo por evento, que é a forma como este export "
+                "disponibiliza esses volumes."),
+    ("Pisos do ranking", "Piso de R$ 20 investidos e volume mínimo por métrica, 300 views, 5 seguidores, "
+                         "5 envios e 20 visitas, para evitar distorção de amostra pequena. Os anúncios "
+                         "abaixo do piso estão fora dos pódios."),
+    ("Alcance e seguidores", "Alcance apurado em consulta única e deduplicada no Gerenciador, nunca "
+                             "somado entre campanhas. Crescimento de seguidores apurado no painel de "
+                             "Insights do Instagram e do Facebook, que soma orgânico e pago, número "
+                             "distinto dos 330 seguidores atribuídos à mídia paga no export, que são a "
+                             "base dos rankings de custo."),
+]
 SLIDES.append(slide(
-    head("15", "Método", "Como estes números foram apurados.")
-    + '<p class="metodo">Fonte: Gerenciador de Anúncios da conta Alexandre Kalil, período de 16 '
-      'de julho a 16 de agosto de 2026. Export com quebra por idade e gênero: 478 linhas, 15 '
-      'campanhas, 17 anúncios, sem duplicidade de investimento entre linhas. Custo por resultado '
-      'calculado como investimento total do agrupamento dividido pelo número de eventos, no mesmo '
-      'padrão do Gerenciador.</p>'
-      '<p class="metodo">Rankings aplicam piso de R$ 20 investidos e volume mínimo por métrica '
-      '(300 views, 5 seguidores, 5 envios, 20 visitas) para evitar distorção de amostra pequena; '
-      'os anúncios que ficaram abaixo do piso estão fora dos pódios. ThruPlays, seguidores e '
-      'compartilhamentos derivados do custo por evento, que é a forma como este export '
-      'disponibiliza esses volumes.</p>'
-      '<p class="metodo">Alcance apurado em consulta única e deduplicada no Gerenciador. '
-      'Crescimento de seguidores apurado no painel de Insights das contas de Instagram e '
-      'Facebook, que soma orgânico e pago e compara com o período anterior, número distinto dos '
-      '330 seguidores atribuídos à mídia paga no export, que são a base dos rankings de custo. '
-      'Nomes de campanhas e anúncios reproduzidos como estão na conta.</p>'
-      '<div class="spacer"></div>'
+    head("16", "Método", "Fonte e método.")
+    + "".join(f'<p class="metodo"><b class="wt">{k}.</b> {v}</p>' for k, v in _MET)
+    + '<div class="spacer"></div>'
       '<p class="note">Balanço da Pré-Campanha &middot; Alexandre Kalil, Pré-Campanha 2026 '
       '&middot; Produzido por Algorítmica, Performance &amp; Dados</p>', bg="bg1"))
 
+# PECAS ---------------------------------------------------------------------
+PECAS = [
+    ("f-promessa.jpg", "Frame do vídeo Eu não faço promessa, com Alexandre Kalil ao microfone",
+     "Eu não faço promessa",
+     "O criativo do período. Pódio inteiro do view, duas primeiras posições do compartilhamento e, "
+     "na versão V2, 66% das visitas ao perfil da conta.",
+     "R$ 0,014 por view · R$ 0,12 por visita"),
+    ("f-aftermovie.jpg", "Frame do Aftermovie da Convenção, com Kalil discursando no palanque",
+     "Aftermovie Convenção",
+     "O mais versátil. Com menos de R$ 100 investidos entregou o seguidor mais barato de toda a conta.",
+     "R$ 1,47 por seguidor · R$ 0,23 por visita"),
+    ("f-vtmulheres.jpg", "Frame do VT Mulheres, com uma eleitora falando à câmera",
+     "VT Mulheres",
+     "Único criativo do recorte, numa campanha só de vídeo. Compartilhamento e view em linha com a "
+     "média da conta.",
+     "R$ 19,72 por envio · R$ 0,037 por view"),
+    ("f-carrossel.jpg", "Primeiro card do carrossel Kalil Faz",
+     "Kalil Faz · carrossel",
+     "Único formato estático do período, e o mais eficiente para construir presença: 117 mil impressões "
+     "por menos de R$ 300.",
+     "R$ 1,86 de CPM em Alcance"),
+]
+_cards = "".join(
+    f'<div class="peca"><img src="assets/{img}" alt="{alt}">'
+    f'<b>{nome}</b><span class="papel">{papel}</span><span class="marca">{marca}</span></div>'
+    for img, alt, nome, papel, marca in PECAS)
+SLIDE_PECAS = slide(
+    head("08", "Criativos", "As peças por trás dos números.",
+         "Quatro dos criativos que sustentam os rankings deste relatório, com o papel que cada um "
+         "cumpriu no período.")
+    + f'<div class="pecas">{_cards}</div>', bg="bg2")
+
+# Ordem final: as tres direcoes abrem o documento, o metodo fecha.
+# 0 capa · 15 direcoes · 1 geral · 2 crescimento · 3-6 rankings · pecas ·
+# 7-11 clusters · 12-13 publico · 14 onde sai mais barato · 16 metodo
+ORDEM = ([SLIDES[0], SLIDES[15]] + SLIDES[1:7] + [SLIDE_PECAS] + SLIDES[7:15] + [SLIDES[16]])
+
+# Kicker so na abertura de cada familia, para nao repetir andaime em toda secao.
+KEEP_KICKER = {1, 4, 8, 9, 14}
+
+
+def _arruma(i, html):
+    if i and i not in KEEP_KICKER:
+        html = re.sub(r'<div class="kicker">[^<]*</div>', "", html)
+    return re.sub(r'<div class="num">\d+</div>',
+                  f'<div class="num">{i:02d}</div>', html) if i else html
+
 
 def build(path, geometry):
+    corpo = "".join(_arruma(i, s) for i, s in enumerate(ORDEM))
     html = ('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">'
             '<title>Balanço da Pré-Campanha · Alexandre Kalil</title>' + FONTS
             + "<style>" + CSS_BASE + geometry + "</style></head><body>"
-            + "".join(SLIDES) + "</body></html>")
+            + corpo + "</body></html>")
     (BASE / path).write_text(html, encoding="utf-8")
-    print(f"{path}: {len(SLIDES)} slides")
+    print(f"{path}: {len(ORDEM)} slides")
 
 
 build("slides.html", CSS_H)
