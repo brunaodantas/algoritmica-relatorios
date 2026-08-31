@@ -196,22 +196,6 @@ table.tight td{padding:7px 7px;font-size:11.5px}
   </div>
 </div>
 
-<!-- 4 · PRAÇAS GRÁFICO -->
-<div class="slide">
-  <div class="slide-in">
-    <div class="lbl">Praças</div>
-    <h2>Veiculou Nesse Período</h2>
-    <p class="sub">Regiões de Minas Gerais, mais dois recortes ligados ao tema de segurança.</p>
-    <div class="body">
-      <div class="cg c2">
-        <div class="cc"><div class="ct">Exibições por Praça</div><div class="cd">Região Metropolitana de BH concentra o maior volume.</div><div class="cw" style="height:330px"><canvas id="c1"></canvas></div></div>
-        <div class="cc"><div class="ct">Compartilhamentos por Praça</div><div class="cd">A Grande BH também lidera em compartilhamentos.</div><div class="cw" style="height:330px"><canvas id="c2"></canvas></div></div>
-      </div>
-    </div>
-    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 31/08/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
-  </div>
-</div>
-
 <!-- 5 · PRAÇAS TABELA -->
 <div class="slide">
   <div class="slide-in">
@@ -424,16 +408,6 @@ const DL={id:'dl',afterDatasetsDraw(ch){if(!ch.config.options.plugins?.dl?.enabl
 Chart.register(DL);
 const noL={legend:{display:false}}, off={maintainAspectRatio:false,responsive:true};
 const padR={layout:{padding:{right:26}}};
-
-const pracasLbl=['Região Metropolitana de BH','Norte de Minas, Jequitinhonha e Mucuri','Vale do Rio Doce e Zona da Mata','Sul de Minas','Uberlândia e Uberaba','Demais cidades do Triângulo','Segurança Pública, Grande BH','Cidades com maior incidência criminal'];
-
-new Chart(document.getElementById('c1'),{type:'bar',
- data:{labels:pracasLbl,datasets:[{data:[698931,591919,541173,475993,386385,302583,113879,64322],backgroundColor:A,borderRadius:5,barThickness:20}]},
- options:{...off,...padR,indexAxis:'y',plugins:{...noL,dl:{enabled:true}},scales:{x:{grid:{color:GRID},ticks:{font:{size:10},callback:v=>v/1000+'K'}},y:{grid:{display:false},ticks:{font:{size:10}}}}}});
-
-new Chart(document.getElementById('c2'),{type:'bar',
- data:{labels:pracasLbl,datasets:[{data:[187,55,126,84,65,22,31,29],backgroundColor:P,borderRadius:5,barThickness:20}]},
- options:{...off,...padR,indexAxis:'y',plugins:{...noL,dl:{enabled:true}},scales:{x:{grid:{color:GRID},ticks:{font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:10}}}}}});
 
 new Chart(document.getElementById('c3'),{type:'bar',
  data:{labels:['18-24','25-34','35-44','45-54','55-64','65+'],datasets:[{data:[5.7,12.2,22.3,21.0,21.2,17.7],backgroundColor:A,borderRadius:5,barThickness:30}]},
