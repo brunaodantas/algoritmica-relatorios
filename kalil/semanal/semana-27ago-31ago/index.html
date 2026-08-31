@@ -8,6 +8,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Quadros de custo: alinhamento entre as tres colunas */
+    .top-grid-3 { align-items: stretch; }
+    .top-grid-3 .top-card { display: flex; }
+    .top-grid-3 .top-body {
+      display: flex; flex-direction: column; width: 100%;
+    }
+    .top-grid-3 .top-name { min-height: 2.6em; }
+    .top-grid-3 .top-stat-main {
+      display: flex; align-items: baseline; gap: 12px; flex-wrap: nowrap;
+    }
+    .top-grid-3 .top-stat-main .v {
+      white-space: nowrap; font-size: 2rem; line-height: 1.1; flex: 0 0 auto;
+    }
+    .top-grid-3 .top-stat-main .k {
+      text-align: left; line-height: 1.35; flex: 1 1 auto;
+    }
+    .top-grid-3 .top-mini {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;
+    }
+    .top-grid-3 .top-mini .mi { display: flex; flex-direction: column; gap: 4px; }
+    .top-grid-3 .top-mini .v { white-space: nowrap; }
+    .top-grid-3 .top-mini .k { line-height: 1.35; }
+    .top-grid-3 .cb-label { margin-top: auto; padding-top: 14px; line-height: 1.5; }
+    @media (max-width: 720px) {
+      .top-grid-3 .top-name { min-height: 0; }
+      .top-grid-3 .top-stat-main { flex-wrap: wrap; gap: 4px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -44,8 +73,8 @@
       <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="1578636" data-format="compact">1,6M</span></span><span class="hero-meta-label">Alcance</span></div>
       <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="3082189" data-format="compact">3,1M</span></span><span class="hero-meta-label">Impressões</span></div>
       <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="27896" data-format="standard">27.896</span></span><span class="hero-meta-label">Interações</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="572" data-format="standard">572</span></span><span class="hero-meta-label">Novos seguidores pela mídia</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-value">8 peças</span><span class="hero-meta-label">No ar</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="1306" data-format="standard">1.306</span></span><span class="hero-meta-label">Crescimento do perfil</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value">3</span><span class="hero-meta-label">Objetivos em veiculação</span></div>
     </div>
   </div>
 </section>
@@ -69,18 +98,18 @@
           <tr><td class="tl">Compartilhamentos</td><td>584</td></tr>
           <tr><td class="tl">Salvamentos</td><td>219</td></tr>
           <tr><td class="tl">Novos seguidores vindos da mídia</td><td>572</td></tr>
-          <tr><td class="tl">Crescimento total do perfil, Instagram e Facebook</td><td>858</td></tr>
+          <tr><td class="tl">Crescimento total do perfil, Instagram e Facebook</td><td>1.306</td></tr>
           <tr><td class="tl">Visualizações</td><td>281.914</td></tr>
           <tr><td class="tl">Cliques</td><td>53.278</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="table-note">Alcance é o número de pessoas diferentes que viram o conteúdo. Ele vem do total da conta e não se soma entre regiões ou peças, porque a mesma pessoa pode ser alcançada em mais de uma delas. O crescimento total do perfil vem do Meta Business Insights, somando Instagram e Facebook, e cobre de 27 a 29 de agosto, que é o período fechado na plataforma.</p>
+    <p class="table-note">O alcance vem do total da conta e não se soma entre regiões ou peças, porque a mesma pessoa pode ser alcançada em mais de uma delas. O crescimento total do perfil vem do Meta Business Insights, somando Instagram e Facebook.</p>
   </div>
 
   <div class="insight-box fade-in">
     <div class="insight-label">O que os números dizem</div>
-    <div class="insight-text">A campanha chegou a 1,58 milhão de mineiros em cinco dias. Cada pessoa viu o conteúdo menos de duas vezes, o que mostra que ainda há muito público novo pela frente. As 27,9 mil interações vieram principalmente de conteúdo com tema definido, e não da apresentação geral do candidato.</div>
+    <div class="insight-text">A campanha chegou a 1,58 milhão de mineiros em cinco dias. Cada pessoa viu o conteúdo em média 1,95 vez, o que mostra que ainda há muito público novo pela frente. As 27,9 mil interações vieram principalmente de conteúdo com tema definido.</div>
   </div>
 </section>
 
@@ -245,8 +274,8 @@
   </div>
 
   <div class="insight-box fade-in">
-    <div class="insight-label">Cada conteúdo tem uma função</div>
-    <div class="insight-text">Nenhuma peça foi bem em tudo. O Guiado pelo Coração trouxe o seguidor mais barato da semana, a R$ 24,17, e quase não gerou conversa. O Só Quem Fez fez o oposto. Os carrosséis de apresentação trouxeram bastante seguidor com volume alto de exibição. Vale manter os três tipos rodando juntos, cada um cumprindo o seu papel.</div>
+    <div class="insight-label">Cada conteúdo teve o seu papel</div>
+    <div class="insight-text">Cada peça se destacou em uma frente. O Guiado pelo Coração trouxe o seguidor mais barato da semana, a R$ 24,17. O Só Quem Fez foi o que mais puxou conversa, com o comentário a R$ 3,73. O VT Pandemia foi o conteúdo que mais viajou. E os carrosséis de apresentação sustentaram volume de exibição trazendo seguidor. Vale manter os três tipos rodando juntos, cada um cumprindo a sua função.</div>
   </div>
 
   <div class="insight-box fade-in">
