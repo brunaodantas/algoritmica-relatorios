@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Slides · Kalil · 27/08 a 01/09/2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --acc:#FF6A00; --acc2:#FF7F00; --purple:#7B2FBE; --ink:#0F1419;
+  --bg:#FAF8F5; --surf:#FFFFFF; --t1:#111111; --t2:#4A4A4A; --t3:#8A8478;
+  --line:rgba(17,17,17,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#555;-webkit-font-smoothing:antialiased;print-color-adjust:exact}
+.slide{width:1280px;height:720px;overflow:hidden;position:relative;background:var(--bg);margin:0 auto 18px}
+.slide-in{position:absolute;inset:0;padding:46px 64px;display:flex;flex-direction:column}
+.slide.dark{background:var(--ink)}
+.slide.dark .slide-in{color:#fff}
+
+.lbl{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:9px}
+h2{font-size:31px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--t1)}
+.dark h2{color:#fff}
+.sub{font-size:13.5px;line-height:1.55;color:var(--t2);margin-top:9px;max-width:1000px}
+.dark .sub{color:rgba(255,255,255,.72)}
+.sub strong{color:var(--t1);font-weight:700}
+.dark .sub strong{color:#fff}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;margin-top:16px}
+.foot{font-size:10.5px;color:var(--t3);letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--line)}
+.dark .foot{color:rgba(255,255,255,.42);border-top-color:rgba(255,255,255,.14)}
+.foot img{height:19px}
+
+/* CAPA */
+.cover-bg{position:absolute;inset:0;background:
+  radial-gradient(circle at 26% 22%, rgba(255,106,0,.30), transparent 54%),
+  radial-gradient(circle at 82% 82%, rgba(255,106,0,.13), transparent 50%)}
+.cover-in{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:center}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,106,0,.15);border:1px solid rgba(255,106,0,.36);
+  color:#FFB566;font-size:11.5px;font-weight:800;padding:8px 15px;border-radius:20px;letter-spacing:.07em;text-transform:uppercase;align-self:flex-start}
+.cover-in h1{color:#fff;font-size:60px;font-weight:800;letter-spacing:-.035em;line-height:1.03;margin:22px 0 0}
+.cover-in h1 span{color:var(--acc2);display:block}
+.cover-in p{color:rgba(255,255,255,.74);font-size:15px;line-height:1.6;max-width:790px;margin-top:18px}
+.cov-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+.ck{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:16px 18px}
+.ck .v{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.ck .k{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.60);text-transform:uppercase;letter-spacing:.08em;margin-top:7px}
+
+/* KPI CARDS */
+.kpis{display:grid;gap:13px}
+.k5{grid-template-columns:repeat(5,1fr)}
+.k4{grid-template-columns:repeat(4,1fr)}
+.k3{grid-template-columns:repeat(3,1fr)}
+.kc{background:var(--surf);border:1px solid var(--line);border-radius:13px;padding:17px 18px;box-shadow:0 2px 10px rgba(17,17,17,.045)}
+.kc.on{border-color:rgba(255,106,0,.30);background:linear-gradient(160deg,rgba(255,106,0,.06),rgba(255,106,0,.015))}
+.kc .kl{font-size:10.5px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.07em}
+.kc .kv{font-size:27px;font-weight:800;letter-spacing:-.03em;color:var(--t1);margin-top:8px;line-height:1}
+.kc.on .kv{color:var(--acc)}
+.kc .ks{font-size:11px;color:var(--t2);margin-top:7px;line-height:1.4}
+
+/* TABELA */
+table{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:rgba(17,17,17,.035);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);padding:9px 11px;text-align:right;white-space:nowrap}
+th:first-child{text-align:left}
+td{font-size:12.5px;font-weight:600;color:var(--t1);padding:8px 11px;text-align:right;border-top:1px solid var(--line);white-space:nowrap}
+td:first-child{text-align:left;font-weight:600}
+tfoot td{background:rgba(17,17,17,.035);font-weight:800}
+table.tight th{padding:7px 6px;font-size:9px;letter-spacing:.03em}
+table.tight td{padding:6px 6px;font-size:10.5px}
+.acc{color:var(--acc)}
+.pos{color:#00994D}
+.tnote{font-size:10.5px;color:var(--t3);line-height:1.5;margin-top:9px}
+
+/* INSIGHT */
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ib{background:var(--surf);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:11px;padding:15px 18px}
+.ib.g{border-left-color:var(--t3)}
+.ib .il{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--acc);margin-bottom:7px}
+.ib.g .il{color:var(--t3)}
+.ib .it{font-size:12.5px;line-height:1.55;color:var(--t2)}
+.ib .it strong{color:var(--t1);font-weight:700}
+
+/* CHARTS */
+.cg{display:grid;gap:16px}
+.c2{grid-template-columns:1fr 1fr}
+.cc{background:var(--surf);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+.ct{font-size:13.5px;font-weight:700;letter-spacing:-.015em}
+.cd{font-size:11px;color:var(--t3);margin-top:3px;line-height:1.4}
+.cw{margin-top:11px;height:230px;position:relative}
+.cw canvas{width:100%!important;height:100%!important}
+.donut-wrap{position:relative;max-width:230px;margin:0 auto}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-pct{font-size:22px;font-weight:800}
+.donut-label{font-size:11px;color:var(--t3)}
+.legend{display:flex;gap:18px;justify-content:center;margin-top:12px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px}
+.legend-item i{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+/* TOP CARDS (custo) */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tc{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 2px 10px rgba(17,17,17,.045);display:flex;flex-direction:column}
+.tc .aw{font-size:11px;font-weight:800;color:var(--acc);letter-spacing:.02em;line-height:1.3}
+.tc .nm{font-size:15.5px;font-weight:800;letter-spacing:-.015em;margin:9px 0 10px;min-height:2.3em}
+.tc .main{display:flex;align-items:baseline;gap:9px}
+.tc .main .v{font-size:23px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.tc .main .k{font-size:11px;color:var(--t2);line-height:1.3}
+.tc .mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px;padding-top:13px;border-top:1px solid var(--line)}
+.tc .mini .v{font-size:14px;font-weight:800}
+.tc .mini .k{font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.tc .out{margin-top:auto;padding-top:12px;font-size:10.5px;color:var(--t3);line-height:1.5}
+
+/* DIAGNÓSTICO */
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.dc{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:15px;padding:24px}
+.dc .n{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--acc2)}
+.dc .m{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.035em;margin:11px 0 9px;line-height:1}
+.dc .t{font-size:15px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:9px}
+.dc .x{font-size:12px;line-height:1.55;color:rgba(255,255,255,.70)}
+.dc .x strong{color:#fff;font-weight:700}
+
+/* RECOMENDAÇÕES */
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rc{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:17px 19px}
+.rc .rn{font-size:10.5px;font-weight:800;color:var(--acc);letter-spacing:.07em;text-transform:uppercase}
+.rc .rt{font-size:14px;font-weight:700;margin:7px 0 7px;letter-spacing:-.015em}
+.rc .rx{font-size:12px;line-height:1.55;color:var(--t2)}
+
+/* FECHAMENTO */
+.end{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;position:relative;z-index:2}
+.end img{height:44px;background:#fff;border-radius:11px;padding:10px 17px}
+.end h3{color:#fff;font-size:29px;font-weight:800;letter-spacing:-.025em;margin-top:26px}
+.end p{color:rgba(255,255,255,.62);font-size:13.5px;line-height:1.75;margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- 1 · CAPA -->
+<div class="slide dark">
+  <div class="cover-bg"></div>
+  <div class="slide-in">
+    <div class="cover-in">
+      <span class="badge">Relatório Parcial &middot; 27 de agosto a 1&ordm; de setembro de 2026</span>
+      <h1>Alexandre Kalil<span>Performance de Mídia</span></h1>
+      <p>Seguimos no novo ciclo de veiculação, com investimento ampliado nas regiões atendidas pelo plano.</p>
+      <div class="cov-kpis">
+        <div class="ck"><div class="v">2,0M</div><div class="k">Alcance</div></div>
+        <div class="ck"><div class="v">4,6M</div><div class="k">Impressões</div></div>
+        <div class="ck"><div class="v">37.323</div><div class="k">Interações</div></div>
+        <div class="ck"><div class="v">1.736</div><div class="k">Crescimento do perfil</div></div>
+        <div class="ck"><div class="v">6</div><div class="k">Dias de veiculação</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 · VISÃO GERAL -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Visão Geral</div>
+    <h2>Resultado Consolidado</h2>
+    <p class="sub">Seis dias de veiculação, de 27 de agosto a 1&ordm; de setembro, somando Instagram e Facebook.</p>
+    <div class="body" style="justify-content:flex-start;margin-top:8px">
+      <div style="font-size:10px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Consolidado &middot; Números do período</div>
+      <table class="tight">
+        <thead><tr><th>Indicador</th><th>Volume</th></tr></thead>
+        <tbody>
+          <tr><td>Pessoas alcançadas</td><td>2.015.905</td></tr>
+          <tr><td>Vezes que o conteúdo apareceu</td><td>4.619.631</td></tr>
+          <tr><td>Cada pessoa viu, em média</td><td>2,29 vezes</td></tr>
+          <tr><td>Curtidas e reações</td><td>34.231</td></tr>
+          <tr><td>Comentários</td><td>2.046</td></tr>
+          <tr><td>Compartilhamentos</td><td>748</td></tr>
+          <tr><td>Salvamentos</td><td>298</td></tr>
+          <tr><td>Novos seguidores vindos da mídia</td><td>767</td></tr>
+          <tr><td>Crescimento total do perfil, Instagram e Facebook</td><td>1.736</td></tr>
+          <tr><td>Visualizações ThruPlay</td><td>204.442</td></tr>
+          <tr><td>Visitas ao Perfil</td><td>34.685</td></tr>
+        </tbody>
+      </table>
+      <p class="tnote" style="margin-top:6px">O alcance vem do total da conta e não se soma entre regiões ou peças, porque a mesma pessoa pode ser alcançada em mais de uma delas. O crescimento total do perfil vem do Meta Business Insights, somando Instagram e Facebook.</p>
+      <div class="ib" style="margin-top:8px;padding:10px 16px">
+        <div class="il">O que os números dizem</div>
+        <div class="it">A campanha chegou a <strong>2,02 milhões de mineiros</strong> em seis dias. Cada pessoa viu o conteúdo em média <strong>2,29 vezes</strong>, o que mostra que ainda há muito público novo pela frente. As <strong>37,3 mil interações</strong> vieram principalmente de conteúdo com tema definido.</div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 3 · PERFIL -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Instagram &amp; Facebook &middot; Visão da Conta</div>
+    <h2>Crescimento do Perfil</h2>
+    <p class="sub">Crescimento total do perfil no novo ciclo, segundo o <strong>Meta Business Suite</strong> (soma tráfego orgânico e mídia paga).</p>
+    <div class="body">
+      <div class="kpis k4">
+        <div class="kc on"><div class="kl">Novos Seguidores &middot; Instagram</div><div class="kv">1.552</div></div>
+        <div class="kc"><div class="kl">Novos Seguidores &middot; Facebook</div><div class="kv">184</div></div>
+        <div class="kc on"><div class="kl">Crescimento Total do Perfil</div><div class="kv">1.736</div><div class="ks">Instagram + Facebook, orgânico e pago</div></div>
+        <div class="kc"><div class="kl">Visitas ao Perfil (mídia paga)</div><div class="kv">34.685</div><div class="ks">Instagram e Facebook</div></div>
+      </div>
+      <div class="ib" style="margin-top:16px">
+        <div class="il">Leitura</div>
+        <div class="it">O perfil cresceu <strong>1.736 seguidores</strong> no período, sendo <strong>1.552 no Instagram</strong> e <strong>184 no Facebook</strong>. A mídia paga respondeu por 767 desse total. A mídia paga levou <strong>34.685 pessoas</strong> a visitar o perfil por conta própria, a maior parte delas no Instagram.</div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 5 · PRAÇAS TABELA -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Praças</div>
+    <h2>Veiculou nesse período</h2>
+    <p class="sub">Regiões de Minas Gerais, mais dois recortes ligados ao tema de segurança.</p>
+    <div class="body">
+      <div style="font-size:10.5px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Regiões &middot; Ordenado pelo volume de exibições</div>
+      <table>
+        <thead><tr><th>Região</th><th>Exibições</th><th>Reações</th><th>Comentários</th><th>Compartilhamentos</th></tr></thead>
+        <tbody>
+          <tr><td>Região Metropolitana de BH</td><td>1.007.703</td><td>10.414</td><td>635</td><td class="acc">232</td></tr>
+          <tr><td>Norte de Minas, Jequitinhonha e Mucuri</td><td>871.503</td><td>3.671</td><td>165</td><td class="acc">73</td></tr>
+          <tr><td>Vale do Rio Doce e Zona da Mata</td><td>793.060</td><td>4.809</td><td>288</td><td class="acc">150</td></tr>
+          <tr><td>Sul de Minas</td><td>684.801</td><td>2.860</td><td>181</td><td class="acc">103</td></tr>
+          <tr><td>Uberlândia e Uberaba</td><td>535.139</td><td>2.358</td><td>137</td><td class="acc">76</td></tr>
+          <tr><td>Demais cidades do Triângulo</td><td>444.545</td><td>1.848</td><td>87</td><td class="acc">28</td></tr>
+          <tr><td>Segurança Pública, Grande BH</td><td>177.994</td><td>2.606</td><td>160</td><td class="acc">44</td></tr>
+          <tr><td>Cidades com maior incidência criminal</td><td>104.886</td><td>5.665</td><td>393</td><td class="acc">42</td></tr>
+        </tbody>
+      </table>
+      <p class="tnote">O alcance não aparece por praça porque não se soma entre elas: a mesma pessoa pode ser alcançada em mais de uma.</p>
+      <div class="ib" style="margin-top:14px">
+        <div class="il">Leitura das Praças</div>
+        <div class="it">A <strong>Grande BH</strong> concentra o maior volume e o maior número de compartilhamentos, com <strong>232 dos 748</strong> do período. Chama atenção o recorte de <strong>cidades com maior incidência criminal</strong>: mesmo tendo entrado no ar depois das demais regiões e por isso menos exibições, ele gerou <strong>5.665 reações e 393 comentários</strong>. É o público que mais responde quando o assunto é segurança.</div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 6 · PÚBLICO -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Público</div>
+    <h2>A Nossa Audiência</h2>
+    <p class="sub">A campanha passou a falar com o eleitor de 35 anos em diante nas linhas de visita ao perfil, e o resultado aparece na distribuição.</p>
+    <div class="body">
+      <div style="font-size:10.5px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Faixa etária &middot; Distribuição das exibições</div>
+      <table>
+        <thead><tr><th>Idade</th><th>Exibições</th><th>%</th><th>Reações</th></tr></thead>
+        <tbody>
+          <tr><td>18 a 24</td><td>219.555</td><td>4,8%</td><td>1.285</td></tr>
+          <tr><td>25 a 34</td><td>529.457</td><td>11,5%</td><td>4.340</td></tr>
+          <tr><td>35 a 44</td><td>1.070.385</td><td>23,2%</td><td>6.171</td></tr>
+          <tr><td>45 a 54</td><td>990.809</td><td>21,4%</td><td>7.812</td></tr>
+          <tr><td>55 a 64</td><td>984.650</td><td>21,3%</td><td class="acc">8.298</td></tr>
+          <tr><td>65 ou mais</td><td>824.627</td><td>17,8%</td><td>6.323</td></tr>
+        </tbody>
+      </table>
+      <div class="ib" style="margin-top:15px">
+        <div class="il">Leitura do Público</div>
+        <div class="it">Oito em cada dez exibições foram para pessoas com <strong>35 anos ou mais</strong>. O grupo de <strong>55 a 64 anos</strong> é o que mais reage ao conteúdo, seguido de perto pelo de 45 a 54. O eleitor mais jovem recebeu pouco investimento e responde menos, o que é esperado para esse perfil.</div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 6b · QUEM FOI IMPACTADO -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Público</div>
+    <h2>Quem Foi Impactado</h2>
+    <p class="sub">Distribuição das impressões do período por faixa etária e gênero, somando as três campanhas.</p>
+    <div class="body">
+      <div class="cg c2">
+        <div class="cc">
+          <div class="ct">Impressões por Faixa Etária</div>
+          <div class="cd">Entrega mais distribuída, com peso maior do público 45+.</div>
+          <div class="cw"><canvas id="chartIdade"></canvas></div>
+        </div>
+        <div class="cc">
+          <div class="ct">Distribuição por Gênero</div>
+          <div class="cd">Divisão mais equilibrada entre feminino e masculino.</div>
+          <div class="donut-wrap">
+            <canvas id="chartGenero"></canvas>
+            <div class="donut-center"><span class="donut-pct">52,9%</span><span class="donut-label">masculino</span></div>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><i style="background:#F26522"></i>Feminino</span>
+            <span class="legend-item"><i style="background:#1F1F1F"></i>Masculino</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 7 · CONTEÚDOS TABELA -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Conteúdos</div>
+    <h2>Desempenho dos Conteúdos</h2>
+    <p class="sub">Onze peças no ar no período. Os números de cada uma somam todas as regiões em que ela apareceu.</p>
+    <div class="body" style="justify-content:flex-start;margin-top:8px">
+      <div style="font-size:10px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Peças &middot; Ordenado pelo índice de prioridade</div>
+      <table class="tight">
+        <thead><tr><th>Conteúdo</th><th>Índice</th><th>Exibições</th><th>Reações</th><th>Comentários</th><th>Compart.</th><th>Seguidores</th></tr></thead>
+        <tbody>
+          <tr><td>VT Pandemia</td><td class="acc">100,0</td><td>1.501.564</td><td>11.835</td><td>864</td><td>451</td><td>151</td></tr>
+          <tr><td>Carrossel Bio</td><td class="acc">51,9</td><td>849.567</td><td>3.118</td><td>76</td><td>20</td><td>145</td></tr>
+          <tr><td>Carrossel Teve Um Cara Que</td><td class="acc">50,7</td><td>697.610</td><td>4.751</td><td>182</td><td>41</td><td>138</td></tr>
+          <tr><td>VT Bio Motion</td><td class="acc">44,7</td><td>663.734</td><td>1.823</td><td>117</td><td>77</td><td>111</td></tr>
+          <tr><td>VT Bio Invertida</td><td class="acc">22,5</td><td>207.093</td><td>2.554</td><td>168</td><td>45</td><td>56</td></tr>
+          <tr><td>Guiado pelo Coração</td><td class="acc">21,6</td><td>151.388</td><td>376</td><td>29</td><td>7</td><td>71</td></tr>
+          <tr><td>Só Quem Fez, Segurança</td><td class="acc">19,1</td><td>104.885</td><td>5.665</td><td>393</td><td>42</td><td>39</td></tr>
+          <tr><td>Coronel Gianfranco</td><td class="acc">14,6</td><td>177.992</td><td>2.606</td><td>160</td><td>44</td><td>28</td></tr>
+          <tr><td>Fiz pela minha cidade</td><td class="acc">7,0</td><td>218.055</td><td>981</td><td>45</td><td>18</td><td>9</td></tr>
+          <tr><td>Vídeo Juiz de Fora</td><td class="acc">4,7</td><td>29.432</td><td>174</td><td>8</td><td>3</td><td>15</td></tr>
+          <tr><td>Carrossel Triângulo + Alto Paranaíba</td><td class="acc">1,4</td><td>18.279</td><td>348</td><td>4</td><td>0</td><td>4</td></tr>
+        </tbody>
+      </table>
+      <p class="tnote" style="margin-top:6px">O índice combina seguidores, compartilhamentos, visualizações e comentários em ordem de peso. Fiz pela minha cidade, Vídeo Juiz de Fora e Carrossel Triângulo Mineiro + Alto Paranaíba entraram no ar nos últimos dias do período, o que pesa no volume de exibições e no índice das três.</p>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 8 · CONTEÚDOS RANKING -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Conteúdos</div>
+    <h2>O Que Custou Mais Barato</h2>
+    <div class="body">
+      <div class="ib" style="margin-bottom:14px">
+        <div class="il">Critério dos destaques abaixo</div>
+        <div class="it">Os três quadros a seguir mostram quanto custou cada resultado, do mais barato para o mais caro. Para um conteúdo entrar, ele precisa ter gerado pelo menos <strong>5% do total do período</strong> naquele resultado, com <strong>mínimo de dez</strong>. Isso evita destacar uma peça que trouxe um ou dois resultados muito baratos e não teve peso na entrega. Quem ficou de fora aparece indicado em cada quadro.</div>
+      </div>
+      <div class="tgrid">
+        <div class="tc">
+          <div class="aw">&#9733; Melhores para trazer seguidores</div>
+          <div class="nm">Guiado pelo Coração</div>
+          <div class="main"><span class="v">R$ 22,57</span><span class="k">por seguidor<br>71 no total</span></div>
+          <div class="mini">
+            <div><div class="v">R$ 30,02</div><div class="k">VT Bio Invertida &middot; 56</div></div>
+            <div><div class="v">R$ 32,67</div><div class="k">Só Quem Fez &middot; 39</div></div>
+          </div>
+          <div class="out">Fora do critério: Coronel Gianfranco, com 28 seguidores, e Vídeo Juiz de Fora, com 15.</div>
+        </div>
+        <div class="tc">
+          <div class="aw">&#9733; Melhores para gerar compartilhamentos</div>
+          <div class="nm">VT Pandemia</div>
+          <div class="main"><span class="v">R$ 22,72</span><span class="k">por compartilhamento<br>451 no total</span></div>
+          <div class="mini">
+            <div><div class="v">R$ 29,15</div><div class="k">Coronel Gianfranco &middot; 44</div></div>
+            <div><div class="v">R$ 30,34</div><div class="k">Só Quem Fez &middot; 42</div></div>
+          </div>
+          <div class="out">Fora do critério: Carrossel Bio, com 20 compartilhamentos, e Fiz pela minha cidade, com 18.</div>
+        </div>
+        <div class="tc">
+          <div class="aw">&#9733; Melhores para gerar comentários</div>
+          <div class="nm">Só Quem Fez, Segurança</div>
+          <div class="main"><span class="v">R$ 3,24</span><span class="k">por comentário<br>393 no total</span></div>
+          <div class="mini">
+            <div><div class="v">R$ 8,02</div><div class="k">Coronel Gianfranco &middot; 160</div></div>
+            <div><div class="v">R$ 10,01</div><div class="k">VT Bio Invertida &middot; 168</div></div>
+          </div>
+          <div class="out">Fora do critério: Carrossel Bio, com 76 comentários, e Fiz pela minha cidade, com 45.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 8b · PUBLICAÇÕES -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Conteúdos</div>
+    <h2>Ver Cada Conteúdo no Instagram</h2>
+    <p class="sub">Links das publicações reais que sustentam os anúncios do período.</p>
+    <div class="body">
+      <div style="font-size:10.5px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Publicações &middot; Ver cada conteúdo no Instagram</div>
+      <table>
+        <thead><tr><th>Conteúdo</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>Só Quem Fez, Segurança</td><td>instagram.com/p/Dcn4SLKDlOf</td></tr>
+          <tr><td>Carrossel Teve Um Cara Que</td><td>instagram.com/p/DcdgatnFgH1</td></tr>
+          <tr><td>Carrossel Bio</td><td>instagram.com/p/DcPGn1hj5JG</td></tr>
+          <tr><td>VT Pandemia</td><td>instagram.com/p/DcWLu5wuSzp</td></tr>
+          <tr><td>VT Bio Invertida</td><td>instagram.com/p/DcTN71PSmMP</td></tr>
+          <tr><td>Coronel Gianfranco</td><td>instagram.com/p/DcOB3n5yotY</td></tr>
+          <tr><td>Guiado pelo Coração</td><td>instagram.com/p/Db9EzrTvMA2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 9 · LEITURA -->
+<div class="slide">
+  <div class="slide-in">
+    <div class="lbl">Leitura</div>
+    <h2>E agora?</h2>
+    <div class="body">
+      <div class="ig" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:100%">
+        <div class="ib">
+          <div class="il">Tema específico rende mais conversa</div>
+          <div class="it">Coronel Gianfranco e a peça de segurança pública começaram a rodar depois das demais peças, o que explica o volume de exibições menor. Mesmo assim, a peça de segurança já lidera em comentários, com o comentário saindo a <strong>R$ 3,24</strong>, e o vídeo do Coronel Gianfranco vem logo atrás. Os dois falam de um assunto concreto, e o público responde a isso. As peças de apresentação do candidato entregam volume, mas geram menos conversa.</div>
+        </div>
+        <div class="ib">
+          <div class="il">O VT Pandemia é o conteúdo que mais viaja</div>
+          <div class="it">Ele sozinho respondeu por <strong>451 dos 748 compartilhamentos</strong> do período, ao menor custo entre todas as peças. É o conteúdo que as pessoas mandam para alguém, e isso amplia o alcance sem custo adicional. Vale considerar mais peças na mesma linha, de relato pessoal sobre um momento concreto.</div>
+        </div>
+        <div class="ib">
+          <div class="il">Cada conteúdo teve o seu papel</div>
+          <div class="it">Cada peça se destacou em uma frente. O Guiado pelo Coração trouxe o seguidor mais barato do período, a <strong>R$ 22,57</strong>. O Só Quem Fez foi o que mais puxou conversa, com o comentário a R$ 3,24. O VT Pandemia foi o conteúdo que mais viajou. E os carrosséis de apresentação, Carrossel Bio e Teve Um Cara Que, sustentaram volume de exibição trazendo seguidor, superando até peças com mais volume no índice de prioridade. Vale manter os quatro tipos rodando juntos, cada um cumprindo a sua função.</div>
+        </div>
+        <div class="ib">
+          <div class="il">Sugestões para o próximo período</div>
+          <div class="it">Sugerimos ampliar a presença de conteúdo com tema definido, no caminho do que a peça de segurança mostrou. E para as próximas peças de apresentação, vale testar versões um pouco mais curtas dos vídeos, que é onde a atenção começa a cair.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Alexandre Kalil &middot; 27/08 a 01/09/2026</span><span>Algorítmica &middot; Performance &amp; Dados</span></div>
+  </div>
+</div>
+
+<!-- 11 · FECHAMENTO -->
+<div class="slide dark">
+  <div class="cover-bg"></div>
+  <div class="slide-in">
+    <div class="end">
+      <img src="assets/logo-algoritmica.png" alt="Algorítmica" />
+      <h3>Relatório Parcial &middot; Alexandre Kalil</h3>
+      <p>Relatório Parcial &middot; 27 de agosto a 1&ordm; de setembro de 2026<br>Dados extraídos do Meta Ads &middot; PDT Minas Gerais<br>Produzido por Algorítmica &middot; Performance &amp; Dados</p>
+    </div>
+  </div>
+</div>
+
+<script>
+Chart.defaults.animation = false;
+var ageCtx = document.getElementById('chartIdade');
+new Chart(ageCtx, {
+  type: 'bar',
+  data: {
+    labels: ['18–24','25–34','35–44','45–54','55–64','65+'],
+    datasets: [{
+      data: [220,529,1070,991,985,825],
+      backgroundColor: ['#8C8C8C','#F26522','#1F1F1F','#8C8C8C','#8C8C8C','#C7C7C7'],
+      borderRadius: 4,
+      maxBarThickness: 40
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { callback: function(v){ return v + 'K'; } }, grid: { color: '#eee' } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+var genderCtx = document.getElementById('chartGenero');
+new Chart(genderCtx, {
+  type: 'doughnut',
+  data: { labels: ['Feminino','Masculino'], datasets: [{ data: [46.9, 52.9], backgroundColor: ['#F26522','#1F1F1F'], borderWidth: 0 }] },
+  options: { cutout: '72%', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+});
+</script>
+
+</body>
+</html>
