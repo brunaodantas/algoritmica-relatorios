@@ -677,3 +677,6 @@ a.btn-export { text-decoration: none; }
 
 /* Card 2 (Só Quem Fez) é peça de imagem, não vídeo: o embed pede menos zoom */
 .top-grid .top-card:nth-child(2) .ig-embed{width:100%;min-width:300px;top:-74px;height:660px}
+
+.tabs-weeks[hidden]{display:none !important}
+.week-pill.soon{background:transparent;border:1px dashed var(--border-strong);color:var(--text-muted);cursor:default}
