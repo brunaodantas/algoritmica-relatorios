@@ -674,3 +674,6 @@ a.btn-export { text-decoration: none; }
 #op-plano.section-dark .diag-card strong{color:#fff}
 #op-plano.section-dark .block-badge{color:#fff}
 #op-plano.section-dark .diag-inner{padding-top:var(--lg)}
+
+/* Card 2 (Só Quem Fez) é peça de imagem, não vídeo: o embed pede menos zoom */
+.top-grid .top-card:nth-child(2) .ig-embed{width:100%;min-width:300px;top:-74px;height:660px}
