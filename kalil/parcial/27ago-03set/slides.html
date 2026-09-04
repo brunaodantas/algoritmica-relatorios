@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Slides · Kalil · 27/08 a 03/09/2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* Paleta e escala do report do Celina */
+:root{
+  --ink:#0D0D0D; --ink-2:#171717; --bg:#FFFFFF; --surf:#FFFFFF; --surf-alt:#F6F6F7;
+  --line:rgba(0,0,0,.10); --line-2:rgba(0,0,0,.16);
+  --t1:#101010; --t2:#525252; --t3:#8C8C8C;
+  --acc:#FF6A00; --acc-dark:#E05A00; --acc-soft:rgba(255,106,0,.08); --acc-line:rgba(255,106,0,.20);
+  --g700:#3D3D3D; --g500:#6E6E6E; --g300:#B0B0B0; --g100:#E3E3E3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#555;-webkit-font-smoothing:antialiased;print-color-adjust:exact;font-size:15px}
+.slide{width:1280px;height:720px;overflow:hidden;position:relative;background:var(--bg);margin:0 auto 18px}
+.slide-in{position:absolute;inset:0;padding:46px 64px;display:flex;flex-direction:column}
+.slide.alt{background:var(--surf-alt)}
+.slide.dark{background:var(--ink)}
+.slide.dark .slide-in{color:#fff}
+
+.lbl{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.lbl::before{content:'';display:block;width:22px;height:2px;background:var(--acc)}
+h2{font-size:38px;font-weight:800;letter-spacing:-.02em;line-height:1.08;color:var(--t1)}
+.dark h2{color:#fff}
+.sub{font-size:15px;line-height:1.7;color:var(--t2);margin-top:10px;max-width:1000px}
+.dark .sub{color:rgba(255,255,255,.72)}
+.sub strong{color:var(--t1);font-weight:700}
+.dark .sub strong{color:#fff}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;margin-top:18px}
+.foot{font-size:10.5px;color:var(--t3);letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--line)}
+.dark .foot{color:rgba(255,255,255,.42);border-top-color:rgba(255,255,255,.14)}
+.foot img{height:19px}
+
+/* CAPA */
+.cover-bg{position:absolute;inset:0;background:
+  radial-gradient(circle at 26% 22%, rgba(255,106,0,.30), transparent 54%),
+  radial-gradient(circle at 82% 82%, rgba(255,106,0,.13), transparent 50%)}
+.cover-photo{position:absolute;inset:0;background:url('assets/hero-kalil.png') center/cover no-repeat;opacity:.30}
+.cover-in{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;justify-content:center}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,106,0,.15);border:1px solid rgba(255,106,0,.36);
+  color:#FFB566;font-size:11.5px;font-weight:800;padding:8px 15px;border-radius:100px;letter-spacing:.07em;text-transform:uppercase;align-self:flex-start}
+.cover-in h1{color:#fff;font-size:62px;font-weight:800;letter-spacing:-.035em;line-height:1.03;margin:22px 0 0}
+.cover-in h1 span{color:var(--acc);display:block}
+.cover-in p{color:rgba(255,255,255,.74);font-size:15px;line-height:1.7;max-width:800px;margin-top:18px}
+.cov-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+.ck{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:16px 18px}
+.ck .v{font-size:27px;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.ck .k{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.60);text-transform:uppercase;letter-spacing:.08em;margin-top:7px}
+
+/* KPI */
+.kpis{display:grid;gap:14px}
+.k5{grid-template-columns:repeat(5,1fr)} .k4{grid-template-columns:repeat(4,1fr)} .k3{grid-template-columns:repeat(3,1fr)}
+.kc{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05)}
+.kc.on{border-color:var(--acc-line);background:var(--acc-soft)}
+.kc .kl{font-size:10.5px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.07em}
+.kc .kv{font-size:29px;font-weight:800;letter-spacing:-.03em;color:var(--t1);margin-top:8px;line-height:1}
+.kc.on .kv{color:var(--acc)}
+.kc .ks{font-size:12px;color:var(--t2);margin-top:8px;line-height:1.5}
+.kc .ks strong{color:var(--t1);font-weight:700}
+.kc .kt{font-size:11.5px;font-weight:700;margin-top:8px;color:#1E9E5A}
+
+/* INSIGHT */
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ib{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.ib.g{background:var(--surf-alt)}
+.dark .ib{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.ib .il{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.10em;color:var(--acc);margin-bottom:8px}
+.ib .it{font-size:13.5px;line-height:1.6;color:var(--t2)}
+.ib .it strong{color:var(--t1);font-weight:700}
+.dark .ib .it{color:rgba(255,255,255,.75)} .dark .ib .it strong{color:#fff}
+.ib ul{margin:0;padding-left:17px}
+.ib li{font-size:13px;line-height:1.55;color:var(--t2);margin-bottom:8px}
+.ib li strong{color:var(--t1);font-weight:700}
+.dark .ib li{color:rgba(255,255,255,.75)} .dark .ib li strong{color:#fff}
+
+/* CHARTS */
+.cg{display:grid;gap:16px} .c2{grid-template-columns:1fr 1fr}
+.cc{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.ct{font-size:14px;font-weight:800;letter-spacing:-.015em;color:var(--t1)}
+.cd{font-size:12px;color:var(--t3);margin-top:4px;line-height:1.5;max-width:520px}
+.cw{margin-top:12px;height:250px;position:relative}
+.cw.tall{height:330px}
+.cw canvas{width:100%!important;height:100%!important}
+
+/* OBJETIVOS */
+.orow{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:11px}
+.ohead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.odot{width:9px;height:9px;border-radius:50%}
+.oname{font-size:14px;font-weight:800;color:var(--t1)}
+.ospend{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--t3)}
+.ostats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.os .v{font-size:16px;font-weight:800;color:var(--t1);display:block;line-height:1.1}
+.os .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin-top:3px;display:block}
+
+/* PEÇAS */
+.pg{display:grid;gap:14px} .p4{grid-template-columns:repeat(4,1fr)} .p3{grid-template-columns:repeat(3,1fr)}
+.pc{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:16px 17px;display:flex;flex-direction:column}
+.paward{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--acc);background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:100px;padding:5px 10px;align-self:flex-start;line-height:1.3}
+.pname{font-size:15px;font-weight:800;color:var(--t1);margin-top:10px}
+.pmain{margin-top:9px;padding-bottom:9px;border-bottom:1px dashed var(--line)}
+.pmain .v{font-size:24px;font-weight:800;color:var(--acc);letter-spacing:-.02em;line-height:1}
+.pmain .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--t3);margin-top:5px;display:block}
+.pmini{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.pmini .v{font-size:12.5px;font-weight:800;color:var(--t1);display:block}
+.pmini .k{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--t3);margin-top:2px;display:block;line-height:1.3}
+.pwhy{font-size:11px;line-height:1.5;color:var(--t3);border-top:1px dashed var(--line);padding-top:9px;margin-top:10px}
+.pwhy strong{color:var(--t1);font-weight:700}
+.subhead{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.10em;color:var(--t1);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<!-- 1 CAPA -->
+<div class="slide dark">
+  <div class="cover-photo"></div><div class="cover-bg"></div>
+  <div class="slide-in"><div class="cover-in">
+    <span class="badge">Report Semanal &middot; 27/08 a 03/09/2026</span>
+    <h1>Alexandre Kalil<span>Performance de Mídia</span></h1>
+    <p>Oito dias de <strong>ELEIÇÕES 2026</strong> no ar: R$ 55,5 mil investidos, 7,16 milhões de impressões e 2,52 milhões de pessoas alcançadas em Minas Gerais, com 2.247 novos seguidores no Instagram.</p>
+    <div class="cov-kpis">
+      <div class="ck"><div class="v">7,16 mi</div><div class="k">Impressões</div></div>
+      <div class="ck"><div class="v">2,52 mi</div><div class="k">Contas Alcançadas</div></div>
+      <div class="ck"><div class="v">49.056</div><div class="k">Visitas ao Perfil</div></div>
+      <div class="ck"><div class="v">58.450</div><div class="k">Interações</div></div>
+      <div class="ck"><div class="v">2.247</div><div class="k">Novos Seguidores</div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- 2 NÚMEROS -->
+<div class="slide">
+  <div class="slide-in">
+    <span class="lbl">Semana 27/08 a 03/09 &middot; Resumo Executivo</span>
+    <h2>A Semana em Números</h2>
+    <p class="sub">Primeira semana da estrutura <strong>ELEIÇÕES 2026</strong> no Meta Ads. As variações comparam a segunda metade do período, de 31 de agosto a 3 de setembro, com a primeira, de 27 a 30 de agosto.</p>
+    <div class="body">
+      <div class="kpis k4">
+        <div class="kc"><div class="kl">Investimento</div><div class="kv">R$ 55,5 mil</div><div class="kt">&#9650; 75,2% na segunda metade</div></div>
+        <div class="kc on"><div class="kl">Novos Seguidores</div><div class="kv">2.247</div><div class="kt">&#9650; 231,4% no Instagram</div></div>
+        <div class="kc on"><div class="kl">Custo por Seguidor</div><div class="kv">R$ 30,12</div><div class="ks">Na frente de visitas ao perfil. Melhor peça a <strong>R$ 5,36</strong></div></div>
+        <div class="kc"><div class="kl">Alcance</div><div class="kv">2,52 mi</div><div class="kt">&#9650; 51,9% na segunda metade</div></div>
+      </div>
+      <div class="kpis k4" style="margin-top:14px">
+        <div class="kc"><div class="kl">Impressões</div><div class="kv">7,16 mi</div><div class="ks">Cada pessoa viu <strong>2,84 vezes</strong>, ante 1,81 na primeira metade</div></div>
+        <div class="kc"><div class="kl">Visitas ao Perfil</div><div class="kv">49.056</div><div class="ks">A <strong>R$ 0,44</strong> cada visita</div></div>
+        <div class="kc"><div class="kl">Interações</div><div class="kv">58.450</div><div class="kt">&#9650; 54,7% na segunda metade</div></div>
+        <div class="kc"><div class="kl">Visualizações</div><div class="kv">568 mil</div><div class="kt">&#9650; 53,6% na segunda metade</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 3 INSTAGRAM + GRÁFICO -->
+<div class="slide alt">
+  <div class="slide-in">
+    <span class="lbl">Efeito no Instagram</span>
+    <h2>Orgânico e Pago, Contra a Semana Anterior</h2>
+    <div class="body">
+      <div class="kpis k3">
+        <div class="kc on"><div class="kl">Visualizações</div><div class="kv">5,62 mi</div><div class="kt">&#9650; 497,3%</div></div>
+        <div class="kc"><div class="kl">Alcance</div><div class="kv">3,87 mi</div><div class="kt">&#9650; 1.853,8%</div></div>
+        <div class="kc"><div class="kl">Interações com o Conteúdo</div><div class="kv">77,2 mil</div><div class="kt">&#9650; 154,2%</div></div>
+      </div>
+      <div class="cg c2" style="margin-top:14px">
+        <div class="cc">
+          <div class="ct">Novos Seguidores por Dia</div>
+          <div class="cd">Ganho diário no perfil, de 27 de agosto a 2 de setembro, conforme o Meta Business Insights. O pico de 30/08, com 418, é o maior dia desde a estreia.</div>
+          <div class="cw"><canvas id="cSeg"></canvas></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="kpis k3" style="gap:11px">
+            <div class="kc"><div class="kl">Cliques no Link</div><div class="kv">51,0 mil</div><div class="ks">ante <strong>245</strong></div></div>
+            <div class="kc"><div class="kl">Visitas ao Perfil</div><div class="kv">73,2 mil</div><div class="kt">&#9650; 1.224,2%</div></div>
+            <div class="kc on"><div class="kl">Novos Seguidores</div><div class="kv">2.247</div><div class="ks">Base: <strong>244,7 mil</strong></div></div>
+          </div>
+          <div class="ib" style="flex:1">
+            <div class="il">Leitura da Semana</div>
+            <div class="it">O ritmo foi mais lento nos primeiros dias, cresceu depois do período de aprendizado e está estável desde 30 de agosto. O investimento subiu 75,2% e as impressões 95,4%, com as interações em alta de 54,7%. Como as impressões cresceram mais que o alcance, cada pessoa passou a ver 2,33 vezes, ante 1,81, e o custo por interação foi de R$ 0,88 para <strong>R$ 1,00</strong>. O acervo de <strong>2,52 milhões de pessoas alcançadas</strong> alimenta as listas de quem já teve contato, e essa frente entrega a interação mais barata da conta, a R$ 0,37.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 4 OBJETIVOS -->
+<div class="slide">
+  <div class="slide-in">
+    <span class="lbl">Investimento &amp; Resultado</span>
+    <h2>O Que Cada Objetivo Entregou</h2>
+    <p class="sub">Como os R$ 55,5 mil foram distribuídos entre as frentes e o que cada uma trouxe de volta. Cada objetivo roda em campanhas separadas, uma por região e outra por cluster de interesse.</p>
+    <div class="body">
+      <div class="cg c2" style="grid-template-columns:0.85fr 1.15fr;align-items:start">
+        <div class="cc">
+          <div class="ct">Investimento por Objetivo</div>
+          <div class="cd">Visitas ao Perfil leva 40,9% da verba e Engajamento 31,7%.</div>
+          <div class="cw tall"><canvas id="cObj"></canvas></div>
+        </div>
+        <div>
+          <div class="orow"><div class="ohead"><span class="odot" style="background:#FF6A00"></span><span class="oname">Visitas ao Perfil</span><span class="ospend">R$ 22,7 mil &middot; 40,9%</span></div>
+            <div class="ostats"><div class="os"><span class="v">49.056</span><span class="k">Visitas</span></div><div class="os"><span class="v">R$ 0,44</span><span class="k">Custo por Visita</span></div><div class="os"><span class="v">7.427</span><span class="k">Interações</span></div><div class="os"><span class="v">3,1%</span><span class="k">Viram Seguidor</span></div></div></div>
+          <div class="orow"><div class="ohead"><span class="odot" style="background:#3D3D3D"></span><span class="oname">Engajamento</span><span class="ospend">R$ 17,6 mil &middot; 31,7%</span></div>
+            <div class="ostats"><div class="os"><span class="v">42.185</span><span class="k">Interações</span></div><div class="os"><span class="v">R$ 0,42</span><span class="k">Custo por Interação</span></div><div class="os"><span class="v">584</span><span class="k">Compartilh.</span></div><div class="os"><span class="v">1.981</span><span class="k">Comentários</span></div></div></div>
+          <div class="orow"><div class="ohead"><span class="odot" style="background:#6E6E6E"></span><span class="oname">Visualizações</span><span class="ospend">R$ 15,0 mil &middot; 27,1%</span></div>
+            <div class="ostats"><div class="os"><span class="v">303.081</span><span class="k">Visualizações</span></div><div class="os"><span class="v">R$ 0,05</span><span class="k">Custo por Visual.</span></div><div class="os"><span class="v">8.769</span><span class="k">Interações</span></div><div class="os"><span class="v">R$ 1,71</span><span class="k">Custo por Interação</span></div></div></div>
+          <div class="orow"><div class="ohead"><span class="odot" style="background:#B0B0B0"></span><span class="oname">Clusters de Público</span><span class="ospend">R$ 130,61 &middot; 0,2%</span></div>
+            <div class="ostats"><div class="os"><span class="v">70</span><span class="k">Interações</span></div><div class="os"><span class="v">R$ 1,87</span><span class="k">Custo por Interação</span></div><div class="os"><span class="v">2</span><span class="k">Clusters no Ar</span></div><div class="os"><span class="v">1 dia</span><span class="k">Tempo no Ar</span></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 5 TERRITÓRIO -->
+<div class="slide alt">
+  <div class="slide-in">
+    <span class="lbl">Território</span>
+    <h2>A Malha Geográfica da Semana</h2>
+    <p class="sub">A operação cobre as macrorregiões do plano em Minas Gerais, mais dois recortes ligados à segurança pública na Grande BH. A verba geográfica passou de <strong>R$ 20,2 mil para R$ 35,3 mil</strong> entre a primeira e a segunda metade.</p>
+    <div class="body">
+      <div class="cg c2" style="grid-template-columns:1.05fr 0.95fr;align-items:start">
+        <div class="cc">
+          <div class="ct">Investimento por Região</div>
+          <div class="cd">As oito praças que receberam verba na semana, somando engajamento, visitas ao perfil e visualizações.</div>
+          <div class="cw tall"><canvas id="cGeo"></canvas></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="kpis k3" style="gap:11px">
+            <div class="kc on"><div class="kl">Maior Incidência Criminal</div><div class="kv">R$ 0,22</div><div class="ks">por interação, o menor da campanha</div></div>
+            <div class="kc"><div class="kl">Grande BH</div><div class="kv">R$ 0,53</div><div class="ks">maior volume da operação</div></div>
+            <div class="kc"><div class="kl">Triângulo</div><div class="kv">R$ 2,02</div><div class="ks">quase quatro vezes a Grande BH</div></div>
+          </div>
+          <div class="ib" style="flex:1">
+            <div class="il">A Leitura por Praça</div>
+            <div class="it">Os dois recortes de segurança na Grande BH são os mais eficientes: as <strong>cidades de maior incidência criminal</strong> entregam a interação a R$ 0,22 e a linha de <strong>Segurança na Grande BH</strong> a R$ 0,45, ambas com verba pequena. A <strong>Região Metropolitana de BH</strong> é a maior praça, com R$ 10,8 mil e 1,56 milhão de exibições. No meio ficam Vale do Rio Doce e Zona da Mata (R$ 1,01), Norte, Jequitinhonha e Mucuri (R$ 1,64) e Sul de Minas (R$ 1,73). As duas praças do Triângulo fecham a lista, a R$ 2,02 e R$ 2,03, e são as únicas em que rodaram apenas peças de apresentação.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 6 PÚBLICO -->
+<div class="slide">
+  <div class="slide-in">
+    <span class="lbl">Perfil do Público</span>
+    <h2>Quem Respondeu à Campanha</h2>
+    <div class="body">
+      <div class="kpis k3">
+        <div class="kc on"><div class="kl">O Eleitor 45+</div><div class="kv">59,8%</div><div class="ks">das exibições, e é onde está a melhor resposta. A faixa de <strong>55 a 64 anos</strong> tem a maior taxa de interação, 0,95%, contra média de 0,82%.</div></div>
+        <div class="kc"><div class="kl">Faixa 35 a 44 Anos</div><div class="kv">23,6%</div><div class="ks">das exibições, a maior fatia isolada, com a <strong>menor taxa entre os adultos</strong>, 0,62%. A interação custa R$ 1,06, acima da média de R$ 0,95.</div></div>
+        <div class="kc"><div class="kl">Equilíbrio de Gênero</div><div class="kv">46,0%</div><div class="ks">das exibições foram para mulheres, que respondem com taxa maior que a dos homens, <strong>0,85% contra 0,79%</strong>, somando 27,8 mil interações.</div></div>
+      </div>
+      <div class="cg c2" style="margin-top:14px;grid-template-columns:1.15fr 0.85fr;align-items:start">
+        <div class="cc">
+          <div class="ct">Exibições e Interações por Faixa Etária</div>
+          <div class="cd">Exibições nas barras, em milhões na escala da esquerda, e interações na linha, em milhares na escala da direita. As escalas são diferentes.</div>
+          <div class="cw"><canvas id="cIdade"></canvas></div>
+        </div>
+        <div class="ib g" style="align-self:stretch">
+          <div class="il">Plataforma</div>
+          <div class="it">Das exibições da semana, <strong>70,5% saíram no Instagram</strong> e 29,5% no Facebook. Nenhuma peça ficou com entrega zerada no Instagram. As duas com maior concentração lá são o Carrossel Bio, com 99,0%, e o Carrossel Teve Um Cara Que, com 98,3%. A peça de segurança é a que menos aparece na plataforma prioritária, com 46,7% das exibições no Instagram.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 7 DESTAQUES -->
+<div class="slide alt">
+  <div class="slide-in">
+    <span class="lbl">Criativos</span>
+    <h2>Os Destaques da Semana</h2>
+    <p class="sub">O criativo número 1 de cada frente, pelo critério que importa em cada uma. As peças foram assistidas na íntegra.</p>
+    <div class="body">
+      <div class="pg p4">
+        <div class="pc"><span class="paward">&#9733; Visitas ao Perfil</span><div class="pname">VT Bio Invertida</div>
+          <div class="pmain"><span class="v">R$ 10,63</span><span class="k">Custo por Seguidor</span></div>
+          <div class="pmini"><div><span class="v">30</span><span class="k">Seguidores</span></div><div><span class="v">1,01</span><span class="k">Seg./mil</span></div><div><span class="v">R$ 318</span><span class="k">Investido</span></div></div>
+          <div class="pwhy"><strong>Por que é destaque:</strong> apresenta o candidato em primeira pessoa, em ambiente doméstico e com legenda na tela. Traz um seguidor a cada mil exibições, a melhor marca da semana.</div></div>
+        <div class="pc"><span class="paward">&#9733; Engajamento</span><div class="pname">Só Quem Fez, Segurança</div>
+          <div class="pmain"><span class="v">R$ 0,22</span><span class="k">Custo por Interação</span></div>
+          <div class="pmini"><div><span class="v">8.044</span><span class="k">Interações</span></div><div><span class="v">582</span><span class="k">Comentários</span></div><div><span class="v">R$ 1.770</span><span class="k">Investido</span></div></div>
+          <div class="pwhy"><strong>Por que é destaque:</strong> peça de imagem com o texto na arte afirmando o menor índice de homicídios em 17 anos. Número verificável na primeira linha, legível em um segundo de rolagem.</div></div>
+        <div class="pc"><span class="paward">&#9733; Visualizações</span><div class="pname">VT Pandemia</div>
+          <div class="pmain"><span class="v">594</span><span class="k">Compartilhamentos</span></div>
+          <div class="pmini"><div><span class="v">5,4%</span><span class="k">Até o fim</span></div><div><span class="v">R$ 25,86</span><span class="k">Por compart.</span></div><div><span class="v">68s</span><span class="k">Duração</span></div></div>
+          <div class="pwhy"><strong>Por que é destaque:</strong> aos onze segundos o vídeo corta do candidato para uma profissional de saúde de máscara, e essa virada sustenta a peça. Responde por mais da metade dos compartilhamentos da semana.</div></div>
+        <div class="pc"><span class="paward">&#9733; Ponto de atenção</span><div class="pname">Coronel Gianfranco</div>
+          <div class="pmain"><span class="v">14s</span><span class="k">Até o apoiador aparecer</span></div>
+          <div class="pmini"><div><span class="v">8s</span><span class="k">Atenção média</span></div><div><span class="v">1,3%</span><span class="k">Até o fim</span></div><div><span class="v">85s</span><span class="k">Duração</span></div></div>
+          <div class="pwhy"><strong>Por que é destaque:</strong> o apoio de um ex-comandante do Batalhão de Choque é a credencial da peça, mas ele só aparece aos quatorze segundos, e o espectador típico sai aos oito.</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 8 CONTEÚDOS -->
+<div class="slide">
+  <div class="slide-in">
+    <span class="lbl">Conteúdos</span>
+    <h2>O Que Cada Conteúdo Entregou</h2>
+    <p class="sub">Dezesseis peças no ar. O índice pesa o compartilhamento com 40%, o comentário com 30%, a curtida com 20% e o salvamento com 10%, tudo por mil exibições.</p>
+    <div class="body">
+      <div class="kpis k4">
+        <div class="kc on"><div class="kl">O líder do índice</div><div class="kv">100,0</div><div class="ks">de nota no <strong>Só Quem Fez</strong>. Coragem (37,0), Coronel Gianfranco (36,9) e VT Pandemia (36,2) vêm na sequência, contra 5,7 do Carrossel Bio.</div></div>
+        <div class="kc on"><div class="kl">O que mais circula</div><div class="kv">0,416</div><div class="ks">compartilhamentos por mil no <strong>Só Quem Fez</strong>, o dobro da segunda. Também a que mais gera comentário, 3,97 por mil.</div></div>
+        <div class="kc"><div class="kl">O seguidor mais barato</div><div class="kv">R$ 5,36</div><div class="ks">no <strong>VT Pandemia</strong> quando roda na frente de visitas ao perfil. A mesma peça, nas outras frentes, não tem esse papel.</div></div>
+        <div class="kc"><div class="kl">Onde vale ajustar</div><div class="kv">R$ 50,36</div><div class="ks">por seguidor no <strong>Carrossel Bio</strong>, que recebeu o maior investimento da frente.</div></div>
+      </div>
+      <div class="ig" style="margin-top:16px">
+        <div class="ib"><div class="il">O Que Puxa o Índice</div><div class="it">O <strong>Só Quem Fez</strong> abre distância porque acumula as três reações que mais pesam: 0,416 compartilhamentos, 3,97 comentários e 50,17 curtidas por mil, e é a única peça que passa de um comentário por mil. Abaixo vêm três peças de perfil parecido, todas de vídeo com o candidato ou um apoiador falando direto para a câmera. Na outra ponta ficam os carrosséis: o Carrossel Bio fecha a lista com nota 5,7 e o compartilhamento a R$ 355,10.</div></div>
+        <div class="ib g"><div class="il">Onde a Verba Está e Onde o Seguidor Está</div><div class="it">As quatro peças mais baratas da frente de visitas ao perfil são todas de vídeo em primeira pessoa e ficam entre <strong>R$ 5,36 e R$ 12,41</strong> por seguidor, mas juntas receberam pouco mais de um décimo da verba. Os dois carrosséis de maior investimento fizeram o caminho oposto: somam três quartos da frente e entregam o seguidor a R$ 50,36 e R$ 38,22, acima da média de R$ 30,12.</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 9 CLUSTERS -->
+<div class="slide alt">
+  <div class="slide-in">
+    <span class="lbl">Conteúdos</span>
+    <h2>Os Conteúdos nos Públicos Segmentados</h2>
+    <p class="sub">Três peças estrearam nos públicos montados por interesse e comportamento, no dia 3 de setembro, e receberam R$ 130,61 no total. A leitura é dos primeiros dias.</p>
+    <div class="body">
+      <div class="pg p3">
+        <div class="pc"><span class="paward">&#9733; Tema Saúde &middot; A que mais gerou reação</span><div class="pname">Coragem</div>
+          <div class="pmain"><span class="v">5,17</span><span class="k">Reações por mil exibições</span></div>
+          <div class="pmini"><div><span class="v">R$ 101,56</span><span class="k">Investido</span></div><div><span class="v">10.254</span><span class="k">Exibições</span></div><div><span class="v">242</span><span class="k">Até o fim</span></div></div>
+          <div class="pwhy"><strong>O que a peça faz:</strong> vídeo vertical de 40 segundos, gravado em estúdio de rádio, com o candidato em close e legenda queimada palavra a palavra, então funciona sem som. Ele aparece já no primeiro segundo, sem vinheta. Aos oito segundos entra a única imagem de arquivo, uma manchete sobre a recuperação de Belo Horizonte depois do temporal. A promessa de saúde só chega aos 32 segundos, e a atenção média para em 7.</div></div>
+        <div class="pc"><span class="paward">&#9733; Tema Saúde &middot; A peça de card</span><div class="pname">Saúde, Portas Abertas</div>
+          <div class="pmain"><span class="v">3,44</span><span class="k">Reações por mil exibições</span></div>
+          <div class="pmini"><div><span class="v">R$ 29,05</span><span class="k">Investido</span></div><div><span class="v">3.780</span><span class="k">Exibições</span></div><div><span class="v">0</span><span class="k">Comentários</span></div></div>
+          <div class="pwhy"><strong>O que a peça faz:</strong> card verde com a foto do candidato no topo e a promessa ao lado: hospitais regionais abertos e menos deslocamento para consulta, exame e cirurgia. É leitura de um segundo de rolagem, mas o que afirma é promessa, não fato conferível. Com um terço da verba do Coragem, gera dois terços da reação por mil e nenhum comentário.</div></div>
+        <div class="pc"><span class="paward">&#9733; Cleitinho &middot; Estreou no fim do período</span><div class="pname">Card Independente</div>
+          <div class="pmain"><span class="v">04/09</span><span class="k">Primeiro dia de entrega</span></div>
+          <div class="pmini"><div><span class="v">R$ 0,00</span><span class="k">No período</span></div><div><span class="v">0</span><span class="k">Exibições</span></div><div><span class="v">3/9, 19h</span><span class="k">Subida</span></div></div>
+          <div class="pwhy"><strong>O que a peça faz:</strong> card de citação sobre foto do candidato ao microfone, com a frase Não vou perguntar em quem você vota para presidente, vou resolver o problema da sua cidade. É o recado de independência partidária. A peça subiu às 19h do dia 3 e não chegou a entregar no período, então a leitura fica para o próximo report.</div></div>
+      </div>
+      <div class="ib g" style="margin-top:14px"><div class="il">Ponto de Atenção do Coragem</div><div class="it">A peça dura 40 segundos e a atenção média fica em <strong>7 segundos</strong>, 17% da duração. A promessa de saúde, motivo de ela rodar no cluster de saúde, entra aos 32 segundos, depois do ponto em que a maior parte do público já saiu: 242 pessoas assistiram até o fim, 2,4% das exibições. Sugerimos uma versão curta que comece pela manchete de arquivo, aos 8 segundos, e traga a frase de saúde para os primeiros 15 segundos. A peça já está em 9:16, então serve a Stories e Reels sem novo corte.</div></div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica.png" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 10 PLANO A -->
+<div class="slide dark">
+  <div class="slide-in">
+    <span class="lbl">Leitura &amp; Próximos Passos</span>
+    <h2>O Que Aprendemos</h2>
+    <div class="body">
+      <div class="ib" style="margin-bottom:14px">
+        <div class="il">A Estratégia Desta Fase &middot; Construir Audiência e Aquecer</div>
+        <div class="it">Oito dias de campanha somam <strong>2,52 milhões de pessoas alcançadas</strong>, 7,16 milhões de exibições e 568 mil visualizações completas. É esse acervo que alimenta as listas de quem já teve contato, e essa frente entrega a <strong>interação mais barata da conta, a R$ 0,37</strong>, com 6,5% do investimento. A escala foi absorvida: o investimento subiu 75,2% entre as duas metades da semana e o alcance acompanhou, em alta de 51,9%. O trabalho daqui até a eleição é manter esse eleitorado por perto e aquecido.</div>
+      </div>
+      <div class="ib">
+        <div class="il">O Que Está Funcionando</div>
+        <ul>
+          <li><strong>A campanha encontrou o tom.</strong> As peças em que o candidato fala direto para a câmera, em ambiente comum e sem palanque, são as que o público mais devolve.</li>
+          <li><strong>O eleitor responde a assunto, não a slogan.</strong> Quando a peça trata de um tema definido e traz um fato verificável na abertura, a reação vem em comentário e compartilhamento.</li>
+          <li><strong>Tema concreto rende conversa barata.</strong> Só Quem Fez e Coronel Gianfranco lideram em custo por interação, a R$ 0,22 e R$ 0,45, com menos de 6% da verba e 11,3 mil interações.</li>
+          <li><strong>O eleitor de 35 anos ou mais é quem mais responde.</strong> Concentra 83,4% das exibições e 83,6% das interações, sustentando a taxa da campanha inteira, 0,82%.</li>
+          <li><strong>A frente de visitas ao perfil é o motor da base.</strong> Levou 73,2 mil pessoas ao perfil e 3,1% passaram a seguir, o que sustenta os 2.247 novos seguidores.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica-branco.svg" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<!-- 11 PLANO B -->
+<div class="slide dark">
+  <div class="slide-in">
+    <span class="lbl">Leitura &amp; Próximos Passos</span>
+    <h2>O Que Vamos Atacar de 4 a 10 de Setembro</h2>
+    <div class="body">
+      <div class="ig">
+        <div class="ib"><div class="il">Mídia</div><ul>
+          <li><strong>Realocar verba para engajamento.</strong> A frente de visualizações leva 27,1% do investimento e entrega a interação a R$ 1,76 e R$ 1,94, contra R$ 0,44 e R$ 0,37 nas de engajamento. Passando metade dessa verba, a projeção é de mais 35,3% de interação sem perder seguidor.</li>
+          <li><strong>Ajustar a entrega por faixa de idade.</strong> A faixa de 35 a 44 recebe 23,6% das exibições e é a que menos responde entre os adultos, a 0,62%. Vamos reduzir a presença nela e reforçar as faixas de 45 anos ou mais.</li>
+          <li><strong>Escalar a linha que traz seguidor mais barato.</strong> Ampliar os vídeos de apresentação em primeira pessoa nas praças em que ainda não rodam, dentro da frente de visitas ao perfil.</li>
+          <li><strong>Levar as peças temáticas ao Triângulo.</strong> As praças do Triângulo estão acima de R$ 2,00 por interação, rodando apenas peças de apresentação.</li>
+        </ul></div>
+        <div class="ib g"><div class="il">Conteúdo</div><ul>
+          <li><strong>Sugerimos o formato temático para outras pautas.</strong> Segurança foi o primeiro tema testado e é o que tem o melhor custo por conversa. Sugerimos o mesmo formato, com afirmação verificável na abertura, para saúde, custo de vida e emprego.</li>
+          <li><strong>Sugerimos versões mais curtas dos vídeos longos.</strong> A atenção média fica em 16% da duração no VT Pandemia e em 9% no Coronel Gianfranco. Sugerimos versões mais curtas das duas peças, e indicamos o trecho de maior força de cada uma.</li>
+          <li><strong>Sugerimos uma versão curta do Coragem.</strong> A promessa de saúde entra aos 32 segundos e a atenção média para em 7. Uma versão que abra pela manchete de arquivo e traga a saúde para os primeiros 15 segundos deve sustentar melhor no cluster.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="foot"><span>Report Semanal &middot; Alexandre Kalil &middot; 27/08 a 03/09/2026</span><img src="assets/logo-algoritmica-branco.svg" alt="Algorítmica" /></div>
+  </div>
+</div>
+
+<script>
+Chart.defaults.animation = false;
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.color = '#8C8C8C';
+new Chart(document.getElementById('cSeg'), {type:'line',
+  data:{labels:['27 ago','28 ago','29 ago','30 ago','31 ago','1 set','2 set'],
+    datasets:[{data:[153,275,328,418,379,371,323],borderColor:'#3D3D3D',backgroundColor:'rgba(255,106,0,0.12)',borderWidth:2,fill:true,tension:.4,pointBackgroundColor:'#3D3D3D',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},border:{display:false},ticks:{font:{size:11,weight:'600'}}},
+      y:{min:0,max:500,grid:{color:'rgba(0,0,0,0.05)',drawTicks:false},border:{display:false},ticks:{font:{size:11},stepSize:100}}}}});
+new Chart(document.getElementById('cObj'), {type:'doughnut',
+  data:{labels:['Visitas ao Perfil','Engajamento','Visualizações','Clusters'],
+    datasets:[{data:[22720.26,17617.73,15038.43,130.61],backgroundColor:['#FF6A00','#3D3D3D','#6E6E6E','#B0B0B0'],borderColor:'#fff',borderWidth:3}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+    plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,padding:12,font:{size:11.5,weight:'600'},color:'#525252',usePointStyle:true,pointStyle:'circle'}}}}});
+new Chart(document.getElementById('cGeo'), {type:'bar',
+  data:{labels:['Grande BH','Norte, Jequit. e Mucuri','Vale do Rio Doce e Z. da Mata','Sul de Minas','Uberlândia e Uberaba','Demais do Triângulo','Maior incidência criminal','Segurança na Grande BH'],
+    datasets:[{data:[10829.72,9836.95,9017.79,8490.31,7388.11,6589.28,1769.92,1454.34],
+      backgroundColor:['#FF6A00','#FF6A00','#FF6A00','#6E6E6E','#6E6E6E','#6E6E6E','#6E6E6E','#6E6E6E'],borderRadius:4,maxBarThickness:22}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:'rgba(0,0,0,0.05)',drawTicks:false},border:{display:false},ticks:{font:{size:10.5},callback:function(v){return 'R$ '+(v/1000).toFixed(1).replace('.',',')+' mil';}}},
+      y:{grid:{display:false},border:{display:false},ticks:{font:{size:10.5,weight:'600'},color:'#555'}}}}});
+new Chart(document.getElementById('cIdade'), {type:'bar',
+  data:{labels:['18 a 24','25 a 34','35 a 44','45 a 54','55 a 64','65+'],
+    datasets:[{label:'Exibições',data:[339058,847888,1686160,1519056,1476862,1287677],backgroundColor:'#FF6A00',borderRadius:4,maxBarThickness:40,yAxisID:'y'},
+      {label:'Interações',type:'line',data:[2198,7361,10378,13118,14074,11320],borderColor:'#171717',borderWidth:2.5,tension:.35,pointRadius:4,pointBackgroundColor:'#171717',pointBorderColor:'#fff',pointBorderWidth:2,yAxisID:'y1'}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,padding:12,font:{size:11.5,weight:'600'},color:'#525252',usePointStyle:true,pointStyle:'circle'}}},
+    scales:{x:{grid:{display:false},border:{display:false},ticks:{font:{size:11,weight:'600'}}},
+      y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)',drawTicks:false},border:{display:false},ticks:{font:{size:10.5},callback:function(v){return (v/1000000).toFixed(1).replace('.',',')+' mi';}}},
+      y1:{beginAtZero:true,position:'right',grid:{display:false},border:{display:false},ticks:{font:{size:10.5},callback:function(v){return (v/1000)+' mil';}}}}}});
+</script>
+</body>
+</html>
