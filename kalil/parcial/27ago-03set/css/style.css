@@ -685,3 +685,7 @@ a.btn-export { text-decoration: none; }
 .plan-grid > .plan-list:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - (var(--lg) / 2))}
 
 #op-plano.section-dark .plan-list strong{color:#fff}
+
+/* modo PDF: usado pelo slides.html via ?pdf=1, esconde nav/barra fixos */
+body.is-pdf .nav{display:none!important}
+body.is-pdf .tabs-bar{position:static!important}
