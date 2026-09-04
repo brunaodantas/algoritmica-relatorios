@@ -60,17 +60,27 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── Investimento por região ──
   var geo = document.getElementById('chartGeoOP');
   if (geo) {
+    var labels = ['Grande BH', 'Norte, Jequitinhonha e Mucuri', 'Vale do Rio Doce e Zona da Mata', 'Sul de Minas',
+                  'Uberlândia e Uberaba', 'Demais cidades do Triângulo', 'Cidades de maior incidência criminal', 'Segurança na Grande BH'];
+    var vals = [10829.72, 9836.95, 9017.79, 8490.31, 7388.11, 6589.28, 1769.92, 1454.34];
+    var cores = labels.map(function (l, i) { return i < 3 ? '#FF6A00' : '#6E6E6E'; });
     new Chart(geo, {
       type: 'bar',
-      data: { labels: [['Grande','BH'], ['Norte e','Jequitinhonha'], ['Vale do Rio Doce','e Zona da Mata'], ['Sul de','Minas'], ['Uberlândia','e Uberaba'], ['Demais do','Triângulo'], ['Incidência','criminal'], ['Segurança','Grande BH']],
-        datasets: [
-          { label: 'Investimento na semana', data: [10829.72, 9836.95, 9017.79, 8490.31, 7388.11, 6589.28, 1769.92, 1454.34], backgroundColor: '#FF6A00', borderRadius: 4, maxBarThickness: 46 }] },
-      options: { responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false },
-          tooltip: Object.assign({}, TIP, { callbacks: { label: function (c) { return '  R$ ' + c.parsed.y.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } } }) },
-        scales: { x: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 10.5, weight: '600' }, color: '#888', autoSkip: false, maxRotation: 0, minRotation: 0 } },
-          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)', drawTicks: false }, border: { display: false },
-               ticks: { font: { size: 11 }, color: '#AAA', padding: 6, callback: function (v) { return 'R$ ' + (v / 1000) + ' mil'; } } } } }
+      data: { labels: labels, datasets: [{ data: vals, backgroundColor: cores, borderRadius: 4, borderSkipped: false, barThickness: 'flex', maxBarThickness: 26 }] },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: Object.assign({}, TIP, {
+            callbacks: { label: function (c) { return ' R$ ' + c.parsed.x.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' investidos'; } }
+          })
+        },
+        scales: {
+          x: { grid: { color: 'rgba(0,0,0,0.05)', drawTicks: false }, border: { display: false },
+               ticks: { font: { size: 11 }, color: '#AAA', callback: function (v) { return 'R$ ' + (v / 1000).toFixed(1).replace('.', ',') + ' mil'; } } },
+          y: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 11, weight: '600' }, color: '#555' } }
+        }
+      }
     });
   }
 
