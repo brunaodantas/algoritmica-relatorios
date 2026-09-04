@@ -15,17 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (nt && nl) nt.addEventListener('click', function () { nl.classList.toggle('open'); });
 
 
-  // troca de mes na barra de reports
-  var mesBtns = document.querySelectorAll('.month-tab');
-  mesBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      mesBtns.forEach(function (x) { x.classList.remove('active'); });
-      b.classList.add('active');
-      document.querySelectorAll('[data-month-panel]').forEach(function (p) {
-        p.hidden = p.getAttribute('data-month-panel') !== b.getAttribute('data-month');
-      });
-    });
-  });
 
   if (typeof Chart === 'undefined') return;
   Chart.defaults.font.family = "'Inter', sans-serif";

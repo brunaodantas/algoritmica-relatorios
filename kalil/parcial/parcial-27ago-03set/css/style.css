@@ -683,3 +683,5 @@ a.btn-export { text-decoration: none; }
 
 /* ultimo card do plano, quando fica sozinho na linha, vai para o meio */
 .plan-grid > .plan-list:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - (var(--lg) / 2))}
+
+#op-plano.section-dark .plan-list strong{color:#fff}
