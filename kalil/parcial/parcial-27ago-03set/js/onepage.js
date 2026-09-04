@@ -62,14 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (geo) {
     new Chart(geo, {
       type: 'bar',
-      data: { labels: ['Grande BH', 'Norte, Jequitinhonha\ne Mucuri', 'Vale do Rio Doce\ne Zona da Mata', 'Sul de Minas', 'Uberlândia\ne Uberaba', 'Demais cidades\ndo Triângulo', 'Incidência\ncriminal', 'Segurança\nGrande BH'],
+      data: { labels: [['Grande','BH'], ['Norte e','Jequitinhonha'], ['Vale do Rio Doce','e Zona da Mata'], ['Sul de','Minas'], ['Uberlândia','e Uberaba'], ['Demais do','Triângulo'], ['Incidência','criminal'], ['Segurança','Grande BH']],
         datasets: [
-          { label: '27 a 30/08', data: [4039.41, 3489.44, 3121.72, 3045.34, 3086.91, 2175.00, 575.49, 634.93], backgroundColor: '#B0B0B0', borderRadius: 4, maxBarThickness: 34 },
-          { label: '31/08 a 03/09', data: [6790.40, 6347.60, 5896.15, 5445.07, 4301.30, 4414.31, 1194.46, 819.44], backgroundColor: '#FF6A00', borderRadius: 4, maxBarThickness: 34 }] },
+          { label: 'Investimento na semana', data: [10829.72, 9836.95, 9017.79, 8490.31, 7388.11, 6589.28, 1769.92, 1454.34], backgroundColor: '#FF6A00', borderRadius: 4, maxBarThickness: 46 }] },
       options: { responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, padding: 14, font: { size: 12, weight: '600' }, color: '#525252', usePointStyle: true, pointStyle: 'circle' } },
+        plugins: { legend: { display: false },
           tooltip: Object.assign({}, TIP, { callbacks: { label: function (c) { return '  R$ ' + c.parsed.y.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } } }) },
-        scales: { x: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 10.5, weight: '600' }, color: '#888', maxRotation: 0 } },
+        scales: { x: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 10.5, weight: '600' }, color: '#888', autoSkip: false, maxRotation: 0, minRotation: 0 } },
           y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)', drawTicks: false }, border: { display: false },
                ticks: { font: { size: 11 }, color: '#AAA', padding: 6, callback: function (v) { return 'R$ ' + (v / 1000) + ' mil'; } } } } }
     });
@@ -82,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'bar',
       data: { labels: ['18 a 24', '25 a 34', '35 a 44', '45 a 54', '55 a 64', '65+'],
         datasets: [
-          { label: 'Exibições', data: [339058, 847888, 1686160, 1519056, 1476862, 1287677], backgroundColor: '#B0B0B0', borderRadius: 4, maxBarThickness: 44, yAxisID: 'y' },
-          { label: 'Interações', type: 'line', data: [2198, 7361, 10378, 13118, 14074, 11320], borderColor: '#FF6A00', backgroundColor: '#FF6A00', borderWidth: 2.5, tension: 0.35, pointRadius: 4, pointBackgroundColor: '#FF6A00', pointBorderColor: '#fff', pointBorderWidth: 2, yAxisID: 'y1' }] },
+          { label: 'Exibições', data: [339058, 847888, 1686160, 1519056, 1476862, 1287677], backgroundColor: '#FF6A00', borderRadius: 4, maxBarThickness: 44, yAxisID: 'y' },
+          { label: 'Interações', type: 'line', data: [2198, 7361, 10378, 13118, 14074, 11320], borderColor: '#171717', backgroundColor: '#171717', borderWidth: 2.5, tension: 0.35, pointRadius: 4, pointBackgroundColor: '#171717', pointBorderColor: '#fff', pointBorderWidth: 2, yAxisID: 'y1' }] },
       options: { responsive: true, maintainAspectRatio: false,
         plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, padding: 14, font: { size: 12, weight: '600' }, color: '#525252', usePointStyle: true, pointStyle: 'circle' } },
           tooltip: Object.assign({}, TIP, { callbacks: { label: function (c) { return '  ' + c.dataset.label + ': ' + c.parsed.y.toLocaleString('pt-BR'); } } }) },
