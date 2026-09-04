@@ -309,7 +309,7 @@ table.data-table td .mut { color: var(--text-muted); font-size: 0.82em; }
   display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
 .top-frame {
-  position: relative; height: 300px; background: var(--ink-2);
+  position: relative; height: 360px; background: var(--ink-2);
   display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--border); overflow: hidden;
 }
@@ -563,11 +563,7 @@ table.data-table td .mut { color: var(--text-muted); font-size: 0.82em; }
 .week-pill.soon:hover { border-color: var(--border); color: var(--text-muted); }
 
 /* Embed do Instagram dentro do frame do top criativo */
-.top-frame .ig-embed {
-  position: absolute; top: -58px; left: 50%; transform: translateX(-50%);
-  width: 180%; min-width: 330px; height: calc(100% + 420px);
-  border: 0; background: #000; pointer-events: none; z-index: 1;
-}
+.top-frame .ig-embed { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100%; min-width: 300px; height: 640px; border: 0; background: #000; pointer-events: none; z-index: 1; }
 
 /* ===== ONE-PAGE (index) ===== */
 .hero-compact { min-height: 78vh; }
