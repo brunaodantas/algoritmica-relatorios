@@ -68,18 +68,70 @@
     .demo-legend-item i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
   </style>
+
+  <style>
+  html{font-size:19px}
+  :root{--acc:#F26522;--ink:#1F1F1F;--up:#1a8a4a;--down:#c0392b}
+  /* KPI com variacao */
+  .rex{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:var(--md)}
+  .rex-c{background:#fff;border:1px solid rgba(17,17,17,.10);border-radius:16px;padding:22px 24px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .rex-c .l{font-size:.8rem;font-weight:800;color:#8A8478;text-transform:uppercase;letter-spacing:.07em}
+  .rex-c .v{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;margin-top:9px;line-height:1;color:var(--ink)}
+  .rex-c .d{font-size:.85rem;margin-top:9px;line-height:1.45;color:#4A4A4A}
+  .rex-c .d b{font-weight:800}
+  .up{color:var(--up)} .down{color:var(--down)}
+  @media(max-width:980px){.rex{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.rex{grid-template-columns:1fr}}
+  /* Cards por objetivo */
+  .objg{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:var(--md)}
+  .objc{background:#fff;border:1px solid rgba(17,17,17,.10);border-radius:18px;padding:26px 28px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .objc h4{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;margin:0}
+  .objc .money{font-size:.9rem;color:var(--acc);font-weight:800;margin-top:5px}
+  .objc .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+  .objc .m .v{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .objc .m .k{font-size:.8rem;color:#6b7280;margin-top:3px;line-height:1.35}
+  .bar{height:6px;background:rgba(17,17,17,.07);border-radius:99px;margin-top:16px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+  @media(max-width:860px){.objg{grid-template-columns:1fr}}
+  /* Destaques numerados */
+  .dest{display:flex;flex-direction:column;gap:18px;margin-top:var(--md)}
+  .destc{background:#fff;border:1px solid rgba(17,17,17,.10);border-radius:18px;padding:26px 28px;display:grid;grid-template-columns:58px 1fr;gap:22px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .destn{width:58px;height:58px;border-radius:14px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800}
+  .destt{font-size:.78rem;font-weight:800;color:var(--acc);text-transform:uppercase;letter-spacing:.08em}
+  .destnm{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+  .destm{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+  .destm .v{font-size:1.25rem;font-weight:800;letter-spacing:-.02em}
+  .destm .k{font-size:.78rem;color:#6b7280;margin-top:2px;line-height:1.3}
+  .porque{margin-top:16px;font-size:.95rem;line-height:1.65;color:#4A4A4A;border-top:1px solid rgba(17,17,17,.08);padding-top:14px}
+  .porque b{color:var(--ink)}
+  @media(max-width:720px){.destc{grid-template-columns:1fr}.destm{grid-template-columns:repeat(2,1fr)}}
+  /* Movimentos do publico */
+  .mov{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:var(--md)}
+  .movc{background:#fff;border:1px solid rgba(17,17,17,.10);border-radius:18px;padding:26px}
+  .movc .t{font-size:.78rem;font-weight:800;color:var(--acc);text-transform:uppercase;letter-spacing:.08em}
+  .movc .big{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;margin-top:10px;line-height:1}
+  .movc .tx{font-size:.92rem;line-height:1.6;color:#4A4A4A;margin-top:10px}
+  @media(max-width:860px){.mov{grid-template-columns:1fr}}
+  /* Lista de acoes */
+  .acts{display:flex;flex-direction:column;gap:14px;margin-top:var(--md)}
+  .actc{background:#fff;border-left:3px solid var(--acc);border-radius:0 12px 12px 0;padding:18px 22px}
+  .actc b{display:block;font-size:1rem;font-weight:800;margin-bottom:5px}
+  .actc span{font-size:.94rem;line-height:1.6;color:#4A4A4A}
+  </style>
+
 </head>
 <body>
 
 <nav class="nav" id="nav">
   <div class="nav-logo"><img src="assets/logo-algoritmica.png" alt="Algorítmica" style="filter:none;height:42px" /></div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#" data-nav="visao">Visão Geral</a></li>
+    <li><a href="#" data-nav="visao">Números</a></li>
     <li><a href="#" data-nav="objetivos">Objetivos</a></li>
-    <li><a href="#" data-nav="pracas">Praças</a></li>
+    <li><a href="#" data-nav="pracas">Território</a></li>
     <li><a href="#" data-nav="demografia">Público</a></li>
+    <li><a href="#" data-nav="destaques">Destaques</a></li>
     <li><a href="#" data-nav="anuncios">Conteúdos</a></li>
-    <li><a href="#" data-nav="diagnostico">Leitura</a></li>
+    <li><a href="#" data-nav="diagnostico">Plano</a></li>
   </ul>
   <div class="nav-right">
     <a href="../../index.html" class="btn-export" style="background:var(--ink);color:#fff;text-decoration:none">Central de Relatórios</a>
@@ -113,9 +165,25 @@
 </section>
 
 <section class="section" data-section="visao">
-  <span class="section-label">Visão Geral</span>
-  <h2 class="section-title fade-in">Resultado Consolidado</h2>
-  <p class="section-subtitle fade-in">Oito dias de veiculação, de 27 de agosto a 3 de setembro, somando Instagram e Facebook.</p>
+  <span class="section-label">Resumo Executivo</span>
+  <h2 class="section-title fade-in">O Período em Números</h2>
+  <p class="section-subtitle fade-in">Oito dias da estrutura Regionais e Clusters no Meta Ads. As variações comparam a segunda metade do período, de 31 de agosto a 3 de setembro, com a primeira, de 27 a 30 de agosto, quando a campanha ainda subia a verba.</p>
+
+  <div class="rex fade-in">
+    <div class="rex-c"><div class="l">Investimento</div><div class="v">R$ 55,5 mil</div><div class="d"><b class="up">&#9650; 75,2%</b> na segunda metade</div></div>
+    <div class="rex-c"><div class="l">Interações</div><div class="v">58.450</div><div class="d"><b class="up">&#9650; 54,7%</b> na segunda metade</div></div>
+    <div class="rex-c"><div class="l">Custo por Interação</div><div class="v">R$ 0,95</div><div class="d"><b class="down">&#9650; 13,2%</b> mais caro, com a escala</div></div>
+    <div class="rex-c"><div class="l">Alcance</div><div class="v">2.520.458</div><div class="d"><b class="up">&#9650; 51,9%</b> na segunda metade</div></div>
+    <div class="rex-c"><div class="l">Impressões</div><div class="v">7.156.827</div><div class="d">Cada pessoa viu em média <b>2,84 vezes</b></div></div>
+    <div class="rex-c"><div class="l">Visitas ao Perfil</div><div class="v">49.056</div><div class="d">A <b>R$ 0,44</b> cada visita</div></div>
+    <div class="rex-c"><div class="l">Comentários</div><div class="v">3.115</div><div class="d"><b class="up">&#9650; 54,5%</b> na segunda metade</div></div>
+    <div class="rex-c"><div class="l">Visualizações</div><div class="v">568.512</div><div class="d"><b class="up">&#9650; 53,6%</b> na segunda metade</div></div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura do Período</div>
+    <div class="insight-text">A campanha dobrou de tamanho na segunda metade: o investimento subiu 75,2% e as impressões 95,4%. As interações acompanharam, com alta de 54,7%, e o alcance cresceu 51,9%. Como as impressões cresceram mais que o alcance, a frequência subiu de 1,81 para 2,33, e o custo por interação passou de R$ 0,88 para R$ 1,00. É o efeito esperado de escalar rápido sobre a mesma base de público. O acervo formado nesses oito dias, <strong>2,52 milhões de pessoas alcançadas</strong>, é o que agora alimenta as listas de remarketing, que já entregam a interação mais barata da conta.</div>
+  </div>
 
   <div class="table-block fade-in">
     <div class="table-caption"><span class="pill traf">Consolidado</span> Números do período</div>
@@ -140,22 +208,70 @@
     <p class="table-note">O alcance vem do total da conta e não se soma entre regiões ou peças, porque a mesma pessoa pode ser alcançada em mais de uma delas.</p>
   </div>
 
-  <div class="insight-box fade-in">
-    <div class="insight-label">O que os números dizem</div>
-    <div class="insight-text">A campanha chegou a 2,52 milhões de mineiros em oito dias. Cada pessoa viu o conteúdo em média 2,84 vezes, e ainda há público novo pela frente. As 58,4 mil interações saíram a <strong>R$ 0,95 cada</strong>, e o conteúdo com tema definido é o que puxa esse número para baixo.</div>
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">Investimento e Interações por Dia</h3>
+  <p class="section-subtitle fade-in">Evolução diária ao longo dos oito dias. A campanha entrou no ar em ritmo baixo em 27 de agosto e atingiu o patamar cheio a partir de 30 de agosto.</p>
+  <div class="demo-card fade-in" style="margin-top:var(--md)">
+    <canvas id="chartDia" height="150"></canvas>
   </div>
 </section>
 
 <section class="section" data-section="objetivos">
   <span class="section-label">Investimento e Resultado</span>
   <h2 class="section-title fade-in">O Que Cada Objetivo Entregou</h2>
-  <p class="section-subtitle fade-in">Como os R$ 55,5 mil foram divididos entre as frentes de veiculação e o que cada uma trouxe de volta.</p>
+  <p class="section-subtitle fade-in">Como os R$ 55,5 mil foram divididos entre as frentes de veiculação e o que cada uma trouxe de volta. Cada frente roda em campanhas separadas, por região e por cluster de interesse.</p>
+
+  <div class="objg fade-in">
+    <div class="objc">
+      <h4>Visitas ao Perfil</h4>
+      <div class="money">R$ 22.720,26 &middot; 40,9%</div>
+      <div class="bar"><i style="width:40.9%"></i></div>
+      <div class="grid4">
+        <div class="m"><div class="v">49.056</div><div class="k">Visitas ao perfil</div></div>
+        <div class="m"><div class="v">R$ 0,44</div><div class="k">Custo por visita</div></div>
+        <div class="m"><div class="v">7.427</div><div class="k">Interações</div></div>
+        <div class="m"><div class="v">R$ 3,06</div><div class="k">Custo por interação</div></div>
+      </div>
+    </div>
+    <div class="objc">
+      <h4>Engajamento</h4>
+      <div class="money">R$ 17.617,73 &middot; 31,7%</div>
+      <div class="bar"><i style="width:31.7%"></i></div>
+      <div class="grid4">
+        <div class="m"><div class="v">42.185</div><div class="k">Interações</div></div>
+        <div class="m"><div class="v">R$ 0,42</div><div class="k">Custo por interação</div></div>
+        <div class="m"><div class="v">1.981</div><div class="k">Comentários</div></div>
+        <div class="m"><div class="v">584</div><div class="k">Compartilhamentos</div></div>
+      </div>
+    </div>
+    <div class="objc">
+      <h4>Visualizações</h4>
+      <div class="money">R$ 15.038,43 &middot; 27,1%</div>
+      <div class="bar"><i style="width:27.1%"></i></div>
+      <div class="grid4">
+        <div class="m"><div class="v">303.081</div><div class="k">Visualizações completas</div></div>
+        <div class="m"><div class="v">R$ 0,05</div><div class="k">Custo por visualização</div></div>
+        <div class="m"><div class="v">8.769</div><div class="k">Interações</div></div>
+        <div class="m"><div class="v">R$ 1,71</div><div class="k">Custo por interação</div></div>
+      </div>
+    </div>
+    <div class="objc">
+      <h4>Clusters de Público</h4>
+      <div class="money">R$ 129,74 &middot; 0,2%</div>
+      <div class="bar"><i style="width:2%"></i></div>
+      <div class="grid4">
+        <div class="m"><div class="v">69</div><div class="k">Interações</div></div>
+        <div class="m"><div class="v">R$ 1,88</div><div class="k">Custo por interação</div></div>
+        <div class="m"><div class="v">2</div><div class="k">Clusters no ar</div></div>
+        <div class="m"><div class="v">1 dia</div><div class="k">Tempo de veiculação</div></div>
+      </div>
+    </div>
+  </div>
 
   <div class="table-block fade-in">
-    <div class="table-caption"><span class="pill eng">Objetivos</span> Ordenado pelo investimento</div>
+    <div class="table-caption"><span class="pill eng">Detalhe por campanha</span> Ordenado pelo investimento</div>
     <div class="table-scroll">
       <table class="data-table">
-        <thead><tr><th>Objetivo</th><th>Investimento</th><th>Participação</th><th>Interações</th><th>Custo por interação</th></tr></thead>
+        <thead><tr><th>Campanha</th><th>Investimento</th><th>Participação</th><th>Interações</th><th>Custo por interação</th></tr></thead>
         <tbody>
           <tr><td class="tl">Visitas ao Perfil, Instagram</td><td>R$ 21.733,06</td><td>39,2%</td><td>7.303</td><td>R$ 2,98</td></tr>
           <tr><td class="tl">Engajamento</td><td>R$ 14.029,48</td><td>25,3%</td><td class="acc">32.449</td><td class="acc">R$ 0,43</td></tr>
@@ -171,20 +287,33 @@
   </div>
 
   <div class="insight-box fade-in">
-    <div class="insight-label">Onde a interação é mais barata</div>
-    <div class="insight-text">As duas frentes de engajamento respondem por <strong>31,8% do investimento</strong> e trazem <strong>72% de todas as interações</strong> do período. A interação sai a R$ 0,43 e R$ 0,37 nelas, contra R$ 2,98 na frente de visitas ao perfil. A frente de visitas cumpre outro papel, levar gente ao perfil, e entregou 49 mil visitas a R$ 0,44 cada.</div>
-  </div>
-
-  <div class="insight-box fade-in">
-    <div class="insight-label">O que cada frente entregou no seu próprio objetivo</div>
-    <div class="insight-text">Visitas ao Perfil trouxe <strong>49.056 visitas</strong>, a R$ 0,44 cada. Engajamento somou <strong>716,3 mil</strong> engajamentos com a publicação. Visualizações entregou <strong>262,3 mil</strong> visualizações completas, a R$ 0,05 cada. No Facebook, a visita ao perfil saiu a R$ 5,04, bem acima do Instagram.</div>
+    <div class="insight-label">Onde a Interação é Mais Barata</div>
+    <div class="insight-text">As duas frentes de engajamento respondem por <strong>31,7% do investimento</strong> e trazem <strong>72% de todas as interações</strong> do período. A interação sai a R$ 0,43 na campanha aberta e a <strong>R$ 0,37 no público que já teve contato</strong> com o candidato, o menor custo da conta. Eleitor reimpactado responde mais e custa menos, e esse acervo só cresce. A frente de visitas ao perfil cumpre outro papel, levar gente ao perfil, e nisso entregou 49 mil visitas a R$ 0,44 cada. No Facebook, a mesma visita custou R$ 5,04, onze vezes mais que no Instagram.</div>
   </div>
 </section>
 
 <section class="section" data-section="pracas">
-  <span class="section-label">Praças</span>
-  <h2 class="section-title fade-in">Veiculou nesse período</h2>
-  <p class="section-subtitle fade-in">Regiões de Minas Gerais, mais dois recortes ligados ao tema de segurança.</p>
+  <span class="section-label">Território</span>
+  <h2 class="section-title fade-in">A Malha Geográfica do Período</h2>
+  <p class="section-subtitle fade-in">A operação cobre as cinco macrorregiões do plano, mais dois recortes temáticos ligados à segurança pública na Grande BH. A verba geográfica quase dobrou entre a primeira e a segunda metade do período.</p>
+
+  <div class="mov fade-in">
+    <div class="movc">
+      <div class="t">Cobertura</div>
+      <div class="big">5 regiões</div>
+      <div class="tx">Mais dois recortes temáticos e dois clusters de público, que estrearam em 3 de setembro. O investimento geográfico passou de <strong>R$ 20,2 mil para R$ 35,3 mil</strong> entre as duas metades.</div>
+    </div>
+    <div class="movc">
+      <div class="t">Cidades com maior incidência criminal</div>
+      <div class="big">R$ 0,22</div>
+      <div class="tx">O menor custo por interação de toda a campanha, com <strong>7.361 reações e 582 comentários</strong> em R$ 1,77 mil investidos. É o recorte que mais responde quando o assunto é segurança.</div>
+    </div>
+    <div class="movc">
+      <div class="t">Triângulo</div>
+      <div class="big">R$ 2,02</div>
+      <div class="tx">Uberlândia e Uberaba e as demais cidades do Triângulo têm o custo por interação mais alto do plano, quase quatro vezes o da Grande BH, com peças de apresentação no ar.</div>
+    </div>
+  </div>
 
   <div class="table-block fade-in">
     <div class="table-caption"><span class="pill eng">Regiões</span> Ordenado pelo volume de exibições</div>
@@ -206,41 +335,57 @@
     <p class="table-note">O alcance não aparece por região porque não se soma entre elas: a mesma pessoa pode ser alcançada em mais de uma.</p>
   </div>
 
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">Investimento por Região</h3>
+  <p class="section-subtitle fade-in">Comparação entre a primeira metade do período, de 27 a 30 de agosto, e a segunda, de 31 de agosto a 3 de setembro.</p>
+  <div class="demo-card fade-in" style="margin-top:var(--md)">
+    <canvas id="chartPraca" height="190"></canvas>
+  </div>
+
   <div class="insight-box fade-in">
-    <div class="insight-label">Leitura das praças</div>
-    <div class="insight-text">Os dois recortes de segurança são os mais eficientes da campanha. Somados, receberam <strong>R$ 3,2 mil</strong>, menos de 6% do investimento, e trouxeram <strong>10,3 mil reações e 767 comentários</strong>. Nas cidades com maior incidência criminal a interação sai a R$ 0,22, quase dez vezes mais barata que no Triângulo. A Grande BH concentra o maior volume e o maior número de compartilhamentos, com 341 dos 1.057 do período.</div>
+    <div class="insight-label">Leitura do território</div>
+    <div class="insight-text">Todas as regiões receberam mais verba na segunda metade, e as que mais cresceram foram as cidades com maior incidência criminal, com alta de 108%, e as demais cidades do Triângulo, com 103%. A Grande BH concentra o maior volume e o maior número de compartilhamentos, com 341 dos 1.057 do período. A diferença de custo entre as praças não vem do público, e sim do conteúdo que rodou em cada uma: nas duas com peça temática de segurança a interação sai entre R$ 0,22 e R$ 0,45, enquanto nas do Triângulo, que receberam as peças de apresentação, fica acima de R$ 2,00.</div>
   </div>
 </section>
 
 <section class="section" data-section="demografia">
-  <span class="section-label">Público</span>
-  <h2 class="section-title fade-in">A Nossa Audiência</h2>
-  <p class="section-subtitle fade-in">A campanha fala com o eleitor de 35 anos em diante, e o resultado aparece na distribuição.</p>
+  <span class="section-label">Perfil do Público</span>
+  <h2 class="section-title fade-in">Quem Respondeu à Campanha</h2>
+  <p class="section-subtitle fade-in">Os três movimentos de público do período, considerando as frentes somadas.</p>
+
+  <div class="mov fade-in">
+    <div class="movc">
+      <div class="t">O Eleitor 45+</div>
+      <div class="big">59,8%</div>
+      <div class="tx">das exibições foram para pessoas com 45 anos ou mais, e é a faixa que mais responde. De <strong>55 a 64 anos</strong> está a maior taxa de interação, 0,95%, contra média de 0,82%.</div>
+    </div>
+    <div class="movc">
+      <div class="t">Faixa 35 a 44</div>
+      <div class="big">23,6%</div>
+      <div class="tx">das exibições, a maior fatia isolada, mas com a <strong>menor taxa de interação</strong> entre os públicos adultos, 0,62%. A interação nessa faixa custa R$ 1,06, acima da média de R$ 0,95.</div>
+    </div>
+    <div class="movc">
+      <div class="t">Equilíbrio de Gênero</div>
+      <div class="big">46,0%</div>
+      <div class="tx">das exibições foram para mulheres, que respondem com <strong>taxa de interação maior</strong> que a dos homens, 0,85% contra 0,79%, com 27,8 mil interações.</div>
+    </div>
+  </div>
 
   <div class="table-block fade-in">
-    <div class="table-caption"><span class="pill traf">Faixa etária</span> Distribuição das exibições</div>
+    <div class="table-caption"><span class="pill traf">Faixa etária</span> Distribuição das exibições e resposta de cada faixa</div>
     <div class="table-scroll">
       <table class="data-table">
-        <thead><tr><th>Idade</th><th>Exibições</th><th>Participação</th><th>Reações</th></tr></thead>
+        <thead><tr><th>Idade</th><th>Exibições</th><th>Participação</th><th>Interações</th><th>Taxa de interação</th><th>Custo por interação</th></tr></thead>
         <tbody>
-          <tr><td class="tl">18 a 24</td><td>339.058</td><td>4,7%</td><td>2.090</td></tr>
-          <tr><td class="tl">25 a 34</td><td>847.884</td><td>11,8%</td><td>6.962</td></tr>
-          <tr><td class="tl">35 a 44</td><td>1.686.147</td><td>23,6%</td><td>9.773</td></tr>
-          <tr><td class="tl">45 a 54</td><td>1.519.029</td><td>21,2%</td><td>12.205</td></tr>
-          <tr><td class="tl">55 a 64</td><td>1.476.833</td><td>20,6%</td><td class="acc">12.718</td></tr>
-          <tr><td class="tl">65 ou mais</td><td>1.287.639</td><td>18,0%</td><td>10.066</td></tr>
+          <tr><td class="tl">18 a 24</td><td>339.058</td><td>4,7%</td><td>2.198</td><td>0,65%</td><td>R$ 1,03</td></tr>
+          <tr><td class="tl">25 a 34</td><td>847.888</td><td>11,8%</td><td>7.361</td><td>0,87%</td><td class="acc">R$ 0,76</td></tr>
+          <tr><td class="tl">35 a 44</td><td>1.686.160</td><td>23,6%</td><td>10.378</td><td>0,62%</td><td>R$ 1,06</td></tr>
+          <tr><td class="tl">45 a 54</td><td>1.519.056</td><td>21,2%</td><td>13.118</td><td>0,86%</td><td>R$ 0,83</td></tr>
+          <tr><td class="tl">55 a 64</td><td>1.476.862</td><td>20,6%</td><td class="acc">14.074</td><td class="acc">0,95%</td><td>R$ 0,86</td></tr>
+          <tr><td class="tl">65 ou mais</td><td>1.287.677</td><td>18,0%</td><td>11.320</td><td>0,88%</td><td>R$ 1,21</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
-  <div class="insight-box fade-in">
-    <div class="insight-label">Leitura do público</div>
-    <div class="insight-text">Oito em cada dez exibições foram para pessoas com 35 anos ou mais. O grupo de 55 a 64 anos é o que mais reage ao conteúdo, seguido de perto pelo de 45 a 54. Juntas, essas duas faixas concentram 43% das reações com 42% das exibições.</div>
-  </div>
-
-  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">Quem Foi Impactado</h3>
-  <p class="section-subtitle fade-in">Distribuição das exibições do período por faixa etária e gênero.</p>
 
   <div class="demo-grid fade-in">
     <div class="demo-card">
@@ -261,12 +406,85 @@
       </div>
     </div>
   </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura do público</div>
+    <div class="insight-text">Oito em cada dez exibições foram para pessoas com 35 anos ou mais, e são as faixas de 45 a 64 anos que sustentam a resposta: juntas, 41,8% das exibições e 46,5% das interações. A faixa de 25 a 34 anos aparece como a de melhor custo, R$ 0,76 por interação, com pouca verba direcionada a ela. O público de 35 a 44 anos é o que mais recebe exibição e o que menos responde entre os adultos, e vale testar conteúdo específico para essa faixa.</div>
+  </div>
+</section>
+
+<section class="section" data-section="destaques">
+  <span class="section-label">Criativos</span>
+  <h2 class="section-title fade-in">Os Destaques do Período</h2>
+  <p class="section-subtitle fade-in">A peça número um de cada frente, pelo critério que importa em cada uma: taxa de interação no engajamento, retenção nas visualizações e custo por visita no tráfego ao perfil.</p>
+
+  <div class="dest">
+    <div class="destc fade-in">
+      <div class="destn">1</div>
+      <div>
+        <div class="destt">&#9733; Engajamento &middot; Maior taxa de interação</div>
+        <div class="destnm">Carrossel Teve Um Cara Que</div>
+        <div class="destm">
+          <div><div class="v">10,58%</div><div class="k">Taxa de interação</div></div>
+          <div><div class="v">3.111</div><div class="k">Interações</div></div>
+          <div><div class="v">R$ 0,15</div><div class="k">Custo por interação</div></div>
+          <div><div class="v">R$ 452</div><div class="k">Investido</div></div>
+        </div>
+        <div class="porque"><b>Por que é destaque:</b> o carrossel de obras e realizações da gestão em BH registrou a maior taxa de interação de todo o período, com pouco mais de R$ 450 investidos nessa frente. Realização concreta, listada item a item, é o formato que mais puxa resposta.</div>
+      </div>
+    </div>
+
+    <div class="destc fade-in">
+      <div class="destn">2</div>
+      <div>
+        <div class="destt">&#9733; Engajamento &middot; Maior volume de conversa</div>
+        <div class="destnm">Só Quem Fez, Segurança</div>
+        <div class="destm">
+          <div><div class="v">6,23%</div><div class="k">Taxa de interação</div></div>
+          <div><div class="v">8.002</div><div class="k">Interações</div></div>
+          <div><div class="v">582</div><div class="k">Comentários</div></div>
+          <div><div class="v">R$ 3,04</div><div class="k">Custo por comentário</div></div>
+        </div>
+        <div class="porque"><b>Por que é destaque:</b> é a peça que mais gerou conversa da campanha, com 582 dos 3.115 comentários do período. Roda nos recortes de segurança da Grande BH e nas cidades com maior incidência criminal, onde a interação sai a R$ 0,22, o menor custo da conta.</div>
+      </div>
+    </div>
+
+    <div class="destc fade-in">
+      <div class="destn">3</div>
+      <div>
+        <div class="destt">&#9733; Visualizações &middot; Maior retenção</div>
+        <div class="destnm">Guiado pelo Coração</div>
+        <div class="destm">
+          <div><div class="v">30,5%</div><div class="k">Retenção de vídeo</div></div>
+          <div><div class="v">16.036</div><div class="k">Visualizações completas</div></div>
+          <div><div class="v">R$ 0,06</div><div class="k">Custo por visualização</div></div>
+          <div><div class="v">R$ 942</div><div class="k">Investido</div></div>
+        </div>
+        <div class="porque"><b>Por que é destaque:</b> três em cada dez pessoas que começaram o vídeo assistiram até o fim, a maior retenção do período, quase o dobro da média. A peça prende a atenção, mas gera pouca interação, e por isso cumpre bem o papel de apresentação e não o de conversa.</div>
+      </div>
+    </div>
+
+    <div class="destc fade-in">
+      <div class="destn">4</div>
+      <div>
+        <div class="destt">&#9733; Visitas ao Perfil &middot; Menor custo por visita</div>
+        <div class="destnm">Carrossel Bio</div>
+        <div class="destm">
+          <div><div class="v">R$ 0,42</div><div class="k">Custo por visita</div></div>
+          <div><div class="v">22.453</div><div class="k">Visitas ao perfil</div></div>
+          <div><div class="v">1.222.735</div><div class="k">Exibições</div></div>
+          <div><div class="v">R$ 9.397</div><div class="k">Investido</div></div>
+        </div>
+        <div class="porque"><b>Por que é destaque:</b> sozinho respondeu por quase metade das visitas ao perfil do período, ao menor custo por visita entre as peças de volume. É a porta de entrada da campanha, embora gere pouca interação, com custo de R$ 2,33 por resposta.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section" data-section="anuncios">
   <span class="section-label">Conteúdos</span>
-  <h2 class="section-title fade-in">Desempenho dos Conteúdos</h2>
-  <p class="section-subtitle fade-in">Dezesseis peças no ar no período. Os números de cada uma somam todas as regiões em que ela apareceu.</p>
+  <h2 class="section-title fade-in">Raio-X das Peças</h2>
+  <p class="section-subtitle fade-in">Dezesseis peças no ar no período. Os números de cada uma somam todas as regiões e frentes em que ela apareceu.</p>
 
   <div class="table-block fade-in">
     <div class="table-caption"><span class="pill eng">Peças</span> Ordenado pelo custo por interação, do mais barato para o mais caro</div>
@@ -293,7 +511,25 @@
     <p class="table-note">Ficaram fora da tabela três peças que entraram no ar nos últimos dias do período e ainda não têm volume para comparação: Card Independente, Saúde Portas Abertas e Carrossel Kalil Fez Sul de Minas.</p>
   </div>
 
-  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">O que foi mais eficiente</h3>
+  <div class="mov fade-in">
+    <div class="movc">
+      <div class="t">Conteúdo temático</div>
+      <div class="big">R$ 0,22</div>
+      <div class="tx"><strong>Só Quem Fez</strong> e <strong>Coronel Gianfranco</strong> ocupam as duas primeiras posições em custo por interação. Somados receberam R$ 3,2 mil, menos de 6% da verba, e trouxeram 11,3 mil interações e 767 comentários.</div>
+    </div>
+    <div class="movc">
+      <div class="t">O conteúdo que mais viaja</div>
+      <div class="big">594</div>
+      <div class="tx">compartilhamentos do <strong>VT Pandemia</strong>, mais da metade dos 1.057 do período, ao menor custo entre todas as peças, R$ 25,86 por compartilhamento.</div>
+    </div>
+    <div class="movc">
+      <div class="t">O que ficou abaixo</div>
+      <div class="big">R$ 2,85</div>
+      <div class="tx"><strong>Guiado pelo Coração</strong>, <strong>VT Bio Motion</strong> e <strong>Carrossel Bio</strong> fecham a lista, todos acima de R$ 2,30 por interação. São peças de apresentação, que entregam exibição e visita ao perfil, mas pouca conversa.</div>
+    </div>
+  </div>
+
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">O que custou mais barato</h3>
 
   <div class="insight-box fade-in">
     <div class="insight-label">Critério dos destaques abaixo</div>
@@ -365,27 +601,34 @@
 </section>
 
 <section class="section" data-section="diagnostico">
-  <span class="section-label">Leitura</span>
-  <h2 class="section-title fade-in">E agora?</h2>
+  <span class="section-label">Leitura e Próximos Passos</span>
+  <h2 class="section-title fade-in">O Que Aprendemos e O Que Vamos Fazer</h2>
+  <p class="section-subtitle fade-in">A síntese do período de 27 de agosto a 3 de setembro e as ações já definidas para a semana de 4 a 10 de setembro.</p>
+
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">A Estratégia Desta Fase &middot; Construir Audiência e Aquecer</h3>
 
   <div class="insight-box fade-in">
-    <div class="insight-label">Tema concreto é o que gera conversa</div>
-    <div class="insight-text">As peças de segurança lideram com folga. Só Quem Fez trouxe a interação a R$ 0,22 e o comentário a R$ 3,04, com menos de R$ 1,8 mil investidos. Coronel Gianfranco vem logo atrás. Os dois falam de um assunto específico, e o público responde a isso. As peças de apresentação do candidato entregam volume de exibição, mas geram menos conversa: no Carrossel Bio a interação sai a R$ 2,33, dez vezes mais cara.</div>
+    <div class="insight-label">O acervo já começou a devolver resultado</div>
+    <div class="insight-text">Oito dias de campanha somam <strong>2,52 milhões de pessoas alcançadas</strong>, 7,16 milhões de exibições e 568 mil visualizações completas, e é esse acervo que alimenta as listas de remarketing. O efeito já aparece: a frente voltada a quem teve contato com o candidato entrega a <strong>interação mais barata da conta, R$ 0,37</strong>, com apenas 6,5% do investimento. Eleitor reimpactado responde mais e custa menos, e o trabalho até a eleição é manter esse eleitorado por perto.</div>
   </div>
 
-  <div class="insight-box fade-in">
-    <div class="insight-label">O VT Pandemia é o conteúdo que mais viaja</div>
-    <div class="insight-text">Ele respondeu por 594 dos 1.057 compartilhamentos do período, ao menor custo entre todas as peças. É o conteúdo que as pessoas mandam para alguém, e isso amplia o alcance sem custo adicional. Vale considerar mais peças na mesma linha, de relato pessoal sobre um momento concreto.</div>
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">O que está funcionando</h3>
+  <div class="acts">
+    <div class="actc fade-in"><b>Tema concreto rende conversa.</b><span>Só Quem Fez e Coronel Gianfranco ocupam as duas primeiras posições em custo por interação, R$ 0,22 e R$ 0,45. Somados receberam menos de 6% da verba e trouxeram 11,3 mil interações e 767 comentários.</span></div>
+    <div class="actc fade-in"><b>Realização listada item a item converte.</b><span>O Carrossel Teve Um Cara Que registrou a maior taxa de interação do período, 10,58%, na frente de engajamento. Obra com nome e endereço é o que puxa resposta.</span></div>
+    <div class="actc fade-in"><b>O VT Pandemia é o conteúdo que viaja.</b><span>Sozinho respondeu por 594 dos 1.057 compartilhamentos, ao menor custo entre todas as peças. Relato pessoal sobre um momento concreto amplia o alcance sem custo adicional.</span></div>
+    <div class="actc fade-in"><b>O remarketing entrou entregando.</b><span>Com 6,5% do investimento, a frente de engajamento sobre quem já viu o conteúdo trouxe 9.736 interações a R$ 0,37, o menor custo da conta.</span></div>
+    <div class="actc fade-in"><b>A escala foi absorvida.</b><span>O investimento subiu 75,2% entre as duas metades do período e o alcance acompanhou, com alta de 51,9%. A frequência ficou em 2,84, ainda baixa, o que mostra que há público novo pela frente.</span></div>
   </div>
 
-  <div class="insight-box fade-in">
-    <div class="insight-label">A frente de engajamento é a que mais rende</div>
-    <div class="insight-text">Engajamento e a frente voltada a quem já viu o conteúdo somam menos de um terço do investimento e trazem quase três quartos de todas as interações. Nelas a interação sai por volta de R$ 0,40. Já a frente de visitas ao perfil, que leva 39,2% da verba, entrega interação a R$ 2,98, porque o objetivo dela é outro: levar gente ao perfil, e nisso trouxe 49 mil visitas a R$ 0,44 cada.</div>
-  </div>
-
-  <div class="insight-box fade-in">
-    <div class="insight-label">Sugestões para o próximo período</div>
-    <div class="insight-text">Sugerimos ampliar a presença de conteúdo com tema definido, no caminho do que as peças de segurança mostraram, e aumentar a participação da frente de engajamento na divisão da verba, que é onde a interação sai mais barata. Nas praças do Triângulo, onde a interação está em torno de R$ 2,00, vale levar as peças temáticas que funcionaram na Grande BH.</div>
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">O que vamos atacar de 4 a 10 de setembro</h3>
+  <div class="acts">
+    <div class="actc fade-in"><b>Levar as peças temáticas ao Triângulo.</b><span>Uberlândia e Uberaba e as demais cidades do Triângulo estão com o custo por interação acima de R$ 2,00, quase quatro vezes o da Grande BH, rodando apenas peças de apresentação. Sugerimos levar para lá as duas peças de segurança que renderam R$ 0,22 e R$ 0,45.</span></div>
+    <div class="actc fade-in"><b>Ampliar a participação do engajamento na verba.</b><span>As duas frentes de engajamento levam 31,7% do investimento e trazem 72% das interações. Sugerimos aumentar essa fatia, já que o pedido do período é mais conversa.</span></div>
+    <div class="actc fade-in"><b>Produzir mais conteúdo com tema definido.</b><span>Segurança foi o primeiro tema testado e é o que tem o melhor custo por conversa. Sugerimos abrir novas peças na mesma estrutura para saúde, custo de vida e emprego.</span></div>
+    <div class="actc fade-in"><b>Revisar a frente de visitas ao perfil no Facebook.</b><span>A visita ao perfil custou R$ 5,04 no Facebook contra R$ 0,44 no Instagram, com R$ 987 investidos. Sugerimos concentrar essa frente no Instagram.</span></div>
+    <div class="actc fade-in"><b>Ligar os clusters de público que estão prontos.</b><span>Quatro clusters já montados seguem sem criativo: Servidor Estadual, Segurança Pública, Classe Média BH e Mulheres Periferia. Assim que houver peça para cada pauta, eles entram e passam a receber a fatia prevista no plano.</span></div>
+    <div class="actc fade-in"><b>Testar conteúdo para a faixa de 35 a 44 anos.</b><span>É a maior fatia de exibições, 23,6%, e a que menos responde entre os públicos adultos, com taxa de 0,62% contra 0,95% do público de 55 a 64.</span></div>
   </div>
 </section>
 
@@ -399,6 +642,45 @@
 
 <script>
 document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); });
+
+if (window.Chart) {
+  var dCtx = document.getElementById('chartDia');
+  if (dCtx) new Chart(dCtx, {
+    type: 'bar',
+    data: {
+      labels: ['27/08','28/08','29/08','30/08','31/08','01/09','02/09','03/09'],
+      datasets: [
+        { type:'bar', label:'Investimento (R$)', data:[358.65,2585.21,7104.32,10120.06,9123.13,8773.33,9166.48,8274.93],
+          backgroundColor:'#1F1F1F', borderRadius:4, maxBarThickness:44, yAxisID:'y' },
+        { type:'line', label:'Interações', data:[195,3954,8258,10539,10762,9736,7672,7334],
+          borderColor:'#F26522', backgroundColor:'#F26522', borderWidth:3, pointRadius:4, tension:.3, yAxisID:'y1' }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:true, position:'bottom', labels:{ boxWidth:12, font:{size:12} } } },
+      scales:{
+        y:{ beginAtZero:true, position:'left', grid:{color:'#eee'}, ticks:{ callback:function(v){ return 'R$ '+(v/1000)+'k'; } } },
+        y1:{ beginAtZero:true, position:'right', grid:{display:false}, ticks:{ callback:function(v){ return (v/1000)+'k'; } } },
+        x:{ grid:{display:false} }
+      } }
+  });
+  var pCtx = document.getElementById('chartPraca');
+  if (pCtx) new Chart(pCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Grande BH','Norte, Jequitinhonha\ne Mucuri','Vale do Rio Doce\ne Zona da Mata','Sul de Minas','Demais cidades\ndo Triângulo','Uberlândia\ne Uberaba','Incidência\ncriminal','Segurança\nGrande BH'],
+      datasets: [
+        { label:'27 a 30/08', data:[4039.41,3489.44,3121.72,3045.34,2175.00,3086.91,575.49,634.93], backgroundColor:'#C7C7C7', borderRadius:4 },
+        { label:'31/08 a 03/09', data:[6790.40,6347.60,5896.15,5445.07,4414.31,4301.30,1194.46,819.44], backgroundColor:'#F26522', borderRadius:4 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:true, position:'bottom', labels:{ boxWidth:12, font:{size:12} } } },
+      scales:{ y:{ beginAtZero:true, grid:{color:'#eee'}, ticks:{ callback:function(v){ return 'R$ '+(v/1000)+'k'; } } },
+               x:{ grid:{display:false}, ticks:{ font:{size:10.5} } } } }
+  });
+}
+
 if (window.Chart) {
   var ageCtx = document.getElementById('chartIdade');
   if (ageCtx) {
