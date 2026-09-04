@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório Parcial · Alexandre Kalil · 27 de agosto a 3 de setembro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    /* Quadros de custo: alinhamento entre as tres colunas */
+    .top-grid-3 { align-items: stretch; }
+    .top-grid-3 .top-card { display: flex; }
+    .top-grid-3 .top-body {
+      display: flex; flex-direction: column; width: 100%;
+    }
+    .top-grid-3 .top-name { min-height: 2.6em; }
+    .top-grid-3 .top-stat-main {
+      display: flex; align-items: baseline; gap: 12px; flex-wrap: nowrap;
+    }
+    .top-grid-3 .top-stat-main .v {
+      white-space: nowrap; font-size: 2rem; line-height: 1.1; flex: 0 0 auto;
+    }
+    .top-grid-3 .top-stat-main .k {
+      text-align: left; line-height: 1.35; flex: 1 1 auto;
+    }
+    .top-grid-3 .top-mini {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;
+    }
+    .top-grid-3 .top-mini .mi { display: flex; flex-direction: column; gap: 4px; }
+    .top-grid-3 .top-mini .v { white-space: nowrap; }
+    .top-grid-3 .top-mini .k { line-height: 1.35; }
+    .top-grid-3 .cb-label { margin-top: auto; padding-top: 14px; line-height: 1.5; }
+    @media (max-width: 720px) {
+      .top-grid-3 .top-name { min-height: 0; }
+      .top-grid-3 .top-stat-main { flex-wrap: wrap; gap: 4px; }
+    }
+    /* Período com data mais longa (27 de agosto a 3 de setembro) quebra feio no max-width padrão de 680px */
+    .section-subtitle { max-width: none; }
+    /* Textos pequenos demais, dificil leitura: base do relatorio sobe de 16px pra 19px, escala tudo que usa rem */
+    html { font-size: 19px; }
+    .table-note { font-size: 1rem; line-height: 1.65; }
+    .top-stat-main .k { font-size: 0.95rem; }
+    .top-mini .k { font-size: 0.82rem; }
+    .cb-label { font-size: 0.92rem; }
+    .insight-label { font-size: 0.9rem; }
+    .kpi-label { font-size: 0.85rem; }
+    .kpi-sub { font-size: 0.95rem; }
+    .hero-meta-label { font-size: 0.85rem; }
+    .hero-meta-caption { font-size: 0.82rem; }
+    .demo-card-sub { font-size: 1.05rem; }
+    .demo-legend-item { font-size: 1.02rem; }
+    .demo-donut-label { font-size: 1.02rem; }
+    .data-table { font-size: 0.95rem; }
+    /* Faixa etária e gênero */
+    .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: var(--md); }
+    .demo-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    .demo-card-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+    .demo-card-sub { color: var(--muted, #6b7280); font-size: .9rem; margin-bottom: 18px; }
+    .demo-donut-wrap { position: relative; max-width: 260px; margin: 0 auto; }
+    .demo-donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .demo-donut-pct { font-size: 1.6rem; font-weight: 800; }
+    .demo-donut-label { font-size: .85rem; color: var(--muted, #6b7280); }
+    .demo-legend { display: flex; gap: 20px; justify-content: center; margin-top: 16px; }
+    .demo-legend-item { display: flex; align-items: center; gap: 6px; font-size: .85rem; }
+    .demo-legend-item i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-logo"><img src="assets/logo-algoritmica.png" alt="Algorítmica" style="filter:none;height:42px" /></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" data-nav="visao">Visão Geral</a></li>
+    <li><a href="#" data-nav="objetivos">Objetivos</a></li>
+    <li><a href="#" data-nav="pracas">Praças</a></li>
+    <li><a href="#" data-nav="demografia">Público</a></li>
+    <li><a href="#" data-nav="anuncios">Conteúdos</a></li>
+    <li><a href="#" data-nav="diagnostico">Leitura</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="../../index.html" class="btn-export" style="background:var(--ink);color:#fff;text-decoration:none">Central de Relatórios</a>
+    <a href="relatorio-kalil-parcial-27ago-03set2026.pdf" class="btn-export" style="text-decoration:none" download>&#8681; Baixar PDF</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <img class="hero-bg" src="assets/hero-kalil.png" alt="" aria-hidden="true" style="object-position:center 40%" />
+  <div class="hero-content">
+    <div class="hero-badge fade-in">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Relatório Parcial &middot; 27 de agosto a 3 de setembro de 2026
+    </div>
+    <h1 class="hero-title fade-in">
+      Alexandre Kalil<br/><span class="accent">Performance de Mídia</span>
+    </h1>
+    <p class="hero-subtitle fade-in">
+      Oito dias de veiculação, <strong>R$ 55,5 mil investidos</strong> e 58,4 mil interações com o conteúdo em todas as regiões do plano.
+    </p>
+    <div class="hero-meta-caption fade-in">Resumo do período &middot; 27/08 a 03/09</div>
+    <div class="hero-meta fade-in">
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="2520458" data-format="compact">2,5M</span></span><span class="hero-meta-label">Alcance</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="7156827" data-format="compact">7,2M</span></span><span class="hero-meta-label">Impressões</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="58450" data-format="standard">58.450</span></span><span class="hero-meta-label">Interações</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value"><span class="count-up" data-target="49056" data-format="standard">49.056</span></span><span class="hero-meta-label">Visitas ao perfil</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-value">8</span><span class="hero-meta-label">Dias de veiculação</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-section="visao">
+  <span class="section-label">Visão Geral</span>
+  <h2 class="section-title fade-in">Resultado Consolidado</h2>
+  <p class="section-subtitle fade-in">Oito dias de veiculação, de 27 de agosto a 3 de setembro, somando Instagram e Facebook.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill traf">Consolidado</span> Números do período</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Indicador</th><th>Volume</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">Investimento no período</td><td>R$ 55.506,16</td></tr>
+          <tr><td class="tl">Pessoas alcançadas</td><td>2.520.458</td></tr>
+          <tr><td class="tl">Vezes que o conteúdo apareceu</td><td>7.156.827</td></tr>
+          <tr><td class="tl">Cada pessoa viu, em média</td><td>2,84 vezes</td></tr>
+          <tr><td class="tl">Interações com o conteúdo</td><td>58.450</td></tr>
+          <tr><td class="tl">Curtidas e reações</td><td>53.816</td></tr>
+          <tr><td class="tl">Comentários</td><td>3.115</td></tr>
+          <tr><td class="tl">Compartilhamentos</td><td>1.057</td></tr>
+          <tr><td class="tl">Salvamentos</td><td>462</td></tr>
+          <tr><td class="tl">Visualizações</td><td>568.512</td></tr>
+          <tr><td class="tl">Visitas ao Perfil</td><td>49.056</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">O alcance vem do total da conta e não se soma entre regiões ou peças, porque a mesma pessoa pode ser alcançada em mais de uma delas.</p>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">O que os números dizem</div>
+    <div class="insight-text">A campanha chegou a 2,52 milhões de mineiros em oito dias. Cada pessoa viu o conteúdo em média 2,84 vezes, e ainda há público novo pela frente. As 58,4 mil interações saíram a <strong>R$ 0,95 cada</strong>, e o conteúdo com tema definido é o que puxa esse número para baixo.</div>
+  </div>
+</section>
+
+<section class="section" data-section="objetivos">
+  <span class="section-label">Investimento e Resultado</span>
+  <h2 class="section-title fade-in">O Que Cada Objetivo Entregou</h2>
+  <p class="section-subtitle fade-in">Como os R$ 55,5 mil foram divididos entre as frentes de veiculação e o que cada uma trouxe de volta.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill eng">Objetivos</span> Ordenado pelo investimento</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Objetivo</th><th>Investimento</th><th>Participação</th><th>Interações</th><th>Custo por interação</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">Visitas ao Perfil, Instagram</td><td>R$ 21.733,06</td><td>39,2%</td><td>7.303</td><td>R$ 2,98</td></tr>
+          <tr><td class="tl">Engajamento</td><td>R$ 14.029,48</td><td>25,3%</td><td class="acc">32.449</td><td class="acc">R$ 0,43</td></tr>
+          <tr><td class="tl">Visualizações</td><td>R$ 12.251,07</td><td>22,1%</td><td>7.271</td><td>R$ 1,68</td></tr>
+          <tr><td class="tl">Engajamento, público que já viu</td><td>R$ 3.588,25</td><td>6,5%</td><td>9.736</td><td class="acc">R$ 0,37</td></tr>
+          <tr><td class="tl">Visualizações, público que já viu</td><td>R$ 2.787,36</td><td>5,0%</td><td>1.498</td><td>R$ 1,86</td></tr>
+          <tr><td class="tl">Visitas ao Perfil, Facebook</td><td>R$ 987,20</td><td>1,8%</td><td>124</td><td>R$ 7,96</td></tr>
+          <tr><td class="tl">Clusters de público</td><td>R$ 129,74</td><td>0,2%</td><td>69</td><td>R$ 1,88</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Os clusters de público entraram no ar em 3 de setembro e por isso aparecem com volume pequeno.</p>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Onde a interação é mais barata</div>
+    <div class="insight-text">As duas frentes de engajamento respondem por <strong>31,8% do investimento</strong> e trazem <strong>72% de todas as interações</strong> do período. A interação sai a R$ 0,43 e R$ 0,37 nelas, contra R$ 2,98 na frente de visitas ao perfil. A frente de visitas cumpre outro papel, levar gente ao perfil, e entregou 49 mil visitas a R$ 0,44 cada.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">O que cada frente entregou no seu próprio objetivo</div>
+    <div class="insight-text">Visitas ao Perfil trouxe <strong>49.056 visitas</strong>, a R$ 0,44 cada. Engajamento somou <strong>716,3 mil</strong> engajamentos com a publicação. Visualizações entregou <strong>262,3 mil</strong> visualizações completas, a R$ 0,05 cada. No Facebook, a visita ao perfil saiu a R$ 5,04, bem acima do Instagram.</div>
+  </div>
+</section>
+
+<section class="section" data-section="pracas">
+  <span class="section-label">Praças</span>
+  <h2 class="section-title fade-in">Veiculou nesse período</h2>
+  <p class="section-subtitle fade-in">Regiões de Minas Gerais, mais dois recortes ligados ao tema de segurança.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill eng">Regiões</span> Ordenado pelo volume de exibições</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Região</th><th>Investimento</th><th>Exibições</th><th>Reações</th><th>Comentários</th><th>Compart.</th><th>Custo por interação</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">Região Metropolitana de BH</td><td>R$ 10.829,72</td><td>1.563.958</td><td>18.794</td><td>1.066</td><td class="acc">341</td><td>R$ 0,53</td></tr>
+          <tr><td class="tl">Norte de Minas, Jequitinhonha e Mucuri</td><td>R$ 9.836,95</td><td>1.386.339</td><td>5.592</td><td>239</td><td class="acc">113</td><td>R$ 1,64</td></tr>
+          <tr><td class="tl">Vale do Rio Doce e Zona da Mata</td><td>R$ 9.017,79</td><td>1.262.119</td><td>8.193</td><td>427</td><td class="acc">210</td><td>R$ 1,01</td></tr>
+          <tr><td class="tl">Sul de Minas</td><td>R$ 8.490,31</td><td>1.079.531</td><td>4.449</td><td>280</td><td class="acc">142</td><td>R$ 1,73</td></tr>
+          <tr><td class="tl">Uberlândia e Uberaba</td><td>R$ 7.388,11</td><td>789.928</td><td>3.327</td><td>204</td><td class="acc">97</td><td>R$ 2,02</td></tr>
+          <tr><td class="tl">Demais cidades do Triângulo</td><td>R$ 6.589,28</td><td>710.761</td><td>3.042</td><td>128</td><td class="acc">48</td><td>R$ 2,03</td></tr>
+          <tr><td class="tl">Segurança Pública, Grande BH</td><td>R$ 1.454,34</td><td>203.525</td><td>2.993</td><td>185</td><td class="acc">45</td><td>R$ 0,45</td></tr>
+          <tr><td class="tl">Cidades com maior incidência criminal</td><td>R$ 1.769,92</td><td>146.724</td><td>7.361</td><td>582</td><td class="acc">61</td><td class="acc">R$ 0,22</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">O alcance não aparece por região porque não se soma entre elas: a mesma pessoa pode ser alcançada em mais de uma.</p>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura das praças</div>
+    <div class="insight-text">Os dois recortes de segurança são os mais eficientes da campanha. Somados, receberam <strong>R$ 3,2 mil</strong>, menos de 6% do investimento, e trouxeram <strong>10,3 mil reações e 767 comentários</strong>. Nas cidades com maior incidência criminal a interação sai a R$ 0,22, quase dez vezes mais barata que no Triângulo. A Grande BH concentra o maior volume e o maior número de compartilhamentos, com 341 dos 1.057 do período.</div>
+  </div>
+</section>
+
+<section class="section" data-section="demografia">
+  <span class="section-label">Público</span>
+  <h2 class="section-title fade-in">A Nossa Audiência</h2>
+  <p class="section-subtitle fade-in">A campanha fala com o eleitor de 35 anos em diante, e o resultado aparece na distribuição.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill traf">Faixa etária</span> Distribuição das exibições</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Idade</th><th>Exibições</th><th>Participação</th><th>Reações</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">18 a 24</td><td>339.058</td><td>4,7%</td><td>2.090</td></tr>
+          <tr><td class="tl">25 a 34</td><td>847.884</td><td>11,8%</td><td>6.962</td></tr>
+          <tr><td class="tl">35 a 44</td><td>1.686.147</td><td>23,6%</td><td>9.773</td></tr>
+          <tr><td class="tl">45 a 54</td><td>1.519.029</td><td>21,2%</td><td>12.205</td></tr>
+          <tr><td class="tl">55 a 64</td><td>1.476.833</td><td>20,6%</td><td class="acc">12.718</td></tr>
+          <tr><td class="tl">65 ou mais</td><td>1.287.639</td><td>18,0%</td><td>10.066</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Leitura do público</div>
+    <div class="insight-text">Oito em cada dez exibições foram para pessoas com 35 anos ou mais. O grupo de 55 a 64 anos é o que mais reage ao conteúdo, seguido de perto pelo de 45 a 54. Juntas, essas duas faixas concentram 43% das reações com 42% das exibições.</div>
+  </div>
+
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">Quem Foi Impactado</h3>
+  <p class="section-subtitle fade-in">Distribuição das exibições do período por faixa etária e gênero.</p>
+
+  <div class="demo-grid fade-in">
+    <div class="demo-card">
+      <div class="demo-card-title">Exibições por Faixa Etária</div>
+      <div class="demo-card-sub">Entrega concentrada no público 35+.</div>
+      <canvas id="chartIdade" height="220"></canvas>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-title">Distribuição por Gênero</div>
+      <div class="demo-card-sub">Divisão equilibrada entre feminino e masculino.</div>
+      <div class="demo-donut-wrap">
+        <canvas id="chartGenero" height="220"></canvas>
+        <div class="demo-donut-center"><span class="demo-donut-pct">53,9%</span><span class="demo-donut-label">masculino</span></div>
+      </div>
+      <div class="demo-legend">
+        <span class="demo-legend-item"><i style="background:#F26522"></i>Feminino</span>
+        <span class="demo-legend-item"><i style="background:#1F1F1F"></i>Masculino</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-section="anuncios">
+  <span class="section-label">Conteúdos</span>
+  <h2 class="section-title fade-in">Desempenho dos Conteúdos</h2>
+  <p class="section-subtitle fade-in">Dezesseis peças no ar no período. Os números de cada uma somam todas as regiões em que ela apareceu.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill eng">Peças</span> Ordenado pelo custo por interação, do mais barato para o mais caro</div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Conteúdo</th><th>Investimento</th><th>Exibições</th><th>Interações</th><th>Comentários</th><th>Compart.</th><th>Custo por interação</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">Só Quem Fez, Segurança</td><td>R$ 1.769,92</td><td>146.724</td><td>8.044</td><td class="acc">582</td><td>61</td><td class="acc">R$ 0,22</td></tr>
+          <tr><td class="tl">Coragem</td><td>R$ 756,19</td><td>101.226</td><td>2.200</td><td>97</td><td>20</td><td class="acc">R$ 0,34</td></tr>
+          <tr><td class="tl">Coronel Gianfranco</td><td>R$ 1.454,34</td><td>203.525</td><td>3.239</td><td>185</td><td>45</td><td class="acc">R$ 0,45</td></tr>
+          <tr><td class="tl">Carrossel Triângulo Mineiro e Alto Paranaíba</td><td>R$ 409,16</td><td>37.129</td><td>870</td><td>14</td><td>3</td><td>R$ 0,47</td></tr>
+          <tr><td class="tl">VT Bio Invertida</td><td>R$ 1.838,32</td><td>223.241</td><td>2.963</td><td>177</td><td>47</td><td>R$ 0,62</td></tr>
+          <tr><td class="tl">VT Spot Fazedor</td><td>R$ 1.335,37</td><td>130.183</td><td>2.137</td><td>74</td><td>22</td><td>R$ 0,62</td></tr>
+          <tr><td class="tl">VT Pandemia</td><td>R$ 15.359,33</td><td>2.145.899</td><td>18.392</td><td>1.177</td><td class="acc">594</td><td>R$ 0,84</td></tr>
+          <tr><td class="tl">Fiz pela minha cidade</td><td>R$ 7.434,67</td><td>986.734</td><td>7.721</td><td>332</td><td>95</td><td>R$ 0,96</td></tr>
+          <tr><td class="tl">Carrossel Teve Um Cara Que</td><td>R$ 6.346,77</td><td>908.826</td><td>5.517</td><td>204</td><td>45</td><td>R$ 1,15</td></tr>
+          <tr><td class="tl">Vídeo Juiz de Fora</td><td>R$ 960,95</td><td>98.617</td><td>549</td><td>21</td><td>8</td><td>R$ 1,75</td></tr>
+          <tr><td class="tl">Carrossel Bio</td><td>R$ 9.587,81</td><td>1.240.114</td><td>4.121</td><td>98</td><td>27</td><td>R$ 2,33</td></tr>
+          <tr><td class="tl">VT Bio Motion</td><td>R$ 5.565,55</td><td>663.734</td><td>2.034</td><td>117</td><td>77</td><td>R$ 2,74</td></tr>
+          <tr><td class="tl">Guiado pelo Coração</td><td>R$ 1.653,47</td><td>196.944</td><td>580</td><td>31</td><td>13</td><td>R$ 2,85</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Ficaram fora da tabela três peças que entraram no ar nos últimos dias do período e ainda não têm volume para comparação: Card Independente, Saúde Portas Abertas e Carrossel Kalil Fez Sul de Minas.</p>
+  </div>
+
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">O que foi mais eficiente</h3>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Critério dos destaques abaixo</div>
+    <div class="insight-text">Os três quadros a seguir mostram quanto custou cada resultado, do mais barato para o mais caro. Para um conteúdo entrar, ele precisa ter gerado pelo menos 5% do total do período naquele resultado. Isso evita destacar uma peça que trouxe um ou dois resultados muito baratos e não teve peso na entrega. Quem ficou de fora aparece indicado em cada quadro.</div>
+  </div>
+
+  <div class="top-grid top-grid-3">
+    <div class="top-card fade-in">
+      <div class="top-body">
+        <span class="top-award">&#9733; Melhores para gerar interação</span>
+        <div class="top-name">Só Quem Fez, Segurança</div>
+        <div class="top-stat-main"><span class="v">R$ 0,22</span><span class="k">por interação &middot; 8.044 no total</span></div>
+        <div class="top-mini">
+          <div class="mi"><span class="v">R$ 0,45</span><span class="k">Coronel Gianfranco &middot; 3.239</span></div>
+          <div class="mi"><span class="v">R$ 0,62</span><span class="k">VT Bio Invertida &middot; 2.963</span></div>
+        </div>
+        <div class="cb-label">Fora do critério: Coragem, com 2.200 interações, e VT Spot Fazedor, com 2.137.</div>
+      </div>
+    </div>
+    <div class="top-card fade-in">
+      <div class="top-body">
+        <span class="top-award">&#9733; Melhores para gerar comentários</span>
+        <div class="top-name">Só Quem Fez, Segurança</div>
+        <div class="top-stat-main"><span class="v">R$ 3,04</span><span class="k">por comentário &middot; 582 no total</span></div>
+        <div class="top-mini">
+          <div class="mi"><span class="v">R$ 7,86</span><span class="k">Coronel Gianfranco &middot; 185</span></div>
+          <div class="mi"><span class="v">R$ 10,39</span><span class="k">VT Bio Invertida &middot; 177</span></div>
+        </div>
+        <div class="cb-label">Fora do critério: VT Bio Motion, com 117 comentários, e Carrossel Bio, com 98.</div>
+      </div>
+    </div>
+    <div class="top-card fade-in">
+      <div class="top-body">
+        <span class="top-award">&#9733; Melhores para gerar compartilhamentos</span>
+        <div class="top-name">VT Pandemia</div>
+        <div class="top-stat-main"><span class="v">R$ 25,86</span><span class="k">por compartilhamento &middot; 594 no total</span></div>
+        <div class="top-mini">
+          <div class="mi"><span class="v">R$ 29,02</span><span class="k">Só Quem Fez &middot; 61</span></div>
+          <div class="mi"><span class="v">R$ 72,28</span><span class="k">VT Bio Motion &middot; 77</span></div>
+        </div>
+        <div class="cb-label">Fora do critério: VT Bio Invertida, com 47 compartilhamentos, e Carrossel Teve Um Cara Que, com 45.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="fade-in" style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:var(--xl) 0 var(--sm)">Ver Cada Conteúdo no Instagram</h3>
+  <p class="section-subtitle fade-in">Links das publicações reais que sustentam os anúncios do período.</p>
+
+  <div class="table-block fade-in">
+    <div class="table-caption"><span class="pill traf">Publicações</span></div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr><th>Conteúdo</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="tl">Só Quem Fez, Segurança</td><td class="tl"><a href="https://www.instagram.com/p/Dcn4SLKDlOf/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Coragem</td><td class="tl"><a href="https://www.instagram.com/reel/DczZWykuZvP/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Carrossel Teve Um Cara Que</td><td class="tl"><a href="https://www.instagram.com/p/DcdgatnFgH1/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Carrossel Bio</td><td class="tl"><a href="https://www.instagram.com/p/DcPGn1hj5JG/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">VT Pandemia</td><td class="tl"><a href="https://www.instagram.com/p/DcWLu5wuSzp/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">VT Bio Invertida</td><td class="tl"><a href="https://www.instagram.com/p/DcTN71PSmMP/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Coronel Gianfranco</td><td class="tl"><a href="https://www.instagram.com/p/DcOB3n5yotY/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Guiado pelo Coração</td><td class="tl"><a href="https://www.instagram.com/p/Db9EzrTvMA2/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Card Independente</td><td class="tl"><a href="https://www.instagram.com/p/Dc0qCqmSTTk/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+          <tr><td class="tl">Saúde, Portas Abertas</td><td class="tl"><a href="https://www.instagram.com/p/DcyLJaSu8eU/" target="_blank" rel="noopener">Ver a publicação &#8599;</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-section="diagnostico">
+  <span class="section-label">Leitura</span>
+  <h2 class="section-title fade-in">E agora?</h2>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Tema concreto é o que gera conversa</div>
+    <div class="insight-text">As peças de segurança lideram com folga. Só Quem Fez trouxe a interação a R$ 0,22 e o comentário a R$ 3,04, com menos de R$ 1,8 mil investidos. Coronel Gianfranco vem logo atrás. Os dois falam de um assunto específico, e o público responde a isso. As peças de apresentação do candidato entregam volume de exibição, mas geram menos conversa: no Carrossel Bio a interação sai a R$ 2,33, dez vezes mais cara.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">O VT Pandemia é o conteúdo que mais viaja</div>
+    <div class="insight-text">Ele respondeu por 594 dos 1.057 compartilhamentos do período, ao menor custo entre todas as peças. É o conteúdo que as pessoas mandam para alguém, e isso amplia o alcance sem custo adicional. Vale considerar mais peças na mesma linha, de relato pessoal sobre um momento concreto.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">A frente de engajamento é a que mais rende</div>
+    <div class="insight-text">Engajamento e a frente voltada a quem já viu o conteúdo somam menos de um terço do investimento e trazem quase três quartos de todas as interações. Nelas a interação sai por volta de R$ 0,40. Já a frente de visitas ao perfil, que leva 39,2% da verba, entrega interação a R$ 2,98, porque o objetivo dela é outro: levar gente ao perfil, e nisso trouxe 49 mil visitas a R$ 0,44 cada.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <div class="insight-label">Sugestões para o próximo período</div>
+    <div class="insight-text">Sugerimos ampliar a presença de conteúdo com tema definido, no caminho do que as peças de segurança mostraram, e aumentar a participação da frente de engajamento na divisão da verba, que é onde a interação sai mais barata. Nas praças do Triângulo, onde a interação está em torno de R$ 2,00, vale levar as peças temáticas que funcionaram na Grande BH.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/logo-algoritmica.png" alt="Algorítmica" style="height:39px" />
+    <p>Relatório parcial &middot; 27 de agosto a 3 de setembro de 2026 &middot; Instagram e Facebook</p>
+    <p class="footer-note">Os números vêm dos relatórios das plataformas. O alcance é o dado do total da conta e não se soma entre regiões ou conteúdos.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); });
+if (window.Chart) {
+  var ageCtx = document.getElementById('chartIdade');
+  if (ageCtx) {
+    new Chart(ageCtx, {
+      type: 'bar',
+      data: {
+        labels: ['18–24','25–34','35–44','45–54','55–64','65+'],
+        datasets: [{
+          data: [339,848,1686,1519,1477,1288],
+          backgroundColor: ['#8C8C8C','#F26522','#1F1F1F','#8C8C8C','#8C8C8C','#C7C7C7'],
+          borderRadius: 4,
+          maxBarThickness: 46
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, ticks: { callback: function(v){ return v + 'K'; } }, grid: { color: '#eee' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+  var genderCtx = document.getElementById('chartGenero');
+  if (genderCtx) {
+    new Chart(genderCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Feminino','Masculino'],
+        datasets: [{ data: [46.0, 53.9], backgroundColor: ['#F26522','#1F1F1F'], borderWidth: 0 }]
+      },
+      options: {
+        cutout: '72%',
+        responsive: true,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } }
+      }
+    });
+  }
+}
+document.querySelectorAll('.count-up').forEach(function(el){
+  var t = parseInt(el.getAttribute('data-target'), 10);
+  var f = el.getAttribute('data-format');
+  if (f === 'compact') {
+    el.textContent = t >= 1000000 ? (t/1000000).toFixed(1).replace('.', ',') + 'M'
+                                  : Math.round(t/1000) + 'K';
+  } else {
+    el.textContent = t.toLocaleString('pt-BR');
+  }
+});
+var toggle = document.getElementById('navToggle');
+if (toggle) { toggle.addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+}); }
+document.querySelectorAll('[data-nav]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var s = document.querySelector('[data-section="' + a.getAttribute('data-nav') + '"]');
+    if (s) s.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
