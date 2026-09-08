@@ -135,7 +135,7 @@ body {
 }
 .hero-badge svg { color: var(--accent); }
 .hero-title {
-  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
   font-weight: 800; line-height: 1.02; letter-spacing: -0.03em;
   color: #fff; margin-bottom: var(--lg);
 }
@@ -168,8 +168,8 @@ body {
 .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: var(--accent); }
 .section-label.muted { color: var(--text-muted); }
 .section-label.muted::before { background: var(--text-muted); }
-.section-title { font-size: clamp(1.8rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.08; margin-bottom: var(--md); letter-spacing: -0.02em; }
-.section-subtitle { font-size: 1.02rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7; }
+.section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.08; margin-bottom: var(--md); letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; }
 
 .section-alt { background: var(--surface-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .section-alt .section { }
@@ -186,10 +186,10 @@ body {
 .kpi-card.accent::before { background: var(--accent); }
 .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: var(--border-strong); }
 .kpi-card:hover::before { transform: scaleX(1); }
-.kpi-label { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--sm); }
-.kpi-value { font-size: 1.95rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; line-height: 1; }
+.kpi-label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--sm); }
+.kpi-value { font-size: 1.75rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; line-height: 1; }
 .kpi-value.orange { color: var(--accent); }
-.kpi-sub { font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; margin-top: var(--xs); }
+.kpi-sub { font-size: 0.74rem; color: var(--text-muted); line-height: 1.4; margin-top: var(--xs); }
 .kpi-sub strong { color: var(--text-secondary); font-weight: 700; }
 .kpi-trend { display:inline-flex; align-items:center; gap:4px; font-size:0.72rem; font-weight:800; margin-top:8px; padding:2px 9px; border-radius:100px; width:fit-content; }
 .kpi-trend.up { color: var(--success); background: rgba(30,158,90,0.10); }
@@ -350,7 +350,7 @@ table.data-table td .mut { color: var(--text-muted); font-size: 0.82em; }
 .insight-box.gray { background: rgba(0,0,0,0.04); border-left-color: var(--g-700); }
 .insight-label { font-size: 0.64rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 4px; }
 .insight-box.gray .insight-label { color: var(--g-700); }
-.insight-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+.insight-text { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 .insight-text strong { color: var(--text-primary); }
 
 /* ===== DEMO ===== */
@@ -662,8 +662,9 @@ a.btn-export { text-decoration: none; }
 
 /* ===================================================================
    AJUSTES DESTE RELATÓRIO (Kalil)
-   Escala tipográfica, larguras e estrutura de seção seguem o CSS do
-   report do Celina, sem alteração. Abaixo só o que é funcional.
+   Layout, cor, grid e espaçamento vêm do CSS do report do Celina.
+   A escala de fonte vem do DESIGN-SYSTEM.md (peso mantido do Celina).
+   Abaixo só o que é funcional.
    =================================================================== */
 
 /* Embeds do Instagram: enquadramento por peça. Os posts do Kalil têm
