@@ -47,6 +47,8 @@
     box-shadow:var(--shadow);padding:14px 18px;min-width:158px}
   .kpi .rot{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
   .kpi .val{display:block;font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+  .kpi .pe{display:block;font-size:.7rem;color:var(--ink-3);margin-top:3px}
+  .kpi.destaque{border-color:var(--orange)}
   .semana{display:flex;flex-direction:column;gap:18px}
   .semana[hidden]{display:none}
   tr.sub[hidden]{display:none}
@@ -111,8 +113,8 @@
     <section class="semana" id="sem-0" hidden>
       <div class="kpis">
         <div class="kpi"><span class="rot">Período</span><span class="val">27/08 a 03/09</span></div>
-        <div class="kpi"><span class="rot">Gasto</span><span class="val">R$ 55.514</span></div>
-        <div class="kpi"><span class="rot">Plano da semana</span><span class="val">R$ 55.550</span></div>
+        <div class="kpi destaque"><span class="rot">Gasto da conta</span><span class="val" id="kpi-gasto-0">R$ 55.514</span><span class="pe">todas as campanhas</span></div>
+        <div class="kpi"><span class="rot">Plano da semana</span><span class="val">R$ 55.550</span><span class="pe">fechou R$ 36 abaixo</span></div>
         <div class="kpi"><span class="rot">Conjuntos no ar</span><span class="val">22</span></div>
       </div>
       <div class="abas" role="tablist">
@@ -391,8 +393,8 @@
     <section class="semana" id="sem-1">
       <div class="kpis">
         <div class="kpi"><span class="rot">Período</span><span class="val">04/09 a 10/09</span></div>
-        <div class="kpi"><span class="rot">Gasto · parcial</span><span class="val">R$ 63.150</span></div>
-        <div class="kpi"><span class="rot">Plano da semana</span><span class="val">R$ 65.200</span></div>
+        <div class="kpi destaque"><span class="rot">Gasto da conta · parcial</span><span class="val" id="kpi-gasto-1">R$ 63.150</span><span class="pe">todas as campanhas</span></div>
+        <div class="kpi"><span class="rot">Plano da semana</span><span class="val">R$ 65.200</span><span class="pe">faltam R$ 2.050</span></div>
         <div class="kpi"><span class="rot">Conjuntos no ar</span><span class="val">38</span></div>
       </div>
       <div class="abas" role="tablist">
@@ -470,16 +472,16 @@
           <td><span class="pill on">no ar</span></td>
         </tr>
 <tr class="sub" id="sub-1c-5" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>VT Case Hospital Barreiro</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 469,33</td><td class="num">34.478</td><td class="num">R$ 0,0413</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
-        <tr class="linha" data-sub="sub-1c-6" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="500.00" data-gasto="467.41" data-custo="0.029055" data-nome="agro aécio+psdb triângulo + alto paranaíba">
+        <tr class="linha" data-sub="sub-1c-6" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="500.00" data-gasto="467.41" data-custo="0.028951" data-nome="agro aécio+psdb triângulo + alto paranaíba">
           <td><span class="nome"><span class="seta">›</span>Agro Aécio+PSDB Triângulo + Alto Paranaíba</span><span class='det'>Agro, zona rural e sertanejo no Triângulo · Pausado na virada de 10/09: Triângulo tem o pior custo por seguidor, R$92</span><span class="qtd">1 criativo</span></td>
           <td class="mid">Engajamento, Visitas Ao Perfil</td>
           <td class="mid"><ul class="cri"><li>Apoio Galassi</li></ul></td>
           <td class="num">R$ 500,00</td>
           <td class="num">R$ 467,41</td>
-          <td class="num">R$ 0,0291</td>
+          <td class="num">R$ 0,0290</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
-<tr class="sub" id="sub-1c-6" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Apoio Galassi</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 466,65</td><td class="num">41.452</td><td class="num">R$ 0,0289</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
+<tr class="sub" id="sub-1c-6" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Apoio Galassi</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 467,41</td><td class="num">41.472</td><td class="num">R$ 0,0290</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
         <tr class="linha" data-sub="sub-1c-7" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="387.01" data-gasto="386.13" data-custo="0.263570" data-nome="segurança pública - bairros bh">
           <td><span class="nome"><span class="seta">›</span>Segurança Pública - Bairros BH</span><span class='det'>Bairros de BH com interesses de segurança · Mantido a pedido do cliente: segurança é uma das duas grandes dores do estado. Vigiar custo, é o mais alto por interação</span><span class="qtd">1 criativo</span></td>
           <td class="mid">Engajamento</td>
@@ -534,12 +536,12 @@
           <th class="ord" data-chave="ativo">Estado</th>
         </tr></thead>
         <tbody>
-        <tr class="linha" data-sub="sub-1r-0" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="14668.38" data-gasto="5351.95" data-custo="0.029261" data-nome="região metropolitana de bh">
+        <tr class="linha" data-sub="sub-1r-0" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="14668.38" data-gasto="5353.10" data-custo="0.029267" data-nome="região metropolitana de bh">
           <td><span class="nome"><span class="seta">›</span>Região Metropolitana de BH</span><span class="qtd">10 criativos</span></td>
           <td class="mid">Engajamento, Visitas Ao Perfil, Visualizações</td>
           <td class="mid"><ul class="cri"><li>Fiz pela minha cidade</li><li>Conteúdo 7 de Setembro - Independência do Brasil</li><li>VT Pandemia</li><li>Coragem</li><li>Coronel Gianfranco</li><li>Vamos Fazer com Minas Gerais</li><li class="pausado">e mais 4</li></ul></td>
           <td class="num">R$ 14.668,38</td>
-          <td class="num">R$ 5.351,95</td>
+          <td class="num">R$ 5.353,10</td>
           <td class="num">R$ 0,0293</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
@@ -594,12 +596,12 @@
           <td><span class="pill on">no ar</span></td>
         </tr>
 <tr class="sub" id="sub-1r-5" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>VT Spot Fazedor</td><td class="mid">Engajamento RMKT, Visualizações RMKT</td><td class="num">R$ 1.080,96</td><td class="num">81.742</td><td class="num">R$ 0,0363</td><td><span class="pill on">no ar</span></td></tr><tr><td>VT Pandemia</td><td class="mid">Engajamento RMKT, Visualizações RMKT</td><td class="num">R$ 951,90</td><td class="num">110.483</td><td class="num">R$ 0,0261</td><td><span class="pill on">no ar</span></td></tr><tr><td>Fiz pela minha cidade</td><td class="mid">Engajamento RMKT, Visualizações RMKT</td><td class="num">R$ 887,78</td><td class="num">99.262</td><td class="num">R$ 0,0309</td><td><span class="pill on">no ar</span></td></tr><tr><td>Só quem fez vai fazer - Saúde</td><td class="mid">Engajamento RMKT</td><td class="num">R$ 4,14</td><td class="num">370</td><td class="num">R$ 0,0739</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
-        <tr class="linha" data-sub="sub-1r-6" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="4430.35" data-gasto="2814.59" data-custo="0.023012" data-nome="região metropolitana de bh rmkt">
+        <tr class="linha" data-sub="sub-1r-6" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="4430.35" data-gasto="2815.08" data-custo="0.023016" data-nome="região metropolitana de bh rmkt">
           <td><span class="nome"><span class="seta">›</span>Região Metropolitana de BH RMKT</span><span class="qtd">6 criativos</span></td>
           <td class="mid">Engajamento RMKT, Visualizações RMKT</td>
           <td class="mid"><ul class="cri"><li>Coragem</li><li>Conteúdo 7 de Setembro - Independência do Brasil</li><li>Fiz pela minha cidade</li><li>VT Spot Fazedor</li><li>POV: você viveu em BH quando Kalil foi prefeito</li><li>VT Pandemia</li></ul></td>
           <td class="num">R$ 4.430,35</td>
-          <td class="num">R$ 2.814,59</td>
+          <td class="num">R$ 2.815,08</td>
           <td class="num">R$ 0,0230</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
@@ -633,7 +635,7 @@
           <td class="num">R$ 0,0183</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
-<tr class="sub" id="sub-1r-9" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Master Zona da Mata - Reconstrução</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 1.967,17</td><td class="num">247.836</td><td class="num">R$ 0,0184</td><td><span class="pill on">no ar</span></td></tr><tr><td>Vídeo Juiz de Fora</td><td class="mid">Engajamento</td><td class="num">R$ 433,61</td><td class="num">58.899</td><td class="num">R$ 0,0144</td><td><span class="pill on">no ar</span></td></tr><tr><td>VT InterTV Vales</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 154,58</td><td class="num">17.243</td><td class="num">R$ 0,0499</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
+<tr class="sub" id="sub-1r-9" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Master Zona da Mata - Reconstrução</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 1.967,17</td><td class="num">247.836</td><td class="num">R$ 0,0184</td><td><span class="pill on">no ar</span></td></tr><tr><td>Vídeo Juiz de Fora</td><td class="mid">Engajamento</td><td class="num">R$ 433,71</td><td class="num">58.910</td><td class="num">R$ 0,0144</td><td><span class="pill on">no ar</span></td></tr><tr><td>VT InterTV Vales</td><td class="mid">Engajamento, Visitas Ao Perfil</td><td class="num">R$ 154,58</td><td class="num">17.243</td><td class="num">R$ 0,0499</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
         <tr class="linha" data-sub="sub-1r-10" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="5054.64" data-gasto="1419.65" data-custo="0.029707" data-nome="triângulo mineiro">
           <td><span class="nome"><span class="seta">›</span>Triângulo Mineiro</span><span class="qtd">9 criativos</span></td>
           <td class="mid">Engajamento, Visitas Ao Perfil, Visualizações</td>
@@ -664,12 +666,12 @@
           <td><span class="pill on">no ar</span></td>
         </tr>
 <tr class="sub" id="sub-1r-12" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Vamos Fazer com Minas Gerais</td><td class="mid">Visitas Ao Perfil Remarketing</td><td class="num">R$ 850,20</td><td class="num">45.724</td><td class="num">R$ 0,0664</td><td><span class="pill on">no ar</span></td></tr><tr><td>Conteúdo 7 de Setembro - Independência do Brasil</td><td class="mid">Visitas Ao Perfil Remarketing</td><td class="num">R$ 426,22</td><td class="num">33.541</td><td class="num">R$ 0,0493</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
-        <tr class="linha" data-sub="sub-1r-13" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="1971.00" data-gasto="1202.86" data-custo="0.033435" data-nome="triângulo mineiro - uberlândia e uberaba rmkt">
+        <tr class="linha" data-sub="sub-1r-13" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="1971.00" data-gasto="1202.87" data-custo="0.033435" data-nome="triângulo mineiro - uberlândia e uberaba rmkt">
           <td><span class="nome"><span class="seta">›</span>Triângulo Mineiro - Uberlândia e Uberaba RMKT</span><span class="qtd">5 criativos</span></td>
           <td class="mid">Engajamento RMKT, Visualizações RMKT</td>
           <td class="mid"><ul class="cri"><li>VT Pandemia</li><li>Fiz pela minha cidade</li><li>VT Spot Fazedor</li><li>Conteúdo 7 de Setembro - Independência do Brasil</li><li>Obrigado pelo Apoio AP Junqueira</li></ul></td>
           <td class="num">R$ 1.971,00</td>
-          <td class="num">R$ 1.202,86</td>
+          <td class="num">R$ 1.202,87</td>
           <td class="num">R$ 0,0334</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
@@ -784,12 +786,12 @@
           <td><span class="pill on">no ar</span></td>
         </tr>
 <tr class="sub" id="sub-1r-24" hidden><td colspan="7"><div class="subwrap"><table class="ads"><thead><tr><th>Criativo</th><th>Onde</th><th>Gasto</th><th>Impressões</th><th>Custo por interação</th><th>Estado</th></tr></thead><tbody><tr><td>Guiado pelo Coração - Campanha</td><td class="mid">Visualizações</td><td class="num">R$ 80,03</td><td class="num">3.748</td><td class="num">R$ 0,0444</td><td><span class="pill on">no ar</span></td></tr><tr><td>Guiado pelo Coração</td><td class="mid">Visitas Ao Perfil</td><td class="num">R$ 66,80</td><td class="num">9.552</td><td class="num">R$ 0,0540</td><td><span class="pill on">no ar</span></td></tr><tr><td>Vamos Fazer com Minas Gerais</td><td class="mid">Visitas Ao Perfil</td><td class="num">R$ 28,49</td><td class="num">2.141</td><td class="num">R$ 0,0630</td><td><span class="pill on">no ar</span></td></tr></tbody></table></div></td></tr>
-        <tr class="linha" data-sub="sub-1r-25" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="397.67" data-gasto="156.55" data-custo="0.021030" data-nome="juiz de fora">
+        <tr class="linha" data-sub="sub-1r-25" tabindex="0" role="button" aria-expanded="false" data-ativo="1" data-verba="397.67" data-gasto="156.59" data-custo="0.021036" data-nome="juiz de fora">
           <td><span class="nome"><span class="seta">›</span>Juiz de Fora</span><span class="qtd">1 criativo</span></td>
           <td class="mid">Visualizações</td>
           <td class="mid"><ul class="cri"><li>Vídeo Juiz de Fora</li></ul></td>
           <td class="num">R$ 397,67</td>
-          <td class="num">R$ 156,55</td>
+          <td class="num">R$ 156,59</td>
           <td class="num">R$ 0,0210</td>
           <td><span class="pill on">no ar</span></td>
         </tr>
@@ -901,6 +903,8 @@
               pill.className = 'pill ' + (g.ativo ? 'on' : 'off');
             });
           });
+          var kpi = document.getElementById('kpi-gasto-' + i);
+          if (kpi && j.gastoConta) kpi.textContent = 'R$ ' + Math.round(j.gastoConta).toLocaleString('pt-BR');
           var d = new Date(j.atualizado);
           carimbo.textContent = 'Dados de ' + d.toLocaleString('pt-BR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'});
           btn2.textContent = 'Atualizar agora';
