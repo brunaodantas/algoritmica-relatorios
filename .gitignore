@@ -3,3 +3,5 @@
 
 slides_png/
 **/slides_png/
+.vercel
+.env*
