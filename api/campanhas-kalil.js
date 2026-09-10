@@ -91,10 +91,12 @@ export default async function handler(req, res) {
     const grupo = (aba, nome) =>
       (dados[aba][nome] ||= { onde: [], verba: 0, gasto: 0, eng: 0, ativo: false, ads: {} });
     let gastoTotal = 0;
+    let gastoConta = 0;
 
     if (estado !== "futura") {
       const janela = JSON.stringify({ since: sem.ini, until: sem.fim < hoje ? sem.fim : hoje });
-      const [insSet, insAd] = await Promise.all([
+      const [insConta, insSet, insAd] = await Promise.all([
+        meta(`act_${CONTA}/insights`, { fields: "spend", time_range: janela }, token),
         meta(`act_${CONTA}/insights`, {
           level: "adset", fields: "adset_id,spend,impressions,actions",
           time_range: janela, limit: "500",
@@ -104,6 +106,8 @@ export default async function handler(req, res) {
           time_range: janela, limit: "500",
         }, token),
       ]);
+
+      gastoConta = parseFloat((insConta.data?.[0]?.spend) || 0);
 
       for (const row of insSet.data || []) {
         const s = sinfo[row.adset_id];
@@ -149,6 +153,7 @@ export default async function handler(req, res) {
       semana: { ...sem, indice: i, estado },
       atualizado: new Date().toISOString(),
       gastoTotal,
+      gastoConta,
       dados,
     });
   } catch (e) {
