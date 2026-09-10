@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campanhas Ativas · Kalil</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --orange:#ff7f00; --orange-dark:#e06f00; --navy:#0A0A5C;
+    --bg:#F7F7F8; --surface:#FFFFFF; --ink:#111111; --ink-2:#444444; --ink-3:#888888;
+    --line:#DADCE0; --chip:#F2F2F2; --success:#00994D; --warning:#CC8800;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0E0E11; --surface:#17171B; --ink:#F5F5F7; --ink-2:#BFBFC6; --ink-3:#8A8A93;
+    --line:#2A2A31; --chip:#212127; --success:#3FCB86; --warning:#E9B44C;
+    --shadow:0 1px 3px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.35);
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0E0E11; --surface:#17171B; --ink:#F5F5F7; --ink-2:#BFBFC6; --ink-3:#8A8A93;
+    --line:#2A2A31; --chip:#212127; --success:#3FCB86; --warning:#E9B44C;
+    --shadow:0 1px 3px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:40px 20px 72px;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15.5px;line-height:1.5}
+  .wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+  header{display:flex;flex-direction:column;gap:10px}
+  .marca{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.78rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .marca::before{content:"";width:26px;height:4px;border-radius:2px;background:var(--orange)}
+  h1{margin:0;font-size:clamp(1.7rem,4vw,2.3rem);font-weight:700;letter-spacing:-.02em}
+  p.sub{margin:0;color:var(--ink-2);max-width:66ch}
+  .abas{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:0}
+  .abas button{font:inherit;font-weight:600;color:var(--ink-3);background:none;border:0;
+    padding:10px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .abas button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--orange)}
+  .abas button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .painel{display:none;flex-direction:column;gap:20px}
+  .painel.aberto{display:flex}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:14px 18px;min-width:150px}
+  .kpi .rot{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .kpi .val{display:block;font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+  .scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:880px;font-size:.92rem}
+  th{text-align:left;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:600;padding:14px 16px;border-bottom:1px solid var(--line)}
+  td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-2)}
+  td.mid{color:var(--ink-2)}
+  .nome{display:block;font-weight:600}
+  .det{display:block;color:var(--ink-3);font-size:.83rem;margin-top:3px;max-width:44ch}
+  .pill{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--chip);white-space:nowrap}
+  .pill.on{color:var(--success)} .pill.off{color:var(--warning)}
+  footer{color:var(--ink-3);font-size:.82rem;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="marca">Algoritmica · Alexandre Kalil</div>
+    <h1>Campanhas Ativas</h1>
+    <p class="sub">O que está no ar, quanto cada cluster tem de verba e como está entregando. Semana 3 do plano, 11 a 17/09, com R$80.000 na Meta e os clusters subindo de 18,4% para 30% do investimento.</p>
+  </header>
+
+  <div class="abas" role="tablist">
+    <button role="tab" aria-selected="true" aria-controls="clusters" id="tab-clusters">Clusters</button>
+    <button role="tab" aria-selected="false" aria-controls="regionais" id="tab-regionais">Regionais</button>
+  </div>
+
+    <section class="painel aberto" id="clusters">
+      <div class="kpis">
+        <div class="kpi"><span class="rot">No ar</span><span class="val">11</span></div>
+        <div class="kpi"><span class="rot">Verba alocada</span><span class="val">R$ 20.258</span></div>
+        <div class="kpi"><span class="rot">Gasto em 7 dias</span><span class="val">R$ 10.774</span></div>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Conjunto</th><th>Onde roda</th><th>Peça</th><th>Verba</th>
+          <th>Gasto 7 dias</th><th>Custo por interação</th><th>Estado</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><span class="nome">Eleitorado Cleitinho</span><span class="det">Quem assistiu o VT Eu Não Faço Promessa e semelhantes · Pausado na virada de 10/09: voto cristalizado, 66% definitivo. O público continua disponível para outros usos</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 5.677,22</td>
+          <td class="num">R$ 4.111,22</td>
+          <td class="num">R$ 0,1700</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Tema Saúde</span><span class="det">Público do VT Pandemia e cidades com hospital regional · Mantido enxuto: melhor CPM da conta, mas o card não faz seguidor</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">Coragem em Visitas ao Perfil, Portas Abertas em Engajamento</td>
+          <td class="num">R$ 3.678,82</td>
+          <td class="num">R$ 2.616,54</td>
+          <td class="num">R$ 0,0411</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Mulheres Cidades Prioritárias</span><span class="det">Feminino nas 28 cidades com mais violência contra a mulher. 3,8 a 4,5 milhões · Carrossel com índice baixo, avaliar troca de peça</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">Carrossel Só quem fez - Mulheres</td>
+          <td class="num">R$ 2.494,00</td>
+          <td class="num">R$ 1.610,84</td>
+          <td class="num">R$ 0,2737</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Mulheres e Mães de Periferia</span><span class="det">Mulheres 25 a 54 na RMBH</span></td>
+          <td class="mid">Engajamento, Visualizações</td>
+          <td class="mid">Mulheres Lei Absorvente e Merenda</td>
+          <td class="num">R$ 1.620,00</td>
+          <td class="num">R$ 935,20</td>
+          <td class="num">R$ 0,0291</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Segurança Pública - Bairros BH</span><span class="det">Bairros de BH com interesses de segurança · Pausado na virada de 10/09: pior custo por interação da conta</span></td>
+          <td class="mid">Engajamento</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 387,01</td>
+          <td class="num">R$ 379,53</td>
+          <td class="num">R$ 0,2658</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Servidor Público</span><span class="det">Questões cívicas, formações e cargos de serviço público. 511 a 601 mil · Melhor custo por seguidor da conta, R$15</span></td>
+          <td class="mid">Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">VT Servidor Público</td>
+          <td class="num">R$ 1.177,53</td>
+          <td class="num">R$ 329,57</td>
+          <td class="num">R$ 0,0251</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Barreiro e Milionários</span><span class="det">Barreiro, Milionários e entorno do hospital · Pausado na virada de 10/09: volta como peça pontual, não como cluster fixo</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 500,00</td>
+          <td class="num">R$ 309,48</td>
+          <td class="num">R$ 0,0392</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Agro Aécio+PSDB Triângulo + Alto Paranaíba</span><span class="det">Agro, zona rural e sertanejo no Triângulo · Pausado na virada de 10/09: Triângulo tem o pior custo por seguidor, R$92</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 500,00</td>
+          <td class="num">R$ 300,94</td>
+          <td class="num">R$ 0,0281</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Seguidores</span><span class="det">Seguidores do Instagram e do Facebook, em Minas. 250 a 296 mil</span></td>
+          <td class="mid">Engajamento</td>
+          <td class="mid">Card Pesquisa Quaest</td>
+          <td class="num">R$ 400,00</td>
+          <td class="num">R$ 181,18</td>
+          <td class="num">R$ 0,1018</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Esquerda Socioeconômico</span><span class="det">Formação, escola e cargo cruzados com cultura e sustentabilidade, mais o semelhante do VT Pandemia. 45 a 53 mil · Não se sobrepõe ao Servidor Público: quem viu o VT Servidor Público fica de fora</span></td>
+          <td class="mid">Engajamento, Reconhecimento</td>
+          <td class="mid">VT Internet Vilas e Favelas</td>
+          <td class="num">R$ 200,00</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Grupo WhatsApp</span><span class="det">Minas Gerais, 18 a 65, destino WhatsApp · Anúncio de Conversas aprovado, mas ainda sem ganhar leilão</span></td>
+          <td class="mid">Cliques No Link</td>
+          <td class="mid">Card Grupo WhatsApp (JOB608)</td>
+          <td class="num">R$ 400,14</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Mulheres Norte e Vales</span><span class="det">Feminino, 18 a 65, nas 28 cidades de Norte, Jequitinhonha e Mucuri. 595 a 700 mil · Fecha o buraco: mulheres só tinham conjunto na RMBH e nas cidades prioritárias</span></td>
+          <td class="mid">—</td>
+          <td class="mid">Mulheres Lei Absorvente e Merenda, e VT Pandemia</td>
+          <td class="num">R$ 84,00</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Progressista de Centro</span><span class="det">Ensino superior cruzado com cultura e estilo de vida, em BH e nas cidades universitárias. 1,5 a 1,8 milhão · Maior oportunidade da Quaest, 24% de indecisos</span></td>
+          <td class="mid">—</td>
+          <td class="mid">VT Propósito Reedit e Clipe do Jingle</td>
+          <td class="num">R$ 84,00</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Independente</span><span class="det">Notícias, emprego, finanças, empreendedorismo e times, excluindo quem já segue ou já engajou. 8,0 a 9,4 milhões · Quase metade desse grupo não conhece o Kalil</span></td>
+          <td class="mid">—</td>
+          <td class="mid">Card Independente, VT Bio Invertida e Independência do Brasil</td>
+          <td class="num">R$ 84,00</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Base Própria</span><span class="det">Seguidores, quem engajou nos últimos 30 dias e quem viu 55% de vídeo. 766 a 902 mil pessoas · Consolida a base, que é onde está o voto mole</span></td>
+          <td class="mid">—</td>
+          <td class="mid">VT Pandemia e Clipe do Jingle</td>
+          <td class="num">R$ 84,00</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Grupo WhatsApp</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">—</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Segurança Pública</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.237,56</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Classe Média BH</span><span class="det">Nunca entrou no ar no flight. Segue desligado, sinal misto na Quaest</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.650,07</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        </tbody>
+      </table></div>
+    </section>
+    <section class="painel" id="regionais">
+      <div class="kpis">
+        <div class="kpi"><span class="rot">No ar</span><span class="val">27</span></div>
+        <div class="kpi"><span class="rot">Verba alocada</span><span class="val">R$ 100.342</span></div>
+        <div class="kpi"><span class="rot">Gasto em 7 dias</span><span class="val">R$ 49.781</span></div>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Conjunto</th><th>Onde roda</th><th>Peça</th><th>Verba</th>
+          <th>Gasto 7 dias</th><th>Custo por interação</th><th>Estado</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><span class="nome">Região Metropolitana de BH</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 14.668,38</td>
+          <td class="num">R$ 6.056,98</td>
+          <td class="num">R$ 0,0288</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Interior - Vale do Rio Doce + Zona da Mata</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 11.004,97</td>
+          <td class="num">R$ 4.531,87</td>
+          <td class="num">R$ 0,0193</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Norte de Minas, Jequitinhonha e Mucuri</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 11.106,78</td>
+          <td class="num">R$ 4.143,47</td>
+          <td class="num">R$ 0,0376</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Sul de Minas</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 10.271,10</td>
+          <td class="num">R$ 4.070,97</td>
+          <td class="num">R$ 0,0318</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Região Metropolitana de BH RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 4.430,35</td>
+          <td class="num">R$ 3.118,05</td>
+          <td class="num">R$ 0,0226</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Norte de Minas, Jequitinhonha e Mucuri RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 4.269,27</td>
+          <td class="num">R$ 2.941,91</td>
+          <td class="num">R$ 0,0298</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Interior - Vale do Rio Doce + Zona da Mata RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 3.989,24</td>
+          <td class="num">R$ 2.737,01</td>
+          <td class="num">R$ 0,0215</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Estado de Minas Gerais 35+</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 3.051,10</td>
+          <td class="num">R$ 2.602,75</td>
+          <td class="num">R$ 0,0246</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Sul de Minas RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 3.740,48</td>
+          <td class="num">R$ 2.585,70</td>
+          <td class="num">R$ 0,0295</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Juiz de Fora e Ubá</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 3.382,42</td>
+          <td class="num">R$ 2.345,49</td>
+          <td class="num">R$ 0,0188</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro - Uberlândia e Uberaba</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 7.461,16</td>
+          <td class="num">R$ 2.048,02</td>
+          <td class="num">R$ 0,0389</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 5.054,64</td>
+          <td class="num">R$ 1.673,57</td>
+          <td class="num">R$ 0,0296</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro + Alto Paranaíba</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 2.577,00</td>
+          <td class="num">R$ 1.653,08</td>
+          <td class="num">R$ 0,0704</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro - Uberlândia e Uberaba RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.971,00</td>
+          <td class="num">R$ 1.405,60</td>
+          <td class="num">R$ 0,0327</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Jequitinhonha e Mucuri</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.832,55</td>
+          <td class="num">R$ 1.213,97</td>
+          <td class="num">R$ 0,0351</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Estado de Minas Gerais 35+ RMKT</span></td>
+          <td class="mid">Visitas Ao Perfil Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">—</td>
+          <td class="num">R$ 1.067,57</td>
+          <td class="num">R$ 0,0577</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro RMKT</span></td>
+          <td class="mid">Engajamento Rmkt, Visualizações Remarketing</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.347,00</td>
+          <td class="num">R$ 966,34</td>
+          <td class="num">R$ 0,0306</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Incidência Criminal</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 2.339,00</td>
+          <td class="num">R$ 786,29</td>
+          <td class="num">R$ 0,1998</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Estado de Minas Gerais 35+ RMKT</span></td>
+          <td class="mid">Engajamento Rmkt</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 700,00</td>
+          <td class="num">R$ 607,60</td>
+          <td class="num">R$ 0,0160</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Segurança Pública RMBH</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 1.991,52</td>
+          <td class="num">R$ 586,17</td>
+          <td class="num">R$ 0,0239</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Monte Claros</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 802,00</td>
+          <td class="num">R$ 508,59</td>
+          <td class="num">R$ 0,0260</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Oeste e Central de Minas</span></td>
+          <td class="mid">Engajamento, Visitas Ao Perfil Instagram</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 600,00</td>
+          <td class="num">R$ 347,50</td>
+          <td class="num">R$ 0,0303</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Uberaba</span></td>
+          <td class="mid">Engajamento</td>
+          <td class="mid">—</td>
+          <td class="num">—</td>
+          <td class="num">R$ 223,74</td>
+          <td class="num">R$ 0,0210</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Vertical - Sul de Minas</span></td>
+          <td class="mid">Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 533,23</td>
+          <td class="num">R$ 223,35</td>
+          <td class="num">R$ 0,0478</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Juiz de Fora</span></td>
+          <td class="mid">Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 397,67</td>
+          <td class="num">R$ 208,16</td>
+          <td class="num">R$ 0,0213</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Vertical - Norte de Minas, Jequitinhonha e Mucuri</span></td>
+          <td class="mid">Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 503,09</td>
+          <td class="num">R$ 201,26</td>
+          <td class="num">R$ 0,0488</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Vertical - Interior - Vale do Rio Doce + Zona da Mata</span></td>
+          <td class="mid">Visitas Ao Perfil Instagram, Visualizações</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 473,49</td>
+          <td class="num">R$ 172,30</td>
+          <td class="num">R$ 0,0418</td>
+          <td><span class="pill on">no ar</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Triângulo Mineiro - Uberlândia</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 530,00</td>
+          <td class="num">R$ 394,97</td>
+          <td class="num">R$ 0,1481</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Vertical - Triângulo Mineiro</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 874,09</td>
+          <td class="num">R$ 238,14</td>
+          <td class="num">R$ 0,0501</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Vertical - Triângulo Mineiro - Uberlândia e Uberaba</span></td>
+          <td class="mid">—</td>
+          <td class="mid">—</td>
+          <td class="num">R$ 440,57</td>
+          <td class="num">R$ 120,22</td>
+          <td class="num">R$ 0,0525</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        <tr>
+          <td><span class="nome">Grupo WhatsApp</span><span class="det">Minas Gerais, 18 a 65, destino WhatsApp · Anúncio de Conversas aprovado, mas ainda sem ganhar leilão</span></td>
+          <td class="mid">—</td>
+          <td class="mid">Card Grupo WhatsApp (JOB608)</td>
+          <td class="num">—</td>
+          <td class="num">R$ 0,00</td>
+          <td class="num">—</td>
+          <td><span class="pill off">pausado</span></td>
+        </tr>
+        </tbody>
+      </table></div>
+    </section>
+
+  <footer>Status, verba e custo vêm da API do Meta e são atualizados na checagem da manhã. Tamanhos de público medidos por delivery estimate, Minas Gerais, 18 a 65 anos. Desempenho de 03/09 a 09/09, últimos sete dias fechados. Atualizado em 10/09/2026.</footer>
+</div>
+<script>
+  document.querySelectorAll('.abas button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.abas button').forEach(function(o){ o.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.painel').forEach(function(p){ p.classList.remove('aberto'); });
+      b.setAttribute('aria-selected','true');
+      document.getElementById(b.getAttribute('aria-controls')).classList.add('aberto');
+    });
+  });
+</script>
+</body>
+</html>
