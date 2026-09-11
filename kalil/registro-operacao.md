@@ -26,6 +26,25 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 16:08
+- Clusters redistribuídos conforme o plano da Julia, aprovado pelo Bruno. Da verba que ainda
+  vai ser gasta nesta semana: Base Própria 20,3%, Público de Esquerda 14,2%, Progressista
+  14,2%, Independente 10,0%, Mulheres RMBH e interior 8,6%, Tema Saúde 8,1%, Segurança 7,6%,
+  Servidor 6,0%, Cleitinho 6,1%, Mulheres Norte e Vales 5,0%. Seguidores ficou fora do plano,
+  com o valor que tinha.
+- O teto total dos clusters não mudou, R$39.218,06.
+- **Cuidado ao ler o percentual:** medido pelo teto do conjunto, a distribuição parece fora do
+  plano, porque o teto carrega o gasto acumulado desde o começo do flight. O que se controla é
+  o saldo, e é por ele que a distribuição tem que ser conferida.
+- Alerta em aberto: Público de Esquerda ficou com 14% para um público de 45 a 53 mil pessoas.
+  É R$5,12 por mil pessoas por dia, quinze vezes a média dos clusters. Acompanhar a frequência
+  dele nos próximos dias.
+- Cinco vídeos subiram nos conjuntos de Engajamento que só tinham card: Mulheres Cidades
+  Prioritárias recebeu Vamos Fazer com Minas Gerais e Mulheres Lei Absorvente, Segurança
+  Bairros BH recebeu Coronel Gianfranco, Seguidores recebeu VT Pandemia e Vamos Fazer.
+- Planilha precisa ser atualizada com as verbas novas dos clusters e com os cinco anúncios.
+- [x] incorporado
+
 ## 2026-09-11 15:21
 - Critério da página Campanhas Ativas corrigido. A coluna Leitura comparava custo por
   interação misturando objetivos, o que fazia todo conjunto de Visitas ao Perfil parecer
