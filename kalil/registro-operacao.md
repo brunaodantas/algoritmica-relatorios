@@ -37,9 +37,9 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
   conjunto de Visualizações de `Total - Cluster - Progressista de Centro`. A memória ainda
   registra 88.
 - Fundos disponíveis de R$148.273,21 em 11/09 não aparecem em nenhum arquivo de memória.
-- Observação de relógio: `TZ=America/Sao_Paulo date` na máquina do Bruno devolveu 13:20 neste
-  momento, uma hora atrás do carimbo do bloco de 14:20. Vale conferir de que lado está o erro
-  antes que a ordem dos blocos fique confusa.
+- Relógio: o Bruno confirmou que a hora certa é 13:22. O carimbo do bloco logo abaixo, de
+  14:20, está uma hora adiantado. O bloco fica como está, mas o Code precisa corrigir a hora
+  nos próximos, senão a ordem do arquivo embaralha.
 - [ ] ainda não incorporado na memória
 
 ## 2026-09-11 14:20
