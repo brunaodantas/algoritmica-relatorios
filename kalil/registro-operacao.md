@@ -12,9 +12,28 @@ Formato de cada entrada:
 - [ ] ainda não incorporado na memória
 ```
 
-Quem escreve marca `[ ]`. Quando o Code incorporar, ele troca para `[x]`.
+Quem escreve marca `[ ]`. Quando o outro lado incorporar, troca para `[x]`.
+
+**Vale para os dois lados e para dois tipos de coisa:**
+
+1. **Alteração na conta:** verba, data, status, segmentação, criação, pausa.
+2. **Novidade que o Bruno contar:** qualquer informação que muda a operação e não está na
+   API. Saldo de fundos, decisão do cliente, pedido novo, mudança de plano, prazo, pesquisa,
+   peça que vem chegando, combinação de reunião. Se só um dos dois souber, a operação
+   quebra.
+
+Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer na conta.
 
 ---
+
+## 2026-09-11 14:20
+- Fundos disponíveis na conta hoje: R$148.273,21, informado pelo Bruno. Saldo pré-pago não
+  sai na API, só por print. Contra o plano, faltam cerca de R$121 mil para fechar o turno,
+  porque de 11/09 a 01/10 estão previstos R$269.250. O Bruno confirmou que vai entrar mais
+  dinheiro.
+- Regra de registro ampliada: além de alteração na conta, toda novidade que o Bruno contar
+  a um dos dois lados entra aqui, para o outro lado saber.
+- [x] incorporado
 
 ## 2026-09-11 13:10
 - Carga inicial de contexto no Cowork. Leitura das memórias da conta (hub de operação,
