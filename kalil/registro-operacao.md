@@ -26,6 +26,23 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 14:15
+- Pedido do cliente, executado: reduzir Fiz pela minha cidade e realocar para Independência
+  do Brasil, VT Pandemia e Bio Invertida; aumentar POV viveu em BH e VT Uberaba; reduzir ou
+  pausar o que passar de 2,5 de frequência.
+- Fiz pela minha cidade saiu de 31 para 16 anúncios. **O Bruno corrigiu no meio: é reduzir,
+  não cortar.** Cheguei a deixar em 11 e reativei 6. Critério final: manter pausados os que
+  têm fadiga confirmada, os de taxa mais baixa e os de Norte de Minas, que é a praça com
+  frequência alta. A verba liberada fica no próprio conjunto e vai para as peças que o
+  cliente pediu, que dividem o mesmo conjunto.
+- VT Uberaba: conjunto `Total - Uberaba` de R$154,12 para R$500,00.
+- POV viveu em BH: conjunto `Total - Região Metropolitana de BH RMKT` de R$3.153,03 para
+  R$3.453,03.
+- Frequência acima de 2,5 nos últimos 7 dias: só dois conjuntos, os dois de Norte de Minas,
+  Jequitinhonha e Mucuri. Engajamento de R$4.646,31 para R$4.460,00 e Visualizações de
+  R$2.684,14 para R$2.450,00.
+- [x] incorporado
+
 ## 2026-09-11 13:50
 - Planilha Cronograma de Postagem atualizada nas duas abas. Postagens ganhou 181 linhas, uma
   por anúncio no ar, com link do Instagram, objetivo, conjunto, métrica, datas e verba, indo
