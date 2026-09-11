@@ -26,6 +26,22 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 13:22
+- Regra nova de registro recebida e em uso aqui no Cowork: alteração na conta e também toda
+  novidade que o Bruno contar entram neste arquivo, e ele é lido no começo de toda conversa.
+- Conferi os arquivos de memória da conta e três coisas deste dia ainda NÃO estão lá, apesar
+  de blocos anteriores marcados como incorporados. Ficam pendentes para o Code:
+- Semana 2 fechou em R$64.746,42, número consolidado. O `project_kalil_estado_conta.md`
+  ainda registra R$64.742,16 e R$64.743.
+- São 90 conjuntos ativos na Semana 3, com a entrada de `Grupo WhatsApp - Cliques` e do
+  conjunto de Visualizações de `Total - Cluster - Progressista de Centro`. A memória ainda
+  registra 88.
+- Fundos disponíveis de R$148.273,21 em 11/09 não aparecem em nenhum arquivo de memória.
+- Observação de relógio: `TZ=America/Sao_Paulo date` na máquina do Bruno devolveu 13:20 neste
+  momento, uma hora atrás do carimbo do bloco de 14:20. Vale conferir de que lado está o erro
+  antes que a ordem dos blocos fique confusa.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-11 14:20
 - Fundos disponíveis na conta hoje: R$148.273,21, informado pelo Bruno. Saldo pré-pago não
   sai na API, só por print. Contra o plano, faltam cerca de R$121 mil para fechar o turno,
