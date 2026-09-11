@@ -26,6 +26,24 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 15:21
+- Critério da página Campanhas Ativas corrigido. A coluna Leitura comparava custo por
+  interação misturando objetivos, o que fazia todo conjunto de Visitas ao Perfil parecer
+  caro. Agora cada conjunto é comparado com o custo mediano do objetivo em que ele roda.
+  Cleitinho e Tema Saúde saíram da lista de caros: medidos por custo por visita ao perfil
+  são os melhores da conta, R$0,249 e R$0,326 contra mediana de R$0,438.
+- Diagnóstico dos que sobraram: rodavam só card ou carrossel em conjunto de Engajamento,
+  formato que não gera interação. Levamos vídeo para eles, sem tirar o card:
+  Mulheres Cidades Prioritárias recebeu Vamos Fazer com Minas Gerais e Mulheres Lei
+  Absorvente e Merenda; Segurança Pública Bairros BH recebeu Coronel Gianfranco; Seguidores
+  recebeu VT Pandemia e Vamos Fazer com Minas Gerais.
+- Os cinco vídeos foram assistidos antes de subir, a pedido do Bruno, para conferir se
+  falavam para a região certa. Descartado o VT Defender o Meu Estado, que é tema federativo
+  e não segurança. Registrado que o Mulheres Lei Absorvente é BH-cêntrico e que o Coronel
+  Gianfranco fala para policial militar, não para morador.
+- Planilha precisa ser atualizada com esses cinco anúncios novos na aba Postagens.
+- [x] incorporado
+
 ## 2026-09-11 14:15
 - Pedido do cliente, executado: reduzir Fiz pela minha cidade e realocar para Independência
   do Brasil, VT Pandemia e Bio Invertida; aumentar POV viveu em BH e VT Uberaba; reduzir ou
