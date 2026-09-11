@@ -26,6 +26,21 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 13:50
+- Planilha Cronograma de Postagem atualizada nas duas abas. Postagens ganhou 181 linhas, uma
+  por anúncio no ar, com link do Instagram, objetivo, conjunto, métrica, datas e verba, indo
+  a 351 linhas. Acompanhamento ganhou a rodada de 11/09 com os 90 conjuntos e as fórmulas
+  estendidas. A rodada anterior era de 02/09.
+- Aprendizado registrado na memória: trocar de aba do Google Sheets pelo clique no seletor
+  não é confiável e o paste cai na aba errada. Trocar pela URL com `#gid=` e travar a
+  checagem da aba ativa dentro do script antes de colar.
+- Revisão da conta feita de manhã: Fiz pela minha cidade reduzido de 31 para 22 anúncios,
+  Card Pesquisa Quaest pausado em Visitas ao Perfil do Estado de MG, VT da Cemig subido em
+  seis conjuntos, Card Independência Presidente no cluster Independente, Conteúdo 7 de
+  Setembro reativado, e oito anúncios que estavam pausados dentro de clusters ativos foram
+  ao ar.
+- [x] incorporado
+
 ## 2026-09-11 13:22
 - Regra nova de registro recebida e em uso aqui no Cowork: alteração na conta e também toda
   novidade que o Bruno contar entram neste arquivo, e ele é lido no começo de toda conversa.
@@ -40,9 +55,11 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 - Relógio: o Bruno confirmou que a hora certa é 13:22. O carimbo do bloco logo abaixo, de
   14:20, está uma hora adiantado. O bloco fica como está, mas o Code precisa corrigir a hora
   nos próximos, senão a ordem do arquivo embaralha.
-- [ ] ainda não incorporado na memória
+- [x] incorporado pelo Code às 13:50. Os três números entraram em
+  `project_kalil_estado_conta.md`, numa seção de números consolidados. O carimbo de 14:20 foi
+  corrigido para 13:20 e a hora passou a sair de `TZ=America/Sao_Paulo date`.
 
-## 2026-09-11 14:20
+## 2026-09-11 13:20
 - Fundos disponíveis na conta hoje: R$148.273,21, informado pelo Bruno. Saldo pré-pago não
   sai na API, só por print. Contra o plano, faltam cerca de R$121 mil para fechar o turno,
   porque de 11/09 a 01/10 estão previstos R$269.250. O Bruno confirmou que vai entrar mais
