@@ -26,6 +26,12 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-11 18:47
+- Painéis do relatório semanal atualizados pelo Bruno. Interno:
+  https://claude.ai/code/artifact/7977952f-303c-44c8-b95c-7e2f63897496 · Cliente:
+  https://claude.ai/code/artifact/806d3466-a1c8-4b6e-9839-79783d5dce89
+- [x] incorporado
+
 ## 2026-09-11 16:08
 - Clusters redistribuídos conforme o plano da Julia, aprovado pelo Bruno. Da verba que ainda
   vai ser gasta nesta semana: Base Própria 20,3%, Público de Esquerda 14,2%, Progressista
