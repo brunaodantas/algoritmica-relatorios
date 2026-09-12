@@ -26,6 +26,23 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-12 10:21
+- **Grupo de WhatsApp suspenso pelo cliente.** Pausados os dois anúncios Card Grupo WhatsApp,
+  os dois conjuntos, `Grupo WhatsApp - Cliques` e `Grupo WhatsApp - Conversas`, e a campanha
+  `REGIONAIS - CLIQUES NO LINK` inteira, que era a única onde a peça rodava.
+- Com o WhatsApp fora, a verba foi redistribuída e **a conta fechou exatamente em 70% malha
+  regional e 30% clusters**, que era o que o plano pedia e não fechava desde o começo do
+  flight. Saldo da semana: R$65.029,59, sendo R$45.522,83 em regionais e R$19.506,76 em
+  clusters.
+- A divisão interna dos clusters foi preservada e continua no plano: Base Própria 19,8%,
+  Público de Esquerda 14,3%, Progressista 14,1%, Independente 10,1%, Mulheres RMBH e interior
+  8,6%, Tema Saúde 8,1%, Segurança 7,6%, Cleitinho 6,2%, Servidor 6,1%, Mulheres Norte e
+  Vales 5,1%. Seguidores segue fora do plano com R$406.
+- 88 conjuntos ativos, nenhum pausado por engano.
+- Planilha precisa ser atualizada: a campanha de Cliques no Link saiu do ar e todas as verbas
+  mudaram.
+- [x] incorporado
+
 ## 2026-09-11 18:47
 - Painéis do relatório semanal atualizados pelo Bruno. Interno:
   https://claude.ai/code/artifact/7977952f-303c-44c8-b95c-7e2f63897496 · Cliente:
