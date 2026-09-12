@@ -26,6 +26,43 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-12 13:03
+- Fechada a execução dos cinco direcionamentos do Lucas, na correção pedida pelo Bruno de
+  seguir o pedido do cliente ao máximo.
+- **Saúde:** `Saúde - Portas Abertas` foi reativado no `Total - Cluster - Tema Saúde` em
+  Visitas ao Perfil. Pausar a peça não era o pedido. A redução do Lucas foi aplicada no teto
+  do conjunto, de R$2.151,88 para R$1.991,69, 35% do saldo. A peça segue no ar nos dois
+  conjuntos onde já rodava.
+- **Aceleração, 38 edições de verba:** R$921,69 movidos dentro dos clusters e R$3.581,85
+  dentro da malha geo, sempre para conjuntos onde o Jingle e o Independência do Brasil rodam.
+  A divisão 70/30 e a divisão interna dos clusters foram preservadas.
+- **Servidor Público:** o cluster tinha o `VT Servidor Público` fora do conjunto de
+  Engajamento, só o VT da Cemig rodava ali. Criado o anúncio 120250057863460061 com o mesmo
+  creative da peça, ativo. Agora a peça está nos quatro objetivos do cluster.
+- **Jingle:** medido o gasto de hoje por conjunto, continuava sufocado em três lugares.
+  Pausado o `Vamos Fazer com Minas Gerais` 120250035560490061 no `Total - Estado de Minas
+  Gerais 35+ RMKT`, que levava 61% do conjunto, o que abre espaço para o Jingle e para o
+  Independência ao mesmo tempo. Pausado um dos dois `VT da Cemig` na `Total - Cluster - Base
+  Própria`, o 120250043962650061, que levava R$87,41 dos R$215,75 da peça num conjunto de
+  R$288,82. Em `Mulheres Norte e Vales` nada foi mexido: quem divide ali é o `Carrossel Só
+  quem fez - Mulheres`, que o cliente pediu para manter.
+- Conferências: 88 conjuntos ativos, nenhum conjunto ativo sem anúncio ativo, bloco em 30,01%
+  cluster e 69,99% regional sobre saldo de R$63.796,77.
+- **Desvio a reportar:** a divisão por objetivo saiu do alvo por causa da aceleração. Alvo
+  41 tráfego, 25 thruplays, 25 engajamento, 8 reconhecimento, 1 cliques no link. Hoje, sobre
+  saldo: tráfego 41,4%, engajamento 28,9%, visualizações 22,5%, reconhecimento 7,2%. Cliques
+  no link está em zero desde a suspensão do grupo de WhatsApp. O engajamento subiu porque as
+  duas peças que o cliente mandou acelerar são card, e card roda em engajamento. Não refiz o
+  percentual por conta própria, a decisão é do Bruno.
+- Página Campanhas Ativas gerada e publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- Planilha, o que precisa: aba Postagens marcar `Vamos Fazer com Minas Gerais` como pausado
+  no `Estado de Minas Gerais 35+ RMKT` e `VT da Cemig` como pausado em uma das duas linhas da
+  `Base Própria`, e incluir o `VT Servidor Público` no conjunto de Engajamento do cluster
+  Servidor Público. Abas Verba e Acompanhamento precisam dos tetos novos dos 38 conjuntos
+  editados.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-12 12:48
 - Fechada a parte que estava parada, na decisão do Code confirmada pelo Bruno.
 - Movidos R$572,45 do `Total - Cluster - Eleitorado Cleitinho` para o
