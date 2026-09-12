@@ -26,6 +26,42 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-12 12:40
+- Decisão do Bruno sobre os pedidos do cliente de hoje, executada em parte. Três anúncios
+  pausados, nenhuma verba alterada.
+- `Saúde - Portas Abertas` pausado em `Total - Cluster - Tema Saúde`, Visitas ao Perfil,
+  anúncio 120249934241790061. Levava 91,9% do conjunto. Segue no ar no de Engajamento, a peça
+  não saiu da conta. O conjunto ficou com VT Propósito Reedit e Coragem Direcionado.
+- `Só quem fez vai fazer - Saúde` mantido como está, por decisão do Bruno. Já está fora na
+  prática, R$0,40 e 19 impressões em 11 e 12/09.
+- Para abrir espaço ao `Clipe do Jingle`, pausado o `VT Bio Invertida` nos dois conjuntos de
+  `Total - Estado de Minas Gerais Semelhantes 35+`: em Visitas ao Perfil, anúncio
+  120249997849750061, que levava 71,2% do conjunto, e em Engajamento, anúncio
+  120249997841570061, que levava 2,1%.
+- Nos outros três conjuntos que o Bruno citou, Progressista de Centro, Base Própria e
+  Mulheres Norte e Vales, **não havia nada para pausar**: nem `Fiz pela minha cidade` nem
+  `VT Bio Invertida` rodam ali. Quem divide espaço com o Jingle nesses conjuntos é VT
+  Propósito Reedit, VT Internet Vilas e Favelas, VT da Cemig, VT Pandemia, Coronel
+  Gianfranco, Carrossel Só quem fez Mulheres, Vídeo Montes Claros e VT InterTV Vales, e
+  nenhum deles estava na ordem.
+- Observação para a próxima leitura: no `Estado de Minas Gerais Semelhantes 35+` em
+  Engajamento o Jingle estava com zero gasto e quem domina é o `Vamos Fazer com Minas
+  Gerais`, com R$198,69. Pausar o Bio Invertida ali libera pouco, e o Jingle pode continuar
+  sem entrega nesse conjunto.
+- `Conteúdo 7 de Setembro, Independência do Brasil` não recebeu nada, por decisão do Bruno,
+  para não tirar espaço de peça regional antes dos vídeos novos.
+- **PARADO, aguardando decisão:** dobrar o cluster Servidor Público tirando do Eleitorado
+  Cleitinho zera o Cleitinho. Saldos de hoje: Servidor Público R$1.144,89 em quatro conjuntos,
+  Eleitorado Cleitinho R$1.165,61 em três. Dobrar o Servidor consome R$1.144,89 e deixa o
+  Cleitinho com R$20,72 até 17/09, ou seja fora do ar. O cliente pediu em 10/09 para manter o
+  Cleitinho menor, não para desligar. Nada foi alterado.
+- Conferências depois das pausas: 88 conjuntos ativos, nenhum conjunto ativo sem anúncio
+  ativo, nenhum conjunto derrubado pela edição, e o bloco segue em 70,0% regional e 30,0%
+  cluster, com saldo de R$44.932,62 e R$19.257,04.
+- Planilha: aba Postagens precisa marcar os três anúncios como pausados. A aba Acompanhamento
+  não muda, é por conjunto e nenhuma verba foi alterada.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-12 12:18
 - Mensagem do cliente na manhã de hoje, repassada pelo Bruno. Cinco direcionamentos, ainda
   NÃO executados, aguardando decisão de verba do Bruno.
