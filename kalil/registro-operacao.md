@@ -26,6 +26,47 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-12 12:48
+- Fechada a parte que estava parada, na decisão do Code confirmada pelo Bruno.
+- Movidos R$572,45 do `Total - Cluster - Eleitorado Cleitinho` para o
+  `Total - Cluster - Servidor Público`, repartidos dentro de cada cluster na proporção do
+  saldo de cada conjunto, para não mexer na divisão por objetivo.
+
+| Conjunto | Objetivo | Teto antes | Teto agora |
+|---|---|---|---|
+| Servidor Público | Reconhecimento | R$393,31 | R$536,60 |
+| Servidor Público | Engajamento | R$240,35 | R$335,62 |
+| Servidor Público | Visualizações | R$670,30 | R$790,73 |
+| Servidor Público | Visitas ao Perfil | R$889,55 | R$1.103,01 |
+| Eleitorado Cleitinho | Reconhecimento | R$573,77 | R$317,72 |
+| Eleitorado Cleitinho | Engajamento | R$1.651,51 | R$1.535,07 |
+| Eleitorado Cleitinho | Visitas ao Perfil | R$3.980,24 | R$3.780,28 |
+
+- Saldo dos dois clusters depois da troca: Servidor Público de R$1.144,89 para R$1.716,44,
+  Eleitorado Cleitinho de R$1.165,61 para R$591,89. O Cleitinho segue no ar, menor, como o
+  cliente pediu.
+- `Vamos Fazer com Minas Gerais` pausado em `Total - Estado de Minas Gerais Semelhantes 35+`,
+  Engajamento, anúncio 120249997768990061. Levava R$198,69 e dominava o conjunto, que agora
+  ficou com Card Pesquisa Quaest, Clipe do Jingle e Comercial Kalil Fez. Era o que faltava
+  para o Jingle ter espaço ali, o Bio Invertida sozinho não abria.
+- A edição derrubou um conjunto, `Total - Cluster - Eleitorado Cleitinho` em Visitas ao
+  Perfil, reativado na sequência. Os outros seis não caíram.
+- Conferências finais: 88 conjuntos ativos, nenhum conjunto ativo sem anúncio ativo, bloco em
+  70,0% regional e 30,0% cluster, com saldo de R$44.727,90 e R$19.180,25. Semana 3
+  dimensionada em R$79.627,01 contra meta de R$80.000.
+- Página Campanhas Ativas gerada e publicada, commit e0c8096.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- `clusters_kalil_notas.json` atualizado: as duas notas do Grupo WhatsApp diziam que o teste
+  estava rodando. Agora dizem que foi suspenso a pedido do cliente em 12/09.
+- Ponto para conferir: o gerador leu a Semana 2 em R$64.747,81. O número consolidado que está
+  na memória é R$64.746,42, diferença de R$1,39. Pode ser processamento do Meta que ainda
+  moveu depois. Vale reconferir antes de usar em relatório.
+- Planilha, o que precisa: aba Postagens marcar como pausados o `Saúde - Portas Abertas` no
+  Tema Saúde Visitas ao Perfil, o `VT Bio Invertida` nos dois conjuntos do Estado de Minas
+  Gerais Semelhantes e o `Vamos Fazer com Minas Gerais` no Semelhantes em Engajamento. Aba
+  Verba e aba Acompanhamento precisam dos tetos novos dos sete conjuntos da tabela acima.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-12 12:40
 - Decisão do Bruno sobre os pedidos do cliente de hoje, executada em parte. Três anúncios
   pausados, nenhuma verba alterada.
