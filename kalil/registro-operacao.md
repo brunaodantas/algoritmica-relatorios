@@ -26,6 +26,42 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-12 12:18
+- Mensagem do cliente na manhã de hoje, repassada pelo Bruno. Cinco direcionamentos, ainda
+  NÃO executados, aguardando decisão de verba do Bruno.
+- Reduzir `SÓ QUEM FEZ SAÚDE`, pela divisão de público. Existem duas peças com nome parecido
+  e a leitura da API não resolve qual é: `Só quem fez vai fazer - Saúde` gastou R$0,40 em 19
+  impressões em 11 e 12/09, ou seja já está fora na prática, e `Saúde - Portas Abertas`
+  gastou R$114,38 e leva 91,9% do conjunto `Total - Cluster - Tema Saúde` em Visitas ao
+  Perfil. Confirmar com o cliente antes de mexer.
+- Carrossel `SUL DE MINAS` o cliente quer observar. Ele já está pausado desde 09/09, com zero
+  gasto na Semana 3, substituído pelo `VT Falar pro Sul de Minas - 09.09`, que gastou R$770,96
+  em cinco conjuntos em 11 e 12/09. O cliente não sabe disso, vale devolver a informação.
+- `Obrigado pelo Apoio AP Junqueira` fica mais dois dias em observação, revisar em 14/09.
+  Situação hoje: R$99,87 e 13.726 impressões em `Total - Triângulo Mineiro - Uberlândia e
+  Uberaba` em Visitas ao Perfil, mais dois anúncios sem entrega.
+- `Carrossel Só quem fez - Mulheres` mantido a pedido do cliente, que citou curtida e
+  comentário. Roda em quatro conjuntos com R$428,86 e 106.581 impressões. Contraria o índice
+  baixo que a nossa leitura deu à peça, e a palavra do cliente vale.
+- Acelerar `SERVIDOR PÚBLICO`, `JINGLE` e `INDEPENDÊNCIA DO BRASIL`. Situação medida em 11 e
+  12/09: VT Servidor Público R$330,66, sendo 100% dos conjuntos de Reconhecimento e de Visitas
+  ao Perfil do cluster e 37,9% do de Visualizações, onde divide com o VT da Cemig. Clipe do
+  Jingle R$126,70, e está sufocado em quase todo conjunto onde roda: 29,4% no Progressista em
+  Visitas ao Perfil, 9,0% no Estado de Minas Gerais Semelhantes, 7,0% em Mulheres Norte e
+  Vales, 1,4% na Base Própria, 0,2% no Progressista em Engajamento. Conteúdo 7 de Setembro,
+  Independência do Brasil, R$1.291,97 em 18 conjuntos, já é a segunda peça que mais gasta.
+- Ponto técnico para a decisão: verba é do conjunto, não da peça. Onde a peça divide conjunto,
+  acelerar é subir o conjunto inteiro, o que sobe a concorrente junto, ou reduzir a
+  concorrente. Subir Servidor Público e Progressista mexe na divisão interna dos clusters
+  aprovada com a Julia em 11/09 e na proporção 70/30 fechada hoje de manhã.
+- Vídeos regionalizados novos gravados com o Kalil chegam entre hoje e amanhã. O cliente pediu
+  para ajustar os criativos regionalizados junto, para não competir público. Casa com a regra
+  de não repetir a mesma peça no mesmo público em conjuntos diferentes.
+- Leitura da conta neste momento, para referência: 88 conjuntos ativos, nenhum conjunto ativo
+  sem anúncio ativo, nenhum conjunto ativo sem gastar. Semana 3 dimensionada em R$79.626,76
+  contra meta de R$80.000, faltando R$373,24 de teto.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-12 10:21
 - **Grupo de WhatsApp suspenso pelo cliente.** Pausados os dois anúncios Card Grupo WhatsApp,
   os dois conjuntos, `Grupo WhatsApp - Cliques` e `Grupo WhatsApp - Conversas`, e a campanha
