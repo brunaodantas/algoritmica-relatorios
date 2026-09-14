@@ -26,6 +26,79 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-14 19:14
+- Dia cheio. Reunião com o cliente de manhã, cinco pedidos dele ao longo da tarde, e três peças
+  novas subidas. Tudo abaixo já está no ar e conferido.
+
+**Reunião de 14/09, o que foi executado**
+- Vídeo do Triângulo: `VT Uberaba (JOB694)` subido em 6 conjuntos do Triângulo e do Uberlândia
+  e Uberaba, nos três objetivos. O de Visitas ao Perfil foi por duplicação no gerenciador, e o
+  Meta recriou o post com outro código (`DdReyW4g_od`), mesmo arquivo e mesma legenda.
+- Saturados do Triângulo pausados para abrir espaço: `VT Pandemia` no Alto Paranaíba (143,0 por
+  mil, frequência 1,84), `Fiz pela minha cidade`, `Obrigado pelo Apoio AP Junqueira` e uma
+  cópia repetida do Independência no mesmo conjunto.
+- RMBH reforçada com R$768,35, tirados do Sul de Minas e do Norte de Minas. Vale do Rio Doce e
+  Triângulo poupados, como o cliente pediu.
+- `POV: você viveu em BH quando Kalil foi prefeito` subido em Visitas ao Perfil na RMBH.
+
+**Peças novas do cliente**
+- `Só Quem Fez Finanças`, 6 lugares. Para atender por inteiro foram criados dois conjuntos que
+  não existiam: Base Própria em Visitas ao Perfil e Independente em Engajamento.
+- `PGM Sou o Seu Candidato`, 40 lugares: 13 praças em Engajamento, 7 em Engajamento RMKT, 6 em
+  Visualizações RMKT, 13 em Visitas ao Perfil e 1 em Visitas ao Perfil RMKT.
+- `VC Povo Fala Kalil Serra`, prova social, 17 lugares: 9 em Reconhecimento e 8 em Visitas ao
+  Perfil dos clusters.
+
+**Cluster novo: Total - Cluster - Torcedor Atleticano**
+- Interesse `Clube Atlético Mineiro`, MG inteiro, 18 a 65, **sem excluir seguidores**, expansão
+  desligada. Público de 1 a 1,2 milhão.
+- Três conjuntos, sem Reconhecimento por decisão do Bruno: Engajamento R$605,52, Visitas ao
+  Perfil R$363,31, Visualizações R$242,21. Divisão 50/30/20, diferente do plano padrão porque a
+  peça é narrativa.
+- Verba veio de corte de 10% no saldo de cada um dos 32 conjuntos de cluster.
+- Roda só com `Kalil fez no Galo`, a pedido do Bruno, para não sujar a leitura do cluster novo.
+- **Régua própria:** medir por engajamento por mil, não por custo por visita. Acima de 300,
+  funcionou. Detalhe em `project_kalil_cluster_torcedor_atleticano.md`.
+
+**Conjuntos de Reconhecimento criados**
+- `Total - Cluster - Base Própria`, R$174,72, e `Total - Cluster - Progressista de Centro`,
+  R$137,11. Os dois maiores clusters da conta não tinham esse objetivo. Verba tirada de dentro
+  do próprio cluster, o total de cada um não mudou.
+- O do Progressista falhou na primeira tentativa porque usei um interesse que não existe mais
+  (`6003353161577`). Refeito copiando o `targeting` exato do conjunto de Visitas ao Perfil dele.
+
+**Remarketing de Visitas ao Perfil reforçado**
+- É a melhor campanha da conta em taxa: 39,43 cliques por mil contra 28,03 da aberta, com custo
+  por clique quase igual, R$0,48 contra R$0,47. Frequência 1,49, ainda com espaço.
+- Movidos R$700 para ele, de R$1.293,66 para R$1.993,66 de saldo. Verba veio dos conjuntos
+  abertos do mesmo objetivo, poupando RMBH e Triângulo.
+
+**WhatsApp nos anúncios**
+- Varridos os 140 criativos dos anúncios ativos e os 90 conjuntos. **Nenhum com WhatsApp.** O
+  campo `smart_pse_enabled` está falso em todos.
+- Virou regra fixa: complemento para navegador sempre em **Nenhum**. Gravado em
+  `feedback_kalil_sem_botao_whatsapp.md`.
+
+**Erro que cometi e corrigi na conferência:** ao ceder verba ao novo conjunto do Progressista,
+digitei `841790` em vez de `84179` no conjunto de Visualizações, dez vezes o valor. O bloco foi
+a 41,77% cluster por alguns minutos. Peguei na conferência e voltei. Fica o alerta: sempre
+reconferir o 70/30 depois de mexer em verba, o erro de um zero não aparece em lugar nenhum além
+do percentual.
+
+- Conferências finais: **95 conjuntos ativos, nenhum sem anúncio ativo**, bloco em 30,62%
+  cluster e 69,38% regional sobre saldo de R$39.561,62.
+- Por objetivo, contra o plano 41/25/25/8: tráfego 42,25%, engajamento 29,05%, thruplays 21,36%,
+  reconhecimento 7,34%. Engajamento segue acima porque as peças que o cliente manda acelerar são
+  card e vídeo curto. Cliques no link segue zerado desde a suspensão do grupo de WhatsApp.
+- Página Campanhas Ativas publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- **Planilha, o que precisa:** aba Postagens incluir `VT Uberaba` nos 6 novos lugares,
+  `Só Quem Fez Finanças` nos 6, `PGM Sou o Seu Candidato` nos 40 e `VC Povo Fala Kalil Serra`
+  nos 17; marcar como pausados `VT Pandemia` no Alto Paranaíba, `Fiz pela minha cidade` no
+  Triângulo, `AP Junqueira` e a cópia do Independência. Aba Verba e aba Acompanhamento precisam
+  dos conjuntos novos: 3 do Torcedor Atleticano, 2 de Reconhecimento e os 2 criados de manhã.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-14 10:20
 - Complemento da rodada de fadiga, com as decisões do Bruno.
 - Os quatro anúncios novos saíram da análise e estão ACTIVE. As três peças antigas que ficaram
