@@ -26,6 +26,40 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-14 10:20
+- Complemento da rodada de fadiga, com as decisões do Bruno.
+- Os quatro anúncios novos saíram da análise e estão ACTIVE. As três peças antigas que ficaram
+  de reserva foram pausadas: 120250035695890061, 120250035695010061 e 120249848192620061.
+- `Obrigado pelo Apoio AP Junqueira` pausado no `Total - Triângulo Mineiro - Uberlândia e
+  Uberaba` em Visitas ao Perfil, anúncio 120249944357870061, que levava R$227,30 a 27,7 por
+  mil. Não precisou subir peça nova: o conjunto já tem `VT Full Triângulo`, `Vamos Fazer com
+  Minas Gerais`, `VT Bio Invertida` e `VT Pandemia` ativos e mudos, todos sufocados pelo
+  Junqueira. O VT Full Triângulo faz 399,2 por mil no conjunto de Visualizações da mesma
+  região, então é a aposta natural para assumir.
+- `VT Pandemia` pausado no `Total - Triângulo Mineiro + Alto Paranaíba` em Visitas ao Perfil,
+  anúncio 120249909168750061. Era o único ponto de fadiga real da peça: 143,0 por mil contra
+  mediana 157,2 e frequência 1,84, a maior dela. O conjunto já tem `Conteúdo 7 de Setembro` e
+  `Carrossel Triângulo Mineiro + Alto Paranaíba` ativos e mudos. O Independência faz 347,6 por
+  mil no conjunto de Engajamento da mesma região, então deve assumir. Nos outros onze conjuntos
+  o VT Pandemia continua entre 350 e 460 por mil e não foi tocado.
+- **Método que passou a valer:** antes de subir peça nova num conjunto sufocado, olhar o que já
+  está ativo e mudo lá dentro. Quase sempre a peça genérica já está no conjunto e só precisa
+  que a dominante saia. Isso evita criar anúncio, evita o bloqueio de Visitas ao Perfil e não
+  mexe em verba nenhuma.
+- 88 conjuntos ativos, nenhum sem anúncio ativo.
+- **Pendente no gerenciador, não dá por API** (subcode 2016153, Visitas ao Perfil):
+  `Total - Cluster - Mulheres Cidades Prioritárias` em Visitas ao Perfil, conjunto
+  120249933530190061, tem como único anúncio o `Carrossel Só quem fez - Mulheres` a 18,2 por
+  mil. Subir `Mulheres Lei Absorvente e Merenda` e pausar o carrossel.
+  `Total - Incidência Criminal` em Visitas ao Perfil, conjunto 120249848148870061, tem como
+  único anúncio o `Só Quem Fez - Segurança` a 21,3 por mil. Subir `Coronel Gianfranco` e pausar.
+- **Peça nova do cliente, 14/09:** `SÓ QUEM FEZ FINANÇAS`,
+  https://www.instagram.com/p/DdQ-xGij6wy/ , para base própria, público independente e
+  Triângulo com Alto Paranaíba, em Engajamento e Tráfego. Levantado que o cluster Base Própria
+  não tem conjunto de Visitas ao Perfil e o cluster Independente não tem conjunto de
+  Engajamento, então a peça cobre os dois objetivos pelo conjunto que cada cluster tem.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-14 10:01
 - Realocação de verba por fadiga de criativo, a pedido do Bruno. Nada de verba de conjunto foi
   movido: a troca foi feita **dentro dos conjuntos**, pausando a peça gasta para a verba ir
