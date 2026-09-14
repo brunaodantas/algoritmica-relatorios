@@ -26,6 +26,52 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-14 10:01
+- Realocação de verba por fadiga de criativo, a pedido do Bruno. Nada de verba de conjunto foi
+  movido: a troca foi feita **dentro dos conjuntos**, pausando a peça gasta para a verba ir
+  para as peças boas que já rodavam ali. Por isso o 70/30 e a divisão dos clusters ficaram
+  intactos, em 30,35% cluster e 69,65% regional sobre saldo de R$42.118,31.
+- Critério: taxa de engajamento por mil comparada com a **mediana do próprio objetivo** na
+  Semana 3, não com a média geral. Medianas medidas: Engajamento 376,0, Visualizações 390,4,
+  Visitas ao Perfil 157,2, Reconhecimento 11,3.
+- Pausados 12 anúncios abaixo de 40% da mediana do próprio objetivo:
+  `Card Independente` e `Card Independência Presidente` no Cluster Independente, em Visitas ao
+  Perfil e em Reconhecimento; `Card Independente` no Eleitorado Cleitinho;
+  `Carrossel Só quem fez - Mulheres` em Mulheres Norte e Vales e em Mulheres Cidades
+  Prioritárias Engajamento; `Só Quem Fez - Segurança` em Incidência Criminal Engajamento,
+  Segurança Bairros BH e Triângulo + Alto Paranaíba.
+- Peças novas subidas no lugar, nos conjuntos que tinham só a peça fadigada:
+  `Coronel Gianfranco` no Cluster Segurança Pública Reconhecimento e em Incidência Criminal
+  Engajamento, `Mulheres Lei Absorvente e Merenda` no Mulheres Cidades Prioritárias
+  Reconhecimento, `Comercial Kalil Fez` no Cluster Independente Reconhecimento.
+- **Visitas ao Perfil segue bloqueado para criar anúncio por API**, subcode 2016153. Quatro
+  substituições não puderam ser feitas: Mulheres Cidades Prioritárias VP, Incidência Criminal
+  VP, Cluster Independente VP e Eleitorado Cleitinho VP. Nesses, só pausei onde já havia outra
+  peça ativa. `Carrossel Só quem fez - Mulheres` em Mulheres Cidades VP e
+  `Só Quem Fez - Segurança` em Incidência Criminal VP continuam no ar porque são o único
+  anúncio do conjunto. Precisam ser subidos pelo gerenciador.
+- Os quatro anúncios novos entraram em PENDING_REVIEW. Para não abrir buraco de entrega, as
+  três peças antigas que eram únicas no conjunto foram reativadas e ficam no ar até a análise
+  sair. Conferir e pausar depois: 120250035695890061, 120250035695010061 e 120249848192620061.
+- **Correção de leitura:** o `VT Pandemia` não morreu no Cluster Tema Saúde. A taxa de
+  34,3 por mil que parecia baixa está em Reconhecimento, onde a mediana é 11,3, ou seja ele
+  está três vezes acima. A queda de 42% da peça na média geral vem de mistura de objetivos, não
+  de fadiga. Único ponto real é o Triângulo + Alto Paranaíba em Visitas ao Perfil, 143,0 contra
+  mediana 157,2 e frequência 1,84, a maior da peça. Não foi mexido porque é o único anúncio que
+  entrega naquele conjunto.
+- `Obrigado pelo Apoio AP Junqueira` revisado: já roda num único conjunto, o
+  `Total - Triângulo Mineiro - Uberlândia e Uberaba`, e não está em mais lugar nenhum. As duas
+  cópias sem entrega estão no mesmo conjunto, é o algoritmo concentrando numa só. Frequência
+  1,33, então não é saturação, é a peça. 27,7 por mil contra mediana 157,2.
+- Ritmo da Semana 3: 11/09 R$11.486,67, 12/09 R$11.533,77, 13/09 R$11.748,02, contra régua de
+  R$11.428,57. Acumulado R$34.768,46 de R$80.000, faltam R$11.307,89 por dia até 17/09. CPM
+  R$8,18 e frequência 1,87 na semana.
+- 88 conjuntos ativos. Página Campanhas Ativas publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- Planilha, o que precisa: aba Postagens marcar os 12 anúncios pausados e incluir os 4 novos.
+  Aba Acompanhamento não muda, nenhuma verba de conjunto foi alterada.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-12 13:03
 - Fechada a execução dos cinco direcionamentos do Lucas, na correção pedida pelo Bruno de
   seguir o pedido do cliente ao máximo.
