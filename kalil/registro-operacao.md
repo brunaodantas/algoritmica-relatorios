@@ -26,6 +26,72 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-15 11:57
+
+**Perguntas do Bruno sobre o painel do cliente, com as respostas apuradas**
+
+- **Pico de interações em 11/09:** foi a virada da semana 3. O gasto pulou de R$8.750,24 no dia
+  10 para R$11.486,67 no dia 11, e no mesmo dia estreou o `VT da Cemig`, que sozinho fez 38.809
+  interações a 423,2 por mil. Não foi post viralizando, foi verba nova mais criativo forte. O
+  dia 12 manteve o patamar, 321.360 interações.
+- **Regiões e clusters, o acumulado engana.** O teto hoje está em 69/31, que é o plano. Mas o
+  **realizado do flight inteiro está em 83,2% regional e 16,8% cluster**, porque os clusters só
+  entraram em 10/09, com o flight já correndo há duas semanas. Se o cliente olhar o acumulado
+  vai achar que não cumprimos o plano. Resposta pronta: a divisão está certa desde 10/09 e o
+  acumulado se corrige até o fim do flight.
+- **Segurança pública:** o cluster estadual é o pior da conta, 4,6 interações por mil no flight.
+  O de Bairros BH vai bem, 208,0. A causa era o `Só Quem Fez - Segurança`, com 1,2 por mil, já
+  pausado hoje e substituído pelo `Coronel Gianfranco`, que faz 326,1. **O tema funciona, o
+  criativo é que não funcionava.**
+
+**Faixa etária, análise que gerou ação**
+
+| Idade | Verba do flight | Interações por mil |
+|---|---|---|
+| 18-24 | 5,6% | 125,7 |
+| 25-34 | 13,3% | 211,6 |
+| 35-44 | 20,4% | 206,2 |
+| 45-54 | 19,6% | 275,3 |
+| 55-64 | 19,6% | 323,0 |
+| 65+ | 21,5% | 349,8 |
+
+- **CORREÇÃO IMPORTANTE, gravar:** eu havia sugerido "incluir 65+" nos clusters. **Errado.** O
+  Meta trata `age_max: 65` como **65 ou mais**, não como "até 65". A faixa 65+ já recebe 21,5%
+  da verba e tem a melhor taxa da conta. Não há nada a ajustar ali.
+- **Ação executada:** `age_min` de 18 para **25** nos 6 conjuntos de `Progressista de Centro` e
+  `Público de Esquerda`. São clusters de prospecção por interesse, onde o 18-24 entra mais e
+  devolve menos.
+- **Não cortar em `Base Própria`:** é quem já segue o Kalil, então jovem ali é gente engajada,
+  não prospecção fria. **Nem no `Torcedor Atleticano`:** nasceu em 14/09 e mexer agora estraga
+  a leitura do teste.
+
+**Cleitinho e Mulheres Cidades Prioritárias, os dois piores do painel**
+- **Os números ruins são herança, não o presente.** Cleitinho aparece com 55,3 por mil e
+  Mulheres Cidades com 34,6 no acumulado do flight, porque rodaram muito tempo com card e com o
+  `Carrossel Só quem fez - Mulheres`.
+- Hoje o Cleitinho roda `VT Defender o Meu Estado` a 403,1 por mil em Engajamento,
+  `VT Bio Invertida` a 295,2 em Reconhecimento e `VC Povo Fala` a 276,7. Pausado o
+  `Card Independente`, que era resto, R$0,59.
+- O Mulheres Cidades já estava resolvido: o carrossel saiu hoje cedo e entrou o
+  `Mulheres Lei Absorvente e Merenda`, que faz 401,5 por mil em Engajamento.
+- **Regra que fica: antes de propor mexer num cluster por causa do número do painel, conferir o
+  que está rodando nele AGORA.** O acumulado do flight carrega criativo que já saiu.
+- Pendência resolvida pelo Bruno: subiu `PGM` e `VC Povo Fala` no Cleitinho em Visitas ao
+  Perfil, onde só havia o `VT Defender o Meu Estado` com 36,7 por mil. Sobrou uma cópia
+  duplicada do VC Povo Fala, marcada como `- Deletar`.
+- **Atenção para a virada:** o conjunto do Cleitinho em Visitas ao Perfil tem teto de R$3.768,22
+  mas só R$265 de saldo. As peças novas vão entregar pouco até quinta. Medir na semana 4.
+
+- Conferências: 95 conjuntos ativos, nenhum sem anúncio ativo, 30,84% cluster e 69,16% regional
+  sobre saldo de R$29.783,91.
+- Página Campanhas Ativas publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- **Painel do cliente:** está em `Claude - Kalil/relatorio_kalil_cliente.html`, salvo pelo
+  Bruno. O artifact em https://claude.ai/code/artifact/806d3466-a1c8-4b6e-9839-79783d5dce89
+  **não pode ser lido por mim**, nem como link público nem pelo Chrome, a página trava no
+  carregamento. Usar o arquivo local.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-15 11:15
 
 **Peça nova do cliente: `Empatia - Saúde`** (https://www.instagram.com/p/DdTjLw5yjXc/)
