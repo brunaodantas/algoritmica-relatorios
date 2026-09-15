@@ -26,6 +26,77 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-14 22:13
+- Fim do dia. Complemento do bloco das 19:14 com o que veio depois.
+
+**Vídeos regionalizados, seis chegaram**
+- Estão em `IA/templates/Claude - Kalil/video/vídeos segmentados/`, um JOB por região: 789
+  Triângulo, 791 Sul, 792 Vale do Rio Doce, 793 Norte/Jequi/Mucuri, 797 Belo Horizonte, 811
+  Zona da Mata. As legendas de todos estão no documento
+  https://docs.google.com/document/d/1nBeK7EASmYLMXkHg-oxLKaGEaQTFY2GwbT05BCVM4t4
+- O cliente liberou **só o do Triângulo e Alto Paranaíba**. Os outros cinco ele revisa até o
+  fim da semana.
+- **`VT Regionalizado Triângulo (JOB789)` subido em 13 lugares:** 4 em Engajamento (Triângulo
+  Mineiro, Triângulo + Alto Paranaíba, Uberlândia e Uberaba, Uberaba), 3 em Visitas ao Perfil,
+  2 em Visualizações e 4 no remarketing. Mesma cobertura do `VT Full Triângulo`, com o
+  remarketing a mais.
+- **Limitação nova, gravar:** `ads_creative_upload_video` responde "gradually rolled out" nesta
+  conta, então **não dá para subir vídeo por API**. A API só aceita vídeo por URL pública, e o
+  arquivo é local. O primeiro anúncio de cada vídeo novo tem que ser feito pelo gerenciador;
+  depois eu replico pelo `creative_id`.
+
+**Campanha de alcance incremental montada, a pedido do Bruno**
+- Seis conjuntos novos dentro da campanha `ELEIÇÕES 2026 ALEXANDRE KALIL | IMPRESSÕES`, que
+  estava parada desde 05/09. Nomes com prefixo `Incremental - `, um por região, com a mesma
+  geografia dos conjuntos antigos: RMBH, Sul de Minas, Norte/Jequi/Mucuri, Vale do Rio Doce e
+  Zona da Mata, Triângulo Mineiro, e Uberlândia e Uberaba.
+- **`optimization_goal: AD_RECALL_LIFT`**, que é o objetivo de incrementalidade de verdade:
+  entrega para quem tem mais chance de lembrar da peça, não para quem sai mais barato.
+  Confirmado que funciona nesta conta política.
+- **Exclusão de `Engajou IG Kalil - 30d` e `Visualizou 25% Kalil - 30d`** em todos. É isso que
+  torna o alcance incremental, sem pagar de novo por quem a malha atual já cobre.
+- **Não deu para usar `frequency_control_specs`:** o Meta só aceita limite de frequência com
+  `optimization_goal: REACH` (subcode 1815211). Ficou sem cap, a exclusão faz esse papel.
+- Início 18/09, término 01/10, verba mínima de R$143,36 cada, R$860,16 no total, tudo pausado.
+  Nenhuma verba saiu de conjunto que está rodando.
+- Os seis conjuntos antigos de IMPRESSÕES seguem pausados. São `REACH` e o `optimization_goal`
+  não pode ser alterado depois de criado, por isso foram recriados em vez de reaproveitados.
+  Marcar para deletar quando os novos entrarem no ar.
+- O `VT Regionalizado Triângulo` já está pausado dentro dos dois conjuntos incrementais do
+  Triângulo. Os outros quatro estão sem anúncio, esperando os vídeos das demais regiões.
+- **Decisão do Bruno:** os cinco vídeos que faltam entram direto em impressões na virada da
+  semana 4. O do Triângulo, que o Lucas liberou, segue rodando nos objetivos normais.
+
+**Planilha atualizada**, estava parada em 11/09.
+- Aba Postagens: 80 linhas novas com data 14/09, e **65 linhas com status corrigido** de ATIVO
+  para PAUSADO em peças que já tinham saído do ar há dias (Carrossel Bio, Carrossel Teve Um
+  Cara Que, VT Pandemia em Visualizações, Fiz pela minha cidade). Fechou em 336 ativas e 124
+  pausadas, batendo com a conta.
+- Aba Acompanhamento: bloco de 14/09 com os 95 conjuntos ativos e as 23 colunas.
+- **Aba Verba NÃO foi mexida, de propósito.** Ela ainda está no flight de 27/08 a 05/09, com
+  R$70.000 e 38 conjuntos, e é toda por fórmula puxando do total no topo. Hoje são 95
+  conjuntos. Refazer quebra as fórmulas e muda a estrutura. Precisa de decisão do Bruno:
+  refazer no formato novo ou criar uma aba por flight.
+- **Método que funciona para colar no Sheets:** o alvo do `ClipboardEvent` tem que ser
+  `#waffle-rich-text-editor`. Em `.cell-input` ou `.grid-scrollable-wrapper` o evento é
+  ignorado. O retorno `disparado=false` é esperado, significa que o Sheets processou e chamou
+  `preventDefault`. Conferir sempre pelo `export?format=csv`, não pelo `gviz`, que vem em cache.
+- `System Events` não tem permissão de acessibilidade nesta máquina, então `keystroke` com
+  Cmd+V não funciona. Só o paste sintético.
+
+**Erro do dia, já corrigido:** ao ceder verba ao conjunto novo do Progressista, digitei `841790`
+em vez de `84179` no conjunto de Visualizações, dez vezes o valor. O bloco foi a 41,77% cluster
+por alguns minutos. Peguei na conferência de rotina. Regra que fica: **sempre reconferir o 70/30
+depois de mexer em verba**, porque erro de um zero não aparece em nenhum outro lugar.
+
+- Conferências finais: **95 conjuntos ativos, nenhum sem anúncio ativo**, 30,62% cluster e
+  69,38% regional sobre saldo de R$39.561,62. Mais 6 conjuntos Incremental criados e pausados.
+- Página Campanhas Ativas publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- **Pendente na planilha:** as 13 linhas do `VT Regionalizado Triângulo` e os 6 conjuntos
+  Incremental ainda não entraram, porque subiram depois da atualização.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-14 19:14
 - Dia cheio. Reunião com o cliente de manhã, cinco pedidos dele ao longo da tarde, e três peças
   novas subidas. Tudo abaixo já está no ar e conferido.
