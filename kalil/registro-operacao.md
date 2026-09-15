@@ -26,6 +26,81 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-15 11:15
+
+**Peça nova do cliente: `Empatia - Saúde`** (https://www.instagram.com/p/DdTjLw5yjXc/)
+- Pedido: três clusters principais mais o Tema Saúde, em engajamento e seguidor.
+- Subida em 7 lugares: 4 em Engajamento (Base Própria, Progressista de Centro, Público de
+  Esquerda, Tema Saúde) e 3 em Visitas ao Perfil (Base Própria, Progressista, Tema Saúde).
+- O Público de Esquerda não tem conjunto de Visitas ao Perfil, por isso entrou só em um.
+- **"Seguidor" não existe como objetivo no Meta.** O que gera seguidor é a campanha de Visitas
+  ao Perfil. Resposta a dar ao cliente sempre que ele pedir esse objetivo.
+
+**Correção importante sobre o `POV: você viveu em BH`**
+- Eu tinha lido como peça fadigada. Estava errado. Ele subiu em 05/09 em Engajamento na RMBH e
+  na RMBH RMKT, rodou três dias fazendo **200 a 320 por mil**, e aí o algoritmo parou de
+  entregar: de 08 a 13/09 somou 66 impressões nos dois conjuntos.
+- Os 23,7 por mil que pareciam fadiga vieram do conjunto de **Visitas ao Perfil**, onde ele foi
+  subido em 14/09. Card não leva ao perfil, é o mesmo padrão do Card Independente e do
+  Card Independência Presidente.
+- **Regra que fica: não julgar fadiga por média de peça.** Separar por objetivo antes, porque a
+  mesma peça em objetivo errado derruba a média inteira e esconde o que está funcionando.
+- Ações: pausado em Visitas ao Perfil. Para abrir espaço nos dois de Engajamento, pausados o
+  `Conteúdo 7 de Setembro` (levava R$681,59 e R$679,70) e o `VT Pandemia` (R$155,82 e R$2,03).
+  Liberados cerca de R$1.519 nos dois conjuntos. **Conferir quarta:** se o POV não pegar mesmo
+  com esse espaço, o algoritmo já o descartou e o caminho é recriar o anúncio do zero, para
+  zerar o histórico.
+
+**Varredura de peças antigas, primeira leva**
+- Critério: conjunto com 6 ou mais anúncios ativos, e dentro dele peça antiga gastando menos de
+  R$5 em quatro dias. Deu 53 candidatos; executada só a parte mais clara.
+- `VT Bio Invertida` pausado em 10 lugares, fica em 12. É a peça mais antiga da conta, de
+  27/08, estava em 22 conjuntos gastando R$404,71 na semana inteira, ou seja, ocupando espaço
+  sem entregar.
+- `VT Pandemia` pausado em 2, os de Visitas ao Perfil do Sul de Minas (151,4 por mil) e do
+  Norte de Minas (137,4), ambos abaixo da mediana de 176,1 do objetivo. Fica em 17.
+- **Não mexer no VT Pandemia nos outros:** ele ainda é a segunda peça que mais gasta e entrega
+  entre 360 e 460 por mil em seis conjuntos. Velho não é o mesmo que morto.
+- **Não tirar o VT Pandemia do Tema Saúde em Reconhecimento por enquanto.** Ele faz 33,9 por
+  mil ali, contra mediana de 23,0 do objetivo, e o único outro anúncio do conjunto é o
+  `VC Povo Fala`, que subiu ontem e faz 22,7. Trocar agora seria pôr a peça pior no lugar da
+  melhor. Reavaliar quarta.
+- **Segunda leva, pendente:** 32 anúncios parados de Vamos Fazer, Coronel Gianfranco, Fiz pela
+  minha cidade, Coragem e VT Spot Fazedor. Deixados para quarta, depois de ver se as peças
+  novas ocuparam o espaço da primeira leva.
+
+**Gasto diário, observação da Julia**
+- Ela apontou que 14/09 gastou acima. Confere: R$12.216,27 contra régua de R$11.428,57, 6,9%
+  acima. Causa: entraram três peças novas no mesmo dia (PGM em 40 conjuntos, VC Povo Fala em 17,
+  VT Regionalizado em 13), e peça nova puxa entrega nas primeiras horas. Só o PGM gastou R$2.111.
+- Os quatro dias fechados somam R$46.991,76 contra R$45.714,29 do plano, R$1.277,47 adiantados.
+- CPM subiu de R$7,91 em 11/09 para R$8,38 em 14/09, concorrência maior no leilão.
+
+**Ajuste de teto para fechar a semana em 80 mil**
+- O teto estava dimensionado para fechar em R$79.560,81, abaixo da meta. **O Bruno foi
+  explícito: não pode fechar abaixo.**
+- Somados R$919,19 de teto: R$439,19 para fechar o buraco e R$480 de margem de 0,6%, porque
+  historicamente nem todo conjunto gasta o teto (semana 1 fechou 0% abaixo, semana 2 fechou 1%).
+- **A pedido do Bruno, a verba foi para os conjuntos com peça nova**, não distribuída
+  proporcionalmente: 70% nos 13 conjuntos do Triângulo onde o `VT Regionalizado Triângulo`
+  entrou, e 30% nos 3 do `Total - Cluster - Torcedor Atleticano`, onde está o `Kalil fez no
+  Galo`. As duas peças subiram ontem e ainda não tiveram chance de provar nada.
+- De quebra atende o que o Lucas falou na reunião, que o Triângulo está com desempenho ruim mas
+  é estratégico: agora tem criativo novo e verba nova lá.
+- Semana passa a fechar em R$80.480,01. Clusters 30,91%, regionais 69,09%.
+
+**Método que vale registrar:** com verba total, reduzir o ritmo de um dia não reduz o total da
+semana, só empurra para os dias seguintes. O que controla o fechamento é o teto do conjunto.
+Quando o Bruno pedir para "reduzir o gasto de hoje", a pergunta certa é se ele quer mudar o
+total da semana ou só o ritmo do dia.
+
+- Conferências: 95 conjuntos ativos, nenhum sem anúncio ativo.
+- Página Campanhas Ativas publicada.
+  https://algoritmica-relatorios.vercel.app/kalil/campanhas-ativas/
+- **Planilha pendente:** ainda não entraram o `VT Regionalizado Triângulo` (13 linhas), os 6
+  conjuntos `Incremental`, o `Empatia - Saúde` (7 linhas) e os 15 anúncios pausados hoje.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-14 22:13
 - Fim do dia. Complemento do bloco das 19:14 com o que veio depois.
 
