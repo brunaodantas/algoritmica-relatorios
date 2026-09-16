@@ -26,6 +26,56 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-16 16:55
+
+**Peças novas do cliente**
+
+- **VT Pandemia Pulso Firme** (`DdWJXj2yDO2`), continuação do VT Pandemia, subiu em **22
+  conjuntos de cluster**: 7 em Engajamento, 6 em Visitas ao Perfil, 4 em Visualizações e 5 em
+  Reconhecimento. Base Própria, Tema Saúde, Progressista de Centro, Eleitorado Cleitinho,
+  Independente e os três de Mulheres. O público que o cliente chamou de "quem recebeu bem o
+  primeiro VT Pandemia" **já é o cluster Tema Saúde**, montado com `Visualizou 50% VT Pandemia`
+  mais o semelhante de 10%. Não precisou criar nada.
+- **PGM Vamos Ter Que Decidir** (`DdWmR6UOBEo`) subiu em 6 conjuntos: Base Própria,
+  Independente e Progressista de Centro, em Engajamento e Visitas ao Perfil.
+
+**Campanha de WhatsApp reativada**
+
+- O conjunto `Grupo WhatsApp - Cliques` voltou ao ar com **RMBH nas 29 cidades** e público só de
+  base própria: Seguidores Kalil no Instagram, Seguidores no Facebook e Engajou no Instagram 30
+  dias. Verba baixa, R$380 de teto. O conjunto `Grupo WhatsApp - Conversas` segue pausado,
+  nunca gastou um centavo.
+- **A REGRA DO BOTÃO DE WHATSAPP MUDOU.** Não é mais "nenhum anúncio". Agora o botão entra
+  **só nos anúncios de base própria e RMBH**. O campo técnico é
+  `asset_feed_spec.message_extensions` no creative, e **não dá para ligar por API**: creative é
+  imutável e criar creative novo é recusado. É sempre o Bruno pelo Gerenciador.
+
+**Pedido do Lucas de 16/09, executado**
+
+- VT Spot Fazedor saiu do Norte de Minas em Visualizações, o maior gasto dele.
+- VT Falar pro Sul de Minas saiu de Sul de Minas em Visitas ao Perfil.
+- Saúde Portas Abertas saiu de Visitas ao Perfil, fica só em Engajamento.
+- Coragem reduzido em três lugares, incluindo o Vale do Rio Doce onde levava 94,7% do conjunto
+  sufocando o VT Bio Invertida.
+- VT Bio Invertida concentrado onde ganha, saiu dos três conjuntos onde rendia 0,45x, 0,61x e
+  0,79x da mediana.
+- Montes Claros reduzido nos três objetivos, R$60, com a verba indo para Base Própria.
+- InterTV Vales, Vale do Rio Doce e Zona da Mata mantidos como estavam.
+
+**Duplicados achados e resolvidos**
+
+- `VT Full Triângulo (JOB695)` tinha dois anúncios em Uberlândia e Uberaba, Visitas ao Perfil.
+  Ficou o `120249949358460061`.
+- `VT Servidor Público` tinha dois em Visualizações do cluster, mesmo post. Ficou o
+  `120250000750760061`.
+
+**Semana 3 fecha em R$80.004,23**, 97 conjuntos, 325 anúncios, nenhum sem peça, todos com
+término 17/09 23h59.
+
+- [ ] ainda não incorporado na memória
+
+---
+
 ## 2026-09-15 11:57
 
 **Perguntas do Bruno sobre o painel do cliente, com as respostas apuradas**
