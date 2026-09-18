@@ -76,6 +76,12 @@ reativações. Levou quase uma hora. **Planejar isso com antecedência, não com
 
 **Conjuntos Incremental de IMPRESSÕES seguem pausados**, decisão mantida.
 
+
+**Planilha e página atualizadas na madrugada de 18/09:** aba Postagens fechou em **558
+linhas**, com 50 linhas novas (os 5 VT Nossa Gente como **dark post**, VT Servidor Público
+16.09, Card Pesquisa Cleitinho e VT Discurso Mulher), 402 ativos e 155 pausados. A página
+Campanhas Ativas foi republicada. **Aba Acompanhamento ainda não recebeu a rodada da Semana 4.**
+
 - [ ] ainda não incorporado na memória
 
 ---
