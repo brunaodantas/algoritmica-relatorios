@@ -26,6 +26,60 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-18 00:40
+
+**VIRADA DA SEMANA 4 FEITA NA MÃO, com o Bruno acordado**
+
+A tarefa agendada `kalil-virada-semana4-18set` foi **desativada** antes, para não atropelar.
+
+**Semana 3 fechou em R$79.768,92** contra meta de R$80.000. Faltaram R$231,08. Somando com
+as sobras da Sem. 1 (R$394,84) e da Sem. 2 (R$452,19), são **R$1.078,11 acumulados que
+nunca entraram na conta**. O Bruno decidiu em 17/09 **não realocar ainda: na sexta a gente
+soma as três semanas e joga na reta final.**
+
+**Semana 4 carregada com R$84.996,70**, 18 a 24/09, término 24/09 23h59 em **101 conjuntos**,
+348 anúncios ativos, nenhum conjunto sem anúncio além dos dois novos de Visitas ao Perfil.
+
+Divisão por objetivo, exatamente o plano:
+
+| Objetivo | Verba | % |
+|---|---|---|
+| Tráfego ao perfil | R$34.848,24 | 41% |
+| Thruplays | R$21.249,39 | 25% |
+| Engajamento | R$21.249,25 | 25% |
+| Reconhecimento | R$6.799,89 | 8% |
+| Cliques no link | R$849,93 | 1% |
+
+**Clusters 30%, malha geográfica 70%.**
+
+**MÉTODO DA ALOCAÇÃO, o mesmo da Semana 3 mais um reforço novo.** Dentro de cada objetivo, a
+verba foi distribuída proporcional ao gasto da semana anterior. Depois, por decisão do Bruno
+("esses regionais devem ter mais verba, os vídeos são destaque dessa semana"), as **cinco
+praças que têm vídeo Nossa Gente receberam 20% de reforço**, tirado dos outros conjuntos geo,
+sem furar o 70/30 nem a divisão por objetivo:
+
+- RMBH R$15.999
+- Vale do Rio Doce e Zona da Mata R$10.540
+- Sul de Minas R$8.730
+- Norte de Minas R$8.166
+- Triângulo R$6.856
+- Outros geo R$9.209
+
+**Os 45 anúncios VT Nossa Gente foram ativados** nas cinco praças, em Engajamento,
+Visualizações, Visitas ao Perfil e nos dois RMKT, mais os verticais.
+
+**APRENDIZADO TÉCNICO QUE VALE PARA AS PRÓXIMAS VIRADAS: virada de 100 conjuntos não dá para
+fazer por script.** O POST por curl na Graph API é recusado com erro de autorização política
+em adset, então cada conjunto precisa de uma chamada do MCP `ads_update_entity`, e depois de
+outra do `ads_activate_entity` porque editar verba pausa o conjunto. Foram 101 edições mais 44
+reativações. Levou quase uma hora. **Planejar isso com antecedência, não começar 23h30.**
+
+**Conjuntos Incremental de IMPRESSÕES seguem pausados**, decisão mantida.
+
+- [ ] ainda não incorporado na memória
+
+---
+
 ## 2026-09-16 16:55
 
 **Peças novas do cliente**
