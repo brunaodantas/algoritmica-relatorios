@@ -26,6 +26,54 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-18 19:30
+- **Sobras das três primeiras semanas realocadas, R$1.078,11**, antecipando a decisão que
+  era de sexta. Entrou nas cinco praças com VT Nossa Gente, metade em visitas ao perfil e
+  metade em engajamento: RMBH R$340,00, Vale do Rio Doce e Zona da Mata R$250,00, Norte
+  R$170,00, Sul R$170,00, Triângulo R$148,11. **A Semana 4 passou a valer R$86.078,11.**
+- **VT Maior Orçamento Saúde** (`DdbRvP3ymWj`, id de mídia `17989766835051500`), pedido do
+  Lucas: "impulsionar pra BH e região metropolitana, dar um gás nessa região principal.
+  Engajamento e seguidor." Subiu nos três conjuntos de RMBH. **Em visitas ao perfil o banner
+  de WhatsApp aparece bloqueado no Gerenciador**, então esse ficou sem o botão.
+- **Motion Só Quem Fez Mulheres**, dark post, subiu em 7 conjuntos dos clusters de mulher,
+  em visitas ao perfil, visualizações e engajamento. Legenda da Rede Protege, dez cidades da
+  RMBH pedidas pelo Lucas já cobertas pelo Mulheres Cidades Prioritárias.
+- **VAZAMENTO GEOGRÁFICO CORRIGIDO EM TODA A CONTA.** O Lucas viu o Master Zona da Mata
+  rodando em BH. A segmentação estava certa, mas **91 dos 101 conjuntos ativos estavam com
+  `location_types: ["home","recent"]`**, e o de WhatsApp com `frequently_in` também. Todos
+  foram para **`["home"]`, só quem mora ali**. O Bruno decidiu assim mesmo perdendo alcance:
+  "não tem problema diminuir o alcance, o importante é eficiência e assertividade".
+  **Regra nova: todo conjunto novo nasce com `location_types: ["home"]`.**
+- **Expansão de público desligada** no único conjunto que a tinha, Total - Triângulo Mineiro
+  de engajamento, que estava com `targeting_optimization: expansion_all`.
+- **Checagem crítica da conta depois da virada.** Fadiga medida comparando 15 a 17/09 com 11
+  a 14/09, em interação por mil: Coronel Gianfranco -82%, Bio Invertida -78%, Comercial Kalil
+  Fez -78%, VC Povo Fala Kalil Serra -70%, Nossa Gente Triângulo -68%, PGM Sou o Seu Candidato
+  -36%. Melhores da conta por custo por interação: Empatia Saúde R$0,30 e 39,7 por mil, VT
+  Cemig R$0,31 e 26,3 por mil, Kalil fez no Galo R$0,44 e 17,5 por mil, todos com pouca verba.
+- **Sufocamento de criativo**, achado novo: o Master Zona da Mata levava 99%, 98%, 87% e 77%
+  da verba dos conjuntos de Vale do Rio Doce e Zona da Mata, onde dividia espaço com até 11
+  peças, e travava os dois VT Nossa Gente da praça. Foi pausado só ali e mantido em Juiz de
+  Fora e Ubá. Mesmo caso do VT Internet Vilas e Favelas, com 92% do Público de Esquerda.
+- **Pausados hoje:** Spot Fazedor em 5 conjuntos, Falar pro Sul de Minas em 4, Bio Invertida
+  nos 6 regionais (mantido nos 3 de cluster), Coronel Gianfranco em 12, Comercial Kalil Fez
+  em 5, VC Povo Fala Kalil Serra em 17, Master Zona da Mata em 3. **O Coragem não foi
+  reduzido**, contra o pedido do Lucas, porque é o segundo melhor da lista.
+- **Espalhadas as três peças boas:** VT Cemig para mais 6 conjuntos, Empatia Saúde para 4,
+  Kalil fez no Galo para 3, incluindo RMBH, onde nunca tinha rodado.
+- **R$3.000,00 movidos** do Sul de Minas e do Triângulo para RMBH, Base Própria + Esquerda,
+  Servidor Público Mulheres, Progressista de Centro, Independente e Base Própria. Mais
+  **R$1.200,00** das visualizações de remarketing para Montes Claros, Jequitinhonha, Oeste e
+  Central e Juiz de Fora, que iam parar antes do fim da semana.
+- **Cluster Eleitorado Cleitinho de Reconhecimento estava parado** com R$243,57 de saldo. A
+  causa é de objetivo, não de criativo: em Alcance o Meta para quando já cobriu o público.
+  Resolvido somando a segunda audiência do cluster.
+- **Frequência da conta está folgada**, pior caso 2,22 no Torcedor Atleticano. Dá para subir
+  verba sem risco de repetição.
+- Planilha na aba Postagens em **582 linhas**, 357 ativos e 223 pausados. Página Campanhas
+  Ativas republicada.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-18 00:40
 
 **VIRADA DA SEMANA 4 FEITA NA MÃO, com o Bruno acordado**
