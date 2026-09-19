@@ -26,6 +26,29 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
 
 ---
 
+## 2026-09-19 11:59
+- Informação do Bruno, nada alterado na conta. **As peças novas são todas dark post.**
+- Consequência que vale registrar: a rotina `checagem-kalil` manda ler comentário no post
+  orgânico do Instagram pelo Chrome logado. Em dark post não existe post no perfil, então
+  esse bloco da checagem não roda nessas peças. Pela API sai só o contador de comentário.
+- Na planilha Cronograma de Postagem, aba Postagens, essas linhas entram com Tipo de
+  postagem igual a dark post, a coluna Legenda precisa ser preenchida à mão e a coluna Link
+  fica sem link público.
+- Lembrete para a ofensiva final: dark post não aparece no perfil, mas continua sendo
+  anúncio de categoria política e entra na Biblioteca de Anúncios do Meta, com valor e
+  alcance. Não é peça invisível.
+- Leitura da conta hoje, para contexto: `Kalil fez no Galo` está em seis anúncios ativos,
+  R$2.007,20 e 272.832 impressões em 7 dias, rodando em `Total - Cluster - Torcedor
+  Atleticano`, que leva 73% do investimento da peça, mais RMBH e Base Própria.
+- **O cluster `Total - Cluster - Torcedor Atleticano` é novo e não está na base de
+  conhecimento nem em bloco anterior deste arquivo.** Entrou depois de 12/09. Falta saber
+  quem subiu e com que público, para entrar na base e no `clusters_kalil_notas.json`.
+- A conta tem 60 peças ativas hoje. Entraram desde 12/09, entre outras, PGM Sou o Seu
+  Candidato, que é a que mais gasta com R$5.425,13 em 7 dias, VT Pandemia Pulso Firme,
+  VT Valorizar Polícias, Só Quem Fez Finanças, Empatia Saúde, Card Pesquisa Cleitinho,
+  VT Discurso Mulher, PGM Vamos Ter Que Decidir e a série VT Nossa Gente por praça.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-18 19:30
 - **Sobras das três primeiras semanas realocadas, R$1.078,11**, antecipando a decisão que
   era de sexta. Entrou nas cinco praças com VT Nossa Gente, metade em visitas ao perfil e
