@@ -49,6 +49,58 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
   VT Discurso Mulher, PGM Vamos Ter Que Decidir e a série VT Nossa Gente por praça.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-19 14:30
+- **A CONTA NÃO ESTÁ HABILITADA PARA ANÚNCIOS DE VISITA AO PERFIL.** Não é irregularidade,
+  é acesso a recurso que a Meta libera conta a conta, e o painel não mostra nada. Erro 100,
+  subcode **2016153**. Em 18/09, ao corrigir `location_types` de 91 conjuntos, os anúncios
+  foram revalidados e **todos os de Visita ao Perfil pararam às 13h**, de R$256,35 na hora
+  das 12h para R$17,87 às 14h. Os três conjuntos desse objetivo que não foram tocados
+  continuaram entregando, o que provou a causa. Religados manualmente pelo Gerenciador, 162
+  anúncios. Perda de cerca de cinco horas de entrega.
+- **Duas regras novas:** anúncio de Visita ao Perfil **se cria duplicando outro, nunca do
+  zero** (foi o suporte da Meta que explicou: criado do zero, a plataforma não verifica a
+  vinculação e o anúncio cai em erro), e **não editar targeting de conjunto de Visita ao
+  Perfil**. Chamado aberto pedindo a habilitação.
+- **A correção de localização de 18/09 teve de ser revertida.** A Meta descontinuou a opção
+  de escolher o tipo de localização, e o Gerenciador passou a travar com o erro **#1870194**
+  em qualquer publicação. A Julia não conseguia editar orçamento de nenhuma campanha. **66
+  conjuntos voltaram para `["home","recent"]`**, mais 7 já revertidos antes. Os **27 de
+  Visita ao Perfil ficaram em `["home"]` de propósito**, porque mexer neles derruba os
+  anúncios. Se precisar editar um desses, só pela API.
+- **O painel comparava valor bruto com líquido.** A Julia descobriu em 19/09: a campanha
+  gastou **13 a 14% acima do planejado** nas três primeiras semanas. Ela e o Alan decidiram
+  não alertar o cliente por ora e compensar gastando **10% a menos** nesta semana. Alvo da
+  Semana 4 passa a ser **R$71.814,77**, que é a Semana 3 menos 10%. **O corte de R$14.263,34
+  ficou suspenso** a pedido dela, esperando a decisão sobre o vídeo de ataque.
+- **A Julia desativou o remarketing** na madrugada de 19/09, porque estava caro, e também o
+  RMBH de Visitas ao Perfil. **Eu religuei os 12 conjuntos de remarketing por engano** na
+  noite de 18/09, achando que tinham caído sozinhos, e ela desligou de novo. Desligados em
+  definitivo em 19/09. **Regra: conjunto pausado que eu não pausei, perguntar antes de
+  religar.** O histórico da conta em `act_.../activities` mostra autor e horário de cada
+  mudança e resolve esse tipo de dúvida.
+- **Peças novas de 19/09:** VT Preparado (`DdcWOw0SkPj`) em RMBH engajamento e RMKT; VT Vacina
+  (`Ddcq4PWxH1f`) nos quatro clusters de engajamento de esquerda, base e Tema Saúde; Card
+  Pesquisa Cleitinho ampliado para mais quatro conjuntos; VT Porta Hospital do Barreiro
+  (`DdeVwfHOq0a`) em conjunto novo.
+- **Conjunto novo `Total - Barreiro e Região`**, em REGIONAIS - ENGAJAMENTO, com ponto no
+  Barreiro e raio de 8 km, R$400 tirados do RMBH. **Conjunto novo de engajamento precisa de
+  `destination_type: ON_POST`**, senão o Gerenciador recusa o anúncio com o erro #1885154,
+  "é necessário um conjunto de anúncios com objeto promovido".
+- **Guiado pelo Coração reduzido**, saiu dos quatro conjuntos de visualizações a pedido do
+  Lucas, e segue em visitas ao perfil e engajamento.
+- **ESTUDO DO VÍDEO DE ATAQUE**, em `IA/templates/Claude - Kalil/documentos/estudo-video-ataque-19set.md`.
+  Público de esquerda em Minas medido pelo delivery estimate: **7,3 a 8,6 milhões** de 18 a 65
+  anos, não é recorte estreito. CPM por objetivo nos últimos 7 dias: Reconhecimento de cluster
+  R$2,39, Engajamento de cluster R$7,71, Visitas ao Perfil regional R$12,90. Custo por
+  compartilhamento: Visualizações de cluster R$19,18, Engajamento de cluster R$22,51,
+  Reconhecimento R$534,46. **Plano aprovado para a ofensiva final:** criar 15 conjuntos novos,
+  cinco praças cruzadas com os interesses de esquerda em três objetivos, somando aos quatro
+  que já existem, com **60% em Engajamento e 40% em Reconhecimento**, sem Visitas ao Perfil.
+  O teto de gasto diário de um conjunto na conta é R$1.462,56, por isso não fecha em poucos
+  conjuntos. Falta o valor, a data de início e a confirmação de que é só Meta.
+- Planilha na aba Postagens em **593 linhas**, 362 ativos e 229 pausados.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-18 19:30
 - **Sobras das três primeiras semanas realocadas, R$1.078,11**, antecipando a decisão que
   era de sexta. Entrou nas cinco praças com VT Nossa Gente, metade em visitas ao perfil e
