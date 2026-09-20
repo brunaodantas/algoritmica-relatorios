@@ -89,6 +89,8 @@
     text-align:left;padding:11px 10px}
   .grupo th span{font-weight:400;color:var(--ink-3);font-size:.68rem;margin-left:8px}
   .vazio{color:var(--ink-3);font-size:.86rem}
+  .explica{margin:-4px 0 0;font-size:.79rem;color:var(--ink-3);line-height:1.55;max-width:78ch}
+  .explica b{color:var(--ink-2);font-weight:600}
   .legenda{font-size:.76rem;color:var(--ink-3);line-height:1.6}
   .legenda b{color:var(--ink-2)}
   footer{font-size:.74rem;color:var(--ink-3);text-align:center;padding-top:8px}
@@ -141,6 +143,7 @@
       <button data-filtro="ativas">Só as que estão no ar</button>
       <button data-filtro="ruins">Só Observar e Pausar</button>
     </div>
+    <p class="explica" id="explica"></p>
     <div class="rolagem"><table id="tudo"><tbody></tbody></table></div>
   </section>
 
@@ -338,10 +341,18 @@ document.addEventListener("click", (e) => {
   if (!drop.hidden && !e.target.closest(".periodo")) fecha();
 });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") fecha(); });
+const TEXTO_FILTRO = {
+  todas: "Mostrando <b>todas as peças</b> que entregaram no período, inclusive as já pausadas, para servir de comparação.",
+  ativas: "Mostrando <b>só o que está no ar agora</b>. É a lista que vale para decidir o que continua rodando.",
+  ruins: "Mostrando <b>só as peças que pedem decisão</b>. <b>Pausar</b> é índice abaixo de 70, ou seja, custo mais de 40% acima da mediana do objetivo. <b>Observar</b> é índice de 70 a 89, ou peça que ainda tem custo bom mas já bate na mesma pessoa com frequência 40% acima da mediana, que é desgaste.",
+};
+function desenhaExplicacao() { $("#explica").innerHTML = TEXTO_FILTRO[FILTRO]; }
+
 document.querySelectorAll("[data-filtro]").forEach(b => b.addEventListener("click", () => {
   document.querySelectorAll("[data-filtro]").forEach(x => x.classList.remove("sel"));
-  b.classList.add("sel"); FILTRO = b.dataset.filtro; if (DADOS) desenhaTudo(DADOS);
+  b.classList.add("sel"); FILTRO = b.dataset.filtro; desenhaExplicacao(); if (DADOS) desenhaTudo(DADOS);
 }));
+desenhaExplicacao();
 $("#recarregar").addEventListener("click", carregar);
 carregar();
 </script>
