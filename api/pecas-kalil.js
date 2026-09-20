@@ -65,10 +65,20 @@ export default async function handler(req, res) {
     return;
   }
 
-  const dias = Math.max(3, Math.min(30, parseInt(req.query.dias ?? "7", 10) || 7));
   // O período termina sempre em ontem: dia corrente é entrega parcial e infla o número.
-  const fim = menos(hojeSP(), 1);
-  const ini = menos(fim, dias - 1);
+  const ontem = menos(hojeSP(), 1);
+  const valida = (s) => (/^\d{4}-\d{2}-\d{2}$/.test(s || "") ? s : null);
+
+  let ini = valida(req.query.ini);
+  let fim = valida(req.query.fim);
+  if (!ini || !fim) {
+    const dias = Math.max(3, Math.min(365, parseInt(req.query.dias ?? "7", 10) || 7));
+    fim = ontem;
+    ini = menos(fim, dias - 1);
+  }
+  if (fim > ontem) fim = ontem;
+  if (ini > fim) ini = fim;
+  const dias = Math.round((new Date(`${fim}T12:00:00Z`) - new Date(`${ini}T12:00:00Z`)) / 86400000) + 1;
   const janela = JSON.stringify({ since: ini, until: fim });
 
   try {

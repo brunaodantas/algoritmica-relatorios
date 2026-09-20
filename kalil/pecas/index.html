@@ -33,6 +33,31 @@
   .acoes button.sel{color:var(--ink);border-color:var(--orange);box-shadow:var(--shadow)}
   .acoes button:focus-visible,.acoes select:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
   .carimbo{font-size:.78rem;color:var(--ink-3)}
+  .periodo{position:relative;display:inline-block}
+  .periodo>button em{font-style:normal;font-size:.62rem;color:var(--ink-3)}
+  .drop{position:absolute;top:calc(100% + 8px);left:0;z-index:20;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--radius);padding:16px;min-width:330px;
+    box-shadow:0 8px 32px rgba(0,0,0,.18)}
+  .drop[hidden]{display:none}
+  .drop .colunas{display:flex;gap:20px}
+  .drop .tit{font-size:.62rem;font-weight:700;color:var(--ink-3);letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:8px}
+  .presets{display:flex;flex-direction:column;gap:2px;min-width:158px}
+  .presets label{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;
+    cursor:pointer;font-size:.84rem;color:var(--ink-2)}
+  .presets label:hover{background:var(--chip)}
+  .presets input{accent-color:var(--orange);margin:0}
+  .presets input:checked+span{color:var(--ink);font-weight:600}
+  .custom{display:flex;flex-direction:column;gap:12px;padding-top:26px;flex:1}
+  .custom[hidden]{display:none}
+  .custom label{display:flex;flex-direction:column;gap:5px;font-size:.7rem;color:var(--ink-3)}
+  .custom input{font:inherit;font-size:.82rem;color:var(--ink);background:var(--bg);
+    border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+  .pe-acoes{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:12px;
+    border-top:1px solid var(--line)}
+  .pe-acoes button{font:inherit;font-size:.82rem;cursor:pointer;border-radius:7px;padding:6px 16px}
+  .pe-acoes .secundario{background:transparent;border:1px solid var(--line);color:var(--ink-3)}
+  .pe-acoes .primario{background:var(--orange);border:0;color:#fff;font-weight:600}
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
   .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:14px 18px}
@@ -79,9 +104,24 @@
       Índice 100 é a mediana: acima de 100 está mais barato que o normal da conta, abaixo está mais caro.
       A página lê a conta na hora em que é aberta.</p>
     <div class="acoes">
-      <button data-dias="7" class="sel">Últimos 7 dias</button>
-      <button data-dias="14">14 dias</button>
-      <button data-dias="30">30 dias</button>
+      <div class="periodo">
+        <button id="abrePeriodo" class="sel" aria-expanded="false">📅 <span id="rotuloPeriodo">Últimos 7 dias</span> <em>▼</em></button>
+        <div class="drop" id="drop" hidden>
+          <div class="colunas">
+            <div class="presets" id="presets">
+              <div class="tit">Períodos</div>
+            </div>
+            <div class="custom" id="custom" hidden>
+              <label>Data inicial<input type="date" id="dataIni"></label>
+              <label>Data final<input type="date" id="dataFim"></label>
+            </div>
+          </div>
+          <div class="pe-acoes">
+            <button id="cancelar" class="secundario">Cancelar</button>
+            <button id="aplicar" class="primario">Aplicar</button>
+          </div>
+        </div>
+      </div>
       <button id="recarregar">Atualizar</button>
       <span class="carimbo" id="carimbo">carregando…</span>
     </div>
@@ -130,7 +170,46 @@ const num = (v) => v == null ? "—" : Math.round(v).toLocaleString("pt-BR");
 const pct = (v) => v == null ? "—" : v.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2}) + "%";
 const dataBR = (s) => s.slice(8,10) + "/" + s.slice(5,7);
 
-let DADOS = null, DIAS = 7, FILTRO = "todas";
+let DADOS = null, FILTRO = "todas";
+
+const PRESETS = [
+  {key:"personalizado", label:"Personalizado"},
+  {key:"mes-atual",     label:"Este mês"},
+  {key:"mes-passado",   label:"Mês passado"},
+  {key:"ultimos-7",     label:"Últimos 7 dias"},
+  {key:"ultimos-14",    label:"Últimos 14 dias"},
+  {key:"ultimos-30",    label:"Últimos 30 dias"},
+  {key:"ytd-2026",      label:"2026 (YTD)"},
+];
+
+let PRESET = "ultimos-7";
+let CUSTOM = {start:"", end:""};
+
+const fmtData = (d) => {
+  const p = (n) => String(n).padStart(2,"0");
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+};
+
+function getPeriodo(preset, custom) {
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const recua = (n) => { const s = new Date(hoje); s.setDate(s.getDate()-n); return s; };
+  if (preset === "personalizado" && custom.start && custom.end) {
+    const [sy,sm,sd] = custom.start.split("-"), [ey,em,ed] = custom.end.split("-");
+    const label = (sm===em && sy===ey) ? `${sd}/${sm} a ${ed}/${em}/${sy}` : `${sd}/${sm}/${sy} a ${ed}/${em}/${ey}`;
+    return {start:custom.start, end:custom.end, label};
+  }
+  if (preset === "mes-atual")
+    return {start:fmtData(new Date(hoje.getFullYear(),hoje.getMonth(),1)),
+            end:fmtData(new Date(hoje.getFullYear(),hoje.getMonth()+1,0)), label:"Este mês"};
+  if (preset === "mes-passado")
+    return {start:fmtData(new Date(hoje.getFullYear(),hoje.getMonth()-1,1)),
+            end:fmtData(new Date(hoje.getFullYear(),hoje.getMonth(),0)), label:"Mês passado"};
+  if (preset === "ultimos-7")  return {start:fmtData(recua(6)),  end:fmtData(hoje), label:"Últimos 7 dias"};
+  if (preset === "ultimos-14") return {start:fmtData(recua(13)), end:fmtData(hoje), label:"Últimos 14 dias"};
+  if (preset === "ultimos-30") return {start:fmtData(recua(29)), end:fmtData(hoje), label:"Últimos 30 dias"};
+  if (preset === "ytd-2026")   return {start:"2026-01-01", end:fmtData(hoje), label:"2026 (YTD)"};
+  return {start:fmtData(recua(6)), end:fmtData(hoje), label:"Últimos 7 dias"};
+}
 
 const classeSelo = (s) => ({Escalar:"escalar",Manter:"manter",Observar:"observar",Pausar:"pausar"})[s] || "";
 
@@ -214,8 +293,10 @@ function desenhaTudo(d) {
 
 async function carregar() {
   $("#carimbo").textContent = "lendo a conta…";
+  const p = getPeriodo(PRESET, CUSTOM);
+  $("#rotuloPeriodo").textContent = p.label;
   try {
-    const r = await fetch(`/api/pecas-kalil?dias=${DIAS}&t=${Date.now()}`);
+    const r = await fetch(`/api/pecas-kalil?ini=${p.start}&fim=${p.end}&t=${Date.now()}`);
     const d = await r.json();
     if (d.erro) throw new Error(d.erro);
     DADOS = d;
@@ -228,10 +309,35 @@ async function carregar() {
   }
 }
 
-document.querySelectorAll("[data-dias]").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll("[data-dias]").forEach(x => x.classList.remove("sel"));
-  b.classList.add("sel"); DIAS = parseInt(b.dataset.dias, 10); carregar();
-}));
+$("#presets").insertAdjacentHTML("beforeend", PRESETS.map(p =>
+  `<label><input type="radio" name="preset" value="${p.key}"${p.key === PRESET ? " checked" : ""}><span>${p.label}</span></label>`
+).join(""));
+
+const drop = $("#drop");
+const abre = () => {
+  document.querySelector(`input[name=preset][value="${PRESET}"]`).checked = true;
+  $("#custom").hidden = PRESET !== "personalizado";
+  $("#dataIni").value = CUSTOM.start; $("#dataFim").value = CUSTOM.end;
+  drop.hidden = false; $("#abrePeriodo").setAttribute("aria-expanded", "true");
+};
+const fecha = () => { drop.hidden = true; $("#abrePeriodo").setAttribute("aria-expanded", "false"); };
+
+$("#abrePeriodo").addEventListener("click", () => drop.hidden ? abre() : fecha());
+$("#cancelar").addEventListener("click", fecha);
+$("#presets").addEventListener("change", (e) => { $("#custom").hidden = e.target.value !== "personalizado"; });
+$("#aplicar").addEventListener("click", () => {
+  const escolhido = document.querySelector("input[name=preset]:checked").value;
+  if (escolhido === "personalizado") {
+    const s = $("#dataIni").value, f = $("#dataFim").value;
+    if (!s || !f) return;
+    CUSTOM = {start:s, end:f};
+  }
+  PRESET = escolhido; fecha(); carregar();
+});
+document.addEventListener("click", (e) => {
+  if (!drop.hidden && !e.target.closest(".periodo")) fecha();
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") fecha(); });
 document.querySelectorAll("[data-filtro]").forEach(b => b.addEventListener("click", () => {
   document.querySelectorAll("[data-filtro]").forEach(x => x.classList.remove("sel"));
   b.classList.add("sel"); FILTRO = b.dataset.filtro; if (DADOS) desenhaTudo(DADOS);
