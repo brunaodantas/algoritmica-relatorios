@@ -49,6 +49,56 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
   VT Discurso Mulher, PGM Vamos Ter Que Decidir e a série VT Nossa Gente por praça.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-20 21:40
+- **A automação de virada de semana foi desligada de vez**, a pedido da Julia via Bruno. A
+  tarefa `kalil-virada-semana5-25set`, que rodaria 25/09 às 00h05, está desativada e **não
+  pode ser reativada**. Virada de semana é manual. A checagem diária das 9h continua, mas só
+  lê e reporta: **não ativa, não pausa e não mexe em verba**.
+- **Antes de ativar qualquer conjunto ou anúncio pausado, conferir quem pausou**, em
+  `GET act_497414229054067/activities` com `fields=event_type,event_time,actor_name,extra_data,object_id`.
+  O filtro que funciona é por `object_id` do conjunto, porque vários conjuntos têm o mesmo
+  nome. **Se o autor for a Julia Spadari, não ativar: avisar o Bruno.** Ela pausa de
+  propósito e já perdeu trabalho duas vezes com religamento por conta própria.
+- **PENDÊNCIA ABERTA, esperando a Julia liberar:** o conjunto `Total - Região Metropolitana
+  de BH` em **REGIONAIS - VISITAS AO PERFIL INSTAGRAM** (`120249819319890061`) está pausado
+  desde 19/09 às 04h14, pausado por ela. O **VT Prometedor Mentiroso** foi publicado dentro
+  dele e **não entrega enquanto o conjunto estiver parado**. Quando ela liberar, é só ativar
+  o conjunto e conferir que o anúncio saiu de PENDING_REVIEW. Se precisar de verba, ela sai
+  de outro conjunto, porque a semana está fechada no alvo.
+- **Alvo de gasto da Semana 4 mudou para R$62.000**, ordem do Bruno em 20/09. O plano
+  registrado segue R$70.280 líquido; o corte de 10% é **correção de erro**, não folga: nas
+  três primeiras semanas o cálculo não contabilizou o percentual cobrado pelo Meta e a
+  campanha gastou 13 a 14% acima. A conta foi fechada cortando R$1.110,71 proporcionalmente
+  nos 20 conjuntos com mais saldo, e depois realocando as sobras.
+- **Conjunto ativo sem anúncio no ar se pausa e a verba vai para outro.** O
+  `Total - Jequitinhonha e Mucuri` de Visualizações ficou só com o Guiado pelo Coração, que
+  o Lucas mandou tirar, então foi pausado e os R$225,83 dele foram para o Norte de Minas de
+  Visualizações. Se chegar peça da região, religa o conjunto e devolve a verba tirando de
+  outro. O Meta tem piso de orçamento por conjunto, então não dá para zerar um: pausar é o
+  único jeito de liberar tudo.
+- **Peças novas de 20/09**, enviadas pelo Lucas: **Carrossel Só Quem Fez Animais**
+  (`DdhSyzSml5F`) em Seguidores e no conjunto novo Pet e Animais; **Dark Motion Só Quem Fez
+  Saúde** (JOB866) em Tema Saúde e Seguidores; **Dark Motion Mulheres** (JOB867) em sete
+  conjuntos femininos e de base; **VT Prometedor Mentiroso** (`DdhjGkBPSM6`) em RMBH e base,
+  em engajamento e visitas ao perfil.
+- **Dois conjuntos novos, R$1.100 cada**, com verba tirada dos quatro maiores de Visitas ao
+  Perfil: `Total - Cluster - Pet e Animais` (Minas inteira, interesses Petshop, Gatos,
+  Cachorro, Animal Rescue, Comida para gatos e Veterinário) e `Total - Cluster - Mulheres
+  Base e Esquerda` (Minas inteira, só mulheres, base própria mais os interesses de esquerda).
+- **Não existe conjunto de "cidades com hospital regional" para criar:** o
+  `Total - Cluster - Tema Saúde` **já é** Sete Lagoas, Governador Valadares, Divinópolis,
+  Conselheiro Lafaiete, Juiz de Fora e Teófilo Otoni, com 17 km de raio em cada uma.
+- **Upload de arquivo local está bloqueado nessa conta.** `ads_creative_upload_media` com
+  `LOCAL_FILE` é recusado e só aceita URL pública. Vídeo novo tem que ser subido pelo
+  Gerenciador; depois disso é só pegar o `creative_id` e replicar por API.
+- **PÁGINA NOVA: desempenho das peças**, em
+  https://algoritmica-relatorios.vercel.app/kalil/pecas/ — lê a conta ao abrir, traz as 10
+  piores e abre peça a peça dentro de cada conjunto, com índice 100 na mediana do próprio
+  objetivo, fadiga por frequência e selo de Escalar, Manter, Observar ou Pausar. Seletor de
+  período igual ao do Pulse. Código em `api/pecas-kalil.js`. Foi feita porque o Lucas pediu
+  a lista de criativos saturando e ninguém abre o Pulse.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-19 14:30
 - **A CONTA NÃO ESTÁ HABILITADA PARA ANÚNCIOS DE VISITA AO PERFIL.** Não é irregularidade,
   é acesso a recurso que a Meta libera conta a conta, e o painel não mostra nada. Erro 100,
