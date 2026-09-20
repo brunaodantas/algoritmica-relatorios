@@ -148,7 +148,7 @@ function cabecalho() {
 function linha(p) {
   const cls = p.ativo ? "" : ' class="pausada"';
   return `<tr${cls}>
-    <td>${p.peca}${p.ativo ? "" : " <span class=\\"selo\\">pausada</span>"}</td>
+    <td>${p.peca}${p.ativo ? "" : " <span class='selo'>pausada</span>"}</td>
     <td>${p.conjunto}</td>
     <td>${p.objetivo}</td>
     <td>${brl(p.gasto)}</td>
