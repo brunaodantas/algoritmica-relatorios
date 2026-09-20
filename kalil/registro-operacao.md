@@ -49,6 +49,62 @@ Consulta e leitura não geram registro. Informação nova, sim, mesmo sem mexer 
   VT Discurso Mulher, PGM Vamos Ter Que Decidir e a série VT Nossa Gente por praça.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-20 19:35
+- Reativado o conjunto `Total - Região Metropolitana de BH` em REGIONAIS - VISITAS AO PERFIL
+  INSTAGRAM (`120249819319890061`), de PAUSED para ACTIVE, por ordem do Bruno em 20/09.
+  A Julia não liberou: o Bruno foi avisado de que a pausa era dela e mandou reativar mesmo
+  assim. A pausa original era de 19/09 às 04h14.
+- Conferência no anúncio: 10 anúncios ficaram ACTIVE, entre eles o VT Prometedor Mentiroso
+  (`120250184621500061`), que saiu de ADSET_PAUSED para ACTIVE, sem PENDING_REVIEW e sem erro
+  de entrega. Seguem pausados no nível do anúncio, como já estavam, `Fiz pela minha cidade` e
+  `Carrossel Teve Um Cara Que`.
+
+## 2026-09-20 20:10
+- TETO DIÁRIO DE CONJUNTO CONFIRMADO POR MEDIÇÃO: R$1.462,65. O RMBH de Visitas ao Perfil
+  bateu exatamente esse valor em 18/09 e nunca passou disso em nenhum dia do voo. Com saldo de
+  R$6.628,22 e 4 dias cheios até 24/09, ele ia travar e deixar de gastar uns R$480,00.
+- A REATIVAÇÃO ESTOUROU O ALVO DA SEMANA. Com o conjunto pausado a projeção era R$62.032,34,
+  ou seja, no alvo. Reativando, a semana ia para R$68.660,56, R$6.660,56 acima dos R$62.000.
+  Base do cálculo: gasto de 18 a 20/09 R$28.255,52 mais saldo de R$40.405,04 em 85 conjuntos
+  ativos.
+- Mix da semana antes do ajuste: 41,9% cluster e 58,1% regional, contra o plano de 30/70.
+  Por isso o corte saiu todo do cluster, que estava pesado, e nenhuma praça regional foi tocada.
+
+REAJUSTE EXECUTADO, 42 conjuntos:
+- `Total - Região Metropolitana de BH` VISITAS (`120249819319890061`): orçamento total de
+  R$20.918,18 para R$20.389,96. Tirou R$528,22 que ia travar de qualquer jeito. Saldo conferido
+  depois da edição: R$6.077,85.
+- 41 conjuntos de CLUSTER: corte de 39,45% sobre o saldo de cada um, somando R$6.132,29.
+  Fator aplicado igual para todos: saldo_novo = saldo_antigo menos 39,45%.
+- POUPADOS DO CORTE, de propósito: `Total - Cluster - Pet e Animais` (`120250184437220061`) e
+  `Total - Cluster - Mulheres Base e Esquerda` (`120250184438130061`). Nasceram em 20/09 com
+  R$1.100,00 cada, são teste do Lucas e um corte de 39% no primeiro dia mataria a leitura.
+  Foi por isso que o corte nos outros 41 subiu de 34,6% para 39,45%.
+- Corte geral: R$6.660,51, contra o excesso de R$6.660,56. Diferença de 5 centavos, arredondamento.
+- Salvar verba pausa o conjunto, então foram 42 edições mais 42 reativações. TODAS AS 42
+  REATIVAÇÕES FORAM FEITAS E CONFERIDAS: leitura final da conta mostra os 85 conjuntos com
+  effective_status ACTIVE, nenhum sobrou pausado.
+
+FECHADO PELO CODE em 20/09 22:10:
+- [x] Projeção recontada com leitura nova: gasto de 18 a 20/09 R$28.908,39 mais saldo de
+      R$33.063,70 nos 85 conjuntos ativos, total de **R$61.972,09**. Faltam R$27,91 para os
+      R$62.000, diferença de arredondamento do corte. O reajuste está certo, nada a corrigir.
+- [x] Conferência no nível do anúncio, nos 85 conjuntos ativos e não só nos 41 de cluster:
+      **nenhum conjunto ficou sem anúncio no ar.**
+- [x] Bloco subido no GitHub pelo Code.
+
+RECOMENDAÇÕES FEITAS AO BRUNO E AINDA NÃO EXECUTADAS, esperando ordem:
+- Pausar `VT Internet Vilas e Favelas` nos dois conjuntos de `Total - Cluster - Público de
+  Esquerda`, Engajamento e Reconhecimento. Ele leva 81% do gasto do conjunto de Engajamento a
+  R$1,33 por interação, enquanto o `VT Vacina` ao lado está a R$0,09 e só pegou R$42,26.
+  É sufocamento de criativo clássico.
+- Pausar `PGM Sou o Seu Candidato` nas praças do interior, mantendo em RMBH e nos Semelhantes 35+.
+  Índices do período 14 a 19/09: RMBH 135, Uberaba 35, Sul de Minas 44 em Engajamento e 46 em
+  Visitas, Jequitinhonha 51, Norte de Minas 52. Peça estadual perde pra regional dentro da praça.
+- NÃO pausar `VT Nossa Gente Sul de Minas (JOB791)` junto com o PGM: o conjunto ficaria só com
+  `VT Pandemia`, índice 62 e R$148,72, ou seja sem peça com entrega.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-20 21:40
 - **A automação de virada de semana foi desligada de vez**, a pedido da Julia via Bruno. A
   tarefa `kalil-virada-semana5-25set`, que rodaria 25/09 às 00h05, está desativada e **não
