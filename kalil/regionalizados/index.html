@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peças Regionalizadas · Kalil</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --tinta:#1a1a1a; --tinta2:#4a4a4a; --tinta3:#8c8a85; --linha:#d8d5ce;
+    --papel:#ffffff; --fundo:#efece5; --laranja:#d4601f; --barra:#e0762c;
+    --verde:#2f7d4f; --verde-bg:#e4f0e6; --vermelho:#b03a2e; --vermelho-bg:#fae6e3;
+    --areia:#ded9cf;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--tinta);
+    font-family:Archivo,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  .pagina{width:1240px;min-height:1754px;margin:0 auto 28px;background:var(--papel);
+    padding:74px 76px 56px;display:flex;flex-direction:column;gap:30px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  /* cabeçalho */
+  .topo{display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--tinta);padding-bottom:16px}
+  .selo{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--tinta3);margin-bottom:12px}
+  h1{margin:0;font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1;text-transform:uppercase}
+  .subtitulo{margin:9px 0 0;font-size:14px;font-style:italic;color:var(--tinta2)}
+  .data{text-align:right}
+  .data .rot{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tinta3)}
+  .data .dia{font-size:26px;font-weight:700;letter-spacing:-.01em;margin-top:4px}
+
+  /* faixa de kpis */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);background:var(--fundo);
+    border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .kpi{padding:18px 20px;border-right:1px solid var(--linha)}
+  .kpi:last-child{border-right:0}
+  .kpi .rot{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--tinta3);line-height:1.35;min-height:26px;display:block}
+  .kpi .val{display:block;font-size:27px;font-weight:800;letter-spacing:-.02em;margin-top:6px;
+    font-variant-numeric:tabular-nums}
+  .kpi .pe{display:block;font-size:11px;color:var(--tinta3);margin-top:6px;line-height:1.4}
+
+  /* leitura */
+  .leitura{display:grid;grid-template-columns:1fr 1fr;gap:34px;font-size:13.5px;line-height:1.55}
+  .leitura p{margin:0;color:var(--tinta2)}
+  .leitura b{color:var(--tinta);font-weight:700}
+
+  h2{margin:0 0 14px;font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.01em;
+    border-bottom:2px solid var(--tinta);padding-bottom:7px}
+  section{display:block}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  thead th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--tinta3);font-weight:400;text-align:right;
+    padding:0 9px 9px;border-bottom:1px solid var(--linha)}
+  thead th:first-child,thead th:nth-child(2){text-align:left}
+  tbody td{padding:13px 9px;border-bottom:1px solid var(--linha);text-align:right;
+    font-variant-numeric:tabular-nums}
+  tbody td:first-child{text-align:left}
+  .praca{font-weight:700;font-size:14px}
+  .praca small{display:block;font-weight:400;font-size:10.5px;color:var(--tinta3);
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.05em;margin-top:3px;text-transform:none}
+  .bar{width:158px;text-align:left}
+  .bar b{display:block;font-size:12.5px;font-weight:700;margin-bottom:5px;font-variant-numeric:tabular-nums}
+  .bar div{height:9px;background:var(--barra)}
+  .bar .fundo{background:var(--areia);width:100%;position:relative}
+  .bar .fundo span{display:block;height:9px;background:var(--barra)}
+  .tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+  .tag.bom{background:var(--verde-bg);color:var(--verde)}
+  .tag.ruim{background:var(--vermelho-bg);color:var(--vermelho)}
+  .tag.neutro{background:var(--fundo);color:var(--tinta2)}
+  .nota{margin:14px 0 0;font-size:12.5px;color:var(--tinta2);line-height:1.55}
+  .nota b{color:var(--tinta)}
+
+  /* comparação */
+  .comp{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .cartao{border:1px solid var(--linha);padding:18px 20px}
+  .cartao .rot{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--tinta3)}
+  .cartao .par{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;
+    font-variant-numeric:tabular-nums}
+  .cartao .par span{font-size:11.5px;color:var(--tinta3)}
+  .cartao .par b{font-size:21px;font-weight:800;letter-spacing:-.02em}
+  .cartao .par.media b{font-size:15px;font-weight:600;color:var(--tinta2)}
+  .cartao .veredito{margin-top:12px;padding-top:11px;border-top:1px solid var(--linha);font-size:12px;
+    color:var(--tinta2);line-height:1.5}
+
+  /* próximos passos */
+  .passos{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .passo .num{font-size:30px;font-weight:800;color:var(--laranja);line-height:1}
+  .passo h3{margin:9px 0 7px;font-size:14.5px;font-weight:700}
+  .passo p{margin:0;font-size:12.5px;color:var(--tinta2);line-height:1.55}
+
+  footer{margin-top:auto;padding-top:22px;border-top:1px solid var(--linha);
+    display:flex;justify-content:space-between;gap:40px;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--tinta3);line-height:1.6}
+  footer div{max-width:48%}
+  footer div:last-child{text-align:right}
+  @media print{body{background:#fff}.pagina{margin:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <div class="topo">
+    <div>
+      <div class="selo">Algorítmica · Meta Ads · Governador Kalil 12</div>
+      <h1>Peças Regionalizadas</h1>
+      <p class="subtitulo">Série VT Nossa Gente · veiculação de 17/09 a 20/09 · dados consolidados até 20/09</p>
+    </div>
+    <div class="data">
+      <div class="rot">Leitura parcial</div>
+      <div class="dia">21/09/2026</div>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><span class="rot">Investido nas peças</span><span class="val">R$ 4.836</span>
+      <span class="pe">4 dias de veiculação<br>6 praças</span></div>
+    <div class="kpi"><span class="rot">Impressões</span><span class="val">485,6 mil</span>
+      <span class="pe">CPM médio R$ 9,96</span></div>
+    <div class="kpi"><span class="rot">Interações</span><span class="val">5.157</span>
+      <span class="pe">R$ 0,94 por interação</span></div>
+    <div class="kpi"><span class="rot">Visualizações completas</span><span class="val">63,9 mil</span>
+      <span class="pe">R$ 0,076 por ThruPlay</span></div>
+    <div class="kpi"><span class="rot">Comentários</span><span class="val">439</span>
+      <span class="pe">mais 4.611 reações</span></div>
+    <div class="kpi"><span class="rot">Compartilhamentos</span><span class="val">79</span>
+      <span class="pe">R$ 61 por compartilhamento</span></div>
+  </div>
+
+  <div class="leitura">
+    <p><b>Quatro dias no ar, e o vídeo já se destaca.</b> A série entregou 485,6 mil impressões
+    e levou 63,9 mil pessoas a assistir o filme até o fim, a R$ 0,076 por visualização completa.
+    No mesmo período, o resto da conta gasta R$ 0,117 para o mesmo resultado. Ou seja, a peça
+    feita para a praça prende a atenção 35% mais barato que a peça estadual.</p>
+    <p><b>Belo Horizonte é a praça que mais responde</b>, com R$ 0,39 por interação, quatro
+    vezes mais barato que o Triângulo e abaixo da média da conta. É também onde a peça gera
+    mais reação por impressão. <b>Vale do Rio Doce vem logo atrás</b>, com o compartilhamento
+    mais barato de toda a série, R$ 33,83. O período ainda é curto para conclusão definitiva,
+    mas o sentido do resultado já aparece.</p>
+  </div>
+
+  <section>
+    <h2>Desempenho por praça</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Praça</th><th>Investimento</th><th>Impressões</th><th>Interações</th>
+          <th>R$/interação</th><th>Visual. completas</th><th>R$/ThruPlay</th><th>Comentários</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="praca">Sul de Minas<small>3 conjuntos</small></td>
+          <td class="bar"><b>R$ 1.289</b><div class="fundo"><span style="width:100%"></span></div></td>
+          <td>136.011</td><td>911</td><td>R$ 1,41</td><td>18.539</td><td>R$ 0,070</td><td>180</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="praca">Norte de Minas<small>3 conjuntos</small></td>
+          <td class="bar"><b>R$ 1.250</b><div class="fundo"><span style="width:97%"></span></div></td>
+          <td>136.150</td><td>817</td><td>R$ 1,53</td><td>17.533</td><td>R$ 0,071</td><td>73</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="praca">Belo Horizonte<small>2 conjuntos</small></td>
+          <td class="bar"><b>R$ 771</b><div class="fundo"><span style="width:60%"></span></div></td>
+          <td>63.911</td><td>2.001</td><td>R$ 0,39</td><td>7.265</td><td>R$ 0,106</td><td>110</td>
+          <td><span class="tag bom">Melhor interação</span></td>
+        </tr>
+        <tr>
+          <td class="praca">Zona da Mata<small>3 conjuntos</small></td>
+          <td class="bar"><b>R$ 595</b><div class="fundo"><span style="width:46%"></span></div></td>
+          <td>64.181</td><td>584</td><td>R$ 1,02</td><td>9.100</td><td>R$ 0,065</td><td>27</td>
+          <td><span class="tag bom">Vídeo mais barato</span></td>
+        </tr>
+        <tr>
+          <td class="praca">Triângulo<small>6 conjuntos</small></td>
+          <td class="bar"><b>R$ 559</b><div class="fundo"><span style="width:43%"></span></div></td>
+          <td>42.255</td><td>243</td><td>R$ 2,30</td><td>5.713</td><td>R$ 0,098</td><td>9</td>
+          <td><span class="tag ruim">Custo mais alto</span></td>
+        </tr>
+        <tr>
+          <td class="praca">Vale do Rio Doce<small>3 conjuntos</small></td>
+          <td class="bar"><b>R$ 372</b><div class="fundo"><span style="width:29%"></span></div></td>
+          <td>43.140</td><td>601</td><td>R$ 0,62</td><td>5.772</td><td>R$ 0,064</td><td>40</td>
+          <td><span class="tag bom">Melhor vídeo</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="nota"><b>Belo Horizonte concentra a conversa e o interior concentra o alcance.</b>
+    Sul de Minas e Norte de Minas juntos respondem por 56% do investimento e por 272 mil
+    impressões, mas é em BH que a peça faz o público reagir, com 2.001 interações em um quarto
+    do volume de mídia. O Triângulo é a praça que pede atenção: mesma peça, mesmo formato, e o
+    custo por interação chega a R$ 2,30. Vale lembrar que ali a campanha vem reduzida a pedido
+    do próprio cliente desde o início do flight, então o conjunto tem menos folga para aprender.</p>
+  </section>
+
+  <section>
+    <h2>Regional × resto da conta, no mesmo período</h2>
+    <div class="comp">
+      <div class="cartao">
+        <div class="rot">Custo por visualização completa</div>
+        <div class="par"><span>Peças regionais</span><b>R$ 0,076</b></div>
+        <div class="par media"><span>Resto da conta</span><b>R$ 0,117</b></div>
+        <div class="veredito">O ponto forte da série: <b>35% mais barato</b> para levar alguém
+          até o fim do filme.</div>
+      </div>
+      <div class="cartao">
+        <div class="rot">Custo por interação</div>
+        <div class="par"><span>Peças regionais</span><b>R$ 0,94</b></div>
+        <div class="par media"><span>Resto da conta</span><b>R$ 0,93</b></div>
+        <div class="veredito">Empate técnico já nos primeiros dias, com as peças ainda em
+          aprendizado. <b>Tende a melhorar</b> conforme cada conjunto acumula histórico.</div>
+      </div>
+      <div class="cartao">
+        <div class="rot">CPM</div>
+        <div class="par"><span>Peças regionais</span><b>R$ 9,96</b></div>
+        <div class="par media"><span>Resto da conta</span><b>R$ 6,98</b></div>
+        <div class="veredito">Falar com uma praça específica custa <b>43% mais caro</b> por mil
+          impressões. É o preço de precisão, e o retorno vem no vídeo assistido até o fim.</div>
+      </div>
+    </div>
+    <p class="nota"><b>A conta fecha a favor.</b> O CPM mais alto é esperado: público de uma
+    praça é menor e mais disputado que o estado inteiro. O que importa é o que se compra com
+    ele, e aí a peça regional entrega mais filme assistido pelo mesmo dinheiro. Leitura de
+    quatro dias, com as peças ainda em aprendizado.</p>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="passos">
+      <div class="passo">
+        <div class="num">1</div>
+        <h3>Reforçar Belo Horizonte e Vale do Rio Doce</h3>
+        <p>São as duas praças em que a peça regional rende mais, uma em interação e a outra em
+        vídeo e compartilhamento. Sugerimos concentrar ali o reforço da próxima semana, sem
+        mexer no que Sul de Minas e Norte de Minas já entregam em volume.</p>
+      </div>
+      <div class="passo">
+        <div class="num">2</div>
+        <h3>Acompanhar o Triângulo antes de decidir</h3>
+        <p>O custo por interação está alto, mas o volume investido ainda é pequeno e a praça
+        roda reduzida por orientação do cliente. Sugerimos mais três dias de leitura antes de
+        qualquer ajuste, para não confundir início de veiculação com desempenho ruim.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Fonte: Meta Marketing API · série VT Nossa Gente, seis peças, uma por praça ·
+      valores em mídia líquida · período de 17/09 a 20/09, quatro dias completos.</div>
+    <div>Interação exclui visualização automática de 3 segundos · visualização completa é
+      ThruPlay · média da conta calculada sobre todas as peças ativas no mesmo período.</div>
+  </footer>
+
+</div>
+</body>
+</html>
