@@ -106,10 +106,11 @@ RECOMENDAÇÕES FEITAS AO BRUNO E AINDA NÃO EXECUTADAS, esperando ordem:
 - [ ] ainda não incorporado na memória
 
 ## 2026-09-21 13:40
-- **MIX PASSA A SER 60/40**, decisão do Bruno. O plano de 70% malha geográfica e 30% cluster
-  deixa de valer: a Semana 5 se planeja em **60% regional e 40% cluster**. O cluster já estava
-  em 44,9% entre os conjuntos no ar, subindo há duas semanas, e em reta final é onde está o
-  voto que decide. **Falta o Bruno alinhar com o Lucas.**
+- **MIX FICA EM 70/30.** O 60/40 chegou a ser decidido no começo da tarde e o Bruno voltou
+  atrás no mesmo dia: "volte pro 70/30". **Vale o plano original, 70% malha geográfica e 30%
+  cluster, e não se reabre isso sem ordem dele.** Como o cluster está em 42% do gasto da
+  semana e 44,9% entre os conjuntos no ar, **o desvio tem de ser corrigido na virada da
+  Semana 5**, trazendo cluster para 30%.
 - **Como medir o mix sem errar:** a soma do `spend` por conjunto **não bate** com o `spend` da
   conta. Em 21/09 a soma por adset deu R$34.563,25 contra R$34.475,16 da conta, R$88,09 a mais,
   que é gasto não atribuído a conjunto mais arredondamento. **A base de verba é sempre o spend
