@@ -105,6 +105,37 @@ RECOMENDAÇÕES FEITAS AO BRUNO E AINDA NÃO EXECUTADAS, esperando ordem:
   `VT Pandemia`, índice 62 e R$148,72, ou seja sem peça com entrega.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-21 12:10
+- **Peças novas do Lucas, subidas hoje:** `Mix Mulheres` (`DdjAcVXyjJr`) e reforço do
+  `Card Patrus Kalil` (`Ddh1Co6uw9c`).
+- **CONJUNTO NOVO `Total - Cluster - Ofensiva`** (`120250194109100061`), em CLUSTERS -
+  ENGAJAMENTO, Minas inteira, base própria mais os interesses de esquerda e de
+  independentes, R$1.501,84. **Nome escolhido pelo Bruno: é a casa das peças de ataque na
+  reta final.** Nasceu porque o Card Patrus estava travado: dividia conjunto com peças
+  maduras e o Meta concentrava nelas. Em 21/09 de manhã ele tinha gastado só R$12,16 nos
+  quatro conjuntos somados. **Aprendizado: peça nova que precisa rodar rápido não sobrevive
+  ao lado de peça madura, tem que ter conjunto próprio.**
+- **CONJUNTO NOVO `Total - Cluster - Mulheres BH e RMBH`** (`120250194149780061`), em
+  CLUSTERS - ENGAJAMENTO, R$1.100, só mulheres de 18 a 65, Belo Horizonte com raio de 25 km,
+  que cobre a região metropolitana. Interesses copiados do Mães de Periferia. Foi criado
+  porque o Lucas pediu foco em mulheres de BH e RMBH e **não existia cluster com esse
+  recorte**: o Mães de Periferia é a RMBH sem a capital e o Cidades Prioritárias mistura BH
+  com mais vinte cidades.
+- **Mix Mulheres replicado** em Mulheres BH e RMBH, Mães de Periferia, Cidades Prioritárias,
+  Norte e Vales e Mulheres Base e Esquerda.
+- **Card Patrus** está nos quatro clusters de base e esquerda mais o Ofensiva.
+- **Pausado `Mulheres Lei Absorvente e Merenda`** no Mulheres Norte e Vales de engajamento:
+  R$2,65 por interação contra R$0,87 do VT Pandemia Pulso Firme no mesmo conjunto.
+- **O `VT Discurso Mulher` com índice 30 fica como está.** Está em Visitas ao Perfil, onde a
+  API não deixa pausar, e o gasto não justifica pedir ao Bruno para mexer no Gerenciador.
+- **Semana fechada em R$62.000,00 exatos**, 86 conjuntos no ar, nenhum sem peça. A verba dos
+  dois conjuntos novos saiu dos regionais de Visitas ao Perfil.
+- **O custo NÃO subiu nesta semana, ao contrário do que parecia.** Medição por semana do
+  flight: CPM R$7,76, R$8,16, R$8,25 e agora **R$6,90**; custo por interação R$0,95, R$0,93,
+  R$1,10 e agora **R$0,92**; CPC no link R$0,98, R$0,95, R$1,01 e **R$1,06**, o único que
+  subiu. A frequência caiu de 2,80 para 1,82, ou seja, está alcançando gente nova.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-20 21:40
 - **A automação de virada de semana foi desligada de vez**, a pedido da Julia via Bruno. A
   tarefa `kalil-virada-semana5-25set`, que rodaria 25/09 às 00h05, está desativada e **não
