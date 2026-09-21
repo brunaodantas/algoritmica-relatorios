@@ -105,6 +105,34 @@ RECOMENDAÇÕES FEITAS AO BRUNO E AINDA NÃO EXECUTADAS, esperando ordem:
   `VT Pandemia`, índice 62 e R$148,72, ou seja sem peça com entrega.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-21 13:40
+- **MIX PASSA A SER 60/40**, decisão do Bruno. O plano de 70% malha geográfica e 30% cluster
+  deixa de valer: a Semana 5 se planeja em **60% regional e 40% cluster**. O cluster já estava
+  em 44,9% entre os conjuntos no ar, subindo há duas semanas, e em reta final é onde está o
+  voto que decide. **Falta o Bruno alinhar com o Lucas.**
+- **Como medir o mix sem errar:** a soma do `spend` por conjunto **não bate** com o `spend` da
+  conta. Em 21/09 a soma por adset deu R$34.563,25 contra R$34.475,16 da conta, R$88,09 a mais,
+  que é gasto não atribuído a conjunto mais arredondamento. **A base de verba é sempre o spend
+  da conta; a quebra por conjunto serve só para proporção.**
+- **RELATÓRIO NOVO, pedido do Lucas:** leitura das peças regionalizadas, a série VT Nossa
+  Gente. Publicado em https://algoritmica-relatorios.vercel.app/kalil/regionalizados/ com o
+  PDF ao lado, em `kalil/regionalizados/`. **Feito no layout do boletim diário da Julia**, que
+  o Bruno mandou como referência: página A4 retrato, Archivo mais IBM Plex Mono, faixa de seis
+  KPIs, tabela com barra de investimento, cartões de comparação e dois próximos passos. O
+  fonte do boletim dela não está no repositório, então o layout foi reconstruído a partir do
+  PDF; **daqui em diante essa página é o molde para relatórios avulsos do Kalil.**
+- **Números da série, 17 a 20/09, quatro dias:** R$4.835,83 investidos, 485,6 mil impressões,
+  5.157 interações a R$0,94, 63.922 visualizações completas a R$0,076, 79 compartilhamentos e
+  439 comentários. **O ponto forte é vídeo:** R$0,076 por ThruPlay contra R$0,117 do resto da
+  conta, 35% mais barato. Interação está em empate técnico, R$0,94 contra R$0,93, e o CPM é 43%
+  mais caro, R$9,96 contra R$6,98, que é o preço esperado de comprar praça a praça.
+- **Por praça:** Belo Horizonte é a melhor em interação, R$0,39, quatro vezes melhor que o
+  Triângulo; Vale do Rio Doce tem o vídeo e o compartilhamento mais baratos, R$0,064 e R$33,83;
+  Sul de Minas e Norte de Minas concentram 56% do investimento e o volume de impressão;
+  **Triângulo é o ponto de atenção, R$2,30 por interação**, mas roda reduzido a pedido do
+  cliente e recebeu pouco volume, então a recomendação é esperar mais três dias antes de mexer.
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-21 12:10
 - **Peças novas do Lucas, subidas hoje:** `Mix Mulheres` (`DdjAcVXyjJr`) e reforço do
   `Card Patrus Kalil` (`Ddh1Co6uw9c`).
