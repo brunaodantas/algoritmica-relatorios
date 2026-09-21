@@ -105,6 +105,57 @@ RECOMENDAÇÕES FEITAS AO BRUNO E AINDA NÃO EXECUTADAS, esperando ordem:
   `VT Pandemia`, índice 62 e R$148,72, ou seja sem peça com entrega.
 - [ ] ainda não incorporado na memória
 
+## 2026-09-21 19:30
+- **RÉGUA NOVA DE CORTE DE CRIATIVO, definida depois de uma reunião interna.** Não se olha
+  mais a média geral de desempenho da peça: olha-se **o custo do resultado que cada campanha
+  compra, peça por peça dentro do conjunto**, contra a média das outras peças do mesmo
+  objetivo. Visita ao perfil é custo por visita (`spend ÷ link_click`), engajamento é custo
+  por interação, visualização é custo por ThruPlay, reconhecimento é CPM. **VTR e custo por
+  compartilhamento entram como desempate.** VTR é `visualizações ÷ impressões × 100`; a
+  mediana da conta está em 22,6%.
+- **As três faixas:** abaixo de 70% da média sai; de 70% a 89% sai só com 15 dias ou mais no
+  ar; de 90% para cima fica, mesmo sendo peça antiga. **Não cortar em 100%:** metade da conta
+  está sempre abaixo da média, e cortar ali significaria cortar metade da conta toda semana.
+- **Métrica secundária salva a peça, com limite.** Peça cara no principal fica se for forte em
+  outro resultado, mas **só se o custo principal estiver em 60% ou mais**. Abaixo disso custa
+  mais que o dobro e sai de qualquer jeito. Foi o caso do PGM em Sul de Minas (44%),
+  Jequitinhonha (49%) e Triângulo e Alto Paranaíba (55%), que tinham clique bom mas saíram.
+- **Régua separada para card e carrossel**, que não têm métrica de vídeo: compartilhamento 35,
+  interação 35, CTR de link 15, CPM 15. Com ela o Card Pesquisa Cleitinho sai de 39 no painel
+  para 111 e o POV BH de 90 para 103.
+- **Cada objetivo tem seu preço, nunca comparar entre objetivos.** Custo por compartilhamento
+  medido em 21/09: engajamento R$37, visualizações R$58, reconhecimento R$102, visitas ao
+  perfil R$132. Seguidor é o contrário, sai mais barato em visitas.
+- **ERRO DO DIA, que gerou a régua:** apliquei ao pé da letra "em conjunto regional que já tem
+  peça da praça, o abrangente sai" e pausei 74 anúncios. **35 estavam acima da média**, entre
+  eles VT Pandemia (223), VT da Cemig (280) e Só Quem Fez Segurança (223). O Bruno corrigiu:
+  "não era pra cortar peça boa, apenas peça ruim, cara". Religuei 43 e ficaram **25 cortados**.
+- **Custo por seguidor não existe por peça na API.** Só no painel da Julia, que importa do
+  Gerenciador. As duas réguas se cruzam, não se substituem.
+- **Método da Julia incorporado:** custo por seguidor se olha principalmente em tráfego, custo
+  por compartilhamento principalmente em engajamento, e passa-se um olho geral para achar
+  campanha que não é de tráfego gerando tráfego barato. Em 21/09 só um caso: **Card Grupo
+  WhatsApp a R$0,325 por visita, 38% abaixo da média das campanhas de visitas.**
+
+- **TETO DE 6 CRIATIVOS POR CONJUNTO, ordem do Bruno.** Conjunto com 13 peças divide a entrega
+  demais. **Oito conjuntos foram divididos em v1 e v2:** o original vira `— v1` e fica com as
+  peças novas, o `— v2` fica com as antigas. O corte entre os dois é feito no **maior salto de
+  idade**, não na metade da lista, para não separar peças do mesmo dia.
+  **Piso de 3 peças vale só nesta divisão; o teto de 6 vale sempre.**
+- Divididos: RMBH e Interior Vale do Rio Doce em Visitas ao Perfil e em Engajamento, Cluster
+  Base Própria e Mulheres Norte e Vales em Visitas, Progressista de Centro, Tema Saúde e
+  Mulheres Cidades Prioritárias em Engajamento. Mais o `Total - Cluster - Base Própria - Novos`,
+  criado por API para quebrar o conjunto de 13 peças.
+- **ARMADILHA IMPORTANTE: conjunto duplicado no Gerenciador nasce com a verba cheia do
+  original.** Os oito v2 criados hoje somaram **cerca de R$35 mil a mais** na semana. Sempre
+  conferir e dividir a verba do par logo depois de duplicar.
+- **Conjunto de Visitas ao Perfil não pode ser dividido por API**, porque a conta não cria
+  anúncio nesse objetivo. O Bruno duplica no Gerenciador e eu pauso os dois lados. **Pausar
+  anúncio de VP por API funciona**, só criar é que não.
+- Estado final: **94 conjuntos, 286 anúncios, nenhum acima de 6, nenhum sem peça, semana em
+  R$62.000,98.**
+- [ ] ainda não incorporado na memória
+
 ## 2026-09-21 13:40
 - **MIX FICA EM 70/30.** O 60/40 chegou a ser decidido no começo da tarde e o Bruno voltou
   atrás no mesmo dia: "volte pro 70/30". **Vale o plano original, 70% malha geográfica e 30%
