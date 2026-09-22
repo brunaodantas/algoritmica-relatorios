@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Painel Kalil Governador</title>
+<script>try{var t=localStorage.getItem("tema-kalil");if(t&&t!=="sistema")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
   :root{
@@ -60,7 +61,9 @@
   .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper2)}
   .btn{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
     background:var(--paper2);border:1px solid var(--line2);color:var(--ink2);padding:7px 12px;border-radius:4px;cursor:pointer}
-  .btn:hover{border-color:var(--accent);color:var(--ink)}
+    .btn:hover{border-color:var(--accent);color:var(--ink)}
+  .btn.tema{display:inline-flex;align-items:center;gap:7px;min-width:104px;justify-content:center}
+  .btn.tema span:first-child{font-size:13px;line-height:1}
 
   .kpis{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);
     background:var(--paper2);margin-top:22px}
@@ -159,7 +162,7 @@
           <button data-j="hoje" aria-pressed="false">Hoje</button>
         </div>
         <button class="btn" id="recarregar">Atualizar</button>
-        <button class="btn" id="tema">Tema</button>
+        <button class="btn tema" id="tema" title="Alternar claro e escuro" aria-label="Alternar claro e escuro"><span id="temaIcone">◐</span> <span id="temaTxt">Sistema</span></button>
       </div>
     </div>
   </header>
@@ -404,13 +407,24 @@ document.querySelectorAll("#periodo button").forEach(b => b.addEventListener("cl
   b.setAttribute("aria-pressed", "true"); JANELA = b.dataset.j; carregar();
 }));
 $("#recarregar").addEventListener("click", carregar);
+// três estados: acompanha o sistema, claro fixo, escuro fixo
+const TEMAS = ["sistema", "light", "dark"];
+const ICONE = { sistema: "◐", light: "☀", dark: "☾" };
+const NOME = { sistema: "Sistema", light: "Claro", dark: "Escuro" };
+function aplicaTema(t) {
+  if (t === "sistema") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t);
+  const i = document.getElementById("temaIcone"), x = document.getElementById("temaTxt");
+  if (i) i.textContent = ICONE[t];
+  if (x) x.textContent = NOME[t];
+  try { localStorage.setItem("tema-kalil", t); } catch {}
+  if (D) grafico(D);   // o SVG usa as cores do tema, então redesenha
+}
 $("#tema").addEventListener("click", () => {
-  const atual = document.documentElement.getAttribute("data-theme");
-  const novo = atual === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", novo);
-  try { localStorage.setItem("tema-kalil", novo); } catch {}
+  const atual = (() => { try { return localStorage.getItem("tema-kalil") || "sistema"; } catch { return "sistema"; } })();
+  aplicaTema(TEMAS[(TEMAS.indexOf(atual) + 1) % TEMAS.length]);
 });
-try { const t = localStorage.getItem("tema-kalil"); if (t) document.documentElement.setAttribute("data-theme", t); } catch {}
+try { aplicaTema(localStorage.getItem("tema-kalil") || "sistema"); } catch { aplicaTema("sistema"); }
 carregar();
 </script>
 </body>
