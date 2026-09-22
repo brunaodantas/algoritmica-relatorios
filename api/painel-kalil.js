@@ -434,7 +434,7 @@ export default async function handler(req, res) {
     const vazios = Object.entries(cj).filter(([id, c]) => c.ativo && !comPeca.has(id))
       .map(([, c]) => ({ nome: c.nome, objetivo: c.objetivo, saldo: c.saldo }));
 
-    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=1800");
+    res.setHeader("Cache-Control", "s-maxage=600, stale-while-revalidate=86400");
     res.status(200).json({
       atualizado: new Date().toISOString(), hoje, ontem,
       janela: { ...JAN, chave: janela }, planoAte,
@@ -453,8 +453,9 @@ export default async function handler(req, res) {
     const msg = String(e.message || e);
     // limite de leitura é da conta inteira, não desta página: vale dizer isso em português
     if (msg.includes("User request limit reached") || msg.includes("code\":17")) {
+      // 503 com no-store faz a Vercel manter a última leitura boa em cache, em vez de substituí-la
       res.setHeader("Cache-Control", "no-store");
-      res.status(200).json({ limite: true, erro:
+      res.status(503).json({ limite: true, erro:
         "A conta bateu no limite de leitura da Meta. É um teto por conta de anúncios, contando " +
         "todas as ferramentas que leram a conta na última hora. Costuma liberar em alguns minutos." });
       return;

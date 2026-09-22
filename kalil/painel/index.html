@@ -372,7 +372,8 @@ function criativos(d) {
 async function carregar() {
   $("#dot").className = "dot load"; $("#fresh").textContent = "lendo a conta…";
   try {
-    const r = await fetch(`/api/painel-kalil?janela=${JANELA}&t=${Date.now()}`);
+    // sem cache-buster: assim a Vercel pode servir a última leitura boa quando a Meta recusa
+    const r = await fetch(`/api/painel-kalil?janela=${JANELA}`);
     const d = await r.json();
     if (d.limite) {
       $("#dot").className = "dot load";
