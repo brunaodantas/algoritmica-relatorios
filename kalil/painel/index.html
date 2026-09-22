@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel Kalil Governador</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#FAF9F7; --paper2:#FFFFFF; --paper3:#F2F0ED;
+    --ink:#0A0A0A; --ink2:#46423F; --ink3:#807A74; --ink4:#A8A29C;
+    --line:#E6E3DF; --line2:#D2CEC9;
+    --accent:#A15926; --boost:#D9862E; --grey:#8E8A85; --plato:#6E72A0;
+    --ok:#3E7A4F; --warn:#B8860B; --bad:#B03A2E;
+    --okbg:#E7F0E9; --warnbg:#F6EEDA; --badbg:#F4E1DE;
+    --shadow:0 1px 2px rgba(10,10,10,.05);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#151413; --paper2:#1D1B1A; --paper3:#242220;
+    --ink:#F4F1EC; --ink2:#CFC9C2; --ink3:#9A938B; --ink4:#6E6862;
+    --line:#2C2927; --line2:#3A3633;
+    --accent:#D68A4E; --boost:#E09A4B; --plato:#8A8EC4;
+    --ok:#7DBA8C; --warn:#D8B45A; --bad:#E07A6C;
+    --okbg:#1E2C22; --warnbg:#2E2915; --badbg:#33201D; --shadow:none;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#151413; --paper2:#1D1B1A; --paper3:#242220;
+    --ink:#F4F1EC; --ink2:#CFC9C2; --ink3:#9A938B; --ink4:#6E6862;
+    --line:#2C2927; --line2:#3A3633;
+    --accent:#D68A4E; --boost:#E09A4B; --plato:#8A8EC4;
+    --ok:#7DBA8C; --warn:#D8B45A; --bad:#E07A6C;
+    --okbg:#1E2C22; --warnbg:#2E2915; --badbg:#33201D; --shadow:none;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,sans-serif;
+    font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:28px}
+  h1,h2,h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.02em;margin:0}
+  h1{font-size:56px;line-height:1}
+  h2{font-size:34px;line-height:1.05}
+  h3{font-size:22px}
+  @media(max-width:980px){h1{font-size:44px}}
+  .mono,.lab,th,.tag,.sug,.fresh,.seg button,.chip{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .lab,th{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink3);font-weight:400}
+  .sub{color:var(--ink2);font-style:italic;font-weight:300;margin:6px 0 0}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--ink3)}
+
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    border-bottom:2px solid var(--ink);padding-bottom:16px;flex-wrap:wrap}
+  .fresh{font-size:11px;color:var(--ink3);display:flex;align-items:center;gap:7px;justify-content:flex-end}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--okbg);flex:none}
+  .dot.load{background:var(--warn);box-shadow:0 0 0 3px var(--warnbg)}
+  .dot.err{background:var(--bad);box-shadow:0 0 0 3px var(--badbg)}
+  .acoes{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap;justify-content:flex-end}
+  .seg{display:flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+  .seg button{background:var(--paper2);border:0;border-right:1px solid var(--line2);color:var(--ink3);
+    font-size:11px;letter-spacing:.06em;padding:7px 11px;cursor:pointer;text-transform:uppercase}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper2)}
+  .btn{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+    background:var(--paper2);border:1px solid var(--line2);color:var(--ink2);padding:7px 12px;border-radius:4px;cursor:pointer}
+  .btn:hover{border-color:var(--accent);color:var(--ink)}
+
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);
+    background:var(--paper2);margin-top:22px}
+  .kpi{padding:16px 18px;border-right:1px solid var(--line)}
+  .kpi:last-child{border-right:0}
+  .kpi .v{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:1;margin-top:6px}
+  .kpi .d{font-size:11px;color:var(--ink3);margin-top:7px;line-height:1.45}
+  @media(max-width:980px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi{border-bottom:1px solid var(--line)}}
+  @media(max-width:600px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+  section{margin-top:38px}
+  .shead{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:18px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .panel{background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:18px 20px;box-shadow:var(--shadow)}
+  .panel + .panel{margin-top:14px}
+  .ptit{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:980px){.grid2,.grid3{grid-template-columns:1fr}}
+
+  .delta{font-family:"JetBrains Mono",monospace;font-size:10.5px;padding:2px 7px;border-radius:3px;white-space:nowrap}
+  .delta.ok{background:var(--okbg);color:var(--ok)}
+  .delta.warn{background:var(--warnbg);color:var(--warn)}
+  .delta.bad{background:var(--badbg);color:var(--bad)}
+
+  .fatia{margin-bottom:15px}
+  .fatia:last-child{margin-bottom:0}
+  .fatia .cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px}
+  .fatia .cab b{font-weight:600}
+  .fatia .pe{font-size:10.5px;color:var(--ink3);font-family:"JetBrains Mono",monospace}
+  .barras{margin-top:6px}
+  .barra{height:9px;background:var(--paper3);position:relative;margin-bottom:3px}
+  .barra span{position:absolute;inset:0 auto 0 0;background:var(--boost)}
+  .barra.plano span{background:var(--grey);opacity:.5}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:right;padding:0 8px 8px;border-bottom:1px solid var(--line2);white-space:nowrap}
+  th.l,td.l{text-align:left}
+  td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);
+    font-variant-numeric:tabular-nums;font-family:"JetBrains Mono",monospace;white-space:nowrap}
+  td.l{font-family:Inter,sans-serif;white-space:normal}
+  tbody tr:hover{background:var(--paper3)}
+  .rolagem{overflow-x:auto}
+
+  .card{border:1px solid var(--line);border-radius:5px;padding:13px 15px;margin-bottom:10px;display:flex;
+    justify-content:space-between;gap:14px;align-items:flex-start}
+  .card:last-child{margin-bottom:0}
+  .card .nome{font-weight:600;font-size:13.5px;margin-bottom:7px}
+  .card .idx{font-family:"Bebas Neue",sans-serif;font-size:34px;line-height:1;text-align:right}
+  .card .idxl{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:1.4px;
+    color:var(--ink3);text-align:right;text-transform:uppercase}
+  .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:3px;margin:0 5px 5px 0}
+  .tag.good{background:var(--okbg);color:var(--ok)}
+  .tag.badw{background:var(--badbg);color:var(--bad)}
+  .tag.neutro{background:var(--paper3);color:var(--ink3)}
+  .sug{display:inline-block;font-size:10px;padding:2px 8px;border-radius:3px;border:1px solid;text-transform:uppercase;letter-spacing:.08em}
+  .sug.escalar{color:var(--ok);border-color:var(--ok)}
+  .sug.manter{color:var(--ink2);border-color:var(--line2)}
+  .sug.revisar{color:var(--warn);border-color:var(--warn)}
+  .sug.pausar{color:var(--bad);border-color:var(--bad)}
+  .meta{font-size:10.5px;color:var(--ink3);font-family:"JetBrains Mono",monospace;margin-top:4px}
+
+  .alerta{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+  .alerta:last-child{border-bottom:0}
+  .sev{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
+  .sev.warn{background:var(--warn)} .sev.bad{background:var(--bad)}
+  .alerta b{font-weight:600}
+
+  .svgwrap{overflow-x:auto}
+  .vazio{color:var(--ink3);font-size:12.5px}
+  details{margin-top:14px}
+  summary{cursor:pointer;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink3);padding:8px 0}
+  summary:hover{color:var(--ink)}
+  .foot{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);
+    font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink4);line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <div class="eyebrow">Algorítmica · Meta Ads · Conta ELEIÇÕES 2026 ALEXANDRE KALIL</div>
+      <h1>Painel Kalil Governador</h1>
+      <p class="sub">1º turno · veiculação 27/08 a 01/10 · pleito em 04/10 · lido na hora em que você abre</p>
+    </div>
+    <div>
+      <div class="fresh"><span class="dot load" id="dot"></span><span id="fresh">lendo a conta…</span></div>
+      <div class="acoes">
+        <div class="seg" id="periodo">
+          <button data-j="plano" aria-pressed="true">Plano vigente</button>
+          <button data-j="flight" aria-pressed="false">Flight</button>
+          <button data-j="7d" aria-pressed="false">7 dias</button>
+          <button data-j="ontem" aria-pressed="false">Ontem</button>
+          <button data-j="hoje" aria-pressed="false">Hoje</button>
+        </div>
+        <button class="btn" id="recarregar">Atualizar</button>
+        <button class="btn" id="tema">Tema</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <div class="shead">
+      <div><h2>Gasto</h2><p class="sub">Realizado na Meta contra a curva do plano de mídia, R$ 390.000 em 5 semanas</p></div>
+      <div class="lab" id="janelaRot"></div>
+    </div>
+    <div class="panel">
+      <div class="ptit"><h3>Diário · R$</h3><span class="pe lab" id="notaDiaria"></span></div>
+      <div class="svgwrap" id="grafico"></div>
+    </div>
+    <div class="panel">
+      <div class="ptit"><h3>Semanal · plano × realizado</h3></div>
+      <div id="semanal"></div>
+    </div>
+    <div class="grid3" style="margin-top:14px">
+      <div class="panel"><div class="ptit"><h3>Por objetivo</h3><span class="lab">40 / 25 / 25 / 10</span></div><div id="porObjetivo"></div></div>
+      <div class="panel"><div class="ptit"><h3>Por região</h3><span class="lab" id="geoPct"></span></div><div id="porRegiao"></div></div>
+      <div class="panel"><div class="ptit"><h3>Por cluster</h3><span class="lab" id="cluPct"></span></div><div id="porCluster"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead">
+      <div><h2>Otimização</h2><p class="sub">Leitura do flight inteiro, independente do período escolhido acima. Diagnóstico e sugestão: nada aqui altera a conta.</p></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><div class="ptit"><h3>Conjuntos que pedem atenção</h3><span class="lab" id="notaAlertas"></span></div><div id="alertas"></div></div>
+      <div class="panel"><div class="ptit"><h3>Dinheiro parado</h3></div><div id="vazios"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead">
+      <div><h2>Criativos</h2><p class="sub">Índice 100 = mediana dos criativos elegíveis. Acima de 100, mais eficiente que o típico. Cada custo é comparado com a mediana da própria métrica.</p></div>
+      <div class="lab" id="notaCriativos"></div>
+    </div>
+    <div class="grid2">
+      <div class="panel"><div class="ptit"><h3 style="color:var(--ok)">Destaques positivos</h3></div><div id="bons"></div></div>
+      <div class="panel"><div class="ptit"><h3 style="color:var(--bad)">Pontos de atenção</h3></div><div id="ruins"></div></div>
+    </div>
+    <details>
+      <summary>Ranking completo, VTR e criativos em observação</summary>
+      <div class="panel" style="margin-top:10px">
+        <div class="rolagem"><table id="tabela"></table></div>
+      </div>
+      <div class="panel">
+        <div class="ptit"><h3>Em observação</h3><span class="lab">ainda sem base para ranquear</span></div>
+        <div id="observacao"></div>
+      </div>
+      <div class="panel">
+        <div class="ptit"><h3>A régua</h3></div>
+        <p style="font-size:12.5px;color:var(--ink2);margin:0;line-height:1.65" id="regua"></p>
+      </div>
+    </details>
+  </section>
+
+  <div class="foot" id="rodape"></div>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const brl = (v, c = 0) => v == null ? "—" : "R$ " + Number(v).toLocaleString("pt-BR", {minimumFractionDigits:c, maximumFractionDigits:c});
+const n0 = (v) => v == null ? "—" : Math.round(v).toLocaleString("pt-BR");
+const pct = (v, c = 1) => v == null ? "—" : Number(v).toLocaleString("pt-BR", {minimumFractionDigits:c, maximumFractionDigits:c}) + "%";
+const dm = (d) => d ? d.slice(8,10) + "/" + d.slice(5,7) : "—";
+let D = null, JANELA = "plano";
+
+const cls = (d) => Math.abs(d) <= .08 ? "ok" : Math.abs(d) <= .20 ? "warn" : "bad";
+const deltaTag = (d) => d == null ? "" :
+  `<span class="delta ${cls(d)}">${d >= 0 ? "+" : ""}${(d*100).toFixed(0)}%</span>`;
+
+function kpis(d) {
+  const t = d.topo, s = t.semana;
+  $("#kpis").innerHTML = `
+    <div class="kpi"><div class="lab">Gasto no flight</div><div class="v">${brl(t.total)}</div>
+      <div class="d">${brl(t.bruto)} bruto<br>até ontem ${brl(t.totalOntem)} · plano ${brl(t.planoAteOntem)} ${deltaTag(t.desvio)}</div></div>
+    <div class="kpi"><div class="lab">Hoje</div><div class="v">${brl(t.hoje)}</div>
+      <div class="d">parcial · plano do dia ${brl(t.planoHoje)}</div></div>
+    <div class="kpi"><div class="lab">Ontem</div><div class="v">${brl(t.ontem)}</div>
+      <div class="d">plano ${brl(t.planoOntem)} ${deltaTag(t.planoOntem ? (t.ontem-t.planoOntem)/t.planoOntem : null)}</div></div>
+    <div class="kpi"><div class="lab">Média ${t.n7} dias</div><div class="v">${brl(t.media7)}</div>
+      <div class="d">por dia · dias fechados</div></div>
+    <div class="kpi"><div class="lab">Saldo da meta</div><div class="v">${brl(t.saldo)}</div>
+      <div class="d">de ${brl(t.metaTotal)} · ${pct(t.total/t.metaTotal*100,0)} consumido<br>${t.diasRestantes} dias até 01/10</div></div>
+    <div class="kpi"><div class="lab">Semana corrente</div><div class="v">${s ? brl(s.gastoTotal) : "—"}</div>
+      <div class="d">${s ? `${s.nome}<br>${s.dias} dias fechados · plano ${brl(s.plano)} ${deltaTag(s.plano ? (s.real-s.plano)/s.plano : null)}<br>meta da semana ${brl(s.meta)} · nos conjuntos ${brl(t.saldoConjuntos)}` : ""}</div></div>`;
+}
+
+function grafico(d) {
+  const dias = d.dias; if (!dias.length) return;
+  const L=54,R=12,T=16,B=34,H=250, W=Math.max(720, dias.length*22+L+R);
+  const max = Math.max(...dias.map(x => Math.max(x.real, x.plano))) * 1.08 || 1;
+  const px = (i) => L + (i+.5) * ((W-L-R)/dias.length);
+  const py = (v) => T + (H-T-B) * (1 - v/max);
+  const bw = Math.max(6, (W-L-R)/dias.length - 6);
+  let g = "";
+  for (let i=0;i<5;i++){ const v=max*i/4, y=py(v);
+    g += `<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
+    g += `<text x="${L-8}" y="${y+4}" text-anchor="end" font-size="9.5" fill="var(--ink4)" font-family="JetBrains Mono">${Math.round(v/1000)}k</text>`; }
+  dias.forEach((x,i) => {
+    const h = Math.max(0, py(0)-py(x.real));
+    const cor = x.dia === d.hoje ? "var(--plato)" : "var(--boost)";
+    g += `<rect x="${px(i)-bw/2}" y="${py(x.real)}" width="${bw}" height="${h}" fill="${cor}"><title>${dm(x.dia)} · ${brl(x.real)} (plano ${brl(x.plano)})</title></rect>`;
+    if (i % 3 === 0) g += `<text x="${px(i)}" y="${H-12}" text-anchor="middle" font-size="9" fill="var(--ink4)" font-family="JetBrains Mono">${dm(x.dia)}</text>`;
+  });
+  let p = "";
+  dias.forEach((x,i) => { const x0=px(i)-bw/2-3, x1=px(i)+bw/2+3, y=py(x.plano);
+    p += `${i?"L":"M"}${x0},${y} L${x1},${y} `; });
+  g += `<path d="${p}" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  $("#grafico").innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Gasto diário contra o plano">${g}</svg>`;
+  const ult = dias.filter(x => x.dia < d.hoje).pop();
+  $("#notaDiaria").textContent = ult ? `último dia fechado ${dm(ult.dia)} · CPM ${brl(ult.cpm,2)} · freq. ${ult.freq.toFixed(2).replace(".",",")}` : "";
+}
+
+function semanal(d) {
+  const max = Math.max(...d.semanas.map(w => w.meta));
+  $("#semanal").innerHTML = d.semanas.map(w => {
+    const dv = w.estado === "fechada" ? (w.real - w.meta)/w.meta
+             : w.estado === "corrente" && w.planoAte ? (w.realFechado - w.planoAte)/w.planoAte : null;
+    return `<div class="fatia">
+      <div class="cab"><b>${w.nome}</b><span>${brl(w.real)} ${dv != null ? deltaTag(dv) : `<span class="pe">${w.estado}</span>`}</span></div>
+      <div class="pe">${dm(w.ini)} a ${dm(w.fim)} · meta ${brl(w.meta)}</div>
+      <div class="barras">
+        <div class="barra"><span style="width:${Math.min(100, w.real/max*100)}%"></span></div>
+        <div class="barra plano"><span style="width:${w.meta/max*100}%"></span></div>
+      </div></div>`;
+  }).join("");
+}
+
+function fatias(id, linhas) {
+  const max = Math.max(...linhas.map(r => Math.max(r.real, r.plano)), 1);
+  $(id).innerHTML = linhas.map(r => `
+    <div class="fatia">
+      <div class="cab"><b>${r.nome}</b><span>${brl(r.real)} ${r.desvio != null ? deltaTag(r.desvio) : ""}</span></div>
+      <div class="pe">${r.foraDoPlano ? `real ${pct(r.pctReal)} · fora do plano` : `plano ${pct(r.pctPlano)} · real ${pct(r.pctReal)}`}${r.plano ? ` · plano até hoje ${brl(r.plano)}` : ""}</div>
+      <div class="barras">
+        <div class="barra"><span style="width:${Math.min(100, r.real/max*100)}%"></span></div>
+        ${r.plano ? `<div class="barra plano"><span style="width:${Math.min(100, r.plano/max*100)}%"></span></div>` : ""}
+      </div>
+    </div>`).join("") || `<p class="vazio">Sem gasto no período.</p>`;
+}
+
+function alertas(d) {
+  $("#notaAlertas").textContent = `${d.nAtivos} conjuntos ativos · ${d.nAlertas} alertas`;
+  $("#alertas").innerHTML = d.alertas.map(a => `
+    <div class="alerta"><span class="sev ${a.sev}"></span>
+      <div><b>${a.nome}</b> <span class="pe">(${a.objetivo})</span><br>
+        ${a.texto}<div class="meta">gasto ${brl(a.gasto)} · ${n0(a.impr)} impr.${a.saldo ? " · saldo " + brl(a.saldo) : ""}</div>
+      </div></div>`).join("") || `<p class="vazio">Nenhum conjunto fora da curva.</p>`;
+  $("#vazios").innerHTML = d.vazios.length
+    ? d.vazios.map(v => `<div class="alerta"><span class="sev bad"></span><div><b>${v.nome}</b> <span class="pe">(${v.objetivo})</span><br>
+        conjunto ativo sem nenhuma peça no ar<div class="meta">saldo parado ${brl(v.saldo)}</div></div></div>`).join("")
+    : `<p class="vazio">Todo conjunto ativo tem peça no ar.</p>`;
+}
+
+const razaoTxt = (r) => r >= 1
+  ? `${r.toFixed(1).replace(".",",")}× mais barato`
+  : (1/r >= 3 ? `${(1/r).toFixed(1).replace(".",",")}× mais caro` : `${Math.round((1/r-1)*100)}% mais caro`);
+
+function cardCriativo(p) {
+  const tags = p.motivos.map(m => `<span class="tag ${m.bom?"good":"badw"}">${m.label} ${razaoTxt(m.razao)}</span>`).join("");
+  const falta = p.semLeitura.length ? `<span class="tag neutro">sem leitura: ${p.semLeitura.join(", ")}</span>` : "";
+  return `<div class="card">
+    <div style="flex:1">
+      <div class="nome">${p.nome}</div>
+      ${tags}${falta}
+      <div style="margin-top:7px"><span class="sug ${p.sugestao}">${p.sugestao}</span>
+        <span class="meta" style="display:inline;margin-left:8px">leitura ${p.leitura} · ${p.dias} d · ${brl(p.spend)}${p.ativos ? " · " + p.ativos + " no ar" : " · fora do ar"}</span></div>
+    </div>
+    <div><div class="idx">${p.indice}</div><div class="idxl">Índice</div></div>
+  </div>`;
+}
+
+function criativos(d) {
+  const r = d.ranking;
+  $("#notaCriativos").textContent = `${r.length} criativos no ranking · ${d.observacao.length} em observação`;
+  $("#bons").innerHTML = r.slice(0,5).map(cardCriativo).join("") || `<p class="vazio">Sem base ainda.</p>`;
+  $("#ruins").innerHTML = r.slice(-5).reverse().map(cardCriativo).join("") || "";
+  $("#tabela").innerHTML = `<thead><tr>
+      <th class="l">Criativo</th><th>Índice</th><th>Dias</th><th>Gasto</th><th>Impr.</th>
+      <th>R$/compart.</th><th>R$/seguidor</th><th>R$/ThruPlay</th><th>R$/engaj.</th><th>CPM</th>
+      <th>VTR</th><th>VTR 75%</th><th>VTR 100%</th><th>Enganche</th><th>No ar</th></tr></thead>
+    <tbody>${r.map(p => `<tr>
+      <td class="l">${p.nome}<div class="meta">${p.conjuntos.slice(0,2).join(" · ")}${p.conjuntos.length>2?` +${p.conjuntos.length-2}`:""}</div></td>
+      <td><b>${p.indice}</b></td><td>${p.dias}</td><td>${brl(p.spend)}</td><td>${n0(p.impr)}</td>
+      <td>${brl(p.m.shares.custo,0)}</td><td>${brl(p.m.follows.custo,0)}</td>
+      <td>${p.m.thru.custo!=null?brl(p.m.thru.custo,3):"—"}</td><td>${p.m.eng.custo!=null?brl(p.m.eng.custo,3):"—"}</td>
+      <td>${brl(p.m.cpm.custo,2)}</td>
+      <td>${pct(p.vtr)}</td><td>${pct(p.vtr75)}</td><td>${pct(p.vtr100)}</td><td>${pct(p.enganche)}</td>
+      <td>${p.ativos||"—"}</td></tr>`).join("")}</tbody>`;
+  $("#observacao").innerHTML = d.observacao.slice(0,14).map(p => `
+    <div class="alerta"><span class="sev warn"></span><div><b>${p.nome}</b><br>
+      <span class="pe">${p.falta.length ? p.falta.join(" · ") : "sem métrica suficiente para ranquear"}</span>
+      <div class="meta">${p.dias} d · ${brl(p.spend)} · ${n0(p.impr)} impr.</div></div></div>`).join("")
+    || `<p class="vazio">Nada em observação.</p>`;
+  const g = d.regua;
+  $("#regua").textContent =
+    `Entra no ranking a peça com pelo menos ${g.horas} horas no ar, ${brl(g.gasto)} gastos e ${n0(g.impr)} impressões. ` +
+    `Cada métrica só conta com volume mínimo: ${g.shares} compartilhamentos, ${g.follows} seguidores, ${n0(g.thru)} ThruPlays, ${n0(g.eng)} interações. ` +
+    `São precisos ${g.minMetricas} componentes para ranquear. Leitura vira consolidada com ${g.consolidadoDias} dias e ${brl(g.consolidadoGasto)}. ` +
+    `Pesos: compartilhamento 30, seguidor 25, ThruPlay 15, engajamento 15, CPM 15. O índice é a média geométrica ponderada da razão entre a mediana e o custo da peça, limitada a quatro vezes para cada lado. ` +
+    `Escalar a partir de 140, manter de 100 a 139, revisar de 70 a 99, pausar abaixo de 70.`;
+}
+
+async function carregar() {
+  $("#dot").className = "dot load"; $("#fresh").textContent = "lendo a conta…";
+  try {
+    const r = await fetch(`/api/painel-kalil?janela=${JANELA}&t=${Date.now()}`);
+    const d = await r.json();
+    if (d.erro) throw new Error(d.erro);
+    D = d;
+    kpis(d); grafico(d); semanal(d);
+    fatias("#porObjetivo", d.objetivo); fatias("#porRegiao", d.regiao); fatias("#porCluster", d.cluster);
+    $("#geoPct").textContent = `geo ${pct(d.malha.geo.pct,0)} do gasto · plano 70%`;
+    $("#cluPct").textContent = `clusters ${pct(d.malha.cluster.pct,0)} do gasto · plano 30%`;
+    $("#janelaRot").textContent = d.janela.rotulo;
+    alertas(d); criativos(d);
+    const h = new Date(d.atualizado).toLocaleString("pt-BR", {timeZone:"America/Sao_Paulo", dateStyle:"short", timeStyle:"short"});
+    $("#dot").className = "dot"; $("#fresh").textContent = `ao vivo · lido em ${h}`;
+    $("#rodape").textContent = `Fonte: Meta Marketing API · conta ${"497414229054067"} · valores em mídia líquida, o bruto acrescenta os 12,15% que o Meta cobra por dentro · fuso America/Sao_Paulo · lido em ${h}`;
+  } catch (e) {
+    $("#dot").className = "dot err"; $("#fresh").textContent = "não consegui ler a conta: " + e.message;
+  }
+}
+
+document.querySelectorAll("#periodo button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#periodo button").forEach(x => x.setAttribute("aria-pressed", "false"));
+  b.setAttribute("aria-pressed", "true"); JANELA = b.dataset.j; carregar();
+}));
+$("#recarregar").addEventListener("click", carregar);
+$("#tema").addEventListener("click", () => {
+  const atual = document.documentElement.getAttribute("data-theme");
+  const novo = atual === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", novo);
+  try { localStorage.setItem("tema-kalil", novo); } catch {}
+});
+try { const t = localStorage.getItem("tema-kalil"); if (t) document.documentElement.setAttribute("data-theme", t); } catch {}
+carregar();
+</script>
+</body>
+</html>
