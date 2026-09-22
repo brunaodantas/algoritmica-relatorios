@@ -181,15 +181,18 @@ export default async function handler(req, res) {
   const F_SET = "adset_id,spend,impressions,reach,frequency,actions,video_thruplay_watched_actions,instagram_profile_follow";
 
   try {
-    const [conjuntos, anuncios, diario, insSetJ, insSetF, insAdJ, insAdF] = await Promise.all([
+    // a janela "flight" e a janela escolhida costumam coincidir: nesse caso uma leitura serve
+    const mesmaJanela = JAN.ini === FLIGHT_INI && JAN.fim === hoje;
+    const [conjuntos, anuncios, diario, insSetJ, insSetFraw, insAdF] = await Promise.all([
       metaTudo(`act_${CONTA}/adsets`, { fields: "id,name,effective_status,optimization_goal,lifetime_budget,budget_remaining,end_time,campaign{name}", limit: "200" }, token),
       metaTudo(`act_${CONTA}/ads`, { fields: "id,name,adset_id,effective_status,created_time", limit: "300" }, token),
       meta(`act_${CONTA}/insights`, { fields: "spend,impressions,reach,frequency,cpm", time_range: tr(FLIGHT_INI, hoje), time_increment: "1", limit: "60" }, token),
       metaTudo(`act_${CONTA}/insights`, { level: "adset", fields: F_SET, time_range: tr(JAN.ini, JAN.fim), limit: "200" }, token),
-      metaTudo(`act_${CONTA}/insights`, { level: "adset", fields: F_SET, time_range: tr(FLIGHT_INI, hoje), limit: "200" }, token),
-      metaTudo(`act_${CONTA}/insights`, { level: "ad", fields: F_AD, time_range: tr(JAN.ini, JAN.fim), limit: "300" }, token),
+      mesmaJanela ? Promise.resolve(null)
+        : metaTudo(`act_${CONTA}/insights`, { level: "adset", fields: F_SET, time_range: tr(FLIGHT_INI, hoje), limit: "200" }, token),
       metaTudo(`act_${CONTA}/insights`, { level: "ad", fields: F_AD, time_range: tr(FLIGHT_INI, hoje), limit: "300" }, token),
     ]);
+    const insSetF = insSetFraw || insSetJ;
 
     // -------- dicionários
     const cj = {};
@@ -431,7 +434,7 @@ export default async function handler(req, res) {
     const vazios = Object.entries(cj).filter(([id, c]) => c.ativo && !comPeca.has(id))
       .map(([, c]) => ({ nome: c.nome, objetivo: c.objetivo, saldo: c.saldo }));
 
-    res.setHeader("Cache-Control", "s-maxage=120, stale-while-revalidate=600");
+    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=1800");
     res.status(200).json({
       atualizado: new Date().toISOString(), hoje, ontem,
       janela: { ...JAN, chave: janela }, planoAte,
