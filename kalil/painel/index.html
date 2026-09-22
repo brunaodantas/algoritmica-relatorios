@@ -374,6 +374,14 @@ async function carregar() {
   try {
     const r = await fetch(`/api/painel-kalil?janela=${JANELA}&t=${Date.now()}`);
     const d = await r.json();
+    if (d.limite) {
+      $("#dot").className = "dot load";
+      $("#fresh").textContent = "conta no limite de leitura, tentando de novo em 60 s";
+      if (!D) $("#kpis").innerHTML = `<div class="kpi" style="grid-column:1/-1"><div class="lab">Aguardando a Meta</div>
+        <div class="d" style="font-size:12.5px;margin-top:8px">${d.erro}</div></div>`;
+      clearTimeout(window.__retry); window.__retry = setTimeout(carregar, 60000);
+      return;
+    }
     if (d.erro) throw new Error(d.erro);
     D = d;
     kpis(d); grafico(d); semanal(d);

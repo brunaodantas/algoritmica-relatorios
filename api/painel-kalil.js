@@ -450,6 +450,15 @@ export default async function handler(req, res) {
       regua: REGUA, pesos: PESOS,
     });
   } catch (e) {
-    res.status(502).json({ erro: String(e.message || e) });
+    const msg = String(e.message || e);
+    // limite de leitura é da conta inteira, não desta página: vale dizer isso em português
+    if (msg.includes("User request limit reached") || msg.includes("code\":17")) {
+      res.setHeader("Cache-Control", "no-store");
+      res.status(200).json({ limite: true, erro:
+        "A conta bateu no limite de leitura da Meta. É um teto por conta de anúncios, contando " +
+        "todas as ferramentas que leram a conta na última hora. Costuma liberar em alguns minutos." });
+      return;
+    }
+    res.status(502).json({ erro: msg });
   }
 }
