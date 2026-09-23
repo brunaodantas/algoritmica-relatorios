@@ -140,6 +140,30 @@
   summary:hover{color:var(--ink)}
   .foot{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);
     font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink4);line-height:1.7}
+  .abas{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 4px}
+  .abas button{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--paper2);color:var(--ink2);border:1px solid var(--line2);border-radius:4px;padding:8px 14px;cursor:pointer}
+  .abas button[aria-pressed="true"]{background:var(--ink);color:var(--paper2);border-color:var(--ink)}
+  .abas button:focus-visible,.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .regras p{margin:6px 0 0;font-size:12.5px;color:var(--ink2);line-height:1.6}
+  .rg td,.rg th{padding:7px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+  .rg td:first-child,.rg th:first-child{text-align:left;white-space:normal;min-width:200px}
+  .rg td{font-variant-numeric:tabular-nums}
+  .rg tr.cj td{background:var(--paper3);font-weight:600;text-align:left}
+  .rg tr.cj td .lab{margin-left:10px;letter-spacing:.06em}
+  .rg .porque{display:block;color:var(--ink3);font-size:11px;white-space:normal;font-weight:400}
+  .ix{font-family:"JetBrains Mono",monospace;font-size:11.5px;padding:1px 6px;border-radius:3px}
+  .ix.bad{background:var(--badbg);color:var(--bad)}.ix.warn{background:var(--warnbg);color:var(--warn)}.ix.ok{color:var(--ink2)}.ix.good{background:var(--okbg);color:var(--ok)}
+  .dec{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--ink3)}
+  .dec.pausar{background:var(--badbg);color:var(--bad);border-color:var(--bad)}
+  .dec.observar{background:var(--warnbg);color:var(--warn);border-color:transparent}
+  .dec.manter{background:var(--okbg);color:var(--ok);border-color:transparent}
+  .decidir{display:grid;gap:10px;margin-top:6px}
+  .decidir .it{display:grid;grid-template-columns:1fr auto;gap:4px 18px;border-left:3px solid var(--bad);padding:6px 0 6px 12px}
+  .decidir .it.o{border-left-color:var(--warn)}
+  .decidir .it p{margin:0;font-size:12.5px;color:var(--ink2)}
+  .decidir .it .nums{font-family:"JetBrains Mono",monospace;font-size:11.5px;text-align:right;color:var(--ink2)}
+  @media(max-width:640px){.decidir .it{grid-template-columns:1fr}.decidir .it .nums{text-align:left}}
 </style>
 </head>
 <body>
@@ -167,6 +191,13 @@
     </div>
   </header>
 
+  <nav class="abas" id="abas" aria-label="Seções do painel">
+    <button type="button" data-aba="geral" aria-pressed="true">Visão geral</button>
+    <button type="button" data-aba="regua" aria-pressed="false">Régua por conjunto</button>
+    <button type="button" data-aba="campanhas" aria-pressed="false">Campanhas ativas</button>
+  </nav>
+
+  <div id="aba-geral">
   <div class="kpis" id="kpis"></div>
 
   <section>
@@ -223,6 +254,32 @@
       </div>
     </details>
   </section>
+
+  </div>
+
+  <div id="aba-regua" hidden>
+    <section>
+      <div class="shead">
+        <div><h2>Régua por conjunto</h2><p class="sub">Campanhas regionais e reconhecimento. Cada anúncio ativo contra a média do próprio conjunto (soma do gasto ÷ soma do resultado dos anúncios ativos). Índice 100 é a média, acima de 100 é mais barato.</p></div>
+        <div class="lab" id="reguaLido"></div>
+      </div>
+      <div class="grid2 regras">
+        <div class="panel"><div class="lab">Métrica principal</div><p>Visitas ao Perfil: custo por seguidor · Engajamento: custo por interação · Visualizações: custo por ThruPlay · Reconhecimento: CPM · Cliques: custo por clique no link. A principal de cada objetivo vale como secundária nos outros.</p></div>
+        <div class="panel"><div class="lab">Corte</div><p>Abaixo de 70 na semana e abaixo de 90 na campanha: pausar. De 70 a 89: observar. Secundária em 110 ou mais salva se a principal estiver em 60 ou mais. Menos de 3.000 impressões fica fora da conta. Nunca deixar conjunto sem vídeo nem vídeo sem conjunto; v2 não se pausa nos 3 primeiros dias.</p></div>
+      </div>
+      <div class="panel"><div class="ptit"><h3 style="color:var(--bad)">Para decidir</h3><span class="lab">pela régua · nada aqui altera a conta</span></div><div id="reguaDecidir"><p class="sub">lendo a conta…</p></div></div>
+      <div class="seg" id="reguaCamp" style="margin-top:18px;width:max-content;max-width:100%;flex-wrap:wrap"></div>
+      <div id="reguaTabela"></div>
+    </section>
+  </div>
+
+  <div id="aba-campanhas" hidden>
+    <section>
+      <div class="shead"><div><h2>Campanhas ativas</h2><p class="sub">Retrato da estrutura da conta, gerado pelo script de campanhas ativas.</p></div>
+      <a class="btn" href="/kalil/campanhas-ativas/" target="_blank" rel="noopener">Abrir em tela cheia</a></div>
+      <iframe id="frameCampanhas" title="Campanhas ativas" loading="lazy" style="width:100%;height:80vh;border:1px solid var(--line);border-radius:6px;background:var(--paper2)"></iframe>
+    </section>
+  </div>
 
   <div class="foot" id="rodape"></div>
 </div>
@@ -426,6 +483,86 @@ $("#tema").addEventListener("click", () => {
 });
 try { aplicaTema(localStorage.getItem("tema-kalil") || "sistema"); } catch { aplicaTema("sistema"); }
 carregar();
+
+// ===== Abas =====
+const ABAS = ["geral", "regua", "campanhas"];
+let reguaCarregada = false;
+function abrirAba(nome, empurrar = true) {
+  if (!ABAS.includes(nome)) nome = "geral";
+  document.querySelectorAll("#abas button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.aba === nome));
+  ABAS.forEach((a) => { document.getElementById("aba-" + a).hidden = a !== nome; });
+  if (nome === "regua" && !reguaCarregada) carregarRegua();
+  if (nome === "campanhas") { const f = document.getElementById("frameCampanhas"); if (!f.src) f.src = "/kalil/campanhas-ativas/"; }
+  if (empurrar) history.replaceState(null, "", nome === "geral" ? location.pathname : "#" + nome);
+}
+document.querySelectorAll("#abas button").forEach((b) => b.addEventListener("click", () => abrirAba(b.dataset.aba)));
+window.addEventListener("hashchange", () => abrirAba(location.hash.slice(1), false));
+if (location.hash) abrirAba(location.hash.slice(1), false);
+
+// ===== Régua por conjunto =====
+const RG = { dados: null, camp: "VP" };
+const NOMEP = { seg: "Custo por seguidor", int: "Custo por interação", thru: "Custo por ThruPlay", cpm: "CPM", cpc: "Custo por clique no link" };
+const NOMES = { seg: "seguidor", int: "interação", eng: "engaj. post", thru: "ThruPlay", cpm: "CPM" };
+const brR = (v, m) => v == null ? "" : "R$ " + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: (m === "int" || m === "thru" || m === "cpc") && v < 5 ? 3 : 2 });
+const pc = (v) => v == null ? "" : (v * 100).toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+const ixT = (v) => v == null ? "" : `<span class="ix ${v < 70 ? "bad" : v < 90 ? "warn" : v < 110 ? "ok" : "good"}">${v}</span>`;
+const decT = (d) => `<span class="dec ${d}">${{ pausar: "Pausar", observar: "Observar", manter: "Manter", unica: "Peça única", pouco: "Pouco dado" }[d] || d}</span>`;
+const limpa = (s) => String(s).replace("Total - ", "").replace(/ \u2014 /g, " ").replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]));
+
+async function carregarRegua() {
+  reguaCarregada = true;
+  $("#reguaDecidir").innerHTML = `<p class="sub">lendo a conta…</p>`;
+  try {
+    const r = await fetch("/api/regua-kalil");
+    const j = await r.json();
+    if (!r.ok || j.erro) throw new Error(j.erro || r.status);
+    RG.dados = j;
+    const P = j.periodos;
+    $("#reguaLido").textContent = `campanha ${dm(P.F.ini)} a ${dm(P.F.fim)} · ${P.W.rotulo.toLowerCase()} ${dm(P.W.ini)} a ${dm(P.W.fim)} · lido ${new Date(j.lidoEm).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}`;
+    $("#reguaCamp").innerHTML = j.campanhas.map((c) => `<button type="button" data-c="${c.chave}" aria-pressed="${c.chave === RG.camp}">${c.nome}</button>`).join("");
+    $("#reguaCamp").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { RG.camp = b.dataset.c; $("#reguaCamp").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); tabelaRegua(); }));
+    decidirRegua(); tabelaRegua();
+  } catch (e) {
+    reguaCarregada = false;
+    $("#reguaDecidir").innerHTML = `<p class="sub">Não consegui ler a conta agora (${limpa(e.message)}). O Meta limita leituras em dias de muita edição; tente de novo em alguns minutos.</p>`;
+  }
+}
+
+function decidirRegua() {
+  const itens = [];
+  for (const c of RG.dados.campanhas) for (const s of c.conjuntos) for (const a of s.anuncios)
+    if (a.d === "pausar") itens.push({ c, s, a });
+  $("#reguaDecidir").innerHTML = itens.length ? `<div class="decidir">${itens.map(({ c, s, a }) => `
+    <div class="it"><div><strong>${limpa(a.nome)}</strong> ${decT(a.d)}<p>${c.nome} · ${limpa(s.nome)}</p>
+      <p>${a.outros.length ? "Também roda em: " + a.outros.map(limpa).join(", ") : "Não roda em outro conjunto destas campanhas: confira antes de pausar."}</p></div>
+      <div class="nums">${NOMEP[c.principal]}<br>semana ${brR(a.custo.W, c.principal)} · média ${brR(s.media.W, c.principal)}<br>índice semana ${a.idx.W ?? ""} · campanha ${a.idx.F ?? ""}</div></div>`).join("")}</div>`
+    : `<p class="sub">Nenhum anúncio abaixo da régua agora.</p>`;
+}
+
+function tabelaRegua() {
+  const c = RG.dados.campanhas.find((x) => x.chave === RG.camp);
+  const pm = c.principal;
+  const vis = c.chave === "VIS";
+  const secs = c.conjuntos[0] ? Object.keys(c.conjuntos[0].anuncios[0].sec) : [];
+  const cab = vis
+    ? `<tr><th>Anúncio</th><th>Decisão</th><th>Gasto sem.</th><th>R$/ThruPlay sem.</th><th>camp.</th><th>Índice sem.</th><th>camp.</th><th>Gancho 3s</th><th>Tx começou</th><th>VTR ThruPlay</th><th>VTR 100%</th><th>R$/3s</th><th>R$/reprod.</th><th>R$/100%</th>${secs.map((m) => `<th>${NOMES[m]}</th>`).join("")}<th>Freq.</th></tr>`
+    : `<tr><th>Anúncio</th><th>Decisão</th><th>Gasto sem.</th><th>Gasto camp.</th><th>${NOMEP[pm]} sem.</th><th>camp.</th><th>Índice sem.</th><th>camp.</th>${secs.map((m) => `<th>${NOMES[m]}</th>`).join("")}<th>Seguidores sem. / camp.</th><th>Freq.</th></tr>`;
+  const ncol = vis ? 15 + secs.length : 10 + secs.length;
+  let corpo = "";
+  for (const s of c.conjuntos) {
+    corpo += `<tr class="cj"><td colspan="${ncol}">${limpa(s.nome)}<span class="lab">média ${NOMEP[pm].toLowerCase()}: semana ${brR(s.media.W, pm)} · campanha ${brR(s.media.F, pm)}</span></td></tr>`;
+    for (const a of s.anuncios) {
+      const nome = `${limpa(a.nome)}${a.porque ? `<span class="porque">${limpa(a.porque)}</span>` : ""}`;
+      const sec = secs.map((m) => `<td>${ixT(a.sec[m])}</td>`).join("");
+      const fr = a.F.freq ? a.F.freq.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) : "";
+      corpo += vis
+        ? `<tr><td>${nome}</td><td>${decT(a.d)}</td><td>${brR(a.W.gasto)}</td><td>${brR(a.custo.W, pm)}</td><td>${brR(a.custo.F, pm)}</td><td>${ixT(a.idx.W)}</td><td>${ixT(a.idx.F)}</td><td>${pc(a.video.gancho)}</td><td>${pc(a.video.comecou)}</td><td>${pc(a.video.vtrThru)}</td><td>${pc(a.video.vtr100)}</td><td>${brR(a.video.custo3s, "thru")}</td><td>${brR(a.video.custoPlay, "thru")}</td><td>${brR(a.video.custo100)}</td>${sec}<td>${fr}</td></tr>`
+        : `<tr><td>${nome}</td><td>${decT(a.d)}</td><td>${brR(a.W.gasto)}</td><td>${brR(a.F.gasto)}</td><td>${brR(a.custo.W, pm)}</td><td>${brR(a.custo.F, pm)}</td><td>${ixT(a.idx.W)}</td><td>${ixT(a.idx.F)}</td>${sec}<td>${n0(a.W.seg)} / ${n0(a.F.seg)}</td><td>${fr}</td></tr>`;
+    }
+  }
+  $("#reguaTabela").innerHTML = `<div class="panel" style="margin-top:10px"><div class="rolagem"><table class="rg">${cab}${corpo}</table></div></div>
+    <p class="sub" style="font-size:12px">Gancho 3s = visualizações de 3 segundos ÷ impressões · Tx começou = reproduções ÷ impressões · VTR ThruPlay = ThruPlays ÷ impressões · VTR 100% = assistiu 100% ÷ reproduções. Secundárias em índice da semana contra a média do conjunto. Célula vazia: sem dado no período.</p>`;
+}
 </script>
 </body>
 </html>
