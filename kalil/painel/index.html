@@ -436,11 +436,10 @@ async function carregar() {
     const r = await fetch(`/api/painel-kalil?janela=${JANELA}`);
     const d = await r.json();
     if (d.limite) {
-      $("#dot").className = "dot load";
-      $("#fresh").textContent = "conta no limite de leitura, tentando de novo em 60 s";
+      $("#dot").className = "dot err";
+      $("#fresh").textContent = "conta no limite de leitura — clique Atualizar em alguns minutos";
       if (!D) $("#kpis").innerHTML = `<div class="kpi" style="grid-column:1/-1"><div class="lab">Aguardando a Meta</div>
-        <div class="d" style="font-size:12.5px;margin-top:8px">${d.erro}</div></div>`;
-      clearTimeout(window.__retry); window.__retry = setTimeout(carregar, 60000);
+        <div class="d" style="font-size:12.5px;margin-top:8px">${d.erro}<br>Não fica tentando sozinho pra não segurar o limite: use o painel da Julia enquanto isso, ou clique Atualizar daqui a pouco.</div></div>`;
       return;
     }
     if (d.erro) throw new Error(d.erro);
